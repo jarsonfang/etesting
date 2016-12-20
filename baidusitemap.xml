@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy-manual-for-RP-release/</loc>
-    <lastmod>2016-12-20T10:21:13.642Z</lastmod>
+    <lastmod>2016-12-20T10:33:07.387Z</lastmod>
     <data>
         <display>
         <title>Deploy manual for RP release</title>
@@ -388,29 +388,6 @@
 
     
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/sed-awk/sed-manual/</loc>
-    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
-    <data>
-        <display>
-        <title>sed 学习手册</title>
-        <pubTime>2016-09-23T06:30:15.000Z</pubTime>
-        
-        <tag>sed</tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://jarsonfang.github.io/etesting/categories/Tools/"/>
-          
-             
-              <breadCrumb title="sed &amp; awk" url="http://jarsonfang.github.io/etesting/categories/Tools/sed-awk/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/virtualization/xen/</loc>
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     <data>
@@ -427,6 +404,29 @@
           
              
               <breadCrumb title="virtualization" url="http://jarsonfang.github.io/etesting/categories/Estuary/virtualization/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Tools/sed-awk/sed-manual/</loc>
+    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
+    <data>
+        <display>
+        <title>sed 学习手册</title>
+        <pubTime>2016-09-23T06:30:15.000Z</pubTime>
+        
+        <tag>sed</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://jarsonfang.github.io/etesting/categories/Tools/"/>
+          
+             
+              <breadCrumb title="sed &amp; awk" url="http://jarsonfang.github.io/etesting/categories/Tools/sed-awk/"/>
           
         </display>
     </data>
