@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy-manual-for-RP-release/</loc>
+    
+    <lastmod>2016-12-20T10:12:07.299Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D03/Deploy-manual-for-RP-on-D03/</loc>
     
     <lastmod>2016-12-14T05:52:20.421Z</lastmod>
@@ -9,14 +16,7 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-tag-plugins/</loc>
-    
-    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/about/index.html</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-operations/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
@@ -30,6 +30,13 @@
   </url>
   
   <url>
+    <loc>http://jarsonfang.github.io/categories/index.html</loc>
+    
+    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jarsonfang.github.io/etesting/Tools/VCS/git-save-empty-dir/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
@@ -37,14 +44,14 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-asset-folders/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-asset-folders/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
@@ -65,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-operations/</loc>
+    <loc>http://jarsonfang.github.io/about/index.html</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/categories/index.html</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-tag-plugins/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
@@ -149,14 +156,14 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D05/Readme.4D05/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D03/Readme.4D03/</loc>
     
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D03/Readme.4D03/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D05/Readme.4D05/</loc>
     
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     
@@ -275,14 +282,14 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Distributions_Guide.4All/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/HiKey/Deploy_Manual.4HiKey/</loc>
     
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/HiKey/Deploy_Manual.4HiKey/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Distributions_Guide.4All/</loc>
     
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     

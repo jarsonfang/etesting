@@ -4,6 +4,33 @@
 
     
   <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy-manual-for-RP-release/</loc>
+    <lastmod>2016-12-20T10:12:07.299Z</lastmod>
+    <data>
+        <display>
+        <title>Deploy manual for RP release</title>
+        <pubTime>2016-12-20T07:18:37.000Z</pubTime>
+        
+        <tag>D03</tag>
+         
+        <tag>RP</tag>
+         
+        <tag>D05</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="http://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D03/Deploy-manual-for-RP-on-D03/</loc>
     <lastmod>2016-12-14T05:52:20.421Z</lastmod>
     <data>
@@ -32,12 +59,12 @@
 
     
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-tag-plugins/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-operations/</loc>
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     <data>
         <display>
-        <title>Hexo 标签插件</title>
-        <pubTime>2016-10-01T13:40:05.000Z</pubTime>
+        <title>Hexo 基本操作</title>
+        <pubTime>2016-10-01T12:33:03.000Z</pubTime>
         
         <tag>Hexo</tag>
          
@@ -80,12 +107,12 @@
 
     
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-asset-folders/</loc>
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2016-09-20T02:05:01.000Z</pubTime>
+        <title>Hexo 资源文件夹</title>
+        <pubTime>2016-10-02T01:17:33.000Z</pubTime>
         
         <tag>Hexo</tag>
          
@@ -103,12 +130,12 @@
 
     
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-asset-folders/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     <data>
         <display>
-        <title>Hexo 资源文件夹</title>
-        <pubTime>2016-10-02T01:17:33.000Z</pubTime>
+        <title>Hello World</title>
+        <pubTime>2016-09-20T02:05:01.000Z</pubTime>
         
         <tag>Hexo</tag>
          
@@ -171,13 +198,14 @@
     </url>
 
     
+    
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-operations/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-tag-plugins/</loc>
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     <data>
         <display>
-        <title>Hexo 基本操作</title>
-        <pubTime>2016-10-01T12:33:03.000Z</pubTime>
+        <title>Hexo 标签插件</title>
+        <pubTime>2016-10-01T13:40:05.000Z</pubTime>
         
         <tag>Hexo</tag>
          
@@ -193,7 +221,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/virtualization/kvm/</loc>
@@ -433,32 +460,6 @@
 
     
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D05/Readme.4D05/</loc>
-    <lastmod>2016-12-14T04:03:36.406Z</lastmod>
-    <data>
-        <display>
-        <title>Readme.4D05</title>
-        <pubTime>2016-10-10T02:05:01.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="http://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-             
-              <breadCrumb title="D05" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/D05/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D03/Readme.4D03/</loc>
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     <data>
@@ -478,6 +479,32 @@
           
              
               <breadCrumb title="D03" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/D03/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/D05/Readme.4D05/</loc>
+    <lastmod>2016-12-14T04:03:36.406Z</lastmod>
+    <data>
+        <display>
+        <title>Readme.4D05</title>
+        <pubTime>2016-10-10T02:05:01.000Z</pubTime>
+        
+        <tag>D05</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="http://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+             
+              <breadCrumb title="D05" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/D05/"/>
           
         </display>
     </data>
@@ -888,32 +915,6 @@
 
     
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Distributions_Guide.4All/</loc>
-    <lastmod>2016-12-14T04:03:36.406Z</lastmod>
-    <data>
-        <display>
-        <title>Distributions_Guild.4All.md</title>
-        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
-        
-        <tag>All</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="http://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-             
-              <breadCrumb title="All" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/All/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/HiKey/Deploy_Manual.4HiKey/</loc>
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     <data>
@@ -933,6 +934,32 @@
           
              
               <breadCrumb title="HiKey" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/HiKey/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Distributions_Guide.4All/</loc>
+    <lastmod>2016-12-14T04:03:36.406Z</lastmod>
+    <data>
+        <display>
+        <title>Distributions_Guild.4All.md</title>
+        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
+        
+        <tag>All</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="http://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+             
+              <breadCrumb title="All" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/All/"/>
           
         </display>
     </data>
