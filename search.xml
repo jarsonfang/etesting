@@ -4,6 +4,18 @@
   
     
     <entry>
+      <title><![CDATA[How to install pip]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/How-to-install-pip/</url>
+      <content type="html"><![CDATA[<p>Reference: <a href="https://pip.pypa.io/en/stable/installing/" target="_blank" rel="external">https://pip.pypa.io/en/stable/installing/</a></p>
+<p><strong>For Centos:</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py</div><div class="line">python get-pip.py</div></pre></td></tr></table></figure></p>
+<p><strong>For Ubuntu:</strong><br>use the same commands as for Centos, or use the following commad:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-pip</div></pre></td></tr></table></figure></p>
+<p><strong>Verify The Installation:</strong><br>View a list of helpful commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip --help</div></pre></td></tr></table></figure></p>
+<p>Check the version of Pip that is installed:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip -V</div></pre></td></tr></table></figure></p>
+<p>Which should yield something similar to:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip 8.1.1 from /usr/lib/python2.7/dist-packages (python 2.7)</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Deploy manual for RP release]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy-manual-for-RP-release/</url>
       <content type="html"><![CDATA[<p>参考：<br><a href="https://github.com/Linaro/documentation/blob/master/Reference-Platform/EECommon/Install-CentOS-7.md" target="_blank" rel="external">https://github.com/Linaro/documentation/blob/master/Reference-Platform/EECommon/Install-CentOS-7.md</a><br><a href="https://github.com/Linaro/documentation/blob/master/Reference-Platform/EECommon/Install-Debian-Jessie.md" target="_blank" rel="external">https://github.com/Linaro/documentation/blob/master/Reference-Platform/EECommon/Install-Debian-Jessie.md</a></p>
@@ -316,66 +328,96 @@
     </entry>
     
     <entry>
-      <title><![CDATA[UEFI_Manual.4D02.md]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D02/UEFI_Manual.4D02/</url>
+      <title><![CDATA[Setup_HiKey_WiFi_Env.4HiKey.md]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Setup_HiKey_WiFi_Env.4HiKey/</url>
       <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Upgrade UEFI</a></li>
-<li><a href="#3">Recover the UEFI when it broke</a></li>
+<li><a href="#1">Config WiFi On mini-rootfs systerm</a></li>
+<li><a href="#2">Config WiFi On Ubuntu &amp; Debian systerm</a></li>
+<li><a href="#3">Fedora &amp;&amp; CentOS wifi configure</a></li>
+<li><a href="#4">OpenSuse Wifi configure</a></li>
 </ul>
 <a id="more"></a>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>UEFI is a kind of BIOS to boot system and provide runtime service to OS which can do some basic IO operation with the runtime service, e.g.: reboot, power off and etc.<br>Normally, there are some trust firmware will be produce from UEFI building, they are responsible for trust reprogram, they include:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UEFI_D02.fd      //UEFI executable binary file.</div><div class="line">CH02TEVBC_V03.bin   // CPLD binary to control power supplier.</div></pre></td></tr></table></figure></p>
-<p>Where to get them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md" target="_blank" rel="external">Readme.md</a>.</p>
-<h2 id="Upgrade-UEFI"><a href="#Upgrade-UEFI" class="headerlink" title="Upgrade UEFI"></a><a name="2">Upgrade UEFI</a></h2><p>Note: This is not necessary unless you want to upgrade UEFI really.</p>
+<p>This is a guide to setup a WiFi environment on your HiKey board.</p>
+<p>When HiKey board can boot into mini-rootfs systerm or Ubuntu systerm in Estuary project, you can config WiFi function. If you can not boot into this systerm, you can get more information from DeployManual.txt file.</p>
+<h2 id="Config-WiFi-On-mini-rootfs-systerm"><a href="#Config-WiFi-On-mini-rootfs-systerm" class="headerlink" title="Config WiFi On mini-rootfs systerm"></a><a name="1">Config WiFi On mini-rootfs systerm</a></h2><p>On serial console, you should see some debug message which can show if the Hikey board have booted into mini-rootfs systerm successfully. You can config this WiFi according to this follow instruction:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> 0 &gt; /sys/kernel/debug/ieee80211/phy0/wlcore/sleep_auth</div><div class="line">$ ifconfig wlan0 up</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## Use the following command to know if WiFi is ok ##</span></div><div class="line">$ iw wlan0 scan | grep SSID</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## to create a wpa_supplicant.conf ##</span></div><div class="line">$ wpa_passphrase &lt;ssid&gt; &lt;passphrase&gt; &gt; /etc/wpa_supplicant.conf</div></pre></td></tr></table></figure>
+<p>eg: <code>wpa_passphrase admin admin &gt; /etc/wpa_supplicant.conf</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wpa_supplicant -B -iwlan0 -c/etc/wpa_supplicant.conf -Dnl80211</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## wait a while for wpa_supplicant to link ##</span></div><div class="line">$ iw wlan0 link</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## config ip and route ##</span></div><div class="line">$ ifconfig wlan0 &lt;IP address&gt;</div><div class="line">$ route add default gw &lt;IP address&gt;</div><div class="line">$ <span class="built_in">echo</span> <span class="string">"nameserver &lt;IP address&gt;"</span> &gt;&gt; /etc/resolv.conf</div></pre></td></tr></table></figure>
+<p>eg:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ifconfig wlan0 192.168.2.80</div><div class="line">route add default gw 192.168.2.1</div><div class="line"><span class="built_in">echo</span> <span class="string">"nameserver 192.168.2.1"</span> &gt;&gt; /etc/resolv.conf</div></pre></td></tr></table></figure></p>
+<p>NOTE: In order to test this WiFi function, you can use “ping www.baidu.com” website to verify it.</p>
+<h2 id="Config-WiFi-On-Ubuntu-amp-Debian-systerm"><a href="#Config-WiFi-On-Ubuntu-amp-Debian-systerm" class="headerlink" title="Config WiFi On Ubuntu &amp; Debian systerm"></a><a name="2">Config WiFi On Ubuntu &amp; Debian systerm</a></h2><p>On serial console, you should see some debug message which can show if the Hikey board have booted into ubuntu systerm successfully. You can config this WiFi according to this follow instruction:<br>Supposed the login user is peter.</p>
 <ol>
-<li><p>Prepare files about UEFI on local computer<br>FTP protocol is used for downloading between hardware boards and local network. Aboveall, please make sure you have a working FTP server in local network, so that board can get needed files from network by FTP.<br>All files mentioned above should be ready firstly, then put them in the root directory of FTP.</p>
+<li><p>Find out the wireless device name ##<br><code>$ iw dev</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">phy<span class="comment">#0</span></div><div class="line">Interface wlan0</div><div class="line">ifindex 3</div><div class="line"><span class="built_in">type</span> managed</div></pre></td></tr></table></figure>
+<p>The above output shows that the system has 1 physical WiFi card, designated as phy#0.<br>The device name is wlan0. The type specifies the operation mode of the wireless device.<br>managed means the device is a WiFi station or client that connects to an access point.</p>
 </li>
-<li><p>Connect the board’s UART port to a host machine<br>Please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D02.md" target="_blank" rel="external">Deploy_Manual.4D02.md</a> “Prerequisite” chapter.</p>
+<li><p>configure the wifi data for the wifi device you selected</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/wpa_supplicant</div><div class="line">vi wpa_supplicant.con</div></pre></td></tr></table></figure>
+<p>then you should remove all the existed entries parenthesized by’network={‘; those entries are original configures, probably not suitable for your network environment, so you can delete them.<br>Now, you can configure your own wifi data:<br><code>wpa_passphrase CTS 88888888 &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</code><br>Please note that you should replace the ‘CTS’, ‘88888888’ with your AP configuring parameters. If you want to more info about this command, please refer to wpa_passphrase manual.<br>To be more security, you can remove the ‘#psk=xxxx’ from the wpa_supplicant.conf;<br>If your AP is hidden SSID, add this option just following the configure line of ‘ssid=”???”‘ :<br>scan_ssid=1</p>
 </li>
-</ol>
-<p>If you choose Method 1, use another console window, use <code>board_reboot</code> command to reset the board.<br>If you choose Method 2, press the reset key on the board to reset the board.</p>
-<p>When system showing “Press Any key in 10 seconds to stop automatical booting…”, press any key except “enter” key to enter UEFI main menu.</p>
-<h3 id="UEFI-menu-introduction"><a href="#UEFI-menu-introduction" class="headerlink" title="UEFI menu introduction"></a>UEFI menu introduction</h3><p>  UEFI main menu option is showed as follow:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">continue</span> </div><div class="line">select Language            &lt;standard English&gt;</div><div class="line">&gt;Boot Manager</div><div class="line">&gt;Device Manager</div><div class="line">&gt;Boot Maintenance Manager</div></pre></td></tr></table></figure></p>
-<p>  Choose “Boot Manager” and enter into Boot option menu:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EFI Misc Device </div><div class="line">EFI Misc Device 1</div><div class="line">EFI Network</div><div class="line">EFI Internal Shell</div><div class="line">Flash Start OS</div><div class="line">ESL Start OS</div><div class="line">Embedded Boot Loader(EBL)</div></pre></td></tr></table></figure></p>
-<p>  EFI Internal Shell mode is a standard command shell in UEFI. Embedded Boot Loader(EBL) mode is an embedded command shell based on boot loader specially for developers.<br>  You can switch between two modes by typing “exit” from one mode to UEFI main menu and then choose the another mode.</p>
-<h3 id="Update-UEFI-files"><a href="#Update-UEFI-files" class="headerlink" title="Update UEFI files"></a>Update UEFI files</h3><ul>
-<li><p>IP address config at “EFI Internal Shell” mode(Optional, you can ignore this step if DHCP works well)<br> Press any key except “enter” key to enter into UEFI main menu. Select “Boot Manager”-&gt;EFI Internal Shell.</p>
-<p> <code>ifconfig -s eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</code><br> e.g.: <code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
+<li><p>configure the wifi interface</p>
+<p>You must configure a corresponding wifi interface to make wifi enabled during the booting.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/network/interfaces.d</div><div class="line">cp -Pp wlan0.cfg.template xxxx.cfg</div></pre></td></tr></table></figure>
+<p>You should replace the ‘xxxx’ as your wifi device name, such as wlan0. Modify the new xxx.cfg, add these configurations:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto xxxx</div><div class="line">iface xxxx inet dhcp</div></pre></td></tr></table></figure>
+<p>You also need to replace the ‘xxxx’ with your wifi device name. Here, we only use dhcp as the defualt network mode, if you want to<br>configure others, please do it yourself.<br>You also need to update the configure relevant to the sys configure file<br>of sleep_auth, just modify the file path correspond to your wifi device:<br><code>pre-up echo 0 &gt; /sys/kernel/debug/ieee80211/phy0/wlcore/sleep_auth</code>  </p>
+<p>This configure matchs to wlan0. If your device is not wlan0, please check what is the right path based on the output of the above ‘iw dev xxxx’ (<br>here, xxxx is the wifi device name), you can find what is the phy index,then replace the phy0 with the correct phy index.</p>
+<p>If your envinorment has not any wired network device, you can rename the eth3.cfg in <code>/etc/network/interfaces.d</code> as eth3.cfg.template;</p>
 </li>
-<li><p>Burn BIOS file at “Embedded Boot Loader(EBL)” mode<br>Enter “exit” from “EFI Internet Shell” mode to UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;UEFI binary&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">spiwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
-<p>e.g.:  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> UEFI_D02.fd <span class="_">-a</span> 0x100000</div><div class="line">spiwfmem 0x100000 0x0000000 0x300000</div></pre></td></tr></table></figure>
+<li><p>reboot the system adn verify the wifi status</p>
+<p>At first, please reboot the system.<br>After the system is ready, you can check whether the wifi is ready:</p>
+<ul>
+<li><p>Check whether the wireless device is up.<br><code>$ ip link show wlan0</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">3: wlan0: (BROADCAST,MULTICAST) mtu 1500 qdisc noop state DOWN mode DEFAULT qlen 1000</div><div class="line">link/ether 74:e5:43:a1:ce:65 brd ff:ff:ff:ff:ff:ff`</div></pre></td></tr></table></figure>
+<p>Look for the word “UP” inside the brackets in the first line of the output.</p>
 </li>
-<li><p>Burn CPLD file<br>Notes: This is a very dangerous operation, please don’t do it when not necessary.<br>If you really want to do it, please make sure the power can <strong>NOT</strong> be shut off suddenly during updating CPLD.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;cpld bin&gt; <span class="_">-a</span> &lt;target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">updatecpld &lt;target address&gt;</div></pre></td></tr></table></figure>
-<p>e.g.:  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> CH02TEVBC_V03.bin <span class="_">-a</span> 0x100000</div><div class="line">updatecpld 0x100000</div></pre></td></tr></table></figure>
+<li><p>Enable the wireless device<br>In the above example, wlan0 is not UP. Execute the following command to bring it up:<br><code>$ sudo ip link set wlan0 up</code><br><code>[sudo] password for peter</code>:<br>Note: you need root privilege for the above operation.</p>
+<p>If you run the show link command again, you can tell that wlan0 is now UP.<br><code>$ ip link show wlan0</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wlan0: (NO-CARRIER,BROADCAST,MULTICAST,UP) mtu 1500 qdisc mq state DOWN mode DEFAULT</div><div class="line">qlen 1000</div><div class="line">link/ether 74:e5:43:a1:ce:65 brd ff:ff:ff:ff:ff:ff</div></pre></td></tr></table></figure>
 </li>
-<li><p>Power off and reboot board again</p>
+<li><p>Check the connection status.<br><code>$ iw wlan0 link</code><br>you can found the connect is ok now.<br><code>$ ip addr show wlan0</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wlan0:  mtu 1500 qdisc mq state UP qlen 1000</div><div class="line">link/ether 74:e5:43:a1:ce:65 brd ff:ff:ff:ff:ff:ff</div><div class="line">inet 192.168.1.113/24 brd 192.168.1.255 scope global wlan0</div><div class="line">inet6 fe80::76e5:43ff:fea1:ce65/64 scope link</div><div class="line">valid_lft forever preferred_lft forever</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="Recover-the-UEFI-when-it-broke"><a href="#Recover-the-UEFI-when-it-broke" class="headerlink" title="Recover the UEFI when it broke"></a><a name="3">Recover the UEFI when it broke</a></h2><p>Actually the board can restore two UEFI in case of the default one breaks, then you can restore it as following way:  </p>
-<ol>
-<li>Power off the board and disconnect power supply.  </li>
-<li>Push the dial switch ‘s3’ to ‘off’ with a ‘3’ on the board, please check the Hardware Boards to find where it is: <a href="http://open-estuary.com/d02-2/" target="_blank" rel="external">http://open-estuary.com/d02-2/</a>.  </li>
-<li>Power on and enter UEFI SHELL again as above description.  </li>
-<li>Push the dial swift ‘s3’ to ‘on’ with a ‘3’ on the board.  </li>
-<li>Burn UEFI file for BIOS as above step3 “Update UEFI files”.  </li>
-<li>Reset the system again.<br>Now you have already updated your failed BIOS, and the board will boot with new UEFI successfully.</li>
+<p>NOTE: In order to test this WiFi function, you can use “ping www.baidu.com” website to verify it.</p>
+</li>
 </ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Toolchains_Guide.4All.md]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Toolchains_Guide.4All/</url>
-      <content type="html"><![CDATA[<p>This is the guide for toolchains</p>
-<a id="more"></a>
-<p>If your host machine and target machine have the different architecture, you have to prepare toolchains before you build any target binaries.</p>
-<p>E.g. if you are building an arm-based target binary on Intel machine, you must use them in your host machine.<br>By default, after you do <code>./esutary/build.sh -i toolchain</code>, the toolchain will be install your host machine’s <code>/opt</code> directory.</p>
-<p>And the original toolchains files will be download into <code>&lt;project root&gt;/toolchain</code> directory too.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux.tar.xz   <span class="comment"># this is for aarch64 architecture.</span></div><div class="line">gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux.tar.xz <span class="comment"># this is for arm32 architecture.</span></div></pre></td></tr></table></figure></p>
-<p>Of course, you can install the toolchains yourself with following commands (take the aarch64 as example):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pushd</span> toolchain</div><div class="line">sudo mkdir -p /opt 2&gt;/dev/null</div><div class="line">sudo tar -xvf gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux.tar.xz -C /opt</div><div class="line">str=<span class="string">'export PATH=$PATH:/opt/gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux/bin'</span> </div><div class="line">grep <span class="string">"<span class="variable">$str</span>"</span> ~/.bashrc &gt;/dev/null</div><div class="line"><span class="keyword">if</span> [ x<span class="string">"$?"</span> != x<span class="string">"0"</span> ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"<span class="variable">$str</span>"</span>&gt;&gt; ~/.bashrc; <span class="keyword">fi</span></div><div class="line"><span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure></p>
+<h2 id="Fedora-amp-amp-CentOS-wifi-configure"><a href="#Fedora-amp-amp-CentOS-wifi-configure" class="headerlink" title="Fedora &amp;&amp; CentOS wifi configure"></a><a name="3">Fedora &amp;&amp; CentOS wifi configure</a></h2><p> Please run ‘iw dev’ to collect the wifi device information as the first step. You at least need to know what is the device name of your wifi.</p>
+<ol>
+<li><p>configure the wpa_supplicant environment</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/sysconfig</div><div class="line">vi wpa_supplicant</div></pre></td></tr></table></figure>
+<p>You should add your wifi device name and the relative driver in that file, such as <code>-iwlan0</code>, <code>-Dnl80211</code>;</p>
+</li>
+<li><p>Configure the wpa_supplicant.conf</p>
+<p><code>wpa_passphrase CTS 88888888 &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</code><br>Then edit the wpa_supplicant.conf just as what you done in Debian or Ubuntu.</p>
+</li>
+<li><p>Create a wifi connection</p>
+<p>You need to create a corresponding wifi connection file in <code>/etc/sysconfig/network-scripts</code>.<br>nmcli dev wifi connect CTS password 88888888 wep-key-type key ifname wlan0 name wlan0 hidden yes this command will create the wifi connection in <code>/etc/sysconfig/network-scripts</code></p>
+<p>You should replace the ‘CTS’ ‘88888888’ with your own wifi AP configurations.<br>If your wifi device is not ‘wlan0’, please replace it with right name too.<br>If your AP is not hidden ssid, please remove ‘hidden yes’  </p>
+<p>This command must be sucessful. It will enable the wifi link. sometimes, this command will get failed for conflicting with previous scan, you should run it again in some times.</p>
+<p>Since your had configure the password in the above command, the #psk in wpa_supplicant.conf is not needed since it will disclose to the others. It is better to remove that line in /etc/wpa_supplicant/wpa_supplicant.conf. –remove that line ‘#psk=”88888888”‘i</p>
+</li>
+<li><p>reboot your system and verify it</p>
+<p>After your system is booted, check the wifi link and the IP address:<br><code>iw wlan0 link</code><br><code>ip addr show wlan0</code>  </p>
+<p>When the above are ok, you can do some pings to external website.</p>
+</li>
+</ol>
+<h2 id="OpenSuse-Wifi-configure"><a href="#OpenSuse-Wifi-configure" class="headerlink" title="OpenSuse Wifi configure"></a><a name="4">OpenSuse Wifi configure</a></h2><ol>
+<li><p>modify the wifi connection file (such as ifcfg-xxx)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/sysconfig/network</div><div class="line">cp -Pp template-ifcfg-wlan0 ifcfg-xxx</div></pre></td></tr></table></figure>
+<p>you should replace xxx with your wifi device name you pick up. Update these configure items with your local AP settings:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">WIRELESS_ESSID=<span class="string">'xxxx'</span></div><div class="line">WIRELESS_WPA_PSK=<span class="string">'yyyyyyyy'</span></div></pre></td></tr></table></figure>
+<p>The ‘xxxx’ ‘yyyyyyyy’ should be replaced with your wifi SSID and KEY.If your AP is hidden ssid, add this option: <code>WIRELESS_HIDDEN_SSID=&#39;yes&#39;</code></p>
+<p>Please note that, the current configuration in ifcfg-xxx is for PSK. If your wifi AP configuration is different, please make the relevant modifications by yourself.</p>
+</li>
+<li><p>reboot the system and verify it</p>
+<p>Same as the operation on other distributions.</p>
+<p>All the above configure should be done for the first time. If you change the AP configurations, please update those configure files above with correct options. Otherwise, the wifi should be ok every booting.</p>
+</li>
+</ol>
 ]]></content>
     </entry>
     
@@ -565,95 +607,65 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Setup_HiKey_WiFi_Env.4HiKey.md]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Setup_HiKey_WiFi_Env.4HiKey/</url>
+      <title><![CDATA[Toolchains_Guide.4All.md]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Toolchains_Guide.4All/</url>
+      <content type="html"><![CDATA[<p>This is the guide for toolchains</p>
+<a id="more"></a>
+<p>If your host machine and target machine have the different architecture, you have to prepare toolchains before you build any target binaries.</p>
+<p>E.g. if you are building an arm-based target binary on Intel machine, you must use them in your host machine.<br>By default, after you do <code>./esutary/build.sh -i toolchain</code>, the toolchain will be install your host machine’s <code>/opt</code> directory.</p>
+<p>And the original toolchains files will be download into <code>&lt;project root&gt;/toolchain</code> directory too.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux.tar.xz   <span class="comment"># this is for aarch64 architecture.</span></div><div class="line">gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux.tar.xz <span class="comment"># this is for arm32 architecture.</span></div></pre></td></tr></table></figure></p>
+<p>Of course, you can install the toolchains yourself with following commands (take the aarch64 as example):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pushd</span> toolchain</div><div class="line">sudo mkdir -p /opt 2&gt;/dev/null</div><div class="line">sudo tar -xvf gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux.tar.xz -C /opt</div><div class="line">str=<span class="string">'export PATH=$PATH:/opt/gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux/bin'</span> </div><div class="line">grep <span class="string">"<span class="variable">$str</span>"</span> ~/.bashrc &gt;/dev/null</div><div class="line"><span class="keyword">if</span> [ x<span class="string">"$?"</span> != x<span class="string">"0"</span> ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"<span class="variable">$str</span>"</span>&gt;&gt; ~/.bashrc; <span class="keyword">fi</span></div><div class="line"><span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UEFI_Manual.4D02.md]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D02/UEFI_Manual.4D02/</url>
       <content type="html"><![CDATA[<ul>
-<li><a href="#1">Config WiFi On mini-rootfs systerm</a></li>
-<li><a href="#2">Config WiFi On Ubuntu &amp; Debian systerm</a></li>
-<li><a href="#3">Fedora &amp;&amp; CentOS wifi configure</a></li>
-<li><a href="#4">OpenSuse Wifi configure</a></li>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Upgrade UEFI</a></li>
+<li><a href="#3">Recover the UEFI when it broke</a></li>
 </ul>
 <a id="more"></a>
-<p>This is a guide to setup a WiFi environment on your HiKey board.</p>
-<p>When HiKey board can boot into mini-rootfs systerm or Ubuntu systerm in Estuary project, you can config WiFi function. If you can not boot into this systerm, you can get more information from DeployManual.txt file.</p>
-<h2 id="Config-WiFi-On-mini-rootfs-systerm"><a href="#Config-WiFi-On-mini-rootfs-systerm" class="headerlink" title="Config WiFi On mini-rootfs systerm"></a><a name="1">Config WiFi On mini-rootfs systerm</a></h2><p>On serial console, you should see some debug message which can show if the Hikey board have booted into mini-rootfs systerm successfully. You can config this WiFi according to this follow instruction:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> 0 &gt; /sys/kernel/debug/ieee80211/phy0/wlcore/sleep_auth</div><div class="line">$ ifconfig wlan0 up</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## Use the following command to know if WiFi is ok ##</span></div><div class="line">$ iw wlan0 scan | grep SSID</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## to create a wpa_supplicant.conf ##</span></div><div class="line">$ wpa_passphrase &lt;ssid&gt; &lt;passphrase&gt; &gt; /etc/wpa_supplicant.conf</div></pre></td></tr></table></figure>
-<p>eg: <code>wpa_passphrase admin admin &gt; /etc/wpa_supplicant.conf</code>  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wpa_supplicant -B -iwlan0 -c/etc/wpa_supplicant.conf -Dnl80211</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## wait a while for wpa_supplicant to link ##</span></div><div class="line">$ iw wlan0 link</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## config ip and route ##</span></div><div class="line">$ ifconfig wlan0 &lt;IP address&gt;</div><div class="line">$ route add default gw &lt;IP address&gt;</div><div class="line">$ <span class="built_in">echo</span> <span class="string">"nameserver &lt;IP address&gt;"</span> &gt;&gt; /etc/resolv.conf</div></pre></td></tr></table></figure>
-<p>eg:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ifconfig wlan0 192.168.2.80</div><div class="line">route add default gw 192.168.2.1</div><div class="line"><span class="built_in">echo</span> <span class="string">"nameserver 192.168.2.1"</span> &gt;&gt; /etc/resolv.conf</div></pre></td></tr></table></figure></p>
-<p>NOTE: In order to test this WiFi function, you can use “ping www.baidu.com” website to verify it.</p>
-<h2 id="Config-WiFi-On-Ubuntu-amp-Debian-systerm"><a href="#Config-WiFi-On-Ubuntu-amp-Debian-systerm" class="headerlink" title="Config WiFi On Ubuntu &amp; Debian systerm"></a><a name="2">Config WiFi On Ubuntu &amp; Debian systerm</a></h2><p>On serial console, you should see some debug message which can show if the Hikey board have booted into ubuntu systerm successfully. You can config this WiFi according to this follow instruction:<br>Supposed the login user is peter.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>UEFI is a kind of BIOS to boot system and provide runtime service to OS which can do some basic IO operation with the runtime service, e.g.: reboot, power off and etc.<br>Normally, there are some trust firmware will be produce from UEFI building, they are responsible for trust reprogram, they include:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UEFI_D02.fd      //UEFI executable binary file.</div><div class="line">CH02TEVBC_V03.bin   // CPLD binary to control power supplier.</div></pre></td></tr></table></figure></p>
+<p>Where to get them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md" target="_blank" rel="external">Readme.md</a>.</p>
+<h2 id="Upgrade-UEFI"><a href="#Upgrade-UEFI" class="headerlink" title="Upgrade UEFI"></a><a name="2">Upgrade UEFI</a></h2><p>Note: This is not necessary unless you want to upgrade UEFI really.</p>
 <ol>
-<li><p>Find out the wireless device name ##<br><code>$ iw dev</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">phy<span class="comment">#0</span></div><div class="line">Interface wlan0</div><div class="line">ifindex 3</div><div class="line"><span class="built_in">type</span> managed</div></pre></td></tr></table></figure>
-<p>The above output shows that the system has 1 physical WiFi card, designated as phy#0.<br>The device name is wlan0. The type specifies the operation mode of the wireless device.<br>managed means the device is a WiFi station or client that connects to an access point.</p>
+<li><p>Prepare files about UEFI on local computer<br>FTP protocol is used for downloading between hardware boards and local network. Aboveall, please make sure you have a working FTP server in local network, so that board can get needed files from network by FTP.<br>All files mentioned above should be ready firstly, then put them in the root directory of FTP.</p>
 </li>
-<li><p>configure the wifi data for the wifi device you selected</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/wpa_supplicant</div><div class="line">vi wpa_supplicant.con</div></pre></td></tr></table></figure>
-<p>then you should remove all the existed entries parenthesized by’network={‘; those entries are original configures, probably not suitable for your network environment, so you can delete them.<br>Now, you can configure your own wifi data:<br><code>wpa_passphrase CTS 88888888 &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</code><br>Please note that you should replace the ‘CTS’, ‘88888888’ with your AP configuring parameters. If you want to more info about this command, please refer to wpa_passphrase manual.<br>To be more security, you can remove the ‘#psk=xxxx’ from the wpa_supplicant.conf;<br>If your AP is hidden SSID, add this option just following the configure line of ‘ssid=”???”‘ :<br>scan_ssid=1</p>
+<li><p>Connect the board’s UART port to a host machine<br>Please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D02.md" target="_blank" rel="external">Deploy_Manual.4D02.md</a> “Prerequisite” chapter.</p>
 </li>
-<li><p>configure the wifi interface</p>
-<p>You must configure a corresponding wifi interface to make wifi enabled during the booting.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/network/interfaces.d</div><div class="line">cp -Pp wlan0.cfg.template xxxx.cfg</div></pre></td></tr></table></figure>
-<p>You should replace the ‘xxxx’ as your wifi device name, such as wlan0. Modify the new xxx.cfg, add these configurations:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto xxxx</div><div class="line">iface xxxx inet dhcp</div></pre></td></tr></table></figure>
-<p>You also need to replace the ‘xxxx’ with your wifi device name. Here, we only use dhcp as the defualt network mode, if you want to<br>configure others, please do it yourself.<br>You also need to update the configure relevant to the sys configure file<br>of sleep_auth, just modify the file path correspond to your wifi device:<br><code>pre-up echo 0 &gt; /sys/kernel/debug/ieee80211/phy0/wlcore/sleep_auth</code>  </p>
-<p>This configure matchs to wlan0. If your device is not wlan0, please check what is the right path based on the output of the above ‘iw dev xxxx’ (<br>here, xxxx is the wifi device name), you can find what is the phy index,then replace the phy0 with the correct phy index.</p>
-<p>If your envinorment has not any wired network device, you can rename the eth3.cfg in <code>/etc/network/interfaces.d</code> as eth3.cfg.template;</p>
+</ol>
+<p>If you choose Method 1, use another console window, use <code>board_reboot</code> command to reset the board.<br>If you choose Method 2, press the reset key on the board to reset the board.</p>
+<p>When system showing “Press Any key in 10 seconds to stop automatical booting…”, press any key except “enter” key to enter UEFI main menu.</p>
+<h3 id="UEFI-menu-introduction"><a href="#UEFI-menu-introduction" class="headerlink" title="UEFI menu introduction"></a>UEFI menu introduction</h3><p>  UEFI main menu option is showed as follow:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">continue</span> </div><div class="line">select Language            &lt;standard English&gt;</div><div class="line">&gt;Boot Manager</div><div class="line">&gt;Device Manager</div><div class="line">&gt;Boot Maintenance Manager</div></pre></td></tr></table></figure></p>
+<p>  Choose “Boot Manager” and enter into Boot option menu:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EFI Misc Device </div><div class="line">EFI Misc Device 1</div><div class="line">EFI Network</div><div class="line">EFI Internal Shell</div><div class="line">Flash Start OS</div><div class="line">ESL Start OS</div><div class="line">Embedded Boot Loader(EBL)</div></pre></td></tr></table></figure></p>
+<p>  EFI Internal Shell mode is a standard command shell in UEFI. Embedded Boot Loader(EBL) mode is an embedded command shell based on boot loader specially for developers.<br>  You can switch between two modes by typing “exit” from one mode to UEFI main menu and then choose the another mode.</p>
+<h3 id="Update-UEFI-files"><a href="#Update-UEFI-files" class="headerlink" title="Update UEFI files"></a>Update UEFI files</h3><ul>
+<li><p>IP address config at “EFI Internal Shell” mode(Optional, you can ignore this step if DHCP works well)<br> Press any key except “enter” key to enter into UEFI main menu. Select “Boot Manager”-&gt;EFI Internal Shell.</p>
+<p> <code>ifconfig -s eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</code><br> e.g.: <code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
 </li>
-<li><p>reboot the system adn verify the wifi status</p>
-<p>At first, please reboot the system.<br>After the system is ready, you can check whether the wifi is ready:</p>
-<ul>
-<li><p>Check whether the wireless device is up.<br><code>$ ip link show wlan0</code>  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">3: wlan0: (BROADCAST,MULTICAST) mtu 1500 qdisc noop state DOWN mode DEFAULT qlen 1000</div><div class="line">link/ether 74:e5:43:a1:ce:65 brd ff:ff:ff:ff:ff:ff`</div></pre></td></tr></table></figure>
-<p>Look for the word “UP” inside the brackets in the first line of the output.</p>
+<li><p>Burn BIOS file at “Embedded Boot Loader(EBL)” mode<br>Enter “exit” from “EFI Internet Shell” mode to UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;UEFI binary&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">spiwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
+<p>e.g.:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> UEFI_D02.fd <span class="_">-a</span> 0x100000</div><div class="line">spiwfmem 0x100000 0x0000000 0x300000</div></pre></td></tr></table></figure>
 </li>
-<li><p>Enable the wireless device<br>In the above example, wlan0 is not UP. Execute the following command to bring it up:<br><code>$ sudo ip link set wlan0 up</code><br><code>[sudo] password for peter</code>:<br>Note: you need root privilege for the above operation.</p>
-<p>If you run the show link command again, you can tell that wlan0 is now UP.<br><code>$ ip link show wlan0</code>  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wlan0: (NO-CARRIER,BROADCAST,MULTICAST,UP) mtu 1500 qdisc mq state DOWN mode DEFAULT</div><div class="line">qlen 1000</div><div class="line">link/ether 74:e5:43:a1:ce:65 brd ff:ff:ff:ff:ff:ff</div></pre></td></tr></table></figure>
+<li><p>Burn CPLD file<br>Notes: This is a very dangerous operation, please don’t do it when not necessary.<br>If you really want to do it, please make sure the power can <strong>NOT</strong> be shut off suddenly during updating CPLD.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;cpld bin&gt; <span class="_">-a</span> &lt;target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">updatecpld &lt;target address&gt;</div></pre></td></tr></table></figure>
+<p>e.g.:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> CH02TEVBC_V03.bin <span class="_">-a</span> 0x100000</div><div class="line">updatecpld 0x100000</div></pre></td></tr></table></figure>
 </li>
-<li><p>Check the connection status.<br><code>$ iw wlan0 link</code><br>you can found the connect is ok now.<br><code>$ ip addr show wlan0</code>  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wlan0:  mtu 1500 qdisc mq state UP qlen 1000</div><div class="line">link/ether 74:e5:43:a1:ce:65 brd ff:ff:ff:ff:ff:ff</div><div class="line">inet 192.168.1.113/24 brd 192.168.1.255 scope global wlan0</div><div class="line">inet6 fe80::76e5:43ff:fea1:ce65/64 scope link</div><div class="line">valid_lft forever preferred_lft forever</div></pre></td></tr></table></figure>
+<li><p>Power off and reboot board again</p>
 </li>
 </ul>
-<p>NOTE: In order to test this WiFi function, you can use “ping www.baidu.com” website to verify it.</p>
-</li>
-</ol>
-<h2 id="Fedora-amp-amp-CentOS-wifi-configure"><a href="#Fedora-amp-amp-CentOS-wifi-configure" class="headerlink" title="Fedora &amp;&amp; CentOS wifi configure"></a><a name="3">Fedora &amp;&amp; CentOS wifi configure</a></h2><p> Please run ‘iw dev’ to collect the wifi device information as the first step. You at least need to know what is the device name of your wifi.</p>
+<h2 id="Recover-the-UEFI-when-it-broke"><a href="#Recover-the-UEFI-when-it-broke" class="headerlink" title="Recover the UEFI when it broke"></a><a name="3">Recover the UEFI when it broke</a></h2><p>Actually the board can restore two UEFI in case of the default one breaks, then you can restore it as following way:  </p>
 <ol>
-<li><p>configure the wpa_supplicant environment</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/sysconfig</div><div class="line">vi wpa_supplicant</div></pre></td></tr></table></figure>
-<p>You should add your wifi device name and the relative driver in that file, such as <code>-iwlan0</code>, <code>-Dnl80211</code>;</p>
-</li>
-<li><p>Configure the wpa_supplicant.conf</p>
-<p><code>wpa_passphrase CTS 88888888 &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</code><br>Then edit the wpa_supplicant.conf just as what you done in Debian or Ubuntu.</p>
-</li>
-<li><p>Create a wifi connection</p>
-<p>You need to create a corresponding wifi connection file in <code>/etc/sysconfig/network-scripts</code>.<br>nmcli dev wifi connect CTS password 88888888 wep-key-type key ifname wlan0 name wlan0 hidden yes this command will create the wifi connection in <code>/etc/sysconfig/network-scripts</code></p>
-<p>You should replace the ‘CTS’ ‘88888888’ with your own wifi AP configurations.<br>If your wifi device is not ‘wlan0’, please replace it with right name too.<br>If your AP is not hidden ssid, please remove ‘hidden yes’  </p>
-<p>This command must be sucessful. It will enable the wifi link. sometimes, this command will get failed for conflicting with previous scan, you should run it again in some times.</p>
-<p>Since your had configure the password in the above command, the #psk in wpa_supplicant.conf is not needed since it will disclose to the others. It is better to remove that line in /etc/wpa_supplicant/wpa_supplicant.conf. –remove that line ‘#psk=”88888888”‘i</p>
-</li>
-<li><p>reboot your system and verify it</p>
-<p>After your system is booted, check the wifi link and the IP address:<br><code>iw wlan0 link</code><br><code>ip addr show wlan0</code>  </p>
-<p>When the above are ok, you can do some pings to external website.</p>
-</li>
-</ol>
-<h2 id="OpenSuse-Wifi-configure"><a href="#OpenSuse-Wifi-configure" class="headerlink" title="OpenSuse Wifi configure"></a><a name="4">OpenSuse Wifi configure</a></h2><ol>
-<li><p>modify the wifi connection file (such as ifcfg-xxx)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/sysconfig/network</div><div class="line">cp -Pp template-ifcfg-wlan0 ifcfg-xxx</div></pre></td></tr></table></figure>
-<p>you should replace xxx with your wifi device name you pick up. Update these configure items with your local AP settings:  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">WIRELESS_ESSID=<span class="string">'xxxx'</span></div><div class="line">WIRELESS_WPA_PSK=<span class="string">'yyyyyyyy'</span></div></pre></td></tr></table></figure>
-<p>The ‘xxxx’ ‘yyyyyyyy’ should be replaced with your wifi SSID and KEY.If your AP is hidden ssid, add this option: <code>WIRELESS_HIDDEN_SSID=&#39;yes&#39;</code></p>
-<p>Please note that, the current configuration in ifcfg-xxx is for PSK. If your wifi AP configuration is different, please make the relevant modifications by yourself.</p>
-</li>
-<li><p>reboot the system and verify it</p>
-<p>Same as the operation on other distributions.</p>
-<p>All the above configure should be done for the first time. If you change the AP configurations, please update those configure files above with correct options. Otherwise, the wifi should be ok every booting.</p>
-</li>
+<li>Power off the board and disconnect power supply.  </li>
+<li>Push the dial switch ‘s3’ to ‘off’ with a ‘3’ on the board, please check the Hardware Boards to find where it is: <a href="http://open-estuary.com/d02-2/" target="_blank" rel="external">http://open-estuary.com/d02-2/</a>.  </li>
+<li>Power on and enter UEFI SHELL again as above description.  </li>
+<li>Push the dial swift ‘s3’ to ‘on’ with a ‘3’ on the board.  </li>
+<li>Burn UEFI file for BIOS as above step3 “Update UEFI files”.  </li>
+<li>Reset the system again.<br>Now you have already updated your failed BIOS, and the board will boot with new UEFI successfully.</li>
 </ol>
 ]]></content>
     </entry>
@@ -1113,390 +1125,6 @@
 </li>
 <li>Click “Start update”(Do not power off during this period).</li>
 <li>After updated UFEI file, reboot the board to enter UEFI menu.</li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Readme.4D02.md]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D02/Readme.4D02/</url>
-      <content type="html"><![CDATA[<p>This is the readme file for D02 platform</p>
-<a id="more"></a>
-<p>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for D02, all targets files will be produced. they are:</p>
-<h3 id="UEFI-D02-fd"><a href="#UEFI-D02-fd" class="headerlink" title="UEFI_D02.fd"></a>UEFI_D02.fd</h3><p><strong>description</strong>: UEFI_D02.fd is the UEFI bios for D02 platform.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/D02/UEFI_D02.fd</code><br><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-uefi.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
-<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>: grubaa64.efi is used to load kernel image and dtb files from SATA, SAS, USB Disk, or NFS into RAM and start the kernel.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code><br><strong>source</strong>: <code>&lt;project root&gt;/grub</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace</div></pre></td></tr></table></figure></p>
-<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><h3 id="hip05-d02-dtb"><a href="#hip05-d02-dtb" class="headerlink" title="hip05-d02.dtb"></a>hip05-d02.dtb</h3><p><strong>descriptions</strong>: Image is the kernel executable program and hip05-d02.dtb is the device tree binary.<br><strong>target</strong>:<br>Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code><br>hip05-d02.dtb in <code>&lt;project root&gt;/workspace/binary/D02/hip05-d02.dtb</code><br><strong>source</strong>: <code>&lt;project root&gt;/kernel</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
-<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.  </p>
-<p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.<br>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.<br>More detail about how to deploy target system into D02 board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D02.md" target="_blank" rel="external">Deployment_Manual.md</a>.<br>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.<br>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.<br>More detail about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Armor_Tools_Basic_Info.4All.md]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Armor_Tools_Basic_Info.4All/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">List of Tools</a><a id="more"></a>
-</li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>This document presents the basic information of the supported Armor tools. </p>
-<h2 id="List-of-Tools"><a href="#List-of-Tools" class="headerlink" title="List of Tools"></a><a name="2">List of Tools</a></h2><ol>
-<li><p>Perf integrated with LLC, MN and DDR</p>
-<ul>
-<li>Integrated LLC statistics registers access via perf, including DDR counter information. </li>
-<li>Support counter overflow interrupt support for LLC counters. </li>
-<li>Register Read/Get interface from Linux Kernel for LLC and Bus Registers for P660.</li>
-<li>LLC statistics registers integration to perf for P660.</li>
-</ul>
-</li>
-<li><p>strace : trace system calls and signals</p>
-<p>strace is a diagnostic, debugging and instructional Linux user space utility. It is used to monitor interactions between processes and the Linux kernel, which include system calls, signal deliveries, and changes of process state. </p>
-</li>
-</ol>
-<ol>
-<li><p>ltrace : library call tracer.</p>
-<p>ltrace intercepts and records the dynamic library calls which are called by the executed process and the signals which are received by that process. It can also intercept and print the system calls executed by the program.</p>
-</li>
-<li><p>netstat : </p>
-<p>netstat prints network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.</p>
-</li>
-<li><p>sar : Collect, report, or save system activity information.</p>
-</li>
-<li><p>top : display Linux tasks. </p>
-<p>top shows how much CPU processing power and memory are being used, as well as other information about the running processes.</p>
-</li>
-<li><p>pidstat: Report statistics for Linux tasks.</p>
-<p>pidstat command is used for monitoring individual tasks currently being managed by the Linux kernel. pidstat writes to standard output activities for every task selected with option -p or for every task managed by the Linux kernel if option -p ALL has been used.  </p>
-</li>
-<li><p>vmstat : Report virtual memory statistics.</p>
-<p>vmstat reports information about processes, memory, paging, block IO, traps, and CPU activity.</p>
-</li>
-<li><p>ftrace: is the Linux kernel internal tracer that was included in the Linux kernel in 2.6.27.</p>
-<p>ftrace supports function tracing, latency tracing, event tracing etc.</p>
-</li>
-<li><p>iostat :  Report CPU statistics and input/output statistics for devices, partitions and network filesystems (NFS). </p>
-</li>
-<li><p>tcpdump:dump traffic on a network.</p>
-<p>Tcpdump prints out the headers of packets on a network interface. It can also be run with the -w flag, which causes it to save the packet data to a file for later analysis, and with the -r flag, which causes it to read from a saved packet file rather than to read packets from a network interface. </p>
-</li>
-<li><p>ethtool :  query or control network driver and hardware settings, particularly for wired Ethernet devices. </p>
-</li>
-<li><p>swapon, swapoff : enable/disable devices and files for paging and swapping, </p>
-<p>used to specify devices on which paging and swapping are to take place. </p>
-</li>
-<li><p>kdump/kexec :</p>
-<p>Kdump is a kexec based crash dumping mechanism for Linux.<br>Kexec is a mechanism of the Linux kernel that allows “live” booting of a new kernel “over” the currently running kernel.<br>Note: kdump/kexec is not verified for D02. The user space kexec-tools and kdump-tools components may need to build for arm64.  </p>
-</li>
-<li><p>gdb: gnu debugger</p>
-<p>Gdb supports many features including the following:  </p>
-<ul>
-<li>put break points, watch points</li>
-<li>single stepping</li>
-<li>disassemble</li>
-<li>printing value of variables, registers.</li>
-<li>call traces</li>
-</ul>
-</li>
-<li><p>iptables : administration tool for IPv4 packet filtering and NAT.</p>
-<p>Iptables is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.</p>
-</li>
-<li><p>mkfs : build a Linux file system on a device, usually a hard disk partition.</p>
-</li>
-<li><p>mount : mount a file system. </p>
-</li>
-<li><p>du : estimates the file space usage.</p>
-<p>The du summarize he disk usage of each file, recursively for directories.     </p>
-</li>
-<li><p>df : report file system disk space usage.</p>
-<p>The df displays the amount of disk space available on the file system containing each filename argument. If no file system name is given, the spac available on all currently mounted file systems are shown.</p>
-</li>
-<li><p>dmidecode : DMI table decoder</p>
-<p>dmidecode tool dump DMI(SMBIOS) table contents in a human readable format. This table contains description of the system’s hardware components, other information such as serial numbers and BIOs version.   </p>
-</li>
-<li><p>fsck : is used to check and optionally repair a Linux file system.</p>
-</li>
-<li><p>lscpu : display information about the CPU architecture. </p>
-</li>
-<li><p>lspci : List all PCI devices. </p>
-<p>This utility display information about the PCI buses in the system and devices connected to them. </p>
-</li>
-<li><p>setpci : utility for querying and configuring PCI devices.  </p>
-</li>
-<li><p>tail : this utility outputs the last part of the files. </p>
-</li>
-<li><p>grep : tool searches the named input files for lines contains a match to the given pattern.   </p>
-</li>
-<li><p>awk : pattern scanning and processing language.</p>
-</li>
-<li><p>sed : is a stream editor, used to perform basic text transformations.</p>
-</li>
-<li><p>dstat: versatile tool for generating system resource statistics. Replacement for vmstat, iostat and ifstat.</p>
-<p>dstat allows you to view all of your system resources instantly, for example you can compare disk usage in combination with interrupts from your IDE controller, or compare the network bandwidth numbers directly with the disk throughput (in the same interval). </p>
-</li>
-<li><p>procps: procps is the package that has a bunch of small useful utilities that give information about processes using the /proc filesystem.</p>
-<p>The procps package includes the programs ps, top, vmstat, w, kill, free, slabtop, and skill.</p>
-</li>
-<li><p>tiptop: display hardware performance counters for Linux tasks.</p>
-<p>Some of the features of tiptop are  </p>
-<ul>
-<li>No root privilege needed</li>
-<li>No patch to OS</li>
-<li>Any event supported by the hardware such as </li>
-<li>some predefined: instructions, cycles, LLC misses (easy)</li>
-<li>any hardware supported event (slightly harder)</li>
-<li>two running modes - Live mode and batch mode.</li>
-</ul>
-</li>
-<li><p>iotop: simple top-like I/O monitor.</p>
-<p>iotop watches I/O usage information output by the Linux kernel and displays a table of current I/O usage by processes or threads on the system.</p>
-</li>
-<li><p>blktrace:  generate traces of the i/o traffic on block devices.</p>
-<p>The blktrace utility extracts event traces from the kernel.  </p>
-<ul>
-<li>blktrace receives data from the kernel in buffers passed up through the debug file system (relay).<br> Each device being traced has a file created in the mounted directory for the debugfs, which defaults to /sys/kernel/debug </li>
-<li>blktrace defaults to collecting all events that can be traced. To limit the events being captured,<br> you can specify one or more filter masks via the -a option.</li>
-</ul>
-</li>
-<li><p>nicstat: Show Network Interface Card Statistics.</p>
-<p>nicstat prints out network statistics for all network interface cards (NICs), including packets, kilobytes per second, average packet sizes and more. </p>
-</li>
-<li><p>lldptool: manage the LLDP settings and status of lldpad (Link Layer Discovery Protocol).</p>
-</li>
-<li><p>oprofile: a system-wide profiler, capable of profiling all running code at low overhead.</p>
-<p>Supported features are</p>
-<ul>
-<li>Unobtrusive, no special recompilations, wrapper libraries or the like are necessary.  </li>
-<li>System-wide profiling</li>
-<li>Single process profiling</li>
-<li>Event counting</li>
-<li>Performance counter support</li>
-<li>Call-graph support</li>
-<li>Low overhead</li>
-<li>Post-profile analysis</li>
-<li>System support </li>
-</ul>
-</li>
-<li><p>latencytop: a tool for developers to visualize system latencies.</p>
-</li>
-<li><p>kgdb: Kernel gnu debugger.</p>
-<p>kgdb is one of the debugger front ends of the kernel which interface to the debug core.<br>Kgdb is intended to be used as a source level debugger for the Linux kernel. It is used along with gdb to debug a Linux kernel.<br>The expectation is that gdb can be used to “break in” to the kernel to inspect memory, variables and look through call stack information<br>similar to the way an application developer would use gdb to debug an application. It is possible to place breakpoints in kernel code and<br>perform some limited execution stepping.</p>
-</li>
-<li><p>kdb: kernel debugger.</p>
-<p>kdb is one of the debugger front ends of the kernel which interface to the debug core.<br>Kdb is shell-style interface which you can use on a system console with a keyboard or serial console.<br>kdb can be used to inspect memory, registers, process lists, dmesg, and even set breakpoints to stop in a certain location.<br>Kdb is not a source level debugger, although you can set breakpoints and execute some basic kernel run control.<br>Kdb is mainly aimed at doing some analysis to aid in development or diagnosing kernel problems.</p>
-</li>
-<li><p>systemtap: SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system. </p>
-<p>SystemTap (stap) is a scripting language and tool for dynamically instrumenting running production Linux kernel-based operating systems.<br>System administrators can use SystemTap to extract, filter and summarize data in order to enable diagnosis of complex performance or functional problems.</p>
-</li>
-<li><p>kprobes: Kprobes enables you to dynamically break into any kernel routine and collect debugging and performance information non-disruptively.</p>
-<p>Kernel Dynamic Probes (Kprobes) provides a lightweight interface for kernel modules to implant probes and register corresponding probe handlers.<br>A probe is an automated breakpoint that is implanted dynamically in executing (kernel-space) modules without the need to modify their underlying source.</p>
-</li>
-<li><p>crash : Analyze Linux crash dump data or a live system.</p>
-<p>Crash is a tool for interactively analyzing the state of the Linux system while it is running, or after a kernel crash has occurred<br>and a core dump has been created by the netdump, diskdump, LKCD, kdump, xendump or kvmdump facilities.</p>
-</li>
-<li><p>memwatch: A memory leak detection tool. memwatch source files to be integrated and build as part of the code to be tested.</p>
-</li>
-<li><p>LTTNG: Linux Trace Toolkit Next Generation. LTTng consists of kernel modules (for Linux kernel tracing) and dynamically loaded libraries (for user application and library tracing). </p>
-<p>It is controlled by a session daemon, which receives commands from a command line interface.</p>
-</li>
-<li><p>powertop: program help to analyse the power consumption.</p>
-</li>
-<li><p>slabtop: display kernel slab cache information.</p>
-</li>
-<li><p>ktap: script based dynamic tracing tool for Linux.</p>
-</li>
-<li><p>gprof: performance analysis tool.</p>
-</li>
-<li><p>valgrind: instrumentation framework for buiding dynamic analysis tools, which can detect memory management and threading bugs,does profiling etc.</p>
-</li>
-<li><p>pktgen - Linux packet generator is a tool to generate packets at very high speed in the kernel.Monitoring and controlling is done via /proc.</p>
-<p>Sample scripts are available online.</p>
-</li>
-<li><p>packETHcli - packETHcli is the command line packet generator tool for ethernet.<br>It allows you to create and send any possible packet or sequence of packets on the ethernet link.</p>
-</li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Deploy_Manual.4D03]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D03/Deploy_Manual.4D03/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Preparation</a><ul>
-<li><a href="#2.1">Prerequisite</a></li>
-<li><a href="#2.2">Check the hardware board</a></li>
-<li><a href="#2.3">Upgrade UEFI and trust firmware</a></li>
-<li><a href="#2.4">Upgrade DTB file</a></li>
-</ul>
-</li>
-<li><a href="#3">Bring up System</a><ul>
-<li><a href="#3.1">Boot via ESL</a></li>
-<li><a href="#3.2">Boot via PXE</a></li>
-<li><a href="#3.3">Boot via NFS</a></li>
-<li><a href="#3.4">Boot via DISK(SAS/USB/SATA)</a></li>
-<li><a href="#3.5">Boot via ACPI</a><a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>This documentation describes how to get, build, deploy and bring up target system based Estuary Project, it will help you to make your Estuary Environment setup from ZERO.<br>All following sections will take the D03 board as example, other boards have the similar steps to do, for more detail difference between them, please refer to Hardware Boards sections in <a href="http://open-estuary.com/hardware-boards/" target="_blank" rel="external">http://open-estuary.com/hardware-boards/</a>.</p>
-<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a><a name="2">Preparation</a></h2><h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a><a name="2.1">Prerequisite</a></h3><p><em>Local network</em>: To connect hardware boards and host machine, so that they can communicate each other.<br><em>Serial cable</em>: To connect hardware board’s serial port to host machine, so that you can access the target board’s UART in host machine.</p>
-<p>Two methods are provided to <strong>connect the board’s UART port to a host machine</strong>:<br><strong>Method 1</strong>: connect the board’s UART in openlab environment<br>Use <code>board_connect</code> command.(Details please refer to <code>board_connect --help</code>)<br><strong>Method 2</strong>: directly connect the board by UART cable<br>a. Connect the board’s UART port to a host machine with a serial cable.<br>b. Install a serial port application in host machine, e.g.: kermit or minicom.<br>c. Config serial port setting:115200/8/N/1 on host machine.<br>For more details, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D03.md" target="_blank" rel="external">UEFI_Manual.md</a> “Upgrade UEFI” chapter.</p>
-<h3 id="Check-the-hardware-board"><a href="#Check-the-hardware-board" class="headerlink" title="Check the hardware board"></a><a name="2.2">Check the hardware board</a></h3><p>Hardware board should be ready and checked carefully to make sure it is available, more detail information about different hardware board, please refer to <a href="http://open-estuary.org/d03/" target="_blank" rel="external">http://open-estuary.org/d03/</a>.</p>
-<h3 id="Upgrade-UEFI-and-trust-firmware"><a href="#Upgrade-UEFI-and-trust-firmware" class="headerlink" title="Upgrade UEFI and trust firmware"></a><a name="2.3">Upgrade UEFI and trust firmware</a></h3><p>You can upgrade UEFI and trust firmare yourself based on FTP service, but this is not necessary. If you really want to do it, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D03.md" target="_blank" rel="external">UEFI_Manual.md</a>.</p>
-<h3 id="Upgrade-DTB-file-Necessary-step"><a href="#Upgrade-DTB-file-Necessary-step" class="headerlink" title="Upgrade DTB file(Necessary step) "></a><a name="2.4">Upgrade DTB file(Necessary step) </a></h3><p>Because this dtb file is important to this D03 boards, firstly you must flash this DTB file into spiflash before any methods of bringing up systerm.</p>
-<p> “EFI internal shell” mode and “Embedded Boot Loader(EBL)” mode often used to upgrade DTB file , about how to enter two modes and how to switch between them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D03.md" target="_blank" rel="external">UEFI_Manual.md</a> “Upgarde UEFI” chapter.</p>
-<ol>
-<li><p>IP address config at “EFI Internal Shell” mode (Optional, you can ignore this step if DHCP works well)<br>Press any key except “enter” key to enter into UEFI main menu. Select “Boot Manager”-&gt;”EFI Internal Shell”.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Config board's IP address</span></div><div class="line">ifconfig <span class="_">-s</span> eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</div></pre></td></tr></table></figure>
-<p>e.g. <code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
-</li>
-<li><p>Download dtb file from FTP at “Embedded Boot Loader(EBL)” mode<br>Enter “exit” from “EFI internal shell” to the UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;dtb file&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write data into FLASH</span></div><div class="line">sfcerase &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div><div class="line">sfcwrite &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
-<p>e.g.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> hip06<span class="_">-d</span>03.dtb <span class="_">-a</span> 0x100000</div><div class="line">sfcerase 0x7C0000 0x10000</div><div class="line">sfcwrite 0x100000 0x7C0000 0x10000</div></pre></td></tr></table></figure>
-</li>
-<li><p>Reboot your D03 board<br>You must reboot your D03 board after above two steps, this new DTB file will be used on booting board.<br>Note: It is necessary to flash the DTB file to SPI flash to solve a known MAC address duplicate Issue. Also it is to be noted that the DTB file should not be input in the Grub config file. So if you wish to use a modified DTB file, then you should always have it flashed to SPI flash before bootup.</p>
-</li>
-</ol>
-<h2 id="Bring-up-System"><a href="#Bring-up-System" class="headerlink" title="Bring up System"></a><a name="3">Bring up System</a></h2><p>There are several methods to bring up system, you can select following anyone fitting you to boot up.</p>
-<h3 id="Boot-via-ESL"><a href="#Boot-via-ESL" class="headerlink" title="Boot via ESL"></a><a name="3.1">Boot via ESL</a></h3><p>In this boot mode, the kernel image, dtb file and rootfs file should be downloaded into RAM at first and then start the system by ESL.<br>After reboot or power off, all downloaded data will be lost.<br>This boot mode is just used for debugging.</p>
-<p>Boot D03 to UEFI menu. Select “Boot Manager”-&gt;”Eebedded Boot Loader(EBL)” and type the<br>follow commands in EBL:</p>
-<ol>
-<li><p>Download Image binary file from FTP server to target board’s RAM</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download Image binary file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;Image binary file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
-<p> e.g. <code>provision 192.168.1.107 -u sch -p aaa -f Image -a 0x80000</code></p>
-</li>
-<li><p>Download dtb file from FTP server to target board’s RAM</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download dtb file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;dtb file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
-<p>e.g. <code>provision 192.168.1.107 -u sch -p aaa -f hip06-d03.dtb -a 0x06000000</code></p>
-</li>
-<li><p>Download rootfs file from FTP server</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download rootfs file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;rootfs file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
-<p>e.g.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> mini-rootfs-arm64.cpio.gz <span class="_">-a</span> 0x07000000</div></pre></td></tr></table></figure>
-</li>
-<li><p>Start operating system<br>Type “exit” to exit EBL. Select “Boot Manager”-&gt;”ESL Start OS” menu to start operating system.</p>
-</li>
-</ol>
-<h3 id="Boot-via-PXE"><a href="#Boot-via-PXE" class="headerlink" title="Boot via PXE"></a><a name="3.2">Boot via PXE</a></h3><p>In this boot mode, the UEFI will get grub from PXE server.The grub will get the configuration file from TFTP service configured by PXE server.</p>
-<ol>
-<li>Setup PXE environment on host<br>Enable both DHCP and TFTP services on one of your host machines according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.</li>
-<li>Reboot and press anykey except “enter” to enter UEFI Boot Menu</li>
-<li>Select boot option “Boot Manager”-&gt;”EFI Network <code>&lt;No&gt;</code>“ boot option and press “Enter”.<br><strong>Note</strong>:<br>If you are connecting the D03 board of openlab, please select “EFI Network 2”.<br>The value of <code>&lt;No&gt;</code> is depended on which D03 GE port is connected. D03 board support 4 on-board network ports at maximun.To enable any one of them by connecting to network cable or optical fiber. From left to right, followed by two GE ports, two 10GE ports which corresponding to UEFI startup interface are EFI Network 2, EFI Network 3, EFI Network 0, EFI Network 1.</li>
-<li>After several seconds, D03 will boot by PXE automatically.</li>
-</ol>
-<p>To config the <code>grub.cfg</code> to support PXE boot, please refer to  <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
-<h3 id="3.3">Boot via NFS</h3>
-
-<p>In this boot mode, the root parameter in grub.cfg menuentry will set to /dev/nfs and nfsroot will be set to the path of rootfs on NFS server. You can use <code>showmount -e &lt;server ip address&gt;</code> to list the exported NFS directories on the NFS server.</p>
-<p>D03 supports booting via NFS, you can try it as following steps:</p>
-<ol>
-<li>Enable DHCP, TFTP and NFS service according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.</li>
-<li>Get and config grub file to support NFS boot according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</li>
-<li>Reboot D03 and press anykey except “enter” to enter UEFI Boot Menu</li>
-<li>Select boot option “Boot Manager”-&gt;”EFI Network <code>&lt;No&gt;</code>“ boot option to enter.<br><strong>Note</strong>: If you are connecting the D03 board of openlab, please select “EFI Network 2”. The value of <code>&lt;No&gt;</code> is depended on which D03 GE port is connected.</li>
-</ol>
-<h3 id="Boot-via-DISK-SAS-USB-SATA"><a href="#Boot-via-DISK-SAS-USB-SATA" class="headerlink" title="Boot via DISK(SAS/USB/SATA)"></a><a name="3.4">Boot via DISK(SAS/USB/SATA)</a></h3><p>D03 board supports booting via SAS, USB and SATA by default. The UEFI will directly get the grub from the EFI system partition on the hard disk. The grub will load the grub configuration file from the EFI system partition. So <code>grubaa64.efi</code>, <code>grub.cfg</code>, <code>Image</code> and different estuary release distributions are stored on disk.</p>
-<ol>
-<li><p>Boot by PXE (please refer to “Boot via PXE”) to part and format hardware disk before booting D03 board<br>Format hardware disk, e.g.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkfs.vfat /dev/sda1</div><div class="line">sudo mkfs.ext4 /dev/sda2</div></pre></td></tr></table></figure>
-<p>Part hardware disk with <code>sudo fdisk /dev/sda</code> as follow:<br>add a gpt to this disk:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fdisk /dev/sda</div></pre></td></tr></table></figure>
-<p><code>g</code>——-add a gpt partition</p>
-<p>add some EFI partition:<br><code>n</code>——-add a partition<br><code>1</code>——-the number of partition</p>
-<p>type “Enter” key —— First sector<br><code>+200M</code>———Last sector, size of partition<br><code>t</code>——-change the type of partition to EFI system</p>
-<p>add some another partition <code>...</code><br>save the change: <code>w</code><br>format EFI partition: <code>sudo mkfs.vfat /dev/sda1</code><br>format ext4 partition: <code>sudo mkfs.ext4 /dev/sda2</code>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| Name    |   Size    |    Type      |   USB/SAS/SATA   |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda1    |   200M    |  EFI system  |   EFI            |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda2    |   10G     |    ext4      | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda3    |   10G     |    ext4      | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda4    |   10G     |    ext4      | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda5    |rest space |    ext4      | linux swap       |</div><div class="line">+---------+-----------+--------------+------------------+</div></pre></td></tr></table></figure>
-<p>Note: EFI partition must be a fat filesystem, so you should format sda1 with <code>sudo mkfs.vfat /dev/sda1</code>.</p>
-</li>
-<li><p>Download files and store them into hardware disk as below.<br>(SAS/USB/SATA) Related files are placed as follow:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sda1: -------EFI</div><div class="line">       |       |</div><div class="line">       |       GRUB2------grubaa64.efi  // grub binary file</div><div class="line">       |</div><div class="line">       |-------------grub.cfg           // grub config file</div><div class="line">       |</div><div class="line">       |-------------Image              // kernel binary Image</div><div class="line">sda2: Ubuntu distribution</div><div class="line">sda3: Fedora distribution</div></pre></td></tr></table></figure>
-<p>NOTE: The <code>grubaa64.efi</code> file must be put in <code>/EFI/GRUB2</code> directory of <code>/dev/sda1</code>(gpt partition), the distributions could be uncompressed in <code>/dev/sdaX</code>(X can be 2,3,4,etc. exclude 1).</p>
-<p> To get kernel image and dtb file, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D03.md" target="_blank" rel="external">Readme.md</a>.<br> To get and config grub and grub.cfg, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.<br> To get different distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guider</a>.</p>
-</li>
-<li><p>Boot the board via SAS/USB/SATA<br>a. Modify grub config file(please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.4All.md</a>)<br>   e.g. grub.cfg file for official versions after V2.2 is modified as follow:</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Boot automatically after 5 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"><span class="comment"># By default, boot the Estuary with Ubuntu filesystem</span></div><div class="line"><span class="built_in">set</span> default=ubuntu</div><div class="line"><span class="comment"># For booting GNU/Linux</span></div><div class="line"></div><div class="line">menuentry <span class="string">"ubuntu"</span> --id ubuntu &#123;</div><div class="line">  search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">  linux /Image rdinit=/init pcie_aspm=off root=PARTUUID=&lt;PARTUUID&gt; rootwait rootfstype=ext4 rw console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 ip=dhcp</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>   grub.cfg file for official V2.2 and previous versions is modified as follow:</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Boot automatically after 5 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"><span class="comment"># By default, boot the Estuary with Ubuntu filesystem</span></div><div class="line"><span class="built_in">set</span> default=ubuntu</div><div class="line"><span class="comment"># For booting GNU/Linux</span></div><div class="line"></div><div class="line">menuentry <span class="string">"ubuntu"</span> --id ubuntu &#123;</div><div class="line">  search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">  linux /Image rdinit=/init pcie_aspm=off root=PARTUUID=&lt;PARTUUID&gt; rootwait rootfstype=ext4 rw console=ttyS1,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 ip=dhcp</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>   <strong>Note</strong>:  </p>
-<ul>
-<li>The value of console is <code>ttyS0</code> for official versions after V2.2. If you use official V2.2 and previous versions, the value of console is <code>ttyS1</code></li>
-<li><code>&lt;UUID&gt;</code> means the UUID of that partition which your EFI System is located in.<br><code>&lt;PARTUUID&gt;</code> means the PARTUUID of that partition which your linux distribution is located in.<br>To see the values of UUID and PARTUUID, please use the command:<code>blkid</code>.</li>
-<li>If you want to use another linux distribution, please refer above steps.<br>b. Reboot and press anykey except “enter” to enter UEFI main menu.<br>c. For USB: Select “Boot Manager”-&gt; “EFI USB Device”-&gt; to enter grub selection menu.</li>
-<li>For SAS: Select “Boot Manager”-&gt; “EFI Misc Device 1” to enter grub selection menu.</li>
-<li>For SATA: Select “Boot Manager”-&gt; “EFI Hard Drive” to enter grub selection menu.<br>d. Press arrow key up or down to select grub boot option to decide which distribution should boot.</li>
-</ul>
-</li>
-</ol>
-<h3 id="Boot-via-ACPI"><a href="#Boot-via-ACPI" class="headerlink" title="Boot via ACPI"></a><a name="3.5">Boot via ACPI</a></h3><p>D03 also supports booting via ACPI, you can bring up this system which is similar with DTS mode, you must fix some point as follow:</p>
-<ol>
-<li><p>Delete DTB file(comment out devicetree <code>/&lt;user&gt;/hip06-d03.dtb</code> as follow) and don’t burn DTB file</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">menuentry <span class="string">"D03 Ubuntu NFS"</span> --id d03_ubuntu_nfs &#123;</div><div class="line">  <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">  linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 ip=dhcp</div><div class="line">  <span class="comment">#devicetree /&lt;user&gt;/hip06-d03.dtb</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Set the parameters of booting via ACPI<br>you must add <code>acpi=force</code> property in <code>linux</code> line for “grub.cfg” file. If not, system will booted up with DTS by default. e.g.:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Booting from NFS with Ubuntu rootfs</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu NFS(ACPI)"</span> --id d03_ubuntu_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 ip=dhcp acpi=force</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>NOTE: you can get more information about setting grub.cfg from <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Quick_Deployment.4D02.md]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D02/Quick_Deployment.4D02/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Quick Deploy System</a><ul>
-<li><a href="#2.1">Deploy system via USB Disk</a></li>
-<li><a href="#2.2">Deploy system via DVD</a></li>
-<li><a href="#2.3">Deploy system via PXE</a></li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Above all, prepare hardware boards with SCSI disk and download Estuary source code from GitHub.<br>To learn more about how to do them, please visit this web site: <a href="http://open-estuary.com/estuary-user-manual/" target="_blank" rel="external">http://open-estuary.com/estuary-user-manual/</a> , and then refer to ‘Get &amp; Build Estuary yourself’.<br><strong>Note</strong>: In my case, the working directory is <code>~/workdir</code>.</p>
-<h2 id="Quick-Deploy-System"><a href="#Quick-Deploy-System" class="headerlink" title="Quick Deploy System"></a><a name="2">Quick Deploy System</a></h2><h3 id="Deploy-system-via-USB-Disk"><a href="#Deploy-system-via-USB-Disk" class="headerlink" title="Deploy system via USB Disk"></a><a name="2.1">Deploy system via USB Disk</a></h3><ol>
-<li>Prepare usb install disk.<ul>
-<li>Modify estuary/estuarycfg.json. Make sure the platform, distros are all right.  </li>
-<li>Change the value of “install” to “yes” in object “setup” for usb and the value “device” to your USB install disk.<br>(Notice: if the specified usb device does not exist, the first usb device will be selected by default.)  </li>
-<li>Use build.sh to create the usb install disk.<br><code>eg: ./estuary/build.sh -f estuary/estuarycfg.json</code>  </li>
-</ul>
-</li>
-<li>Connect the usb install disk to the board.  </li>
-<li>Reboot the board.  </li>
-<li>Boot from the usb device. (About how to boot from USB device, please refer to the UEFI related manual.)  </li>
-<li>According to the prompt to deploy the system.  </li>
-<li>Start the boards from “grub” menu of UEFI by default.  </li>
-</ol>
-<h3 id="Deploy-system-via-DVD"><a href="#Deploy-system-via-DVD" class="headerlink" title="Deploy system via DVD"></a><a name="2.2">Deploy system via DVD</a></h3><ol>
-<li>Prepare ISO image and install disk.<ul>
-<li>Modify estuary/estuarycfg.json. Make sure the platform, distros are all right.  </li>
-<li>Change the value of “install” to “yes” in object “setup” for iso and the value “name” to your target iso image file name.  </li>
-<li>Use build.sh to create the target install iso image file.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code>  </li>
-<li>Burn the iso image file to DVD disk if you use the physical DVD driver.  </li>
-</ul>
-</li>
-<li>Connect the physical DVD driver to the board, plug in the install DVD disk.  </li>
-<li>Reboot the board.  </li>
-<li>Boot from the DVD device. (About how to boot from DVD device, please refer to the UEFI related manual.)  </li>
-<li>According to the prompt to deploy the system.  </li>
-<li>Start the boards from “grub” menu of UEFI by default.</li>
-</ol>
-<h3 id="Deploy-system-via-PXE"><a href="#Deploy-system-via-PXE" class="headerlink" title="Deploy system via PXE"></a><a name="2.3">Deploy system via PXE</a></h3><ol>
-<li>Connect Ubuntu PC and hardware boards into the same local area network. (Make sure the PC can connect to the internet and no other PXE servers exist.)  </li>
-<li>Modify the configuration file of estuary/estuarycfg.json based on you hardware boards. Change the values of mac to physical addresses of the connected network cards on the board. Change the value of “install” to “yes” in object “setup” for PXE.  </li>
-<li>Backup files under the tftp root directory if necessary. Use build.sh to build project and setup the PXE server on Ubuntu PC.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code>  </li>
-<li>After that, install minicom and connect the serial ports of hardware boards to the Ubuntu PC. Connect the hardware boards by minicom using serial ports.  </li>
-<li>Reboot the hardware boards and start the boards from the correct EFI Network.  </li>
-<li>Install the system according to prompt. After install finished, the boards will restart automatically.  </li>
-<li>Start the boards from “grub” menu of UEFI by default.</li>
 </ol>
 ]]></content>
     </entry>
@@ -3030,6 +2658,370 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Armor_Tools_Basic_Info.4All.md]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Armor_Tools_Basic_Info.4All/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">List of Tools</a><a id="more"></a>
+</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>This document presents the basic information of the supported Armor tools. </p>
+<h2 id="List-of-Tools"><a href="#List-of-Tools" class="headerlink" title="List of Tools"></a><a name="2">List of Tools</a></h2><ol>
+<li><p>Perf integrated with LLC, MN and DDR</p>
+<ul>
+<li>Integrated LLC statistics registers access via perf, including DDR counter information. </li>
+<li>Support counter overflow interrupt support for LLC counters. </li>
+<li>Register Read/Get interface from Linux Kernel for LLC and Bus Registers for P660.</li>
+<li>LLC statistics registers integration to perf for P660.</li>
+</ul>
+</li>
+<li><p>strace : trace system calls and signals</p>
+<p>strace is a diagnostic, debugging and instructional Linux user space utility. It is used to monitor interactions between processes and the Linux kernel, which include system calls, signal deliveries, and changes of process state. </p>
+</li>
+</ol>
+<ol>
+<li><p>ltrace : library call tracer.</p>
+<p>ltrace intercepts and records the dynamic library calls which are called by the executed process and the signals which are received by that process. It can also intercept and print the system calls executed by the program.</p>
+</li>
+<li><p>netstat : </p>
+<p>netstat prints network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.</p>
+</li>
+<li><p>sar : Collect, report, or save system activity information.</p>
+</li>
+<li><p>top : display Linux tasks. </p>
+<p>top shows how much CPU processing power and memory are being used, as well as other information about the running processes.</p>
+</li>
+<li><p>pidstat: Report statistics for Linux tasks.</p>
+<p>pidstat command is used for monitoring individual tasks currently being managed by the Linux kernel. pidstat writes to standard output activities for every task selected with option -p or for every task managed by the Linux kernel if option -p ALL has been used.  </p>
+</li>
+<li><p>vmstat : Report virtual memory statistics.</p>
+<p>vmstat reports information about processes, memory, paging, block IO, traps, and CPU activity.</p>
+</li>
+<li><p>ftrace: is the Linux kernel internal tracer that was included in the Linux kernel in 2.6.27.</p>
+<p>ftrace supports function tracing, latency tracing, event tracing etc.</p>
+</li>
+<li><p>iostat :  Report CPU statistics and input/output statistics for devices, partitions and network filesystems (NFS). </p>
+</li>
+<li><p>tcpdump:dump traffic on a network.</p>
+<p>Tcpdump prints out the headers of packets on a network interface. It can also be run with the -w flag, which causes it to save the packet data to a file for later analysis, and with the -r flag, which causes it to read from a saved packet file rather than to read packets from a network interface. </p>
+</li>
+<li><p>ethtool :  query or control network driver and hardware settings, particularly for wired Ethernet devices. </p>
+</li>
+<li><p>swapon, swapoff : enable/disable devices and files for paging and swapping, </p>
+<p>used to specify devices on which paging and swapping are to take place. </p>
+</li>
+<li><p>kdump/kexec :</p>
+<p>Kdump is a kexec based crash dumping mechanism for Linux.<br>Kexec is a mechanism of the Linux kernel that allows “live” booting of a new kernel “over” the currently running kernel.<br>Note: kdump/kexec is not verified for D02. The user space kexec-tools and kdump-tools components may need to build for arm64.  </p>
+</li>
+<li><p>gdb: gnu debugger</p>
+<p>Gdb supports many features including the following:  </p>
+<ul>
+<li>put break points, watch points</li>
+<li>single stepping</li>
+<li>disassemble</li>
+<li>printing value of variables, registers.</li>
+<li>call traces</li>
+</ul>
+</li>
+<li><p>iptables : administration tool for IPv4 packet filtering and NAT.</p>
+<p>Iptables is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.</p>
+</li>
+<li><p>mkfs : build a Linux file system on a device, usually a hard disk partition.</p>
+</li>
+<li><p>mount : mount a file system. </p>
+</li>
+<li><p>du : estimates the file space usage.</p>
+<p>The du summarize he disk usage of each file, recursively for directories.     </p>
+</li>
+<li><p>df : report file system disk space usage.</p>
+<p>The df displays the amount of disk space available on the file system containing each filename argument. If no file system name is given, the spac available on all currently mounted file systems are shown.</p>
+</li>
+<li><p>dmidecode : DMI table decoder</p>
+<p>dmidecode tool dump DMI(SMBIOS) table contents in a human readable format. This table contains description of the system’s hardware components, other information such as serial numbers and BIOs version.   </p>
+</li>
+<li><p>fsck : is used to check and optionally repair a Linux file system.</p>
+</li>
+<li><p>lscpu : display information about the CPU architecture. </p>
+</li>
+<li><p>lspci : List all PCI devices. </p>
+<p>This utility display information about the PCI buses in the system and devices connected to them. </p>
+</li>
+<li><p>setpci : utility for querying and configuring PCI devices.  </p>
+</li>
+<li><p>tail : this utility outputs the last part of the files. </p>
+</li>
+<li><p>grep : tool searches the named input files for lines contains a match to the given pattern.   </p>
+</li>
+<li><p>awk : pattern scanning and processing language.</p>
+</li>
+<li><p>sed : is a stream editor, used to perform basic text transformations.</p>
+</li>
+<li><p>dstat: versatile tool for generating system resource statistics. Replacement for vmstat, iostat and ifstat.</p>
+<p>dstat allows you to view all of your system resources instantly, for example you can compare disk usage in combination with interrupts from your IDE controller, or compare the network bandwidth numbers directly with the disk throughput (in the same interval). </p>
+</li>
+<li><p>procps: procps is the package that has a bunch of small useful utilities that give information about processes using the /proc filesystem.</p>
+<p>The procps package includes the programs ps, top, vmstat, w, kill, free, slabtop, and skill.</p>
+</li>
+<li><p>tiptop: display hardware performance counters for Linux tasks.</p>
+<p>Some of the features of tiptop are  </p>
+<ul>
+<li>No root privilege needed</li>
+<li>No patch to OS</li>
+<li>Any event supported by the hardware such as </li>
+<li>some predefined: instructions, cycles, LLC misses (easy)</li>
+<li>any hardware supported event (slightly harder)</li>
+<li>two running modes - Live mode and batch mode.</li>
+</ul>
+</li>
+<li><p>iotop: simple top-like I/O monitor.</p>
+<p>iotop watches I/O usage information output by the Linux kernel and displays a table of current I/O usage by processes or threads on the system.</p>
+</li>
+<li><p>blktrace:  generate traces of the i/o traffic on block devices.</p>
+<p>The blktrace utility extracts event traces from the kernel.  </p>
+<ul>
+<li>blktrace receives data from the kernel in buffers passed up through the debug file system (relay).<br> Each device being traced has a file created in the mounted directory for the debugfs, which defaults to /sys/kernel/debug </li>
+<li>blktrace defaults to collecting all events that can be traced. To limit the events being captured,<br> you can specify one or more filter masks via the -a option.</li>
+</ul>
+</li>
+<li><p>nicstat: Show Network Interface Card Statistics.</p>
+<p>nicstat prints out network statistics for all network interface cards (NICs), including packets, kilobytes per second, average packet sizes and more. </p>
+</li>
+<li><p>lldptool: manage the LLDP settings and status of lldpad (Link Layer Discovery Protocol).</p>
+</li>
+<li><p>oprofile: a system-wide profiler, capable of profiling all running code at low overhead.</p>
+<p>Supported features are</p>
+<ul>
+<li>Unobtrusive, no special recompilations, wrapper libraries or the like are necessary.  </li>
+<li>System-wide profiling</li>
+<li>Single process profiling</li>
+<li>Event counting</li>
+<li>Performance counter support</li>
+<li>Call-graph support</li>
+<li>Low overhead</li>
+<li>Post-profile analysis</li>
+<li>System support </li>
+</ul>
+</li>
+<li><p>latencytop: a tool for developers to visualize system latencies.</p>
+</li>
+<li><p>kgdb: Kernel gnu debugger.</p>
+<p>kgdb is one of the debugger front ends of the kernel which interface to the debug core.<br>Kgdb is intended to be used as a source level debugger for the Linux kernel. It is used along with gdb to debug a Linux kernel.<br>The expectation is that gdb can be used to “break in” to the kernel to inspect memory, variables and look through call stack information<br>similar to the way an application developer would use gdb to debug an application. It is possible to place breakpoints in kernel code and<br>perform some limited execution stepping.</p>
+</li>
+<li><p>kdb: kernel debugger.</p>
+<p>kdb is one of the debugger front ends of the kernel which interface to the debug core.<br>Kdb is shell-style interface which you can use on a system console with a keyboard or serial console.<br>kdb can be used to inspect memory, registers, process lists, dmesg, and even set breakpoints to stop in a certain location.<br>Kdb is not a source level debugger, although you can set breakpoints and execute some basic kernel run control.<br>Kdb is mainly aimed at doing some analysis to aid in development or diagnosing kernel problems.</p>
+</li>
+<li><p>systemtap: SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system. </p>
+<p>SystemTap (stap) is a scripting language and tool for dynamically instrumenting running production Linux kernel-based operating systems.<br>System administrators can use SystemTap to extract, filter and summarize data in order to enable diagnosis of complex performance or functional problems.</p>
+</li>
+<li><p>kprobes: Kprobes enables you to dynamically break into any kernel routine and collect debugging and performance information non-disruptively.</p>
+<p>Kernel Dynamic Probes (Kprobes) provides a lightweight interface for kernel modules to implant probes and register corresponding probe handlers.<br>A probe is an automated breakpoint that is implanted dynamically in executing (kernel-space) modules without the need to modify their underlying source.</p>
+</li>
+<li><p>crash : Analyze Linux crash dump data or a live system.</p>
+<p>Crash is a tool for interactively analyzing the state of the Linux system while it is running, or after a kernel crash has occurred<br>and a core dump has been created by the netdump, diskdump, LKCD, kdump, xendump or kvmdump facilities.</p>
+</li>
+<li><p>memwatch: A memory leak detection tool. memwatch source files to be integrated and build as part of the code to be tested.</p>
+</li>
+<li><p>LTTNG: Linux Trace Toolkit Next Generation. LTTng consists of kernel modules (for Linux kernel tracing) and dynamically loaded libraries (for user application and library tracing). </p>
+<p>It is controlled by a session daemon, which receives commands from a command line interface.</p>
+</li>
+<li><p>powertop: program help to analyse the power consumption.</p>
+</li>
+<li><p>slabtop: display kernel slab cache information.</p>
+</li>
+<li><p>ktap: script based dynamic tracing tool for Linux.</p>
+</li>
+<li><p>gprof: performance analysis tool.</p>
+</li>
+<li><p>valgrind: instrumentation framework for buiding dynamic analysis tools, which can detect memory management and threading bugs,does profiling etc.</p>
+</li>
+<li><p>pktgen - Linux packet generator is a tool to generate packets at very high speed in the kernel.Monitoring and controlling is done via /proc.</p>
+<p>Sample scripts are available online.</p>
+</li>
+<li><p>packETHcli - packETHcli is the command line packet generator tool for ethernet.<br>It allows you to create and send any possible packet or sequence of packets on the ethernet link.</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Deploy_Manual.4D03]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D03/Deploy_Manual.4D03/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Preparation</a><ul>
+<li><a href="#2.1">Prerequisite</a></li>
+<li><a href="#2.2">Check the hardware board</a></li>
+<li><a href="#2.3">Upgrade UEFI and trust firmware</a></li>
+<li><a href="#2.4">Upgrade DTB file</a></li>
+</ul>
+</li>
+<li><a href="#3">Bring up System</a><ul>
+<li><a href="#3.1">Boot via ESL</a></li>
+<li><a href="#3.2">Boot via PXE</a></li>
+<li><a href="#3.3">Boot via NFS</a></li>
+<li><a href="#3.4">Boot via DISK(SAS/USB/SATA)</a></li>
+<li><a href="#3.5">Boot via ACPI</a><a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>This documentation describes how to get, build, deploy and bring up target system based Estuary Project, it will help you to make your Estuary Environment setup from ZERO.<br>All following sections will take the D03 board as example, other boards have the similar steps to do, for more detail difference between them, please refer to Hardware Boards sections in <a href="http://open-estuary.com/hardware-boards/" target="_blank" rel="external">http://open-estuary.com/hardware-boards/</a>.</p>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a><a name="2">Preparation</a></h2><h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a><a name="2.1">Prerequisite</a></h3><p><em>Local network</em>: To connect hardware boards and host machine, so that they can communicate each other.<br><em>Serial cable</em>: To connect hardware board’s serial port to host machine, so that you can access the target board’s UART in host machine.</p>
+<p>Two methods are provided to <strong>connect the board’s UART port to a host machine</strong>:<br><strong>Method 1</strong>: connect the board’s UART in openlab environment<br>Use <code>board_connect</code> command.(Details please refer to <code>board_connect --help</code>)<br><strong>Method 2</strong>: directly connect the board by UART cable<br>a. Connect the board’s UART port to a host machine with a serial cable.<br>b. Install a serial port application in host machine, e.g.: kermit or minicom.<br>c. Config serial port setting:115200/8/N/1 on host machine.<br>For more details, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D03.md" target="_blank" rel="external">UEFI_Manual.md</a> “Upgrade UEFI” chapter.</p>
+<h3 id="Check-the-hardware-board"><a href="#Check-the-hardware-board" class="headerlink" title="Check the hardware board"></a><a name="2.2">Check the hardware board</a></h3><p>Hardware board should be ready and checked carefully to make sure it is available, more detail information about different hardware board, please refer to <a href="http://open-estuary.org/d03/" target="_blank" rel="external">http://open-estuary.org/d03/</a>.</p>
+<h3 id="Upgrade-UEFI-and-trust-firmware"><a href="#Upgrade-UEFI-and-trust-firmware" class="headerlink" title="Upgrade UEFI and trust firmware"></a><a name="2.3">Upgrade UEFI and trust firmware</a></h3><p>You can upgrade UEFI and trust firmare yourself based on FTP service, but this is not necessary. If you really want to do it, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D03.md" target="_blank" rel="external">UEFI_Manual.md</a>.</p>
+<h3 id="Upgrade-DTB-file-Necessary-step"><a href="#Upgrade-DTB-file-Necessary-step" class="headerlink" title="Upgrade DTB file(Necessary step) "></a><a name="2.4">Upgrade DTB file(Necessary step) </a></h3><p>Because this dtb file is important to this D03 boards, firstly you must flash this DTB file into spiflash before any methods of bringing up systerm.</p>
+<p> “EFI internal shell” mode and “Embedded Boot Loader(EBL)” mode often used to upgrade DTB file , about how to enter two modes and how to switch between them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D03.md" target="_blank" rel="external">UEFI_Manual.md</a> “Upgarde UEFI” chapter.</p>
+<ol>
+<li><p>IP address config at “EFI Internal Shell” mode (Optional, you can ignore this step if DHCP works well)<br>Press any key except “enter” key to enter into UEFI main menu. Select “Boot Manager”-&gt;”EFI Internal Shell”.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Config board's IP address</span></div><div class="line">ifconfig <span class="_">-s</span> eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</div></pre></td></tr></table></figure>
+<p>e.g. <code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
+</li>
+<li><p>Download dtb file from FTP at “Embedded Boot Loader(EBL)” mode<br>Enter “exit” from “EFI internal shell” to the UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;dtb file&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write data into FLASH</span></div><div class="line">sfcerase &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div><div class="line">sfcwrite &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
+<p>e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> hip06<span class="_">-d</span>03.dtb <span class="_">-a</span> 0x100000</div><div class="line">sfcerase 0x7C0000 0x10000</div><div class="line">sfcwrite 0x100000 0x7C0000 0x10000</div></pre></td></tr></table></figure>
+</li>
+<li><p>Reboot your D03 board<br>You must reboot your D03 board after above two steps, this new DTB file will be used on booting board.<br>Note: It is necessary to flash the DTB file to SPI flash to solve a known MAC address duplicate Issue. Also it is to be noted that the DTB file should not be input in the Grub config file. So if you wish to use a modified DTB file, then you should always have it flashed to SPI flash before bootup.</p>
+</li>
+</ol>
+<h2 id="Bring-up-System"><a href="#Bring-up-System" class="headerlink" title="Bring up System"></a><a name="3">Bring up System</a></h2><p>There are several methods to bring up system, you can select following anyone fitting you to boot up.</p>
+<h3 id="Boot-via-ESL"><a href="#Boot-via-ESL" class="headerlink" title="Boot via ESL"></a><a name="3.1">Boot via ESL</a></h3><p>In this boot mode, the kernel image, dtb file and rootfs file should be downloaded into RAM at first and then start the system by ESL.<br>After reboot or power off, all downloaded data will be lost.<br>This boot mode is just used for debugging.</p>
+<p>Boot D03 to UEFI menu. Select “Boot Manager”-&gt;”Eebedded Boot Loader(EBL)” and type the<br>follow commands in EBL:</p>
+<ol>
+<li><p>Download Image binary file from FTP server to target board’s RAM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download Image binary file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;Image binary file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
+<p> e.g. <code>provision 192.168.1.107 -u sch -p aaa -f Image -a 0x80000</code></p>
+</li>
+<li><p>Download dtb file from FTP server to target board’s RAM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download dtb file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;dtb file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
+<p>e.g. <code>provision 192.168.1.107 -u sch -p aaa -f hip06-d03.dtb -a 0x06000000</code></p>
+</li>
+<li><p>Download rootfs file from FTP server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download rootfs file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;rootfs file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
+<p>e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> mini-rootfs-arm64.cpio.gz <span class="_">-a</span> 0x07000000</div></pre></td></tr></table></figure>
+</li>
+<li><p>Start operating system<br>Type “exit” to exit EBL. Select “Boot Manager”-&gt;”ESL Start OS” menu to start operating system.</p>
+</li>
+</ol>
+<h3 id="Boot-via-PXE"><a href="#Boot-via-PXE" class="headerlink" title="Boot via PXE"></a><a name="3.2">Boot via PXE</a></h3><p>In this boot mode, the UEFI will get grub from PXE server.The grub will get the configuration file from TFTP service configured by PXE server.</p>
+<ol>
+<li>Setup PXE environment on host<br>Enable both DHCP and TFTP services on one of your host machines according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.</li>
+<li>Reboot and press anykey except “enter” to enter UEFI Boot Menu</li>
+<li>Select boot option “Boot Manager”-&gt;”EFI Network <code>&lt;No&gt;</code>“ boot option and press “Enter”.<br><strong>Note</strong>:<br>If you are connecting the D03 board of openlab, please select “EFI Network 2”.<br>The value of <code>&lt;No&gt;</code> is depended on which D03 GE port is connected. D03 board support 4 on-board network ports at maximun.To enable any one of them by connecting to network cable or optical fiber. From left to right, followed by two GE ports, two 10GE ports which corresponding to UEFI startup interface are EFI Network 2, EFI Network 3, EFI Network 0, EFI Network 1.</li>
+<li>After several seconds, D03 will boot by PXE automatically.</li>
+</ol>
+<p>To config the <code>grub.cfg</code> to support PXE boot, please refer to  <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
+<h3 id="3.3">Boot via NFS</h3>
+
+<p>In this boot mode, the root parameter in grub.cfg menuentry will set to /dev/nfs and nfsroot will be set to the path of rootfs on NFS server. You can use <code>showmount -e &lt;server ip address&gt;</code> to list the exported NFS directories on the NFS server.</p>
+<p>D03 supports booting via NFS, you can try it as following steps:</p>
+<ol>
+<li>Enable DHCP, TFTP and NFS service according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.</li>
+<li>Get and config grub file to support NFS boot according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</li>
+<li>Reboot D03 and press anykey except “enter” to enter UEFI Boot Menu</li>
+<li>Select boot option “Boot Manager”-&gt;”EFI Network <code>&lt;No&gt;</code>“ boot option to enter.<br><strong>Note</strong>: If you are connecting the D03 board of openlab, please select “EFI Network 2”. The value of <code>&lt;No&gt;</code> is depended on which D03 GE port is connected.</li>
+</ol>
+<h3 id="Boot-via-DISK-SAS-USB-SATA"><a href="#Boot-via-DISK-SAS-USB-SATA" class="headerlink" title="Boot via DISK(SAS/USB/SATA)"></a><a name="3.4">Boot via DISK(SAS/USB/SATA)</a></h3><p>D03 board supports booting via SAS, USB and SATA by default. The UEFI will directly get the grub from the EFI system partition on the hard disk. The grub will load the grub configuration file from the EFI system partition. So <code>grubaa64.efi</code>, <code>grub.cfg</code>, <code>Image</code> and different estuary release distributions are stored on disk.</p>
+<ol>
+<li><p>Boot by PXE (please refer to “Boot via PXE”) to part and format hardware disk before booting D03 board<br>Format hardware disk, e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkfs.vfat /dev/sda1</div><div class="line">sudo mkfs.ext4 /dev/sda2</div></pre></td></tr></table></figure>
+<p>Part hardware disk with <code>sudo fdisk /dev/sda</code> as follow:<br>add a gpt to this disk:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fdisk /dev/sda</div></pre></td></tr></table></figure>
+<p><code>g</code>——-add a gpt partition</p>
+<p>add some EFI partition:<br><code>n</code>——-add a partition<br><code>1</code>——-the number of partition</p>
+<p>type “Enter” key —— First sector<br><code>+200M</code>———Last sector, size of partition<br><code>t</code>——-change the type of partition to EFI system</p>
+<p>add some another partition <code>...</code><br>save the change: <code>w</code><br>format EFI partition: <code>sudo mkfs.vfat /dev/sda1</code><br>format ext4 partition: <code>sudo mkfs.ext4 /dev/sda2</code>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| Name    |   Size    |    Type      |   USB/SAS/SATA   |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda1    |   200M    |  EFI system  |   EFI            |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda2    |   10G     |    ext4      | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda3    |   10G     |    ext4      | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda4    |   10G     |    ext4      | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+</div><div class="line">| sda5    |rest space |    ext4      | linux swap       |</div><div class="line">+---------+-----------+--------------+------------------+</div></pre></td></tr></table></figure>
+<p>Note: EFI partition must be a fat filesystem, so you should format sda1 with <code>sudo mkfs.vfat /dev/sda1</code>.</p>
+</li>
+<li><p>Download files and store them into hardware disk as below.<br>(SAS/USB/SATA) Related files are placed as follow:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sda1: -------EFI</div><div class="line">       |       |</div><div class="line">       |       GRUB2------grubaa64.efi  // grub binary file</div><div class="line">       |</div><div class="line">       |-------------grub.cfg           // grub config file</div><div class="line">       |</div><div class="line">       |-------------Image              // kernel binary Image</div><div class="line">sda2: Ubuntu distribution</div><div class="line">sda3: Fedora distribution</div></pre></td></tr></table></figure>
+<p>NOTE: The <code>grubaa64.efi</code> file must be put in <code>/EFI/GRUB2</code> directory of <code>/dev/sda1</code>(gpt partition), the distributions could be uncompressed in <code>/dev/sdaX</code>(X can be 2,3,4,etc. exclude 1).</p>
+<p> To get kernel image and dtb file, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D03.md" target="_blank" rel="external">Readme.md</a>.<br> To get and config grub and grub.cfg, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.<br> To get different distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guider</a>.</p>
+</li>
+<li><p>Boot the board via SAS/USB/SATA<br>a. Modify grub config file(please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.4All.md</a>)<br>   e.g. grub.cfg file for official versions after V2.2 is modified as follow:</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Boot automatically after 5 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"><span class="comment"># By default, boot the Estuary with Ubuntu filesystem</span></div><div class="line"><span class="built_in">set</span> default=ubuntu</div><div class="line"><span class="comment"># For booting GNU/Linux</span></div><div class="line"></div><div class="line">menuentry <span class="string">"ubuntu"</span> --id ubuntu &#123;</div><div class="line">  search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">  linux /Image rdinit=/init pcie_aspm=off root=PARTUUID=&lt;PARTUUID&gt; rootwait rootfstype=ext4 rw console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 ip=dhcp</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>   grub.cfg file for official V2.2 and previous versions is modified as follow:</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Boot automatically after 5 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"><span class="comment"># By default, boot the Estuary with Ubuntu filesystem</span></div><div class="line"><span class="built_in">set</span> default=ubuntu</div><div class="line"><span class="comment"># For booting GNU/Linux</span></div><div class="line"></div><div class="line">menuentry <span class="string">"ubuntu"</span> --id ubuntu &#123;</div><div class="line">  search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">  linux /Image rdinit=/init pcie_aspm=off root=PARTUUID=&lt;PARTUUID&gt; rootwait rootfstype=ext4 rw console=ttyS1,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 ip=dhcp</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>   <strong>Note</strong>:  </p>
+<ul>
+<li>The value of console is <code>ttyS0</code> for official versions after V2.2. If you use official V2.2 and previous versions, the value of console is <code>ttyS1</code></li>
+<li><code>&lt;UUID&gt;</code> means the UUID of that partition which your EFI System is located in.<br><code>&lt;PARTUUID&gt;</code> means the PARTUUID of that partition which your linux distribution is located in.<br>To see the values of UUID and PARTUUID, please use the command:<code>blkid</code>.</li>
+<li>If you want to use another linux distribution, please refer above steps.<br>b. Reboot and press anykey except “enter” to enter UEFI main menu.<br>c. For USB: Select “Boot Manager”-&gt; “EFI USB Device”-&gt; to enter grub selection menu.</li>
+<li>For SAS: Select “Boot Manager”-&gt; “EFI Misc Device 1” to enter grub selection menu.</li>
+<li>For SATA: Select “Boot Manager”-&gt; “EFI Hard Drive” to enter grub selection menu.<br>d. Press arrow key up or down to select grub boot option to decide which distribution should boot.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Boot-via-ACPI"><a href="#Boot-via-ACPI" class="headerlink" title="Boot via ACPI"></a><a name="3.5">Boot via ACPI</a></h3><p>D03 also supports booting via ACPI, you can bring up this system which is similar with DTS mode, you must fix some point as follow:</p>
+<ol>
+<li><p>Delete DTB file(comment out devicetree <code>/&lt;user&gt;/hip06-d03.dtb</code> as follow) and don’t burn DTB file</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">menuentry <span class="string">"D03 Ubuntu NFS"</span> --id d03_ubuntu_nfs &#123;</div><div class="line">  <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">  linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 ip=dhcp</div><div class="line">  <span class="comment">#devicetree /&lt;user&gt;/hip06-d03.dtb</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Set the parameters of booting via ACPI<br>you must add <code>acpi=force</code> property in <code>linux</code> line for “grub.cfg” file. If not, system will booted up with DTS by default. e.g.:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Booting from NFS with Ubuntu rootfs</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu NFS(ACPI)"</span> --id d03_ubuntu_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 ip=dhcp acpi=force</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>NOTE: you can get more information about setting grub.cfg from <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Quick_Deployment.4D02.md]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D02/Quick_Deployment.4D02/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Quick Deploy System</a><ul>
+<li><a href="#2.1">Deploy system via USB Disk</a></li>
+<li><a href="#2.2">Deploy system via DVD</a></li>
+<li><a href="#2.3">Deploy system via PXE</a></li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Above all, prepare hardware boards with SCSI disk and download Estuary source code from GitHub.<br>To learn more about how to do them, please visit this web site: <a href="http://open-estuary.com/estuary-user-manual/" target="_blank" rel="external">http://open-estuary.com/estuary-user-manual/</a> , and then refer to ‘Get &amp; Build Estuary yourself’.<br><strong>Note</strong>: In my case, the working directory is <code>~/workdir</code>.</p>
+<h2 id="Quick-Deploy-System"><a href="#Quick-Deploy-System" class="headerlink" title="Quick Deploy System"></a><a name="2">Quick Deploy System</a></h2><h3 id="Deploy-system-via-USB-Disk"><a href="#Deploy-system-via-USB-Disk" class="headerlink" title="Deploy system via USB Disk"></a><a name="2.1">Deploy system via USB Disk</a></h3><ol>
+<li>Prepare usb install disk.<ul>
+<li>Modify estuary/estuarycfg.json. Make sure the platform, distros are all right.  </li>
+<li>Change the value of “install” to “yes” in object “setup” for usb and the value “device” to your USB install disk.<br>(Notice: if the specified usb device does not exist, the first usb device will be selected by default.)  </li>
+<li>Use build.sh to create the usb install disk.<br><code>eg: ./estuary/build.sh -f estuary/estuarycfg.json</code>  </li>
+</ul>
+</li>
+<li>Connect the usb install disk to the board.  </li>
+<li>Reboot the board.  </li>
+<li>Boot from the usb device. (About how to boot from USB device, please refer to the UEFI related manual.)  </li>
+<li>According to the prompt to deploy the system.  </li>
+<li>Start the boards from “grub” menu of UEFI by default.  </li>
+</ol>
+<h3 id="Deploy-system-via-DVD"><a href="#Deploy-system-via-DVD" class="headerlink" title="Deploy system via DVD"></a><a name="2.2">Deploy system via DVD</a></h3><ol>
+<li>Prepare ISO image and install disk.<ul>
+<li>Modify estuary/estuarycfg.json. Make sure the platform, distros are all right.  </li>
+<li>Change the value of “install” to “yes” in object “setup” for iso and the value “name” to your target iso image file name.  </li>
+<li>Use build.sh to create the target install iso image file.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code>  </li>
+<li>Burn the iso image file to DVD disk if you use the physical DVD driver.  </li>
+</ul>
+</li>
+<li>Connect the physical DVD driver to the board, plug in the install DVD disk.  </li>
+<li>Reboot the board.  </li>
+<li>Boot from the DVD device. (About how to boot from DVD device, please refer to the UEFI related manual.)  </li>
+<li>According to the prompt to deploy the system.  </li>
+<li>Start the boards from “grub” menu of UEFI by default.</li>
+</ol>
+<h3 id="Deploy-system-via-PXE"><a href="#Deploy-system-via-PXE" class="headerlink" title="Deploy system via PXE"></a><a name="2.3">Deploy system via PXE</a></h3><ol>
+<li>Connect Ubuntu PC and hardware boards into the same local area network. (Make sure the PC can connect to the internet and no other PXE servers exist.)  </li>
+<li>Modify the configuration file of estuary/estuarycfg.json based on you hardware boards. Change the values of mac to physical addresses of the connected network cards on the board. Change the value of “install” to “yes” in object “setup” for PXE.  </li>
+<li>Backup files under the tftp root directory if necessary. Use build.sh to build project and setup the PXE server on Ubuntu PC.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code>  </li>
+<li>After that, install minicom and connect the serial ports of hardware boards to the Ubuntu PC. Connect the hardware boards by minicom using serial ports.  </li>
+<li>Reboot the hardware boards and start the boards from the correct EFI Network.  </li>
+<li>Install the system according to prompt. After install finished, the boards will restart automatically.  </li>
+<li>Start the boards from “grub” menu of UEFI by default.</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Caliper_Manual.4All.md]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/All/Caliper_Manual.4All/</url>
       <content type="html"><![CDATA[<ul>
@@ -3077,6 +3069,26 @@
 </ul>
 <a id="more"></a>
 <p>For the details, please refer to <a href="http://open-estuary.org/caliper-benchmarking/" target="_blank" rel="external">http://open-estuary.org/caliper-benchmarking/</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Readme.4D02.md]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/D02/Readme.4D02/</url>
+      <content type="html"><![CDATA[<p>This is the readme file for D02 platform</p>
+<a id="more"></a>
+<p>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for D02, all targets files will be produced. they are:</p>
+<h3 id="UEFI-D02-fd"><a href="#UEFI-D02-fd" class="headerlink" title="UEFI_D02.fd"></a>UEFI_D02.fd</h3><p><strong>description</strong>: UEFI_D02.fd is the UEFI bios for D02 platform.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/D02/UEFI_D02.fd</code><br><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-uefi.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
+<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>: grubaa64.efi is used to load kernel image and dtb files from SATA, SAS, USB Disk, or NFS into RAM and start the kernel.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code><br><strong>source</strong>: <code>&lt;project root&gt;/grub</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace</div></pre></td></tr></table></figure></p>
+<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><h3 id="hip05-d02-dtb"><a href="#hip05-d02-dtb" class="headerlink" title="hip05-d02.dtb"></a>hip05-d02.dtb</h3><p><strong>descriptions</strong>: Image is the kernel executable program and hip05-d02.dtb is the device tree binary.<br><strong>target</strong>:<br>Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code><br>hip05-d02.dtb in <code>&lt;project root&gt;/workspace/binary/D02/hip05-d02.dtb</code><br><strong>source</strong>: <code>&lt;project root&gt;/kernel</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
+<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.  </p>
+<p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.<br>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.<br>More detail about how to deploy target system into D02 board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D02.md" target="_blank" rel="external">Deployment_Manual.md</a>.<br>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.<br>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.<br>More detail about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
 ]]></content>
     </entry>
     
