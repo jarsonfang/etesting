@@ -1,0 +1,1136 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/etesting/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/etesting/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/etesting/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="D02," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/etesting/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Introduction
+Preparation
+Prerequisite
+Check the hardware board
+Upgrade UEFI and trust firmware
+Upgrade DTB file
+
+
+Bring up System
+Boot via ESL
+Boot via NORFLASH
+Boot via PXE
+Boot via NFS
+Boot via DIS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Armor_Manual.4ALL.md">
+<meta property="og:url" content="http://jarsonfang.github.io/Estuary/Documents/Deploy_Manual.4D02/index.html">
+<meta property="og:site_name" content="Etesting">
+<meta property="og:description" content="Introduction
+Preparation
+Prerequisite
+Check the hardware board
+Upgrade UEFI and trust firmware
+Upgrade DTB file
+
+
+Bring up System
+Boot via ESL
+Boot via NORFLASH
+Boot via PXE
+Boot via NFS
+Boot via DIS">
+<meta property="og:updated_time" content="2016-12-26T10:48:34.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Armor_Manual.4ALL.md">
+<meta name="twitter:description" content="Introduction
+Preparation
+Prerequisite
+Check the hardware board
+Upgrade UEFI and trust firmware
+Upgrade DTB file
+
+
+Bring up System
+Boot via ESL
+Boot via NORFLASH
+Boot via PXE
+Boot via NFS
+Boot via DIS">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/etesting/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6327478655802934000',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jarsonfang.github.io/Estuary/Documents/Deploy_Manual.4D02/"/>
+
+
+
+
+
+  <title> Armor_Manual.4ALL.md | Etesting </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/etesting/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Etesting</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Estuary Testing</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/etesting/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/etesting/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/etesting/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/etesting/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Estuary">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/etesting/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Etesting">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Etesting" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Armor_Manual.4ALL.md
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-13T10:07:01+08:00">
+                2016-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/etesting/categories/Estuary/" itemprop="url" rel="index">
+                    <span itemprop="name">Estuary</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/etesting/categories/Estuary/Documents/" itemprop="url" rel="index">
+                    <span itemprop="name">Documents</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/etesting/Estuary/Documents/Deploy_Manual.4D02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Documents/Deploy_Manual.4D02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Preparation</a><ul>
+<li><a href="#2.1">Prerequisite</a></li>
+<li><a href="#2.2">Check the hardware board</a></li>
+<li><a href="#2.3">Upgrade UEFI and trust firmware</a></li>
+<li><a href="#2.4">Upgrade DTB file</a></li>
+</ul>
+</li>
+<li><a href="#3">Bring up System</a><ul>
+<li><a href="#3.1">Boot via ESL</a></li>
+<li><a href="#3.2">Boot via NORFLASH</a></li>
+<li><a href="#3.3">Boot via PXE</a></li>
+<li><a href="#3.4">Boot via NFS</a></li>
+<li><a href="#3.5">Boot via DISK(SAS/USB/SATA) </a></li>
+<li><a href="#3.6">Boot via ACPI</a><a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>This documentation describes how to get, build, deploy and bring up target system based Estuary Project, it will help you to make your Estuary Environment setup from ZERO.<br>All following sections will take the D02 board as example, other boards have the similar steps to do, for more detail difference between them, please refer to Hardware Boards sections in <a href="http://open-estuary.com/hardware-boards/" target="_blank" rel="external">http://open-estuary.com/hardware-boards/</a>.</p>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a><a name="2">Preparation</a></h2><h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a><a name="2.1">Prerequisite</a></h3><p><em>Local network</em>: To connect hardware boards and host machine, so that they can communicate each other.<br><em>Serial cable</em>: To connect hardware board’s serial port to host machine, so that you can access the target board’s UART in host machine.</p>
+<p>Two methods are provided to <strong>connect the board’s UART port to a host machine</strong>:<br><strong>Method 1</strong> : connect the board’s UART in openlab environment<br>Use <code>board_connect</code> command.(Details please refer to <code>board_connect --help</code>)<br><strong>Method 2</strong> : directly connect the board by UART cable<br>a. Connect the board’s UART port to a host machine with a serial cable.<br>b. Install a serial port application in host machine, e.g.: kermit or minicom.<br>c. Config serial port setting:115200/8/N/1 on host machine.<br>For more details, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D02.md" target="_blank" rel="external">UEFI_Manual.md</a> “Upgrade UEFI” chapter.</p>
+<h3 id="Check-the-hardware-board"><a href="#Check-the-hardware-board" class="headerlink" title="Check the hardware board"></a><a name="2.2">Check the hardware board</a></h3><p>Hardware board should be ready and checked carefully to make sure it is available, more detail information about different hardware board, please refer to <a href="http://open-estuary.com/d02-2/" target="_blank" rel="external">http://open-estuary.com/d02-2/</a>.</p>
+<h3 id="Upgrade-UEFI-and-trust-firmware"><a href="#Upgrade-UEFI-and-trust-firmware" class="headerlink" title="Upgrade UEFI and trust firmware"></a><a name="2.3">Upgrade UEFI and trust firmware</a></h3><p>You can upgrade UEFI and trust firmare yourself based on FTP service, but this is not necessary. If you really want to do it, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D02.md" target="_blank" rel="external">UEFI_Manual.md</a>.</p>
+<h3 id="Upgrade-DTB-file-Necessary-step"><a href="#Upgrade-DTB-file-Necessary-step" class="headerlink" title="Upgrade DTB file(Necessary step)"></a><a name="2.4">Upgrade DTB file(Necessary step)</a></h3><p> Because this dtb file is important to this D02 boards, firstly you must flash this DTB file into SPI flash before any methods of bringing up systerm.</p>
+<p> “EFI internal shell” mode and “Embedded Boot Loader(EBL)” mode often used to upgrade DTB file , about how to enter two modes and how to switch between them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D02.md" target="_blank" rel="external">UEFI_Manual.md</a> “Upgarde UEFI” chapter.</p>
+<ol>
+<li><p>IP address config at “EFI Internal Shell” mode(Optional, you can ignore this step if DHCP works well)<br>Press any key except “enter” key to enter into UEFI main menu. Select “Boot Manager”-&gt;”EFI Internal Shell”.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Config board's IP address</span></div><div class="line">ifconfig <span class="_">-s</span> eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</div></pre></td></tr></table></figure>
+<p>e.g. <code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
+</li>
+<li><p>Download dtb file from FTP at “Embedded Boot Loader(EBL)” mode<br>Enter “exit” from “EFI Internal Shell” mode to the UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;dtb file&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write data into FLASH</span></div><div class="line">spiwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
+<p>e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> hip05<span class="_">-d</span>02.dtb <span class="_">-a</span> 0x100000 </div><div class="line">spiwfmem 0x100000 0x300000 0x100000</div></pre></td></tr></table></figure>
+</li>
+<li><p>Reboot your D02 board<br>You must reboot your D02 board after above two steps, this new DTB file will be used on booting board.<br>Note: It is necessary to flash the DTB file to SPI flash to solve a known MAC address duplicate Issue. Also it is to be noted that the DTB file should not be input in the Grub config file. So if you wish to use a modified DTB file, then you should always have it flashed to SPI flash before bootup.</p>
+</li>
+</ol>
+<h2 id="Bring-up-System"><a href="#Bring-up-System" class="headerlink" title="Bring up System"></a><a name="3">Bring up System</a></h2><p>There are several methods to bring up system, you can select following anyone fitting you to boot up.</p>
+<h3 id="Boot-via-ESL"><a href="#Boot-via-ESL" class="headerlink" title="Boot via ESL"></a><a name="3.1">Boot via ESL</a></h3><p> In this boot mode, the kernel image, dtb file and rootfs file should be downloaded into RAM at first and then start the system by ESL.<br> After reboot or power off, all downloaded data will be lost.<br> This boot mode is just used for debugging.</p>
+<p> Boot D02 to UEFI main menu. Select “Boot Manager”-&gt;”Eembedded Boot Loader(EBL)” and type the follow commands in EBL:</p>
+<ol>
+<li><p>Download Image binary file from FTP server to target board’s RAM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download Image binary file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;Image binary file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
+<p>e.g.  <code>provision 192.168.1.107 -u sch -p aaa -f Image -a 0x80000</code></p>
+</li>
+<li><p>Download dtb file from FTP server to target board’s RAM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download dtb file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;dtb file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
+<p>e.g. <code>provision 192.168.1.107 -u sch -p aaa -f hip05-d02.dtb -a 0x06000000</code></p>
+</li>
+<li><p>Download rootfs file from FTP server to target board’s RAM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download rootfs file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;rootfs file&gt; <span class="_">-a</span> &lt;download target address&gt;</div></pre></td></tr></table></figure>
+<p>e.g. <code>provision 192.168.1.107 -u sch -p aaa -f mini-rootfs-arm64.cpio.gz -a 0x07000000</code></p>
+</li>
+<li><p>Start operating system<br>Type “exit” to exit EBL. Select “Boot Manager”-&gt;”ESL Start OS” menu to start operating system.</p>
+</li>
+</ol>
+<h3 id="Boot-via-NORFLASH"><a href="#Boot-via-NORFLASH" class="headerlink" title="Boot via NORFLASH"></a><a name="3.2">Boot via NORFLASH</a></h3><p>In this boot mode, kernel image, dtb file and rootfs file will be writen into NORFLASH. Before the kernel start, the kernel image, dtb fille and rootfs file will be loaded into RAM from NORFLASH.<br>Boot D02 to UEFI main menu. Select “Boot Manager”-&gt;”Eembedded Boot Loader(EBL)” and type the follow commands in EBL:</p>
+<ol>
+<li><p>Download Image binary file from FTP  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;kernel image file&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write data into NORFLASH</span></div><div class="line">norwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
+<p>e.g.:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> Image <span class="_">-a</span> 0x100000</div><div class="line">norwfmem 0x100000 0x100000 0x1f00000</div></pre></td></tr></table></figure>
+</li>
+<li><p>Download rootfs file from FTP  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to target board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;rootfs image&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write data into NORFLASH</span></div><div class="line">norwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
+<p>e.g.:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> mini-rootfs-arm64.cpio.gz <span class="_">-a</span> 0x100000</div><div class="line">norwfmem 0x100000 0x2000000 0x4000000</div></pre></td></tr></table></figure>
+</li>
+<li><p>Reboot D02 and press anykey except “enter” to enter UEFI Boot Menu  </p>
+</li>
+<li><p>Select “Boot Manager”-&gt;”FLASH Start OS” boot option and press “Enter”  </p>
+</li>
+</ol>
+<p>To get all binaries mentioned above, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md" target="_blank" rel="external">Readme.md</a>.</p>
+<h3 id="Boot-via-PXE"><a href="#Boot-via-PXE" class="headerlink" title="Boot via PXE"></a><a name="3.3">Boot via PXE</a></h3><p>In this boot mode, the UEFI will get grub from PXE server.<br>The grub will get the configuration file from TFTP service configured by PXE server.  </p>
+<ol>
+<li>Setup PXE environment on host<br>Enable both DHCP and TFTP services on one of your host machines according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.  </li>
+<li>Reboot and press anykey except “enter” to enter UEFI main Menu  </li>
+<li>Select “Boot Manager”-&gt;”EFI Network” and press “Enter”.  </li>
+<li>After several seconds, D02 will boot by PXE automatically.</li>
+</ol>
+<p>To config the grub.cfg to support PXE boot, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
+<h3 id="Boot-via-NFS"><a href="#Boot-via-NFS" class="headerlink" title="Boot via NFS"></a><a name="3.4">Boot via NFS</a></h3><p>In this boot mode, the root parameter in grub.cfg menuentry will set to /dev/nfs and nfsroot will be set to the path of rootfs on NFS server. You can use <code>&quot;showmount -e &lt;server ip address&gt;&quot;</code> to list the exported NFS directories on the NFS server. You can use “showmount -e <server ip="" address="">“ to list the exported NFS directories on the NFS server.<br>D02 supports booting via NFS, you can try it as following steps:  </server></p>
+<ol>
+<li>Enable DHCP, TFTP and NFS service according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.  </li>
+<li>Get and config grub file to support NFS boot according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.  </li>
+<li>Reboot D02 and press anykey except “enter” to enter UEFI main Menu  </li>
+<li>Select  “Boot Manager”-&gt;”EFI Network” to and press enter key.</li>
+</ol>
+<h3 id="Boot-via-DISK-SAS-USB-SATA"><a href="#Boot-via-DISK-SAS-USB-SATA" class="headerlink" title="Boot via DISK(SAS/USB/SATA)"></a><a name="3.5">Boot via DISK(SAS/USB/SATA)</a></h3><p>D02 board supports booting via SAS and USB disk by default, if you want to boot via SATA, there are two different methods for you, one is to plug SATA disk into PCIE-to-SATA convert card(model:PEC-2024) which connect to D02 board, another is to connect SATA disk into SATA interface on D02 board directly. Usually the first is more stable than the second, so we suggest you to use the first method.<br>For SAS and USB, the UEFI will directly get the grub from the EFI system partition on the hard disk. The grub will load the grub configuration file from the EFI system partition. So grubaa64.efi, grub.cfg, Image and different estuary release distributions are stored on disk. But for SATA boot mode, the kernel image will be loaded from NORFLASH into RAM on target board. The root parameter passed to the kernel will be specified in hip05-d02.dts and it will point to the root partition on SATA disk.</p>
+<ol>
+<li><p>Boot by PXE or NORFLASH(please refer to “#Boot via PXE” or “#Boot via NORFLASH”) to part and format hardware disk before booting D02 board<br>Format hardware disk, e.g.:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkfs.vfat /dev/sda1</div><div class="line">sudo mkfs.ext4 /dev/sda2</div></pre></td></tr></table></figure>
+<p>Part hardware disk with <code>&quot;sudo fdisk /dev/sda&quot; as follow:</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">+---------+-----------+--------------+------------------+------------------+</div><div class="line">| Name    |   Size    |    Type      |   USB/SAS        |   SATA           |</div><div class="line">+---------+-----------+--------------+------------------+------------------+</div><div class="line">| sda1    |   200M    |  EFI system  |   EFI            |    NULL          |</div><div class="line">+---------+-----------+--------------+------------------+------------------+</div><div class="line">| sda2    |   10G     |    ext4      | linux filesystem | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+------------------+</div><div class="line">| sda3    |   10G     |    ext4      | linux filesystem | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+------------------+</div><div class="line">| sda4    |   10G     |    ext4      | linux filesystem | linux filesystem |</div><div class="line">+---------+-----------+--------------+------------------+------------------+</div><div class="line">| sda5    |rest space |    ext4      | linux swap       | linux swap       |</div><div class="line">+---------+-----------+--------------+------------------+------------------+</div></pre></td></tr></table></figure>
+<p>Note: EFI partition must be a fat filesystem, so you should format sda1 with “sudo mkfs.vfat /dev/sda1″.</p>
+<p><em>Preprocess when the disk can’t be identified</em><br> In case of the SATA disk is not be identified by D02, you can try the following step to process the disk. (it can be useful for some specfic disk such as seagate disk made by samsung).  </p>
+<p>a. Find a PC or another board which can identify SATA disk.<br>You should find a PC or another board which can identify this disk, and the system of PC or board should be linux system. For us,we can use D01 board.<br>b. Use tool fdisk to process this disk</p>
+<p>format the disk firstly: <code>sudo mkfs.ext4 /dev/sda</code></p>
+<p>add a gpt to this disk :<br><code>fdisk /dev/sda</code><br><code>g</code>——-add a gpt partition</p>
+<p>add some EFI partition :<br><code>n</code>——-add a partition<br><code>1</code>——-the number of partition</p>
+<p>type “Enter” key —— First sector<br><code>+200M</code>———Last sector, size of partition<br><code>t</code>——-change the type of partition to  EFI system</p>
+<p>add some anther partition <code>...</code><br>save the change: <code>w</code></p>
+<p>format EFI partition: <code>sudo mkfs.vfat /dev/sda1</code></p>
+<p>Then this disk can be identified by D02 board.</p>
+</li>
+<li><p>Download files and store them into hardware disk as below:<br>(SAS/USB）Related files are placed as follow:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sda1: -------EFI</div><div class="line">      |       |</div><div class="line">      |      GRUB2------grubaa64.efi  //grub binary file</div><div class="line">      |</div><div class="line">      |-------------grub.cfg           //grub config file</div><div class="line">      |</div><div class="line">      |-------------Image          //kernel binary Image</div><div class="line">sda2: Ubuntu distribution</div><div class="line">sda3: Fedora distribution</div></pre></td></tr></table></figure>
+<p>NOTE: The grubaa64.efi file must be put in /EFI/GRUB2 directory of dev/sda1(gpt partition), the distributions could be uncompressed in dev/sdaX(X can be 2,3,4,etc. exclude 1).</p>
+<p>(SATA)Related files are placed as follow:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">sda1: -------NULL</div><div class="line">sda2: Ubuntu distribution</div><div class="line">sda3: OpenSUSE distribution</div></pre></td></tr></table></figure>
+<p> To get kernel image and dtb file, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md" target="_blank" rel="external">Readme.md</a>.<br> To get and config grub and grub.cfg, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.<br> To get different distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guider.md</a>.  </p>
+</li>
+<li>Boot the board via SAS/USB/SATA</li>
+</ol>
+<p><strong>Boot via SAS/USB</strong></p>
+<p>a. modify grub config file (<a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md</a>)</p>
+<p>   e.g.: the context of grub.cfg file is modified as follow:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Boot automatically after 5 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"><span class="comment"># By default, boot the Estuary with Ubuntu filesystem</span></div><div class="line"><span class="built_in">set</span> default=ubuntu</div><div class="line"><span class="comment"># For booting GNU/Linux</span></div><div class="line"></div><div class="line">menuentry <span class="string">"ubuntu"</span> --id ubuntu &#123;</div><div class="line">search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">linux /Image rdinit=/init pcie_aspm=off root=PARTUUID=&lt;PARTUUID&gt; rootwait rootfstype=ext4 rw console=ttyS0,115200 earlycon=uart8250,mmio32,0x80300000 ip=dhcp</div><div class="line">      &#125;</div></pre></td></tr></table></figure></p>
+<p>   Note:  </p>
+<ol>
+<li><code>&lt;UUID&gt;</code> means the UUID of that partition which your EFI System is located in.<br><code>&lt;PARTUUID&gt;</code> means the PARTUUID of that partition which your linux distribution is located in.<br>To see the values of UUID and PARTUUID, please use the command:<code>$blkid</code>.  </li>
+<li>If you want to use another linux distribution, please refer above steps.</li>
+</ol>
+<p>b. Reboot and press any key except “enter” into enter UEFI menu.<br>c. For USB: Select “Boot Manager”-&gt; “EFI USB Device”-&gt; to enter grub selection menu.<br>   For SAS: Select “Boot Manager”-&gt; “EFI Misc Device 1” to enter grub selection menu.<br>d. Press arrow key up or down to select grub boot option to decide which distribution should boot.</p>
+<p><strong>Boot via SATA</strong></p>
+<p>In this boot mode, there are two different methods for you, one is to plug SATA disk into PCIE-to-SATA convert card(model:PEC-2024) which connect to D02 board,another is to connect SATA disk into SATA interface on D02 board directly.</p>
+<p><strong>The first one: to plug SATA disk into PCIE-to-SATA convert card(model:PEC-2024) which connect to D02 board</strong></p>
+<p>a. Build kernel(please refer to [Readme.4D02.md] (<a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md</a>))<br>   Modify arch/arm64/boot/dts/hisilicon/hip05-d02.dts file as follow:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bootargs = <span class="string">"rdinit=/init pcie_aspm=off root=/dev/sda2 rootdelay=10 rootfstype=ext4 rw console=ttyS0,115200 earlycon=uart8250,mmio32,0x80300000 ip=dhcp"</span></div></pre></td></tr></table></figure></p>
+<p>   After build the linux kernel from source, burn Image into Nor Flash and dtb file into SPI Flash. About how to burn Image and dtb file , please refer to “Boot via NORFLASH” and “Upgrade DTB file”.</p>
+<p>   NOTE: according to above bootargs, it will boot ubuntu distribution in sda2, if you want to boot other different distribution, you should change “root=/dev/sdaX” item.<br>b. Reboot and press any key into enter UEFI menu.<br>c. Select “Boot Manager”-&gt;”FLASH Start OS” and then press Enter Key.</p>
+<p><strong>The second one: to connect SATA disk into SATA interface on D02 board directly</strong></p>
+<p>a. select sata mode for UEFI<br>   After burn BIOS file(you can refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/UEFI_Manual.4D02.md" target="_blank" rel="external">UEFI_Manual.4D02.md</a>), UEFI boot as sas mode by default.<br>   You can switch between sata and sas by adding a commandline at EBL.<br>   e.g.:<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sataenable 0      //set into sas</div><div class="line">sataenable 1      //set into sata</div><div class="line">sataenable 2      //check the current setting: sas or sata</div></pre></td></tr></table></figure></p>
+<p>b. Modify arch/arm64/boot/dts/hisilicon/hip05-d02.dts file</p>
+<ul>
+<li><p>Find the word “bootargs” and modify the value as follow:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bootargs = <span class="string">"rdinit=/init pcie_aspm=off root=/dev/sda2 rootdelay=10 rootfstype=ext4 rw console=ttyS0,115200 earlycon=uart8250,mmio32,0x80300000 ip=dhcp"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Find the word “&amp;sas0”, “&amp;sas1” and delete as follow:<br> <del>&amp;sas0 {</del><br> <del>status = “okay”;</del>,<br> <del>};</del><br><del>&amp;sas1 {</del><br> <del>status = “okay”;</del><br> <del>};</del>  </p>
+</li>
+</ul>
+<p>c. Modify arch/arm64/boot/dts/hisilicon/hip05.dtsi file</p>
+<p>   Change the status’ value of node “ahci0: sata@b1002800” to “disabled” as follow:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ahci0: sata@b1002800 &#123;</div><div class="line">         ......</div><div class="line">status = <span class="string">"disabled"</span>;      ---------&gt; status = <span class="string">"okay"</span>;</div><div class="line">     &#125;;</div></pre></td></tr></table></figure></p>
+<p>d. Build the kernel (please refer to [Readme.4D02.md] (<a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D02.md</a>))<br>e. Burn Image, dtb file NorFlash. About how to burn, please refer to “Boot via NORFLASH”.<br>f. Reboot and press any key except “enter” to enter UEFI menu.<br>g. Select “Boot Manager”-&gt;”FLASH Start OS” and then press Enter Key.</p>
+<h3 id="Boot-via-ACPI"><a href="#Boot-via-ACPI" class="headerlink" title="Boot via ACPI"></a><a name="3.6">Boot via ACPI</a></h3><p>D02 also supports booting via ACPI, you can bring up this system which is similar with DTS mode, you must fix some point as follow:  </p>
+<ul>
+<li><p>Delete DTB file(comment out devicetree /<user>/hip05-d02.dtb as follow) and don’t burn DTB file<br> e.g.:  </user></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">menuentry <span class="string">"D02 Ubuntu NFS"</span> --id d02_ubuntu_nfs &#123;</div><div class="line"><span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=uart8250,mmio32,0x80300000 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 ip=dhcp</div><div class="line"><span class="comment"># devicetree /&lt;user&gt;/hip05-d02.dtb</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Set the parameters of booting via ACPI<br> you must add <code>&quot;acpi=force&quot;</code> property in <code>&quot;linux&quot;</code> line for “grub.cfg” file. If not, system will booted up with DTS by default.<br> e.g.:  </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Booting from NFS with Ubuntu rootfs</span></div><div class="line">menuentry <span class="string">"D02 Ubuntu NFS(ACPI)"</span> --id d02_ubuntu_nfs_acpi &#123;</div><div class="line"><span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=uart8250,mmio32,0x80300000 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 ip=dhcp acpi=force</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>NOTE: you can get more information about setting grub.cfg from <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/etesting/tags/D02/" rel="tag"># D02</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/etesting/Estuary/Documents/Armor_Manual.4All/" rel="next" title="Armor_Manual.4ALL.md">
+                <i class="fa fa-chevron-left"></i> Armor_Manual.4ALL.md
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/etesting/Estuary/Documents/Deploy-manual-for-RP-on-D03/" rel="prev" title="Deploy manual for RP on D03">
+                Deploy manual for RP on D03 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="Estuary/Documents/Deploy_Manual.4D02/"
+     data-title="Armor_Manual.4ALL.md"
+     data-content=""
+     data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Estuary/Documents/Deploy_Manual.4D02/"
+           data-title="Armor_Manual.4ALL.md" data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/etesting/images/avatar.png"
+               alt="Estuary" />
+          <p class="site-author-name" itemprop="name">Estuary</p>
+          <p class="site-description motion-element" itemprop="description">Testing cases</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/etesting/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/etesting/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/etesting/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jarsonfang/etesting/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://open-estuary.org/" target="_blank" title="Estuary.org">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Estuary.org
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/open-estuary/" target="_blank" title="Estuary.github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Estuary.github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/etesting/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tldp.org/LDP/abs/html/" title="ABS" target="_blank">ABS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://git-scm.com/book/zh/" title="ProGit" target="_blank">ProGit</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://guides.github.com/features/mastering-markdown/" title="Mastering-Markdown" target="_blank">Mastering-Markdown</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cirosantilli.com/markdown-style-guide/" title="Markdown-Style-Guide" target="_blank">Markdown-Style-Guide</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation"><span class="nav-number">2.</span> <span class="nav-text">Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prerequisite"><span class="nav-number">2.1.</span> <span class="nav-text">Prerequisite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-the-hardware-board"><span class="nav-number">2.2.</span> <span class="nav-text">Check the hardware board</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Upgrade-UEFI-and-trust-firmware"><span class="nav-number">2.3.</span> <span class="nav-text">Upgrade UEFI and trust firmware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Upgrade-DTB-file-Necessary-step"><span class="nav-number">2.4.</span> <span class="nav-text">Upgrade DTB file(Necessary step)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bring-up-System"><span class="nav-number">3.</span> <span class="nav-text">Bring up System</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Boot-via-ESL"><span class="nav-number">3.1.</span> <span class="nav-text">Boot via ESL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boot-via-NORFLASH"><span class="nav-number">3.2.</span> <span class="nav-text">Boot via NORFLASH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boot-via-PXE"><span class="nav-number">3.3.</span> <span class="nav-text">Boot via PXE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boot-via-NFS"><span class="nav-number">3.4.</span> <span class="nav-text">Boot via NFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boot-via-DISK-SAS-USB-SATA"><span class="nav-number">3.5.</span> <span class="nav-text">Boot via DISK(SAS/USB/SATA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boot-via-ACPI"><span class="nav-number">3.6.</span> <span class="nav-text">Boot via ACPI</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Estuary</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/etesting/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/etesting/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/etesting/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/etesting/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/etesting/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/etesting/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"estuary"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/etesting/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/etesting/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/etesting/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/etesting/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/etesting/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

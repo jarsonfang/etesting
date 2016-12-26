@@ -1,0 +1,1084 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/etesting/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/etesting/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/etesting/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HiKey," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/etesting/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Introduction
+Preparation
+Hardware Connect
+PC Environment
+Image File
+
+
+Upgrade Systerm
+Flash Uefi image to eMMC
+Flash Boot image to eMMC
+Update Distrubition
+SD card placing this ubuntu systerm
+eMMC on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deploy_Manual.4HiKey.md">
+<meta property="og:url" content="http://jarsonfang.github.io/Estuary/Documents/Deploy_Manual.4HiKey/index.html">
+<meta property="og:site_name" content="Etesting">
+<meta property="og:description" content="Introduction
+Preparation
+Hardware Connect
+PC Environment
+Image File
+
+
+Upgrade Systerm
+Flash Uefi image to eMMC
+Flash Boot image to eMMC
+Update Distrubition
+SD card placing this ubuntu systerm
+eMMC on">
+<meta property="og:updated_time" content="2016-12-26T10:48:34.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deploy_Manual.4HiKey.md">
+<meta name="twitter:description" content="Introduction
+Preparation
+Hardware Connect
+PC Environment
+Image File
+
+
+Upgrade Systerm
+Flash Uefi image to eMMC
+Flash Boot image to eMMC
+Update Distrubition
+SD card placing this ubuntu systerm
+eMMC on">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/etesting/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6327478655802934000',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jarsonfang.github.io/Estuary/Documents/Deploy_Manual.4HiKey/"/>
+
+
+
+
+
+  <title> Deploy_Manual.4HiKey.md | Etesting </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/etesting/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Etesting</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Estuary Testing</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/etesting/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/etesting/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/etesting/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/etesting/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4HiKey/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Estuary">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/etesting/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Etesting">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Etesting" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Deploy_Manual.4HiKey.md
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-10T10:08:01+08:00">
+                2016-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/etesting/categories/Estuary/" itemprop="url" rel="index">
+                    <span itemprop="name">Estuary</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/etesting/categories/Estuary/Documents/" itemprop="url" rel="index">
+                    <span itemprop="name">Documents</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/etesting/Estuary/Documents/Deploy_Manual.4HiKey/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Documents/Deploy_Manual.4HiKey/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Preparation</a><ul>
+<li><a href="#2.1">Hardware Connect</a></li>
+<li><a href="#2.2">PC Environment</a></li>
+<li><a href="#2.3">Image File</a></li>
+</ul>
+</li>
+<li><a href="#3">Upgrade Systerm</a><ul>
+<li><a href="#3.1">Flash Uefi image to eMMC</a></li>
+<li><a href="#3.2">Flash Boot image to eMMC</a></li>
+<li><a href="#3.3">Update Distrubition</a><ul>
+<li><a href="#3.3.1">SD card placing this ubuntu systerm</a></li>
+<li><a href="#3.3.2">eMMC on HiKey placing this ubuntu systerm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4">Appendix 1: Partition Information</a> </li>
+</ul>
+<a id="more"></a>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>This documentation provides a general overview for getting started with Estuary Release Distributions such as ubuntu, debian and so on to support the HiKey board, There are two primary ways to install software onto the HiKey board as thissample of ubuntu systerm.<br>First and simplest, you can install uefi image, boot image into eMMC on HiKey board while installing Estuary Release Distributions such as ubuntu, debian and so on into SD card. You can download uefi image and boot image by fastboot mode while using SD card to load Estuary Release Distributions. It follows the instructions in “Update systerm” chapter.<br>Second, you also can install uefi image, boot image and Estuary Release Distributions such as ubuntu, debian and soon into eMMC on HiKey board. You can download uefi image and boot image by fastboot mode while loading Estuary Release Distributions into eMMC by wifi mode. It follows the instructions in “Update systerm” chapter.</p>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a><a name="2">Preparation</a></h2><p>The HiKey board is ready to use “out of the box” with a preinstalled version of the Debian Linux distribution from the factory. To get started you need power supply(9V~15V ,2A), a standard microUSB cable, usb to serial port(TTL 1.8V),SD card and PC.</p>
+<h3 id="Hardware-Connect"><a href="#Hardware-Connect" class="headerlink" title="Hardware Connect"></a><a name="2.1">Hardware Connect</a></h3><ol>
+<li>Connect standard microUSB to USB connector between the HiKey microUSB port and Linux PC.  </li>
+<li>Connect usb to serial port to USB connector between the HiKey (UART3 J2) and Linux PC.  </li>
+<li>Link 1-2 (J601) pin causes HiKey to auto-power up when power is applied.  </li>
+<li>Connect the HiKey power supply to the HiKey board (Uart3 P301).<br>NOTE: please refer to the Hardware User Guide for more information on board link options. you can visit: <a href="http://open-estuary.com/hikey/" target="_blank" rel="external">http://open-estuary.com/hikey/</a></li>
+</ol>
+<h3 id="PC-Environment"><a href="#PC-Environment" class="headerlink" title="PC Environment"></a><a name="2.2">PC Environment</a></h3><ol>
+<li>Ensure PC is Linux systerm.  </li>
+<li>Config a serial com on PC such as kermit, mincom and so on.  </li>
+<li><p>Install fastboot tool, you do it as follows:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install android-tools-fastboot</div></pre></td></tr></table></figure>
+</li>
+<li><p>Install Python, you can do it as follows:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install python2.7 python2.7-dev</div><div class="line">$ <span class="built_in">alias</span> python=python2.7</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Image-File"><a href="#Image-File" class="headerlink" title="Image File"></a><a name="2.3">Image File</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ mkdir hikey-image</div><div class="line">$ <span class="built_in">cd</span> hikey-image</div><div class="line">$ cp &#123;<span class="built_in">pwd</span>&#125;/open-estuary/build/HiKey/binary/* ./  -rf</div><div class="line">$ sudo cp &#123;<span class="built_in">pwd</span>&#125;/open-estuary/build/HiKey/distro/* ./  -rf</div></pre></td></tr></table></figure>
+<p>NOTE: you can get more information about Image explaination from this <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4HiKey.md" target="_blank" rel="external">Readme.md</a> document.</p>
+<h2 id="Upgrade-Systerm"><a href="#Upgrade-Systerm" class="headerlink" title="Upgrade Systerm"></a><a name="3">Upgrade Systerm</a></h2><p>When most users get HiKey board first, they want to reload the all system image by using instructions. However, this section will describes how to reinstall all system image.</p>
+<h3 id="Flash-Uefi-image-to-eMMC"><a href="#Flash-Uefi-image-to-eMMC" class="headerlink" title="Flash Uefi image to eMMC"></a><a name="3.1">Flash Uefi image to eMMC</a></h3><p>The flashing process requires to be in “recovery mode” which will link 1-2 (J601) and link 3-4(J601) with setting board link options as follow:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Name             Link               State</div><div class="line">Auto Power up    Link 1-2           closed</div><div class="line">Boot Select      Link 3-4           closed</div><div class="line">GPIO3-1          Link 5-6           open</div></pre></td></tr></table></figure></p>
+<p>Link 1-2 causes HiKey to auto-power up when power is installed. Link 3-4 causes the HiKey SoC internal ROM to start up in at a special “install bootloader” mode which will install a supplied bootloader from the microUSB OTG port into RAM, and will present itself to a connect PC as a ttyUSB device.<br>Note: USB does NOT power the HiKey board because the power supply requirements in certain use cases can exceed the power supply available on a USB port. You must use an external power supply.<br>If you can understand above information, you will start to flash this image according to this instruction:  </p>
+<ol>
+<li>Turn off HiKey board  </li>
+<li>Connect debug UART3 on HiKey to PC (used to monitor debug status)  </li>
+<li>Make sure pin1-pin2 and pin3-pin4 on J601 are linked (recovery mode)  </li>
+<li>Connect HiKey MicroUSB to PC with USB cable  </li>
+<li><p>Turn on HiKey board and flash this image<br>On serial console, you should see some debug message (NULL packet) run HiKey recovery tool to flash l-loader.bin  </p>
+<p>Note: if the serial port recorded in hisi-idt.py isn’t available, adjust the command line below by manually setting the serial port with “-d /dev/ttyUSBx” where x is usually the last serial port reported by “dmesg” command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> hikey-image</div><div class="line">$ sudo python hisi-idt.py <span class="_">-d</span> /dev/ttyUSBx --img1=l-loader.bin</div></pre></td></tr></table></figure>
+<p>Do not reboot yet. Run fastboot commands to flash the images (order must be respected)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo fastboot flash ptable ptable-linux.img</div><div class="line">$ sudo fastboot flash fastboot UEFI_HiKey.fd</div><div class="line">$ sudo fastboot flash nvme nvme.img</div></pre></td></tr></table></figure>
+</li>
+<li><p>Turn off HiKey board</p>
+</li>
+<li>Remove the jumper of pin3-pin4 on J601</li>
+<li>Connected the jumper of pin5-pin6 on J601(fastboot mode)</li>
+</ol>
+<h3 id="Flash-Boot-image-to-eMMC"><a href="#Flash-Boot-image-to-eMMC" class="headerlink" title="Flash Boot image to eMMC"></a><a name="3.2">Flash Boot image to eMMC</a></h3><p>The boot partition is a 64MB FAT partition and contains kernel/dtb, grub files and so on. You should make the boot-fat.uefi.img image and flash this image according to follow this instruction:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> hikey-image</div><div class="line">$ mkdir boot-fat</div><div class="line">$ dd <span class="keyword">if</span>=/dev/zero of=boot-fat.uefi.img bs=512 count=131072</div><div class="line">$ sudo mkfs.fat -n <span class="string">"BOOT IMG"</span> boot-fat.uefi.img</div><div class="line">$ sudo mount -o loop,rw,sync boot-fat.uefi.img boot-fat</div><div class="line">$ sudo cp Image_HiKey hi6220-hikey.dtb boot-fat/ || <span class="literal">true</span></div><div class="line">$ sudo cp grubaa64.efi grub.cfg boot-fat/ || <span class="literal">true</span></div><div class="line">$ sudo cp mini-rootfs-arm64.cpio.gz boot-fat/mini-rootfs.cpio.gz || <span class="literal">true</span></div><div class="line">$ sudo cp AndroidFastbootApp.efi boot-fat/fastboot.efi</div><div class="line">$ sudo umount boot-fat</div><div class="line">$ rm -rf boot-fat</div></pre></td></tr></table></figure></p>
+<p>NOTE: More detail information about how to write this grub.cfg, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">GRUB_Manual.md</a> document.</p>
+<p>If you finish making boot-fat.uefi.img image, you start to flash this image according to this instruction:  </p>
+<ol>
+<li>Turn off HiKey board  </li>
+<li>Connect debug UART3 on HiKey to PC (used to monitor debug status)  </li>
+<li>Make sure pin1-pin2 and pin5-pin6 on J601 are linked (recovery mode)  </li>
+<li>Connect HiKey Micro-USB to PC with USB cable  </li>
+<li>Turn on HiKey board and flash this image<br><code>$ sudo fastboot flash boot boot-fat.uefi.img</code>  </li>
+<li>Turn off HiKey board<h3 id="Update-Distrubition"><a href="#Update-Distrubition" class="headerlink" title=" Update Distrubition"></a><a name="3.3"> Update Distrubition</a></h3></li>
+</ol>
+<p>You can select SD card or eMMC on HiKey board to place the Estuary release distrubition such as ubuntu. This part will explain how to use SD card and eMMC on HiKey board to boot ubuntu.</p>
+<h4 id="SD-card-placing-this-ubuntu-systerm"><a href="#SD-card-placing-this-ubuntu-systerm" class="headerlink" title="SD card placing this ubuntu systerm"></a><a name="3.3.1">SD card placing this ubuntu systerm</a></h4><p>You should partion SD card (8G) and tar this Ubuntu_ARM64.tar.gz into your SD card according to this instruction:</p>
+<ol>
+<li>Insert SD card into your linux PC by card reader  </li>
+<li><p>Grep SD card node and fdisk or partion SD card in your linux PC</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo parted /dev/sdx</div><div class="line">(parted) mklabel gpt</div><div class="line">(parted) mkpart primary ext4 1MB 7086MB</div><div class="line">(parted) q</div><div class="line">$ sudo mkfs.ext4 -L <span class="string">"ubuntu"</span> /dev/sdx1</div></pre></td></tr></table></figure>
+</li>
+<li><p>Remove and insert SD card in your PC  </p>
+</li>
+<li><p>Tar Ubuntu_ARM64.tar.gz into your SD card  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> hikey-image	</div><div class="line">$ tar -xvzf Ubuntu_ARM64.tar.gz -C /media/&#123;admin&#125;/ubuntu</div></pre></td></tr></table></figure>
+</li>
+<li><p>Insert SD card into HiKey board  </p>
+</li>
+<li>Turn on HiKey board  </li>
+<li>Select “grub on eMMC” from uefi options  </li>
+<li>Select “Hikey Ubuntu SD card” from grub options  </li>
+<li>Success to boot ubunt system<br>NOTE: WIFI config about mini-rootfs systerm please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_HiKey_WiFi_Env.4HiKey.md" target="_blank" rel="external">Setup_HiKey_Wifi_Env.md</a> document</li>
+</ol>
+<h4 id="eMMC-on-HiKey-placing-this-ubuntu-systerm"><a href="#eMMC-on-HiKey-placing-this-ubuntu-systerm" class="headerlink" title="eMMC on HiKey placing this ubuntu systerm"></a><a name="3.3.2">eMMC on HiKey placing this ubuntu systerm</a></h4><p>If you purchase HiKey board which eMMC is 8G, We recommend you to use eMMC HiKey placing this ubuntu systerm. Estuary provides ptable image which will suport 8G eMMC HiKey board.In return you purchase HiKey board which eMMC is 4G, We recommend you to use SD card placing this ubuntu syterm because Estuary release distribution volume is 4G~5G or so. However, you also may use HiKey board which eMMC is 4G to place this clipping ubuntu systerm.<br>You can place this ubuntu systerm into eMMC on HiKey according to this following instruction:  </p>
+<ol>
+<li>Turn on HiKey board  </li>
+<li>Select “grub on eMMC” from uefi options  </li>
+<li>Select “Hikey minilinux eMMC” from grub options (boot min rootfs)  </li>
+<li>Refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_HiKey_WiFi_Env.4HiKey.md" target="_blank" rel="external">Setup_HiKey_Wifi_Env.md</a> document to config WIFI link  </li>
+<li><p>Download this ubuntu systerm into eMMC on HiKey board  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ mount /dev/mmcblk0p9 /tmp</div><div class="line">$ <span class="built_in">cd</span> /tmp</div><div class="line">$ <span class="literal">false</span>; <span class="keyword">while</span> [ $? <span class="_">-ne</span> 0 ]; <span class="keyword">do</span> wget -c http://7xjz0v.com1.z0.glb.clouddn.com/dist_&lt;version&gt;/Ubuntu_ARM64.tar.gz; <span class="keyword">done</span></div><div class="line">$ tar -xvzf Ubuntu_ARM64.tar.gz</div><div class="line">$ <span class="built_in">cd</span> /</div><div class="line">$ mount /tmp</div></pre></td></tr></table></figure>
+</li>
+<li><p>Reboot HiKey board  </p>
+</li>
+<li>Select “grub on eMMC” from uefi options.  </li>
+<li>Select “Hikey Ubuntu eMMC” from grub options  </li>
+<li>Success to boot ubunt systerm  </li>
+</ol>
+<p>NOTE: WIFI config about ubuntu systerm please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_HiKey_WiFi_Env.4HiKey.md" target="_blank" rel="external">Setup_HiKey_Wifi_Env.md</a> document</p>
+<h3 id="Appendix-1-Partition-Information"><a href="#Appendix-1-Partition-Information" class="headerlink" title="Appendix 1: Partition Information"></a><a name="4">Appendix 1: Partition Information</a></h3><p>Table 1 describes the partition layout on the HiKey eMMC.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Device            Start   End   Sectors  name</div><div class="line">/dev/mmcblk0p1    2048    4095    2048    vrl</div><div class="line">/dev/mmcblk0p2    4096    6143    2048    vrl_backup</div><div class="line">/dev/mmcblk0p3    6144    8191    2048    mcuimage</div><div class="line">/dev/mmcblk0p4    8192   24575   16384    fastboot</div><div class="line">/dev/mmcblk0p5   24576   28671    4096    nvme</div><div class="line">/dev/mmcblk0p6   28672  159743  131072    boot</div><div class="line">/dev/mmcblk0p7  159744  684031  524288    reserved</div><div class="line">/dev/mmcblk0p8  684032 1208319  524288    cache</div><div class="line">/dev/mmcblk0p9 1208320 7818182656         system</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/etesting/tags/HiKey/" rel="tag"># HiKey</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/etesting/Estuary/Documents/Readme.4HiKey/" rel="next" title="Readme.4HiKey.md">
+                <i class="fa fa-chevron-left"></i> Readme.4HiKey.md
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/etesting/Estuary/Documents/Introduction_for_Docker/" rel="prev" title="Introduction_for_Docker">
+                Introduction_for_Docker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="Estuary/Documents/Deploy_Manual.4HiKey/"
+     data-title="Deploy_Manual.4HiKey.md"
+     data-content=""
+     data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4HiKey/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Estuary/Documents/Deploy_Manual.4HiKey/"
+           data-title="Deploy_Manual.4HiKey.md" data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4HiKey/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/etesting/images/avatar.png"
+               alt="Estuary" />
+          <p class="site-author-name" itemprop="name">Estuary</p>
+          <p class="site-description motion-element" itemprop="description">Testing cases</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/etesting/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/etesting/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/etesting/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jarsonfang/etesting/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://open-estuary.org/" target="_blank" title="Estuary.org">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Estuary.org
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/open-estuary/" target="_blank" title="Estuary.github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Estuary.github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/etesting/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tldp.org/LDP/abs/html/" title="ABS" target="_blank">ABS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://git-scm.com/book/zh/" title="ProGit" target="_blank">ProGit</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://guides.github.com/features/mastering-markdown/" title="Mastering-Markdown" target="_blank">Mastering-Markdown</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cirosantilli.com/markdown-style-guide/" title="Markdown-Style-Guide" target="_blank">Markdown-Style-Guide</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation"><span class="nav-number">2.</span> <span class="nav-text">Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hardware-Connect"><span class="nav-number">2.1.</span> <span class="nav-text">Hardware Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC-Environment"><span class="nav-number">2.2.</span> <span class="nav-text">PC Environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-File"><span class="nav-number">2.3.</span> <span class="nav-text">Image File</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Upgrade-Systerm"><span class="nav-number">3.</span> <span class="nav-text">Upgrade Systerm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flash-Uefi-image-to-eMMC"><span class="nav-number">3.1.</span> <span class="nav-text">Flash Uefi image to eMMC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flash-Boot-image-to-eMMC"><span class="nav-number">3.2.</span> <span class="nav-text">Flash Boot image to eMMC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-Distrubition"><span class="nav-number">3.3.</span> <span class="nav-text"> Update Distrubition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SD-card-placing-this-ubuntu-systerm"><span class="nav-number">3.3.1.</span> <span class="nav-text">SD card placing this ubuntu systerm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eMMC-on-HiKey-placing-this-ubuntu-systerm"><span class="nav-number">3.3.2.</span> <span class="nav-text">eMMC on HiKey placing this ubuntu systerm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appendix-1-Partition-Information"><span class="nav-number">3.4.</span> <span class="nav-text">Appendix 1: Partition Information</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Estuary</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/etesting/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/etesting/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/etesting/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/etesting/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/etesting/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/etesting/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/etesting/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"estuary"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/etesting/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/etesting/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/etesting/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/etesting/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/etesting/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
