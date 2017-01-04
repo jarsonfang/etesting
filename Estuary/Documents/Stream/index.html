@@ -78,18 +78,33 @@
 
 
 <meta name="description" content="Denpendency:
-1234567891011  yum install numactl  ```  - **Source code:**  *Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/*- **Build:**  ```bash  cd lmbench-3.0-a9  sed -i &amp;apos;s/--s">
+1yum install numactl
+
+Source code:Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/
+
+Build:
+12345cd lmbench-3.0-a9sed -i &apos;s/--static//&apos; src/Makefile # 去掉src/Makefile里面的--st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stream">
 <meta property="og:url" content="http://jarsonfang.github.io/Estuary/Documents/Stream/index.html">
 <meta property="og:site_name" content="Etesting">
 <meta property="og:description" content="Denpendency:
-1234567891011  yum install numactl  ```  - **Source code:**  *Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/*- **Build:**  ```bash  cd lmbench-3.0-a9  sed -i &amp;apos;s/--s">
-<meta property="og:updated_time" content="2017-01-04T01:26:34.817Z">
+1yum install numactl
+
+Source code:Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/
+
+Build:
+12345cd lmbench-3.0-a9sed -i &apos;s/--static//&apos; src/Makefile # 去掉src/Makefile里面的--st">
+<meta property="og:updated_time" content="2017-01-04T01:34:27.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stream">
 <meta name="twitter:description" content="Denpendency:
-1234567891011  yum install numactl  ```  - **Source code:**  *Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/*- **Build:**  ```bash  cd lmbench-3.0-a9  sed -i &amp;apos;s/--s">
+1yum install numactl
+
+Source code:Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/
+
+Build:
+12345cd lmbench-3.0-a9sed -i &apos;s/--static//&apos; src/Makefile # 去掉src/Makefile里面的--st">
 
 
 
@@ -389,7 +404,12 @@
       
         <ul>
 <li><p><strong>Denpendency:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  yum install numactl</div><div class="line">  ```  </div><div class="line">- **Source code:**</div><div class="line">  *Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/*</div><div class="line">- **Build:**</div><div class="line">  ```bash</div><div class="line">  cd lmbench-3.0-a9</div><div class="line">  sed -i &apos;s/--static//&apos; src/Makefile # 去掉src/Makefile里面的--static</div><div class="line">  sed -i &apos;s/-O/-O2/g&apos; src/Makefile # 使用 O2 级别优化</div><div class="line">  make OS=lmbench</div><div class="line">  numactl -H  # 查看node信息,然后修改下面对应参数</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install numactl</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Source code:</strong><br><em>Openlab:192.168.1.101:/home/chenzhihui/Ali-test/lmbench-3.0-a9/</em></p>
+</li>
+<li><p><strong>Build:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> lmbench-3.0<span class="_">-a</span>9</div><div class="line">sed -i <span class="string">'s/--static//'</span> src/Makefile <span class="comment"># 去掉src/Makefile里面的--static</span></div><div class="line">sed -i <span class="string">'s/-O/-O2/g'</span> src/Makefile <span class="comment"># 使用 O2 级别优化</span></div><div class="line">make OS=lmbench</div><div class="line">numactl -H  <span class="comment"># 查看node信息,然后修改下面对应参数</span></div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Test:</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ./bin/lmbench/</div><div class="line"><span class="keyword">for</span>((i=0;i&lt;10;i++));<span class="keyword">do</span></div><div class="line"> numactl --cpunodebind=0,1,2,3 --localalloc ./stream -v 1 -M 200M -P 64</div><div class="line"> numactl --cpunodebind=0,1,2,3 --localalloc ./stream -v 2 -M 200M -P 64</div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>

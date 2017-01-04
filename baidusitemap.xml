@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Stream/</loc>
+    <lastmod>2017-01-04T01:34:27.403Z</lastmod>
+    <data>
+        <display>
+        <title>Stream</title>
+        <pubTime>2016-12-27T09:30:31.000Z</pubTime>
+        
+        <tag>D05</tag>
+         
+        <tag>CentOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="http://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Document/Redis/</loc>
     <lastmod>2017-01-04T01:26:34.817Z</lastmod>
     <data>
@@ -22,31 +47,6 @@
           
              
               <breadCrumb title="Document" url="http://jarsonfang.github.io/etesting/categories/Estuary/Document/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/SPECfp/</loc>
-    <lastmod>2017-01-04T01:26:34.817Z</lastmod>
-    <data>
-        <display>
-        <title>SPECfp</title>
-        <pubTime>2016-12-29T06:23:48.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-        <tag>CentOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="http://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="http://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
           
         </display>
     </data>
@@ -79,12 +79,12 @@
 
     
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Stream/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/SPECfp/</loc>
     <lastmod>2017-01-04T01:26:34.817Z</lastmod>
     <data>
         <display>
-        <title>Stream</title>
-        <pubTime>2016-12-27T09:30:31.000Z</pubTime>
+        <title>SPECfp</title>
+        <pubTime>2016-12-29T06:23:48.000Z</pubTime>
         
         <tag>D05</tag>
          
