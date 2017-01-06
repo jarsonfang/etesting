@@ -16,14 +16,7 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
-    
-    <lastmod>2017-01-04T01:26:34.817Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/SPECint/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Qperf/</loc>
     
     <lastmod>2017-01-04T01:26:34.817Z</lastmod>
     
@@ -37,13 +30,6 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Nginx/</loc>
-    
-    <lastmod>2017-01-04T01:26:34.817Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Openblas/</loc>
     
     <lastmod>2017-01-04T01:26:34.817Z</lastmod>
@@ -51,14 +37,28 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Netperf/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/SPECint/</loc>
     
     <lastmod>2017-01-04T01:26:34.817Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Qperf/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Percona/</loc>
+    
+    <lastmod>2017-01-04T01:26:34.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Nginx/</loc>
+    
+    <lastmod>2017-01-04T01:26:34.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
     
     <lastmod>2017-01-04T01:26:34.817Z</lastmod>
     
@@ -72,9 +72,30 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Percona/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Netperf/</loc>
     
     <lastmod>2017-01-04T01:26:34.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Hibench/</loc>
+    
+    <lastmod>2017-01-04T01:26:34.813Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/CoreMark/</loc>
+    
+    <lastmod>2017-01-04T01:26:34.813Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Dhrystone/</loc>
+    
+    <lastmod>2017-01-04T01:26:34.813Z</lastmod>
     
   </url>
   
@@ -93,42 +114,7 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Hibench/</loc>
-    
-    <lastmod>2017-01-04T01:26:34.813Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Dhrystone/</loc>
-    
-    <lastmod>2017-01-04T01:26:34.813Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/CoreMark/</loc>
-    
-    <lastmod>2017-01-04T01:26:34.813Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/UEFI_Manual.4D02/</loc>
-    
-    <lastmod>2016-12-27T08:35:23.378Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Toolchains_Guide.4All/</loc>
-    
-    <lastmod>2016-12-27T08:35:23.378Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Setup_PXE_Env_on_Host.4All/</loc>
     
     <lastmod>2016-12-27T08:35:23.378Z</lastmod>
     
@@ -149,14 +135,28 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_Docker/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Setup_PXE_Env_on_Host.4All/</loc>
+    
+    <lastmod>2016-12-27T08:35:23.378Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Toolchains_Guide.4All/</loc>
+    
+    <lastmod>2016-12-27T08:35:23.378Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D05/</loc>
     
     <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Supported.4All/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D02/</loc>
     
     <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
@@ -191,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D02/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_Docker/</loc>
     
     <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/</loc>
     
     <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
@@ -212,28 +212,7 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D02/</loc>
-    
-    <lastmod>2016-12-27T08:35:23.374Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Distributions_Guide.4All/</loc>
-    
-    <lastmod>2016-12-27T08:35:23.374Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D05/</loc>
-    
-    <lastmod>2016-12-27T08:35:23.374Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4HiKey/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</loc>
     
     <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
@@ -254,14 +233,14 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Supported.4All/</loc>
     
     <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Caliper_Manual.4All/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Distributions_Guide.4All/</loc>
     
     <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
@@ -275,14 +254,28 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Caliper_Manual.4All/</loc>
     
-    <lastmod>2016-12-26T11:19:06.656Z</lastmod>
+    <lastmod>2016-12-27T08:35:23.374Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4HiKey/</loc>
+    
+    <lastmod>2016-12-27T08:35:23.374Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D02/</loc>
+    
+    <lastmod>2016-12-27T08:35:23.374Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D03/</loc>
     
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     
@@ -303,14 +296,21 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D03/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Grub_Manual.4All/</loc>
     
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Estuary/Grub_Manual.4All/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
+    
+    <lastmod>2016-12-26T11:19:06.656Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
     
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     
@@ -352,21 +352,14 @@
   </url>
   
   <url>
+    <loc>http://jarsonfang.github.io/etesting/Tools/sed-awk/sed-awk-overview/</loc>
+    
+    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
-    
-    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/VCS/git-save-empty-dir/</loc>
-    
-    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-asset-folders/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
@@ -401,14 +394,14 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/about/index.html</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/VCS/git-save-empty-dir/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/tags/index.html</loc>
+    <loc>http://jarsonfang.github.io/about/index.html</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
@@ -422,14 +415,7 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/categories/index.html</loc>
-    
-    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/sed-awk/sed-awk-overview/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/Hexo/hexo-asset-folders/</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
@@ -450,9 +436,16 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/sed-awk/awk/</loc>
+    <loc>http://jarsonfang.github.io/categories/index.html</loc>
     
-    <lastmod>2016-12-14T04:03:36.406Z</lastmod>
+    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/tags/index.html</loc>
+    
+    <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
   </url>
   
@@ -464,7 +457,7 @@
   </url>
   
   <url>
-    <loc>http://jarsonfang.github.io/etesting/Tools/VCS/git-in-common/</loc>
+    <loc>http://jarsonfang.github.io/etesting/Tools/sed-awk/awk/</loc>
     
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     
@@ -472,6 +465,13 @@
   
   <url>
     <loc>http://jarsonfang.github.io/etesting/Tools/VCS/everyday-git/</loc>
+    
+    <lastmod>2016-12-14T04:03:36.406Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarsonfang.github.io/etesting/Tools/VCS/git-in-common/</loc>
     
     <lastmod>2016-12-14T04:03:36.406Z</lastmod>
     
