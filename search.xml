@@ -5639,7 +5639,7 @@
     
     <entry>
       <title><![CDATA[FTP on Centos 7]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Server/ftp-on-centos/</url>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/</url>
       <content type="html"><![CDATA[<p>In this article, we will learn how to configure FTP server on CentOs 7 using <code>vsftpd</code>. <code>vsftpd</code> (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.</p>
 <h2 id="Install-vsftpd"><a href="#Install-vsftpd" class="headerlink" title="Install vsftpd"></a>Install vsftpd</h2><p>All commands should be run with <code>root</code> user. Run the following command in terminal to install <code>vsftpd</code> package:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install vsftpd ftp -y</div></pre></td></tr></table></figure></p>
 <h2 id="Configure-vsftpd"><a href="#Configure-vsftpd" class="headerlink" title="Configure vsftpd"></a>Configure vsftpd</h2><p>We needed to edit the configuration file <code>/etc/vsftpd/vsftpd.conf</code> for securing the FTP server since, by default it will allow anonymous users to login and use the server.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp /etc/vsftpd/vsftpd.conf&#123;,.bak&#125;</div><div class="line">vi /etc/vsftpd/vsftpd.conf</div></pre></td></tr></table></figure></p>
@@ -5663,7 +5663,7 @@
     
     <entry>
       <title><![CDATA[Samba on Centos 7]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Server/samba-on-centos/</url>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/samba-on-centos/</url>
       <content type="html"><![CDATA[<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install samba samba-client</div></pre></td></tr></table></figure>
 <h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>Now to configure samba, make the backup of original file as <code>/etc/samba/smb.conf.bak</code> before editing the file <code>/etc/samba/smb.conf</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/samba/smb.conf&#123;,.bak&#125;</div></pre></td></tr></table></figure>

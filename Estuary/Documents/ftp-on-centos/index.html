@@ -61,7 +61,7 @@
 <link href="/etesting/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Centos,Samba," />
+  <meta name="keywords" content="Centos,FTP," />
 
 
 
@@ -77,22 +77,19 @@
 
 
 
-<meta name="description" content="Installation1yum install samba samba-client
-ConfigurationNow to configure samba, make the backup of original file as /etc/samba/smb.conf.bak before editing the file /etc/samba/smb.conf.
-1cp /etc/samba">
+<meta name="description" content="In this article, we will learn how to configure FTP server on CentOs 7 using vsftpd. vsftpd (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.
+Install">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Samba on Centos 7">
-<meta property="og:url" content="http://jarsonfang.github.io/Estuary/Server/samba-on-centos/index.html">
+<meta property="og:title" content="FTP on Centos 7">
+<meta property="og:url" content="http://jarsonfang.github.io/Estuary/Documents/ftp-on-centos/index.html">
 <meta property="og:site_name" content="Etesting">
-<meta property="og:description" content="Installation1yum install samba samba-client
-ConfigurationNow to configure samba, make the backup of original file as /etc/samba/smb.conf.bak before editing the file /etc/samba/smb.conf.
-1cp /etc/samba">
-<meta property="og:updated_time" content="2016-12-14T04:03:36.410Z">
+<meta property="og:description" content="In this article, we will learn how to configure FTP server on CentOs 7 using vsftpd. vsftpd (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.
+Install">
+<meta property="og:updated_time" content="2017-01-09T03:51:42.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Samba on Centos 7">
-<meta name="twitter:description" content="Installation1yum install samba samba-client
-ConfigurationNow to configure samba, make the backup of original file as /etc/samba/smb.conf.bak before editing the file /etc/samba/smb.conf.
-1cp /etc/samba">
+<meta name="twitter:title" content="FTP on Centos 7">
+<meta name="twitter:description" content="In this article, we will learn how to configure FTP server on CentOs 7 using vsftpd. vsftpd (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.
+Install">
 
 
 
@@ -120,13 +117,13 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
 
 
 
-  <link rel="canonical" href="http://jarsonfang.github.io/Estuary/Server/samba-on-centos/"/>
+  <link rel="canonical" href="http://jarsonfang.github.io/Estuary/Documents/ftp-on-centos/"/>
 
 
 
 
 
-  <title> Samba on Centos 7 | Etesting </title>
+  <title> FTP on Centos 7 | Etesting </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +269,7 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jarsonfang.github.io/etesting/Estuary/Server/samba-on-centos/">
+  <link itemprop="mainEntityOfPage" href="http://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Estuary">
@@ -296,7 +293,7 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
             
             
               
-                Samba on Centos 7
+                FTP on Centos 7
               
             
           </h1>
@@ -311,7 +308,7 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-20T14:16:21+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-20T14:46:04+08:00">
                 2016-09-20
               </time>
             
@@ -345,8 +342,8 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/etesting/categories/Estuary/Server/" itemprop="url" rel="index">
-                    <span itemprop="name">Server</span>
+                  <a href="/etesting/categories/Estuary/Documents/" itemprop="url" rel="index">
+                    <span itemprop="name">Documents</span>
                   </a>
                 </span>
 
@@ -363,8 +360,8 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/etesting/Estuary/Server/samba-on-centos/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Server/samba-on-centos/" itemprop="commentCount"></span>
+                <a href="/etesting/Estuary/Documents/ftp-on-centos/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Documents/ftp-on-centos/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,21 +387,24 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
       
 
       
-        <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install samba samba-client</div></pre></td></tr></table></figure>
-<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>Now to configure samba, make the backup of original file as <code>/etc/samba/smb.conf.bak</code> before editing the file <code>/etc/samba/smb.conf</code>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/samba/smb.conf&#123;,.bak&#125;</div></pre></td></tr></table></figure>
-<h3 id="Anonymous-samba-sharing"><a href="#Anonymous-samba-sharing" class="headerlink" title="Anonymous samba sharing"></a>Anonymous samba sharing</h3><p>Further give the entries like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt; EOF &gt;&gt; /etc/samba/smb.conf</div><div class="line">[share]</div><div class="line">    comment = Anonymous share</div><div class="line">    path = /srv/samba/share</div><div class="line">    public = yes</div><div class="line">    browsable =yes</div><div class="line">    writable = yes</div><div class="line">    guest ok = yes</div><div class="line">    <span class="built_in">read</span> only = no</div><div class="line">EOF</div></pre></td></tr></table></figure></p>
-<p>Create the folder with the name <code>share</code> in the <code>/srv/samba</code> and give the permissions like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir -p /srv/samba/share</div><div class="line"><span class="built_in">cd</span> /srv/samba</div><div class="line">chmod -R 0755 share/</div><div class="line">chown -R nobody:nobody share/</div></pre></td></tr></table></figure></p>
-<p>Restart samba service:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl <span class="built_in">enable</span> smb.service</div><div class="line">systemctl restart smb.service</div></pre></td></tr></table></figure></p>
-<p>Further, CentOS 7.0 Firewall-cmd will block the samba access, to get rid of that we will run:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --zone=public --add-service=samba</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure></p>
-<h3 id="Secured-samba-server"><a href="#Secured-samba-server" class="headerlink" title="Secured samba server"></a>Secured samba server</h3><p>Therefore, create a group <code>smbgrp</code> &amp; user <code>smb</code> to access the samba server with proper authentication.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">groupadd smbgrp</div><div class="line">useradd smb -G smbgrp</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@cent-est samba]<span class="comment"># smbpasswd -a smb</span></div><div class="line">New SMB password:&lt;--yoursambapassword</div><div class="line">Retype new SMB password:&lt;--yoursambapassword</div><div class="line">Added user smb.</div><div class="line">[root@cent-est samba]<span class="comment">#</span></div></pre></td></tr></table></figure>
-<p>Now create the folder with the name <code>secured</code> in the <code>/samba</code> folder and give permissions like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir -p /srv/samba/secured</div><div class="line"><span class="built_in">cd</span> /srv/samba</div><div class="line">chmod -R 0777 secured/</div><div class="line">chown -R smb:smbgrp secured/</div></pre></td></tr></table></figure></p>
-<p>Again edit the configuration file as:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt; EOF &gt;&gt; /etc/samba/smb.conf</div><div class="line">[secured]</div><div class="line">    comment = Secured share</div><div class="line">    path = /srv/samba/secured</div><div class="line">    valid users = @smbgrp</div><div class="line">    guest ok = no</div><div class="line">    writable = yes</div><div class="line">    browsable = yes</div><div class="line">EOF</div></pre></td></tr></table></figure></p>
-<p>Restart samba service:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart smb.service</div></pre></td></tr></table></figure></p>
-<h3 id="Check-the-settings-as-follows"><a href="#Check-the-settings-as-follows" class="headerlink" title="Check the settings as follows:"></a>Check the settings as follows:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">[root@cent-est ~]<span class="comment"># testparm</span></div><div class="line">Load smb config files from /etc/samba/smb.conf</div><div class="line">rlimit_max: increasing rlimit_max (1024) to minimum Windows <span class="built_in">limit</span> (16384)</div><div class="line">Processing section <span class="string">"[homes]"</span></div><div class="line">Processing section <span class="string">"[printers]"</span></div><div class="line">Processing section <span class="string">"[share]"</span></div><div class="line">Processing section <span class="string">"[secured]"</span></div><div class="line">Loaded services file OK.</div><div class="line">Server role: ROLE_STANDALONE</div><div class="line"></div><div class="line">Press enter to see a dump of your service definitions</div><div class="line"></div><div class="line"><span class="comment"># Global parameters</span></div><div class="line">[global]</div><div class="line">        workgroup = MYGROUP</div><div class="line">        server string = Samba Server Version %v</div><div class="line">        security = USER</div><div class="line">        <span class="built_in">log</span> file = /var/<span class="built_in">log</span>/samba/log.%m</div><div class="line">        max <span class="built_in">log</span> size = 50</div><div class="line">        idmap config * : backend = tdb</div><div class="line">        cups options = raw</div><div class="line"></div><div class="line"></div><div class="line">[homes]</div><div class="line">        comment = Home Directories</div><div class="line">        <span class="built_in">read</span> only = No</div><div class="line">        browseable = No</div><div class="line"></div><div class="line"></div><div class="line">[printers]</div><div class="line">        comment = All Printers</div><div class="line">        path = /var/spool/samba</div><div class="line">        printable = Yes</div><div class="line">        <span class="built_in">print</span> ok = Yes</div><div class="line">        browseable = No</div><div class="line"></div><div class="line"></div><div class="line">[share]</div><div class="line">        comment = Anonymous share</div><div class="line">        path = /srv/samba/share</div><div class="line">        <span class="built_in">read</span> only = No</div><div class="line">        guest ok = Yes</div><div class="line"></div><div class="line"></div><div class="line">[secured]</div><div class="line">        comment = Secured share</div><div class="line">        path = /srv/samba/secured</div><div class="line">        valid users = @smbgrp</div><div class="line">        <span class="built_in">read</span> only = No</div><div class="line">[root@cent-est ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
-<h2 id="Test-with-smbclient"><a href="#Test-with-smbclient" class="headerlink" title="Test with smbclient"></a>Test with smbclient</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">[root@cent-est ~]# smbclient //localhost/share -U user</div><div class="line">Enter user&apos;s password:&lt;--Enter</div><div class="line">Anonymous login successful</div><div class="line">Domain=[MYGROUP] OS=[Windows 6.1] Server=[Samba 4.2.10]</div><div class="line">smb: \&gt; ls</div><div class="line">  .                                   D        0  Thu Sep 29 15:06:51 2016</div><div class="line">  ..                                  D        0  Thu Sep 29 14:25:32 2016</div><div class="line">  hello.txt                           N        0  Thu Sep 29 15:06:51 2016</div><div class="line"></div><div class="line">                51475068 blocks of size 1024. 37599412 blocks available</div><div class="line">smb: \&gt; exit</div><div class="line">[root@cent-est ~]#</div><div class="line">[root@cent-est ~]# smbclient //localhost/secured -U user</div><div class="line">Enter user&apos;s password:&lt;--Enter</div><div class="line">Anonymous login successful</div><div class="line">Domain=[MYGROUP] OS=[Windows 6.1] Server=[Samba 4.2.10]</div><div class="line">tree connect failed: NT_STATUS_ACCESS_DENIED</div><div class="line">[root@cent-est ~]#</div><div class="line">[root@cent-est ~]# smbclient //localhost/secured -U smb</div><div class="line">Enter smb&apos;s password:</div><div class="line">Domain=[MYGROUP] OS=[Windows 6.1] Server=[Samba 4.2.10]</div><div class="line">smb: \&gt; ls</div><div class="line">  .                                   D        0  Thu Sep 29 15:06:42 2016</div><div class="line">  ..                                  D        0  Thu Sep 29 14:25:32 2016</div><div class="line">  file.txt                            N        0  Thu Sep 29 15:06:42 2016</div><div class="line"></div><div class="line">                51475068 blocks of size 1024. 37599408 blocks available</div><div class="line">smb: \&gt; exit</div><div class="line">[root@cent-est ~]#</div></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1]: <a href="https://www.howtoforge.com/samba-server-installation-and-configuration-on-centos-7" target="_blank" rel="external">https://www.howtoforge.com/samba-server-installation-and-configuration-on-centos-7</a><br>[2]: <a href="https://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/" target="_blank" rel="external">https://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/</a></p>
+        <p>In this article, we will learn how to configure FTP server on CentOs 7 using <code>vsftpd</code>. <code>vsftpd</code> (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.</p>
+<h2 id="Install-vsftpd"><a href="#Install-vsftpd" class="headerlink" title="Install vsftpd"></a>Install vsftpd</h2><p>All commands should be run with <code>root</code> user. Run the following command in terminal to install <code>vsftpd</code> package:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install vsftpd ftp -y</div></pre></td></tr></table></figure></p>
+<h2 id="Configure-vsftpd"><a href="#Configure-vsftpd" class="headerlink" title="Configure vsftpd"></a>Configure vsftpd</h2><p>We needed to edit the configuration file <code>/etc/vsftpd/vsftpd.conf</code> for securing the FTP server since, by default it will allow anonymous users to login and use the server.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp /etc/vsftpd/vsftpd.conf&#123;,.bak&#125;</div><div class="line">vi /etc/vsftpd/vsftpd.conf</div></pre></td></tr></table></figure></p>
+<p>We have to disallow anonymous, unidentified users to access files via FTP; change the anonymous_enable setting to NO:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">anonymous_enable=NO</div></pre></td></tr></table></figure></p>
+<p>Allow local users to login by changing the local_enable setting to YES:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">local_enable=YES</div></pre></td></tr></table></figure></p>
+<p>If you want to allow the local users to be able to write to a directory, then change the write_enable setting in the configuration file to YES:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">write_enable=YES</div></pre></td></tr></table></figure></p>
+<p>Local users will be ‘chroot jailed’ and they will be denied access the local users to any other part of the server; change the chroot_local_user setting in the configuration file to YES:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chroot_local_user=YES</div></pre></td></tr></table></figure></p>
+<p>Below is the simple configuration file for your reference:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">anonymous_enable=NO</div><div class="line">local_enable=YES</div><div class="line">write_enable=YES</div><div class="line">local_umask=022</div><div class="line">chroot_local_user=YES</div><div class="line">dirmessage_enable=YES</div><div class="line">xferlog_enable=YES</div><div class="line">connect_from_port_20=YES</div><div class="line">xferlog_std_format=YES</div><div class="line">listen=YES</div><div class="line">#listen_ipv6=YES</div><div class="line">pam_service_name=vsftpd</div><div class="line">userlist_enable=YES</div><div class="line">tcp_wrappers=YES</div></pre></td></tr></table></figure></p>
+<h2 id="Enable-and-restart-the-vsftpd-service"><a href="#Enable-and-restart-the-vsftpd-service" class="headerlink" title="Enable and restart  the vsftpd service"></a>Enable and restart  the vsftpd service</h2><p>We needed to restart the <code>vsftpd</code> services so that the configuration changes has applied.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart vsftpd</div></pre></td></tr></table></figure></p>
+<p>We will set the <code>vsftpd</code> service to start at boot time, below is the command to enable the <code>vsftpd</code> to start.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl <span class="built_in">enable</span> vsftpd</div></pre></td></tr></table></figure></p>
+<h2 id="Allowing-the-vsftpd-Through-the-Firewall"><a href="#Allowing-the-vsftpd-Through-the-Firewall" class="headerlink" title="Allowing the vsftpd Through the Firewall"></a>Allowing the vsftpd Through the Firewall</h2><p>Allow the ftp service and port <strong>21</strong> via firewall.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --add-port=21/tcp</div><div class="line">firewall-cmd --permanent --add-service=ftp</div></pre></td></tr></table></figure></p>
+<p>Restart firewall:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure></p>
+<h2 id="Create-FTP-users"><a href="#Create-FTP-users" class="headerlink" title="Create FTP users"></a>Create FTP users</h2><p>By default, root user is not allowed to login to ftp server for security purpose. So, let us create a normal testing user called “<code>ftpuser</code>” with password “centos”.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">useradd ftpuser</div><div class="line">passwd ftpuser</div></pre></td></tr></table></figure></p>
+<h2 id="Connecting-to-FTP-server"><a href="#Connecting-to-FTP-server" class="headerlink" title="Connecting to FTP server"></a>Connecting to FTP server</h2><p>Now, try to connect to FTP server itself with user “<code>ftpuser</code>”:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ftp 192.168.3.157</div></pre></td></tr></table></figure></p>
+<p>Enter the ftp user name and password.<br>Note: change <code>192.168.3.157</code> with your own FTP server address.</p>
+<p>Sample Output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">onnected to 192.168.3.157.</div><div class="line">220 (vsFTPd 3.0.2)</div><div class="line">Name (192.168.3.157:jarson): ftpuser</div><div class="line">331 Please specify the password.</div><div class="line">Password:</div><div class="line">230 Login successful.</div><div class="line">Remote system <span class="built_in">type</span> is UNIX.</div><div class="line">Using binary mode to transfer files.</div><div class="line">ftp&gt;</div></pre></td></tr></table></figure></p>
+<p>Congratulations! you will be able to login to FTP server without any problems.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1]: <a href="http://www.tutorialspoint.com/articles/how-to-install-and-configuration-ftp-server-in-centos-7" target="_blank" rel="external">http://www.tutorialspoint.com/articles/how-to-install-and-configuration-ftp-server-in-centos-7</a><br>[2]: <a href="https://www.unixmen.com/install-configure-ftp-server-centos-7/" target="_blank" rel="external">https://www.unixmen.com/install-configure-ftp-server-centos-7/</a></p>
 
       
     </div>
@@ -430,7 +430,7 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
           
             <a href="/etesting/tags/Centos/" rel="tag"># Centos</a>
           
-            <a href="/etesting/tags/Samba/" rel="tag"># Samba</a>
+            <a href="/etesting/tags/FTP/" rel="tag"># FTP</a>
           
         </div>
       
@@ -439,8 +439,8 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/etesting/Tools/Hexo/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/etesting/Estuary/Documents/samba-on-centos/" rel="next" title="Samba on Centos 7">
+                <i class="fa fa-chevron-left"></i> Samba on Centos 7
               </a>
             
           </div>
@@ -449,8 +449,8 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/etesting/Estuary/Server/ftp-on-centos/" rel="prev" title="FTP on Centos 7">
-                FTP on Centos 7 <i class="fa fa-chevron-right"></i>
+              <a href="/etesting/Tools/VCS/git-in-common/" rel="prev" title="git常用命令">
+                git常用命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,10 +466,10 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="Estuary/Server/samba-on-centos/"
-     data-title="Samba on Centos 7"
+        <div class="ds-share flat" data-thread-key="Estuary/Documents/ftp-on-centos/"
+     data-title="FTP on Centos 7"
      data-content=""
-     data-url="http://jarsonfang.github.io/etesting/Estuary/Server/samba-on-centos/">
+     data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -499,8 +499,8 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="Estuary/Server/samba-on-centos/"
-           data-title="Samba on Centos 7" data-url="http://jarsonfang.github.io/etesting/Estuary/Server/samba-on-centos/">
+      <div class="ds-thread" data-thread-key="Estuary/Documents/ftp-on-centos/"
+           data-title="FTP on Centos 7" data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/">
       </div>
     
   </div>
@@ -669,7 +669,7 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">2.</span> <span class="nav-text">Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Anonymous-samba-sharing"><span class="nav-number">2.1.</span> <span class="nav-text">Anonymous samba sharing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Secured-samba-server"><span class="nav-number">2.2.</span> <span class="nav-text">Secured samba server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-the-settings-as-follows"><span class="nav-number">2.3.</span> <span class="nav-text">Check the settings as follows:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-with-smbclient"><span class="nav-number">3.</span> <span class="nav-text">Test with smbclient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-vsftpd"><span class="nav-number">1.</span> <span class="nav-text">Install vsftpd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-vsftpd"><span class="nav-number">2.</span> <span class="nav-text">Configure vsftpd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enable-and-restart-the-vsftpd-service"><span class="nav-number">3.</span> <span class="nav-text">Enable and restart  the vsftpd service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Allowing-the-vsftpd-Through-the-Firewall"><span class="nav-number">4.</span> <span class="nav-text">Allowing the vsftpd Through the Firewall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-FTP-users"><span class="nav-number">5.</span> <span class="nav-text">Create FTP users</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connecting-to-FTP-server"><span class="nav-number">6.</span> <span class="nav-text">Connecting to FTP server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
