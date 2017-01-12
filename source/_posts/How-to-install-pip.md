@@ -2,7 +2,7 @@
 title: How to install pip
 date: 2016-12-22 11:46:05
 tags:
-  - Centos
+  - CentOS
   - Ubuntu
 categories:
   - Estuary

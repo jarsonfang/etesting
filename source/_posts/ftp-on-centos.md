@@ -3,7 +3,7 @@ title: FTP on Centos 7
 date: 2016-09-20 14:46:04
 tags:
   - FTP
-  - Centos
+  - CentOS
 categories:
   - Estuary
   - Documents
