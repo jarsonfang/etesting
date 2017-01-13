@@ -407,6 +407,229 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Quick_Deployment.4D03]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Quick Deploy System</a><ul>
+<li><a href="#2.1">Deploy system via USB install Disk</a></li>
+<li><a href="#2.2">Deploy system via DVD/BMC-website</a></li>
+<li><a href="#2.3">Deploy system via PXE</a></li>
+</ul>
+</li>
+<li><a href="#3">View serial info via VGA/ipmitool/BMC-website</a><a id="more"></a>
+</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Above all, prepare hardware boards with SCSI disk and download Estuary source code from GitHub.<br>To learn more about how to do them, please visit this web site: <a href="http://open-estuary.org/getting-started/" target="_blank" rel="external">http://open-estuary.org/getting-started/</a>.<br>If you just want to quickly try it the binary files, please refer to our binary Download Page to get the latest binaries and documentations for each corresponding boards.</p>
+<p>Accessing from China: <a href="ftp://117.78.41.188" target="_blank" rel="external">ftp://117.78.41.188</a></p>
+<p>Accessing from outside-China: <a href="http://download.open-estuary.org/" target="_blank" rel="external">http://download.open-estuary.org/</a></p>
+<h2 id="Quick-Deploy-System"><a href="#Quick-Deploy-System" class="headerlink" title="Quick Deploy System"></a><a name="2">Quick Deploy System</a></h2><h3 id="Deploy-system-via-USB-install-Disk"><a href="#Deploy-system-via-USB-install-Disk" class="headerlink" title="Deploy system via USB install Disk"></a><a name="2.1">Deploy system via USB install Disk</a></h3><ol>
+<li><p>Connect usb disk to your pc to prepare usb install disk. We provide two methods to make USB install disk<br><strong>Method 1:</strong>  </p>
+<ul>
+<li>Modify <code>estuary/estuarycfg.json</code>. Make sure the platform, distros are all right.</li>
+<li>Change the value of “install” to “yes” in object “setup” for usb and the value “device” to your USB install disk.<br>(Notice: if the specified usb device does not exist, the first usb device will be selected by default.)</li>
+<li>Use <code>build.sh</code> to create the usb install disk.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code></li>
+</ul>
+<p><strong>Method 2:</strong>  </p>
+<ul>
+<li>Download mkdeploydisk.sh from website:<a href="ftp://117.78.41.188/releases/\&lt;version\" target="_blank" rel="external">ftp://117.78.41.188/releases/\&lt;version\</a>&gt; or <a href="http://download.open-estuary.org/releases/\&lt;version\" target="_blank" rel="external">http://download.open-estuary.org/releases/\&lt;version\</a>&gt;</li>
+<li>Execute the following command with sudo permission to make usb installing disk <code>sudo ./mkdeploydisk.sh</code>. Please specify your disk with <code>--target=/dev/sdx</code> if more than one USB disk connected to your computer. If not specified, the first detected usb device will be used. </li>
+<li>According the prompt to make usb install disk.</li>
+</ul>
+</li>
+<li>After you have made usb install disk, please connect the usb to target board.</li>
+<li>Reboot the board.</li>
+<li>Select “EFI USB Device” at UEFI menu.</li>
+<li>According to the prompt to deploy the system.</li>
+<li>Reboot board to enter the system you deployed by default.</li>
+</ol>
+<h3 id="Deploy-system-via-DVD-BMC-website"><a href="#Deploy-system-via-DVD-BMC-website" class="headerlink" title="Deploy system via DVD/BMC-website"></a><a name="2.2">Deploy system via DVD/BMC-website</a></h3><p>Download ISO file from website:<a href="ftp://117.78.41.188/releases/\&lt;version\" target="_blank" rel="external">ftp://117.78.41.188/releases/\&lt;version\</a>&gt; or <a href="http://download.open-estuary.org/releases/\&lt;version\" target="_blank" rel="external">http://download.open-estuary.org/releases/\&lt;version\</a>&gt;<br><strong>Deploy system via DVD</strong></p>
+<ul>
+<li>Burn the iso image file to DVD disk if you use the physical DVD driver.</li>
+<li>Connect the physical DVD driver to the board, plug in the DVD install disk.</li>
+<li>Reboot the board.</li>
+<li>Select the uefi menu to boot from the DVD device.</li>
+<li>According to the prompt to deploy the system.</li>
+<li>Reboot the boards to enter the system you deployed by default.</li>
+</ul>
+<p><strong>Deploy the system via BMC-website</strong></p>
+<ul>
+<li>Login the website of boards’ BMC IP(e.g:<a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a>) with browser(IE browser is suggested to use), The <code>username</code> &amp; <code>password</code> is <code>root</code> &amp; <code>Huawei12#$</code>.</li>
+<li>Click “Remote” on the top of BMC webiste. Select “Remote Virtual Console (Shared Mode)” to enter into KVM interface. Click “Image File” and choose the iso image, then click “Connect” button.</li>
+<li>Click “Config” on the top of BMC website, click “Boot Option” to select “DVD-ROM drive”, then click “Save” button.</li>
+<li>Reboot the board at BMC website</li>
+<li>According to the prompt to deploy the system at BMC website</li>
+<li>Reboot the boards to enter the system you deployed by default.</li>
+</ul>
+<h3 id="Deploy-system-via-PXE"><a href="#Deploy-system-via-PXE" class="headerlink" title="Deploy system via PXE"></a><a name="2.3">Deploy system via PXE</a></h3><ol>
+<li>Connect Ubuntu PC and hardware boards into the same local area network. (Make sure the PC can connect to the internet and no other PXE servers exist.)</li>
+<li>Modify the configuration file of <code>estuary/estuarycfg.json</code> based on your hardware boards. Change the values of mac to physical addresses of the connected network cards on the board. Change the value of “install” to “yes” in object “setup” for PXE.</li>
+<li>Backup files under the tftp root directory if necessary. Use <code>build.sh</code> to build project and setup the PXE server on Ubuntu PC.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code></li>
+<li>After that, connect the hardware boards by using BMC ports.</li>
+<li>Reboot the hardware boards and start the boards from the correct EFI Network.</li>
+<li>Install the system according to prompt. After install finished, the boards will restart automatically.</li>
+<li>Start the boards from “grub” menu of UEFI by default.</li>
+</ol>
+<h3 id="View-serial-info-via-VGA-ipmitool-BMC-website"><a href="#View-serial-info-via-VGA-ipmitool-BMC-website" class="headerlink" title="View serial info via VGA/ipmitool/BMC-website"></a><a name="3">View serial info via VGA/ipmitool/BMC-website</a></h3><p><strong>View serial info via VGA</strong>  </p>
+<ul>
+<li>Connect board’s vga port to your local pc and connect a keyboard to the board’s usb interface.</li>
+<li>Connect usb install disk to your board and deploy the system </li>
+<li>Reboot the system and you can see the serial info via VGA</li>
+</ul>
+<p><strong>View serial info via ipmitool</strong>  </p>
+<ul>
+<li>Install ipmitool on your local pc by “sudo apt-get install ipmitool”</li>
+<li>Use command <code>ipmitool -H &lt;board&#39;s bmc ip&gt; -I lanplus -U root -P Huawei12#$ sol activate</code> to see the booting log</li>
+</ul>
+<p><strong>View serial info via BMC-website</strong>  </p>
+<ul>
+<li>When you load iso from BMC website, you can the the process of booting via BMC website directly</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Grub_Manual.4ALL]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Grub_Manual.4All/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Grub config file</a></li>
+<li><a href="#3">files structure bootable partition</a></li>
+<li><a href="#4">FAQ</a><a id="more"></a>
+</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Grub is a kind of boot loader to load kernel into RAM and run it.</p>
+<p>After rebooting board every time, the UEFI will firstly try to download the grub binary and run it firstly.</p>
+<p>Then grub binary will load the kernel and start it with cmdline and dtb file according to the configurations in <code>grub.cfg</code>.</p>
+<p>They include:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grubaa64.efi    <span class="comment"># The grub binary executable program for ARM64 architecture</span></div><div class="line">grubarm32.efi   <span class="comment"># The grub binary executable program for ARM32 architecture</span></div><div class="line">grub.cfg        <span class="comment"># The grub config file which will be used by grub binary</span></div></pre></td></tr></table></figure></p>
+<p>Where to get them, please refer to Readme.txt.</p>
+<h2 id="Grub-config-file"><a href="#Grub-config-file" class="headerlink" title="Grub config file"></a><a name="2">Grub config file</a></h2><p>You can edit a <code>grub.cfg</code> file to support various boot mode or multi boot partitions, follow is an example.</p>
+<p>You should change them acoording to your real local environment.</p>
+<p><strong><em>Note: D05 only supports booting system via ACPI mode with Centos, Debian, Ubuntu.</em></strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment"># Boot automatically after 0 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"></div><div class="line"><span class="comment"># By default, boot the Euler/Linux</span></div><div class="line"><span class="built_in">set</span> default=d05_centos_nfs_acpi</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D05 minilinux PXE(ACPI)"</span> --id d05_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rootwait rdinit=/init crashkernel=256M@32M </div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D05 Centos NFS(ACPI)"</span> --id d05_centos_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M  root=/dev/nfs rw nfsroot=192.168.1.107:/home/&lt;user&gt;/tftp/rootfs_ubuntu64 ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D05 Centos SATA(ACPI)"</span> --id d05_centos_sata_acpi&#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D03 minilinux PXE(ACPI)"</span> --id d03_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off rootwait crashkernel=256M@32M rdinit=/init console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8  acpi=force</div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu NFS(ACPI)"</span> --id d03_ubuntu_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 acpi=force ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu SATA(ACPI)"</span> --id d03_ubuntu_sata_acpi &#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with mini rootfs</span></div><div class="line">menuentry <span class="string">"HiKey minilinux eMMC"</span> --id HiKey_minilinux_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    initrd /mini-rootfs.cpio.gz</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu eMMC"</span> --id HiKey_Ubuntu_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk0p9 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from SD card with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu SD card"</span> --id HiKey_Ubuntu_SD &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk1p1 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line">menuentry <span class="string">'HiKey Fastboot mode'</span> &#123;</div><div class="line">    chainloader (hd0,gpt6)/fastboot.efi</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Note: You should only select the parts from above sample which are suitable for your real situation.</p>
+<h2 id="files-structure-bootable-partition"><a href="#files-structure-bootable-partition" class="headerlink" title="files structure bootable partition"></a><a name="3">files structure bootable partition</a></h2><p>Normally they are placed into bootable partition as following structure.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sdx-------EFI</div><div class="line">|       |</div><div class="line">|       GRUB2------grubaa64.efi   <span class="comment"># grub binary file only for ARM64 architecture</span></div><div class="line">|</div><div class="line">|-------------grub.cfg            <span class="comment"># grub config file</span></div><div class="line">|</div><div class="line">|-------------Image               <span class="comment"># kernel Image file only for D02 platform</span></div></pre></td></tr></table></figure></p>
+<p>Note: In case of booting by PXE mode:  </p>
+<ol>
+<li>The grub binary and <code>grub.cfg</code> files must be placed in the TFTP root directory.  </li>
+<li>The names and positions of kernel image and dtb must be consistent with the corresponding grub config file.  </li>
+<li>The grub binary name (<code>grubxxx.efi</code>) must be consistent with the “filename” in <code>/etc/dhcp/dhcpd.conf</code>, for more detail, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>  </li>
+<li>If you use D02 board, you should not input DTB in the <code>grub.cfg</code> but you must flash the DTB file into spiflash to avoid a known Mac address duplicate issue.</li>
+</ol>
+<p>You can get more information from the <code>Deploy_Manual.md</code> guide.</p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a><a name="4">FAQ</a></h2><p>If you want to modify <code>grub.cfg</code> command line temporarily. Type “E” key into grub modification menu. You will face problem that the “backspace” key not woking properly. You can fix backspace issue by changing terminal emulator’s configuration.</p>
+<p><strong>For gnome-terminal</strong>: Open “Edit” menu, select “Profile preferences”.<br>In “Compatibility” page, select “Control-H” in “Backspace key generates” listbox.<br><strong>For Xterm</strong>: press Ctrl key and left botton of mouse, and toggle on “Backarrow key (BS/DEL)” in mainMenu.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Readme.4D05]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/</url>
+      <content type="html"><![CDATA[<p>This is the readme file for D05 platform<br><a id="more"></a><br>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for D05, all targets files will be produced. they are:</p>
+<h3 id="UEFI-D05-fd"><a href="#UEFI-D05-fd" class="headerlink" title="UEFI_D05.fd"></a>UEFI_D05.fd</h3><p><strong>description</strong>: UEFI_D05.fd is the UEFI bios for D05 platform.</p>
+<p><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/D05/UEFI_D05.fd</code></p>
+<p><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-uefi.sh --platform=D05 --output=workspace</div></pre></td></tr></table></figure></p>
+<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>:</p>
+<p>grubaa64.efi is used to load kernel image and dtb files from SATA, SAS, USB Disk, or NFS into RAM and start the kernel.</p>
+<p><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code></p>
+<p><strong>source</strong>: <code>&lt;project root&gt;/grub</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):</p>
+<p><code>./estuary/submodules/build-grub.sh --output=./workspace</code>, if your host is not arm architecture, please execute<code>build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</code></p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><p><strong>descriptions</strong>: Image is the kernel executable program.</p>
+<p><strong>target</strong>:</p>
+<p>Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code></p>
+<p><strong>source</strong>: <code>&lt;project root&gt;/kernel</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):</p>
+<p><code>./estuary/submodules/build-kernel.sh --platform=D05 --output=workspace</code>, if your host is not arm architecture, please execute <code>./estuary/submodules/build-kernel.sh --platform=D05 --output=workspace --cross=aarch64-linux-gnu-</code>.</p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
+<p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.</p>
+<p>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.</p>
+<p>More detail about how to deploy target system into D05 board, please refer to <a href="https://github.com/open-estuary/estuary/blob/estuary-d05-3.0b/doc/Deploy_Manual.4D05.md" target="_blank" rel="external">Deployment_Manual.md</a>.</p>
+<p>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.</p>
+<p>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.</p>
+<p>More detail about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UEFI_Manual.4D05]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/UEFI_Manual.4D05/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Upgrade UEFI</a></li>
+<li><a href="#3">Recover the UEFI when it broke</a><a id="more"></a>
+</li>
+</ul>
+<h2 id="1">Introduction</h2>
+
+<p>UEFI is a kind of BIOS to boot system and provide runtime service to OS which can do some basic IO operation with the runtime service, e.g.: reboot, power off and etc.<br>Normally, there are some trust firmware will be produce from UEFI building, they are responsible for trust reprogram, they include:</p>
+<p>  UEFI_D05.fd         //UEFI executable binary file.</p>
+<p>Where to get them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D05.md" target="_blank" rel="external">Readme.md</a>.</p>
+<h2 id="2">Upgrade UEFI</h2>
+
+<p>Note: This is not necessary unless you want to upgrade UEFI really.</p>
+<ol>
+<li>Prepare UEFI_D05.fd on computer which installed FTP service<br>FTP service is used to download files from the FTP server to hardware boards. Please prepare a computer installed FTP service with local network firstly, so that boards can get needed files frome FTP server with FTP protocol. Then put the UEFI files mentioned above into the root directory of FTP service.  </li>
+<li><p>Connect the board’s UART port to a host machine<br>Please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D05.md" target="_blank" rel="external">Deploy_Manual.4D05.md</a> “Prerequisite” chapter.</p>
+<p>If you choose Method 1 Deploy_Manual.4D05.md, use another console window, use <code>board_reboot</code> command to reset the board.<br>If you choose Method 2 Deploy_Manual.4D05.md, press the reset key on the board to reset the board.</p>
+<p>when system showing “Press Any key in 10 seconds to stop automatical booting…”, press any key except “enter” key to enter UEFI main menu.</p>
+</li>
+</ol>
+<h3 id="UEFI-menu-introduction"><a href="#UEFI-menu-introduction" class="headerlink" title="UEFI menu introduction"></a>UEFI menu introduction</h3><p>  UEFI main menu option is showed as follow:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">continue</span></div><div class="line">select Language            &lt;standard English&gt;</div><div class="line">&gt;Boot Manager</div><div class="line">&gt;Device Manager</div><div class="line">&gt;Boot Maintenance Manager</div></pre></td></tr></table></figure></p>
+<p>  Choose “Boot Manager” and enter into Boot option menu:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">EFI Misc Device</div><div class="line">EFI Network</div><div class="line">EFI Network 1</div><div class="line">EFI Network 2</div><div class="line">EFI Network 3</div><div class="line">EFI Internal Shell</div><div class="line">ESL Start OS</div><div class="line">Embedded Boot Loader(EBL)</div></pre></td></tr></table></figure></p>
+<p>  Please select “EFI Network 2” when booting boards via PXE with openlab environment.<br>  D05 board support 4 on-board network ports at maximun. To enable any one of them by connecting to network cable or optical fiber. From left to right, followed by the two 2GE ports, two 10GE ports which corresponding to UEFI startup interface are EFI Network 2, EFI Network 3, EFI Network 0, EFI Network 1.</p>
+<p>  EFI Internal Shell mode is a standard command shell in UEFI.</p>
+<p>  Embedded Boot Loader(EBL) mode is an embedded command shell based on boot loader specially for developers.</p>
+<p>  You can switch between two modes by typing “exit” from one mode to UEFI main menu and then choose the another mode.</p>
+<h3 id="Update-UEFI-files"><a href="#Update-UEFI-files" class="headerlink" title="Update UEFI files"></a>Update UEFI files</h3><ul>
+<li><p>IP address config at “EFI Internal Shell” mode(Optional, you can ignore this step if DHCP works well)</p>
+<p>Press any key except “enter” key to enter UEFI main menu. Select “Boot Manager”-&gt;”EFI Internal Shell”.</p>
+<p><code>ifconfig -s eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</code></p>
+<p>e.g.:</p>
+<p><code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
+</li>
+<li><p>Burn BIOS file at “Embedded Boot Loader(EBL)” mode</p>
+<p>Enter “exit” from “EFI Internal Shell” mode to the UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;UEFI binary&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">spiwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
+<p>e.g.:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> UEFI_D05.fd <span class="_">-a</span> 0x100000</div></pre></td></tr></table></figure>
+<p>D05 board supports 4 network ports which including 2 GE ports and 2 10GE ports. Please select “Interface 3” when downloading bios file with openlab environment.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spiwfmem 0x100000 0x0000000 0x300000</div></pre></td></tr></table></figure>
+</li>
+<li><p>Power off and reboot board again.</p>
+</li>
+</ul>
+<h2 id="3">Recover the UEFI when it broke</h2>
+
+<ol>
+<li><p>Connect board’s BMC port to the network port of your ubuntu host.</p>
+</li>
+<li><p>Configure board’s BMC IP and your ubuntu host’s IP at the same network segment.</p>
+</li>
+<li><p>Login the BMC website, The username/passwd are root/Huawei12#$. Click “system”, click “Firmware upgrade”, click “Browse” to choose the hpm formate uefi file(Please contact support@open-estuary.org to get the hpm formate uefi file).</p>
+<p>Note: Usually BMC website can be visited by (<a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a>) by default. If BMC IP have modified by somebody, please take the following steps to find modified BMC IP</p>
+<ul>
+<li><p>Pull out the power cable. Find the pin named “COM_SW” at J44. Then connect it.</p>
+</li>
+<li><p>Power on the board, connect the board’s serial port to your ubuntu serial port. When the screen display message “You are trying to access a restricted zone. Only Authorized Users allowed.”, type “Enter” key, input username/passwd, the username/passwd are root/Huawei12#$.</p>
+</li>
+<li><p>After you login the BMC interface which start with “iBMC:/-&gt;”, use command “ifconfig” to see the modified BMC IP.</p>
+</li>
+<li><p>When you get the board’s BMC IP, please visit the BMC website by https:&lt;board’s BMC IP&gt;</p>
+</li>
+</ul>
+</li>
+<li><p>Click “Start update”(Do not power off during this period).</p>
+</li>
+<li><p>After updated UFEI file, reboot the board to enter UEFI menu.<br></p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Deploy_Manual.4D05]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D05/</url>
       <content type="html"><![CDATA[<ul>
@@ -543,122 +766,6 @@
 <p>d. Press arrow key up or down to select grub boot option to decide which distribution should boot.</p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Grub_Manual.4ALL]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Grub_Manual.4All/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Grub config file</a></li>
-<li><a href="#3">files structure bootable partition</a></li>
-<li><a href="#4">FAQ</a><a id="more"></a>
-</li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Grub is a kind of boot loader to load kernel into RAM and run it.</p>
-<p>After rebooting board every time, the UEFI will firstly try to download the grub binary and run it firstly.</p>
-<p>Then grub binary will load the kernel and start it with cmdline and dtb file according to the configurations in <code>grub.cfg</code>.</p>
-<p>They include:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grubaa64.efi    <span class="comment"># The grub binary executable program for ARM64 architecture</span></div><div class="line">grubarm32.efi   <span class="comment"># The grub binary executable program for ARM32 architecture</span></div><div class="line">grub.cfg        <span class="comment"># The grub config file which will be used by grub binary</span></div></pre></td></tr></table></figure></p>
-<p>Where to get them, please refer to Readme.txt.</p>
-<h2 id="Grub-config-file"><a href="#Grub-config-file" class="headerlink" title="Grub config file"></a><a name="2">Grub config file</a></h2><p>You can edit a <code>grub.cfg</code> file to support various boot mode or multi boot partitions, follow is an example.</p>
-<p>You should change them acoording to your real local environment.</p>
-<p><strong><em>Note: D05 only supports booting system via ACPI mode with Centos, Debian, Ubuntu.</em></strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment"># Boot automatically after 0 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"></div><div class="line"><span class="comment"># By default, boot the Euler/Linux</span></div><div class="line"><span class="built_in">set</span> default=d05_centos_nfs_acpi</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D05 minilinux PXE(ACPI)"</span> --id d05_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rootwait rdinit=/init crashkernel=256M@32M </div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D05 Centos NFS(ACPI)"</span> --id d05_centos_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M  root=/dev/nfs rw nfsroot=192.168.1.107:/home/&lt;user&gt;/tftp/rootfs_ubuntu64 ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D05 Centos SATA(ACPI)"</span> --id d05_centos_sata_acpi&#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D03 minilinux PXE(ACPI)"</span> --id d03_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off rootwait crashkernel=256M@32M rdinit=/init console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8  acpi=force</div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu NFS(ACPI)"</span> --id d03_ubuntu_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 acpi=force ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu SATA(ACPI)"</span> --id d03_ubuntu_sata_acpi &#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with mini rootfs</span></div><div class="line">menuentry <span class="string">"HiKey minilinux eMMC"</span> --id HiKey_minilinux_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    initrd /mini-rootfs.cpio.gz</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu eMMC"</span> --id HiKey_Ubuntu_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk0p9 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from SD card with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu SD card"</span> --id HiKey_Ubuntu_SD &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk1p1 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line">menuentry <span class="string">'HiKey Fastboot mode'</span> &#123;</div><div class="line">    chainloader (hd0,gpt6)/fastboot.efi</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Note: You should only select the parts from above sample which are suitable for your real situation.</p>
-<h2 id="files-structure-bootable-partition"><a href="#files-structure-bootable-partition" class="headerlink" title="files structure bootable partition"></a><a name="3">files structure bootable partition</a></h2><p>Normally they are placed into bootable partition as following structure.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sdx-------EFI</div><div class="line">|       |</div><div class="line">|       GRUB2------grubaa64.efi   <span class="comment"># grub binary file only for ARM64 architecture</span></div><div class="line">|</div><div class="line">|-------------grub.cfg            <span class="comment"># grub config file</span></div><div class="line">|</div><div class="line">|-------------Image               <span class="comment"># kernel Image file only for D02 platform</span></div></pre></td></tr></table></figure></p>
-<p>Note: In case of booting by PXE mode:  </p>
-<ol>
-<li>The grub binary and <code>grub.cfg</code> files must be placed in the TFTP root directory.  </li>
-<li>The names and positions of kernel image and dtb must be consistent with the corresponding grub config file.  </li>
-<li>The grub binary name (<code>grubxxx.efi</code>) must be consistent with the “filename” in <code>/etc/dhcp/dhcpd.conf</code>, for more detail, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>  </li>
-<li>If you use D02 board, you should not input DTB in the <code>grub.cfg</code> but you must flash the DTB file into spiflash to avoid a known Mac address duplicate issue.</li>
-</ol>
-<p>You can get more information from the <code>Deploy_Manual.md</code> guide.</p>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a><a name="4">FAQ</a></h2><p>If you want to modify <code>grub.cfg</code> command line temporarily. Type “E” key into grub modification menu. You will face problem that the “backspace” key not woking properly. You can fix backspace issue by changing terminal emulator’s configuration.</p>
-<p><strong>For gnome-terminal</strong>: Open “Edit” menu, select “Profile preferences”.<br>In “Compatibility” page, select “Control-H” in “Backspace key generates” listbox.<br><strong>For Xterm</strong>: press Ctrl key and left botton of mouse, and toggle on “Backarrow key (BS/DEL)” in mainMenu.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Quick_Deployment.4D03]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Quick Deploy System</a><ul>
-<li><a href="#2.1">Deploy system via USB install Disk</a></li>
-<li><a href="#2.2">Deploy system via DVD/BMC-website</a></li>
-<li><a href="#2.3">Deploy system via PXE</a></li>
-</ul>
-</li>
-<li><a href="#3">View serial info via VGA/ipmitool/BMC-website</a><a id="more"></a>
-</li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Above all, prepare hardware boards with SCSI disk and download Estuary source code from GitHub.<br>To learn more about how to do them, please visit this web site: <a href="http://open-estuary.org/getting-started/" target="_blank" rel="external">http://open-estuary.org/getting-started/</a>.<br>If you just want to quickly try it the binary files, please refer to our binary Download Page to get the latest binaries and documentations for each corresponding boards.</p>
-<p>Accessing from China: <a href="ftp://117.78.41.188" target="_blank" rel="external">ftp://117.78.41.188</a></p>
-<p>Accessing from outside-China: <a href="http://download.open-estuary.org/" target="_blank" rel="external">http://download.open-estuary.org/</a></p>
-<h2 id="Quick-Deploy-System"><a href="#Quick-Deploy-System" class="headerlink" title="Quick Deploy System"></a><a name="2">Quick Deploy System</a></h2><h3 id="Deploy-system-via-USB-install-Disk"><a href="#Deploy-system-via-USB-install-Disk" class="headerlink" title="Deploy system via USB install Disk"></a><a name="2.1">Deploy system via USB install Disk</a></h3><ol>
-<li><p>Connect usb disk to your pc to prepare usb install disk. We provide two methods to make USB install disk<br><strong>Method 1:</strong>  </p>
-<ul>
-<li>Modify <code>estuary/estuarycfg.json</code>. Make sure the platform, distros are all right.</li>
-<li>Change the value of “install” to “yes” in object “setup” for usb and the value “device” to your USB install disk.<br>(Notice: if the specified usb device does not exist, the first usb device will be selected by default.)</li>
-<li>Use <code>build.sh</code> to create the usb install disk.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code></li>
-</ul>
-<p><strong>Method 2:</strong>  </p>
-<ul>
-<li>Download mkdeploydisk.sh from website:<a href="ftp://117.78.41.188/releases/\&lt;version\" target="_blank" rel="external">ftp://117.78.41.188/releases/\&lt;version\</a>&gt; or <a href="http://download.open-estuary.org/releases/\&lt;version\" target="_blank" rel="external">http://download.open-estuary.org/releases/\&lt;version\</a>&gt;</li>
-<li>Execute the following command with sudo permission to make usb installing disk <code>sudo ./mkdeploydisk.sh</code>. Please specify your disk with <code>--target=/dev/sdx</code> if more than one USB disk connected to your computer. If not specified, the first detected usb device will be used. </li>
-<li>According the prompt to make usb install disk.</li>
-</ul>
-</li>
-<li>After you have made usb install disk, please connect the usb to target board.</li>
-<li>Reboot the board.</li>
-<li>Select “EFI USB Device” at UEFI menu.</li>
-<li>According to the prompt to deploy the system.</li>
-<li>Reboot board to enter the system you deployed by default.</li>
-</ol>
-<h3 id="Deploy-system-via-DVD-BMC-website"><a href="#Deploy-system-via-DVD-BMC-website" class="headerlink" title="Deploy system via DVD/BMC-website"></a><a name="2.2">Deploy system via DVD/BMC-website</a></h3><p>Download ISO file from website:<a href="ftp://117.78.41.188/releases/\&lt;version\" target="_blank" rel="external">ftp://117.78.41.188/releases/\&lt;version\</a>&gt; or <a href="http://download.open-estuary.org/releases/\&lt;version\" target="_blank" rel="external">http://download.open-estuary.org/releases/\&lt;version\</a>&gt;<br><strong>Deploy system via DVD</strong></p>
-<ul>
-<li>Burn the iso image file to DVD disk if you use the physical DVD driver.</li>
-<li>Connect the physical DVD driver to the board, plug in the DVD install disk.</li>
-<li>Reboot the board.</li>
-<li>Select the uefi menu to boot from the DVD device.</li>
-<li>According to the prompt to deploy the system.</li>
-<li>Reboot the boards to enter the system you deployed by default.</li>
-</ul>
-<p><strong>Deploy the system via BMC-website</strong></p>
-<ul>
-<li>Login the website of boards’ BMC IP(e.g:<a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a>) with browser(IE browser is suggested to use), The <code>username</code> &amp; <code>password</code> is <code>root</code> &amp; <code>Huawei12#$</code>.</li>
-<li>Click “Remote” on the top of BMC webiste. Select “Remote Virtual Console (Shared Mode)” to enter into KVM interface. Click “Image File” and choose the iso image, then click “Connect” button.</li>
-<li>Click “Config” on the top of BMC website, click “Boot Option” to select “DVD-ROM drive”, then click “Save” button.</li>
-<li>Reboot the board at BMC website</li>
-<li>According to the prompt to deploy the system at BMC website</li>
-<li>Reboot the boards to enter the system you deployed by default.</li>
-</ul>
-<h3 id="Deploy-system-via-PXE"><a href="#Deploy-system-via-PXE" class="headerlink" title="Deploy system via PXE"></a><a name="2.3">Deploy system via PXE</a></h3><ol>
-<li>Connect Ubuntu PC and hardware boards into the same local area network. (Make sure the PC can connect to the internet and no other PXE servers exist.)</li>
-<li>Modify the configuration file of <code>estuary/estuarycfg.json</code> based on your hardware boards. Change the values of mac to physical addresses of the connected network cards on the board. Change the value of “install” to “yes” in object “setup” for PXE.</li>
-<li>Backup files under the tftp root directory if necessary. Use <code>build.sh</code> to build project and setup the PXE server on Ubuntu PC.<br>eg: <code>./estuary/build.sh -f estuary/estuarycfg.json</code></li>
-<li>After that, connect the hardware boards by using BMC ports.</li>
-<li>Reboot the hardware boards and start the boards from the correct EFI Network.</li>
-<li>Install the system according to prompt. After install finished, the boards will restart automatically.</li>
-<li>Start the boards from “grub” menu of UEFI by default.</li>
-</ol>
-<h3 id="View-serial-info-via-VGA-ipmitool-BMC-website"><a href="#View-serial-info-via-VGA-ipmitool-BMC-website" class="headerlink" title="View serial info via VGA/ipmitool/BMC-website"></a><a name="3">View serial info via VGA/ipmitool/BMC-website</a></h3><p><strong>View serial info via VGA</strong>  </p>
-<ul>
-<li>Connect board’s vga port to your local pc and connect a keyboard to the board’s usb interface.</li>
-<li>Connect usb install disk to your board and deploy the system </li>
-<li>Reboot the system and you can see the serial info via VGA</li>
-</ul>
-<p><strong>View serial info via ipmitool</strong>  </p>
-<ul>
-<li>Install ipmitool on your local pc by “sudo apt-get install ipmitool”</li>
-<li>Use command <code>ipmitool -H &lt;board&#39;s bmc ip&gt; -I lanplus -U root -P Huawei12#$ sol activate</code> to see the booting log</li>
-</ul>
-<p><strong>View serial info via BMC-website</strong>  </p>
-<ul>
-<li>When you load iso from BMC website, you can the the process of booting via BMC website directly</li>
-</ul>
 ]]></content>
     </entry>
     
@@ -805,37 +912,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Readme.4D05]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/</url>
-      <content type="html"><![CDATA[<p>This is the readme file for D05 platform<br><a id="more"></a><br>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for D05, all targets files will be produced. they are:</p>
-<h3 id="UEFI-D05-fd"><a href="#UEFI-D05-fd" class="headerlink" title="UEFI_D05.fd"></a>UEFI_D05.fd</h3><p><strong>description</strong>: UEFI_D05.fd is the UEFI bios for D05 platform.</p>
-<p><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/D05/UEFI_D05.fd</code></p>
-<p><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-uefi.sh --platform=D05 --output=workspace</div></pre></td></tr></table></figure></p>
-<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>:</p>
-<p>grubaa64.efi is used to load kernel image and dtb files from SATA, SAS, USB Disk, or NFS into RAM and start the kernel.</p>
-<p><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code></p>
-<p><strong>source</strong>: <code>&lt;project root&gt;/grub</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):</p>
-<p><code>./estuary/submodules/build-grub.sh --output=./workspace</code>, if your host is not arm architecture, please execute<code>build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</code></p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><p><strong>descriptions</strong>: Image is the kernel executable program.</p>
-<p><strong>target</strong>:</p>
-<p>Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code></p>
-<p><strong>source</strong>: <code>&lt;project root&gt;/kernel</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):</p>
-<p><code>./estuary/submodules/build-kernel.sh --platform=D05 --output=workspace</code>, if your host is not arm architecture, please execute <code>./estuary/submodules/build-kernel.sh --platform=D05 --output=workspace --cross=aarch64-linux-gnu-</code>.</p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.</p>
-<p>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.</p>
-<p>More detail about how to deploy target system into D05 board, please refer to <a href="https://github.com/open-estuary/estuary/blob/estuary-d05-3.0b/doc/Deploy_Manual.4D05.md" target="_blank" rel="external">Deployment_Manual.md</a>.</p>
-<p>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.</p>
-<p>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.</p>
-<p>More detail about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Deploy_Manual.4D03]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</url>
       <content type="html"><![CDATA[<ul>
@@ -921,82 +997,6 @@
 <li>For SAS: Select “Boot Manager”-&gt; “EFI Misc Device 1” to enter grub selection menu.</li>
 <li>For SATA: Select “Boot Manager”-&gt; “EFI Hard Drive” to enter grub selection menu.<br>d. Press arrow key up or down to select grub boot option to decide which distribution should boot.</li>
 </ul>
-</li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[UEFI_Manual.4D05]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/UEFI_Manual.4D05/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Upgrade UEFI</a></li>
-<li><a href="#3">Recover the UEFI when it broke</a><a id="more"></a>
-</li>
-</ul>
-<h2 id="1">Introduction</h2>
-
-<p>UEFI is a kind of BIOS to boot system and provide runtime service to OS which can do some basic IO operation with the runtime service, e.g.: reboot, power off and etc.<br>Normally, there are some trust firmware will be produce from UEFI building, they are responsible for trust reprogram, they include:</p>
-<p>  UEFI_D05.fd         //UEFI executable binary file.</p>
-<p>Where to get them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D05.md" target="_blank" rel="external">Readme.md</a>.</p>
-<h2 id="2">Upgrade UEFI</h2>
-
-<p>Note: This is not necessary unless you want to upgrade UEFI really.</p>
-<ol>
-<li>Prepare UEFI_D05.fd on computer which installed FTP service<br>FTP service is used to download files from the FTP server to hardware boards. Please prepare a computer installed FTP service with local network firstly, so that boards can get needed files frome FTP server with FTP protocol. Then put the UEFI files mentioned above into the root directory of FTP service.  </li>
-<li><p>Connect the board’s UART port to a host machine<br>Please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D05.md" target="_blank" rel="external">Deploy_Manual.4D05.md</a> “Prerequisite” chapter.</p>
-<p>If you choose Method 1 Deploy_Manual.4D05.md, use another console window, use <code>board_reboot</code> command to reset the board.<br>If you choose Method 2 Deploy_Manual.4D05.md, press the reset key on the board to reset the board.</p>
-<p>when system showing “Press Any key in 10 seconds to stop automatical booting…”, press any key except “enter” key to enter UEFI main menu.</p>
-</li>
-</ol>
-<h3 id="UEFI-menu-introduction"><a href="#UEFI-menu-introduction" class="headerlink" title="UEFI menu introduction"></a>UEFI menu introduction</h3><p>  UEFI main menu option is showed as follow:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">continue</span></div><div class="line">select Language            &lt;standard English&gt;</div><div class="line">&gt;Boot Manager</div><div class="line">&gt;Device Manager</div><div class="line">&gt;Boot Maintenance Manager</div></pre></td></tr></table></figure></p>
-<p>  Choose “Boot Manager” and enter into Boot option menu:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">EFI Misc Device</div><div class="line">EFI Network</div><div class="line">EFI Network 1</div><div class="line">EFI Network 2</div><div class="line">EFI Network 3</div><div class="line">EFI Internal Shell</div><div class="line">ESL Start OS</div><div class="line">Embedded Boot Loader(EBL)</div></pre></td></tr></table></figure></p>
-<p>  Please select “EFI Network 2” when booting boards via PXE with openlab environment.<br>  D05 board support 4 on-board network ports at maximun. To enable any one of them by connecting to network cable or optical fiber. From left to right, followed by the two 2GE ports, two 10GE ports which corresponding to UEFI startup interface are EFI Network 2, EFI Network 3, EFI Network 0, EFI Network 1.</p>
-<p>  EFI Internal Shell mode is a standard command shell in UEFI.</p>
-<p>  Embedded Boot Loader(EBL) mode is an embedded command shell based on boot loader specially for developers.</p>
-<p>  You can switch between two modes by typing “exit” from one mode to UEFI main menu and then choose the another mode.</p>
-<h3 id="Update-UEFI-files"><a href="#Update-UEFI-files" class="headerlink" title="Update UEFI files"></a>Update UEFI files</h3><ul>
-<li><p>IP address config at “EFI Internal Shell” mode(Optional, you can ignore this step if DHCP works well)</p>
-<p>Press any key except “enter” key to enter UEFI main menu. Select “Boot Manager”-&gt;”EFI Internal Shell”.</p>
-<p><code>ifconfig -s eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</code></p>
-<p>e.g.:</p>
-<p><code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
-</li>
-<li><p>Burn BIOS file at “Embedded Boot Loader(EBL)” mode</p>
-<p>Enter “exit” from “EFI Internal Shell” mode to the UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;UEFI binary&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">spiwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
-<p>e.g.:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> UEFI_D05.fd <span class="_">-a</span> 0x100000</div></pre></td></tr></table></figure>
-<p>D05 board supports 4 network ports which including 2 GE ports and 2 10GE ports. Please select “Interface 3” when downloading bios file with openlab environment.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spiwfmem 0x100000 0x0000000 0x300000</div></pre></td></tr></table></figure>
-</li>
-<li><p>Power off and reboot board again.</p>
-</li>
-</ul>
-<h2 id="3">Recover the UEFI when it broke</h2>
-
-<ol>
-<li><p>Connect board’s BMC port to the network port of your ubuntu host.</p>
-</li>
-<li><p>Configure board’s BMC IP and your ubuntu host’s IP at the same network segment.</p>
-</li>
-<li><p>Login the BMC website, The username/passwd are root/Huawei12#$. Click “system”, click “Firmware upgrade”, click “Browse” to choose the hpm formate uefi file(Please contact support@open-estuary.org to get the hpm formate uefi file).</p>
-<p>Note: Usually BMC website can be visited by (<a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a>) by default. If BMC IP have modified by somebody, please take the following steps to find modified BMC IP</p>
-<ul>
-<li><p>Pull out the power cable. Find the pin named “COM_SW” at J44. Then connect it.</p>
-</li>
-<li><p>Power on the board, connect the board’s serial port to your ubuntu serial port. When the screen display message “You are trying to access a restricted zone. Only Authorized Users allowed.”, type “Enter” key, input username/passwd, the username/passwd are root/Huawei12#$.</p>
-</li>
-<li><p>After you login the BMC interface which start with “iBMC:/-&gt;”, use command “ifconfig” to see the modified BMC IP.</p>
-</li>
-<li><p>When you get the board’s BMC IP, please visit the BMC website by https:&lt;board’s BMC IP&gt;</p>
-</li>
-</ul>
-</li>
-<li><p>Click “Start update”(Do not power off during this period).</p>
-</li>
-<li><p>After updated UFEI file, reboot the board to enter UEFI menu.<br></p>
 </li>
 </ol>
 ]]></content>
@@ -1293,58 +1293,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Introduction_for_Docker]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_Docker/</url>
-      <content type="html"><![CDATA[<p>What is Docker?</p>
-<a id="more"></a>
-<p>Docker is an open-source project that automates the deployment of applications inside software containers. In details, Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries - anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in. Click on the link <a href="https://www.docker.com" target="_blank" rel="external">https://www.docker.com</a> for more information.</p>
-<p>Docker organization offers an official storage called Docker Hub for users to pull and push Images. For details please visit the link <a href="https://hub.docker.com" target="_blank" rel="external">https://hub.docker.com</a>. The Docker Images from open-estuary are all stored here, you can visit the link <a href="https://hub.docker.com/u/openestuary" target="_blank" rel="external">https://hub.docker.com/u/openestuary</a>. </p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Introduction_for_LAMP_with_Docker]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</url>
-      <content type="html"><![CDATA[<p>How to Build LAMP Service with Docker Images?</p>
-<a id="more"></a>
-<p>This doc is designed to build LAMP service by using Docker Images.</p>
-<p>LAMP is an archetypal model of web service solution stacks, which contains four parts: the Linux operating system, the Apache HTTP Server, MySQL, and the PHP programming language. Docker helps developers focus on the web project, not the running environment.</p>
-<p>Two Docker Images: openestuary/mysql and openestuary/apache have been developed which are stored in Docker Hub. About how to build lamp service is shown as follow: </p>
-<p>You are supposed to have installed Docker successfully and enable Docker service automatically. Then you should pull related Docker Images which will take some time, please be patient. Just type as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker pull openestuary/apache</div><div class="line">$ docker pull openestuary/mysql</div></pre></td></tr></table></figure></p>
-<p>After finished above operation, you can start Docker container by using the pulled Images. Just type as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker run <span class="_">-d</span> -p 32775:80 --name apache -v /x/xx:/var/www/html openestuary/apache</div><div class="line">$ docker run <span class="_">-d</span> -p 32776:3306 --name mysql openestuary/mysql</div></pre></td></tr></table></figure></p>
-<p>Using the two containers named apache and mysql, you only need the source code of the web project. Suppose the web project is stored under /x/xx, we can use the command “-v” to mount the local files into the specified path of the container. The local host will assign a free port to the default port 80 of apache service. Using “-p”, you should check the port is free firstly. It is the same for mysql when assigning a local port mapping the default port 3306 of mysql service.</p>
-<p>Mysql container use default username “mysql” and password “123456”. Of course, you can change the configuration of mysql with the following commands<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker run <span class="_">-d</span> -P --name mysql \</div><div class="line">      <span class="_">-e</span> MYSQL_USER=xxx \</div><div class="line">      <span class="_">-e</span> MYSQL_PASSWORD=xxx \</div><div class="line">      <span class="_">-e</span> MYSQL_DATABASE=xxx \</div><div class="line">      openestuary/mysql</div></pre></td></tr></table></figure></p>
-<p>In order to make it more specific, The use of a PHP page with mysql connection will be demonstrated. If PHP page display normally, the two images are proven to work well. Suppose the local IP is 192.168.1.220. The content of the PHP page named index.php is as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$con</span> = mysql_connect(<span class="string">"192.168.1.220:32776"</span>,<span class="string">"mysql"</span>,<span class="string">"123456"</span>);</div><div class="line"><span class="keyword">if</span> (!<span class="variable">$con</span>)</div><div class="line">&#123;</div><div class="line">die(<span class="string">'Could not connect: '</span> . mysql_error());</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"hello world!"</span>;</div><div class="line">mysql_close(<span class="variable">$con</span>);</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
-<p>Everything goes well if you see the output “hello world!” at website <a href="http://192.168.1.220:32775/index.php" target="_blank" rel="external">http://192.168.1.220:32775/index.php</a>. Please enjoy the lamp service offered by the two containers named mysql and apache.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Distributions_Guild.4All]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Distributions_Guide.4All/</url>
-      <content type="html"><![CDATA[<p>This is the guide for distributions</p>
-<a id="more"></a>
-<p>Distribution indicates a specially total rootfs for linux kernel.<br>After you run <code>./estuary/build.sh -d &lt;Platform Name&gt; -p &lt;Distribution Name&gt;</code>, the corresponding distribution tarball will be created into <code>&lt;project root&gt;/build/&lt;platform name&gt;/distro</code>.<br>By default, it is named as <distribution name="">_<arm arch="">.tar.gz, and the default username and password for them are “root,root”.</arm></distribution></p>
-<p>You can do following commands to uncompress the tarball into any special block device’s partition, e.g.: SATA, SAS or USB disk.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo mount /dev/&lt;block device name&gt; tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir</div></pre></td></tr></table></figure></p>
-<p>You can also simply uncompress the tarball into a special directory as follows, and use the directory as the NFS’s rootfs.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir nfsdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C nfsdir</div></pre></td></tr></table></figure></p>
-<p>If you want to produce a rootfs image file for QEMU, you can try as belows<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir </div><div class="line"></div><div class="line"><span class="built_in">pushd</span> tempdir</div><div class="line">dd <span class="keyword">if</span>=/dev/zero of=../rootfs.img bs=1M count=10240</div><div class="line">mkfs.ext4 ../rootfs.img -F</div><div class="line">mkdir -p ../tempdir 2&gt;/dev/null</div><div class="line">sudo mount ../rootfs.img ../tempdir</div><div class="line">sudo cp <span class="_">-a</span> * ../tempdir/</div><div class="line">sudo umount ../tempdir</div><div class="line">rm -rf ../tempdir</div><div class="line"><span class="built_in">popd</span></div></pre></td></tr></table></figure></p>
-<p>Then you will get the rootfs image file as rootfs.img</p>
-<p><strong>You can download above distributions by following commands manually</strong>.</p>
-<p>All validated distributions can be obtained in <a href="http://download.open-estuary.org/" target="_blank" rel="external">HTTP Download</a>/[release|pre-releases]/<code>&lt;version&gt;</code>/linux/<code>&lt;distro name&gt;</code>/.</p>
-<p>e.g.:<br>You can get Ubuntu distribution of estuary v2.2-rc1 pre-releases version as follow:<br><code>wget -c http://download.open-estuary.org/AllDownloads/DownloadsEstuary/pre-releases/2.2/rc1/linux/Ubuntu/Common/Ubuntu_ARM64.tar.gz</code></p>
-<p>For other distributions please refer to the description aboved.</p>
-<p><strong>And all original distributions can be gotten by following commands</strong>:</p>
-<p>Ubuntu:<br><code>wget -c https://cloud-images.ubuntu.com/vivid/current/vivid-server-cloudimg-arm64.tar.gz</code></p>
-<p>OpenSUSE:<br><code>wget -c http://download.opensuse.org/ports/aarch64/distribution/13.2/appliances/openSUSE-13.2-ARM-JeOS.aarch64-rootfs.aarch64-Current.tbz</code></p>
-<p>Fedora:<br><code>wget -c http://dmarlin.fedorapeople.org/fedora-arm/aarch64/F21-20140407-foundation-v8.tar.xz</code></p>
-<p>Redhat: TBD</p>
-<p>Debian:<br><code>wget -c http://people.debian.org/~wookey/bootstrap/rootfs/debian-unstable-arm64.tar.gz</code></p>
-<p>OpenEmbedded:<br><code>wget -c http://releases.linaro.org/14.06/openembedded/aarch64/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140623-668.img.gz</code></p>
-<p>More detail about how to deploy target system into target board, please refer to Deployment_Manual.md.</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[README.armor.kgdb.kdb]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.kgdb.kdb/</url>
       <content type="html"><![CDATA[<ul>
@@ -1385,6 +1333,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Introduction_for_LAMP_with_Docker]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</url>
+      <content type="html"><![CDATA[<p>How to Build LAMP Service with Docker Images?</p>
+<a id="more"></a>
+<p>This doc is designed to build LAMP service by using Docker Images.</p>
+<p>LAMP is an archetypal model of web service solution stacks, which contains four parts: the Linux operating system, the Apache HTTP Server, MySQL, and the PHP programming language. Docker helps developers focus on the web project, not the running environment.</p>
+<p>Two Docker Images: openestuary/mysql and openestuary/apache have been developed which are stored in Docker Hub. About how to build lamp service is shown as follow: </p>
+<p>You are supposed to have installed Docker successfully and enable Docker service automatically. Then you should pull related Docker Images which will take some time, please be patient. Just type as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker pull openestuary/apache</div><div class="line">$ docker pull openestuary/mysql</div></pre></td></tr></table></figure></p>
+<p>After finished above operation, you can start Docker container by using the pulled Images. Just type as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker run <span class="_">-d</span> -p 32775:80 --name apache -v /x/xx:/var/www/html openestuary/apache</div><div class="line">$ docker run <span class="_">-d</span> -p 32776:3306 --name mysql openestuary/mysql</div></pre></td></tr></table></figure></p>
+<p>Using the two containers named apache and mysql, you only need the source code of the web project. Suppose the web project is stored under /x/xx, we can use the command “-v” to mount the local files into the specified path of the container. The local host will assign a free port to the default port 80 of apache service. Using “-p”, you should check the port is free firstly. It is the same for mysql when assigning a local port mapping the default port 3306 of mysql service.</p>
+<p>Mysql container use default username “mysql” and password “123456”. Of course, you can change the configuration of mysql with the following commands<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker run <span class="_">-d</span> -P --name mysql \</div><div class="line">      <span class="_">-e</span> MYSQL_USER=xxx \</div><div class="line">      <span class="_">-e</span> MYSQL_PASSWORD=xxx \</div><div class="line">      <span class="_">-e</span> MYSQL_DATABASE=xxx \</div><div class="line">      openestuary/mysql</div></pre></td></tr></table></figure></p>
+<p>In order to make it more specific, The use of a PHP page with mysql connection will be demonstrated. If PHP page display normally, the two images are proven to work well. Suppose the local IP is 192.168.1.220. The content of the PHP page named index.php is as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$con</span> = mysql_connect(<span class="string">"192.168.1.220:32776"</span>,<span class="string">"mysql"</span>,<span class="string">"123456"</span>);</div><div class="line"><span class="keyword">if</span> (!<span class="variable">$con</span>)</div><div class="line">&#123;</div><div class="line">die(<span class="string">'Could not connect: '</span> . mysql_error());</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"hello world!"</span>;</div><div class="line">mysql_close(<span class="variable">$con</span>);</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>Everything goes well if you see the output “hello world!” at website <a href="http://192.168.1.220:32775/index.php" target="_blank" rel="external">http://192.168.1.220:32775/index.php</a>. Please enjoy the lamp service offered by the two containers named mysql and apache.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Introduction_for_Docker]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_Docker/</url>
+      <content type="html"><![CDATA[<p>What is Docker?</p>
+<a id="more"></a>
+<p>Docker is an open-source project that automates the deployment of applications inside software containers. In details, Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries - anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in. Click on the link <a href="https://www.docker.com" target="_blank" rel="external">https://www.docker.com</a> for more information.</p>
+<p>Docker organization offers an official storage called Docker Hub for users to pull and push Images. For details please visit the link <a href="https://hub.docker.com" target="_blank" rel="external">https://hub.docker.com</a>. The Docker Images from open-estuary are all stored here, you can visit the link <a href="https://hub.docker.com/u/openestuary" target="_blank" rel="external">https://hub.docker.com/u/openestuary</a>. </p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[README.armor.perf]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.perf/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -1404,6 +1379,36 @@
 <li><p>As the counter registers in Hisiilicon are config and accessed via Djtag interface, it can affect the event counter readings as the access is not atomic.</p>
 </li>
 </ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[README.armor.lttng]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.lttng/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">LTTNG</a></li>
+<li><a href="#2">Ubuntu</a></li>
+<li><a href="#3">Fedora</a></li>
+<li><a href="#4">OpenSuse</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="LTTNG"><a href="#LTTNG" class="headerlink" title="LTTNG"></a><a name="1">LTTNG</a></h2><p>Installtion and building of lttng kernel modules (lttng-modules-dkms) using apt-get does not work on estuary Ubuntu platform. Thus lttng module build from source code and installed into rootfs.<br>The source code of lttng kernel module worked is lttng-modules-2.6.4.tar.bz2 (ubuntu version) downloaded from <a href="https://lttng.org/download/#build-from-source" target="_blank" rel="external">https://lttng.org/download/#build-from-source</a></p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a><a name="2">Ubuntu</a></h2><ul>
+<li><p>LTTNG user space packages are available to install in Ubuntu distribution.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install -y lttng-tools</div><div class="line">apt-get install -y liblttng-ust-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>The armor-postinstall.sh script does the lttng user space packages installations on first bootup.</p>
+</li>
+</ul>
+<h2 id="Fedora"><a href="#Fedora" class="headerlink" title="Fedora"></a><a name="3">Fedora</a></h2><ul>
+<li><p>LTTNG user space packages are available to install in Fedora distribution.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dnf install -y lttng-tools.aarch64</div><div class="line">dnf install -y lttng-ust.aarch64</div><div class="line">dnf install -y babeltrace.aarch64</div></pre></td></tr></table></figure>
+</li>
+<li><p>The armor-postinstall.sh script does the lttng user space package installations on first bootup.</p>
+</li>
+</ul>
+<h2 id="OpenSuse"><a href="#OpenSuse" class="headerlink" title="OpenSuse"></a><a name="4">OpenSuse</a></h2><p>LTTNG packages are not available to install in OpenSuse distribution.<br>Thus lttng-tools and lttng-ust to be natively built on target board from source code and</p>
+<p>install using the build script present in the <code>/usr/local/armor/build_scripts/build_lttng_tools_opensuse.sh</code><br>in the rootfs.</p>
 ]]></content>
     </entry>
     
@@ -1569,32 +1574,27 @@
     </entry>
     
     <entry>
-      <title><![CDATA[README.armor.lttng]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.lttng/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">LTTNG</a></li>
-<li><a href="#2">Ubuntu</a></li>
-<li><a href="#3">Fedora</a></li>
-<li><a href="#4">OpenSuse</a></li>
-</ul>
+      <title><![CDATA[Distributions_Guild.4All]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Distributions_Guide.4All/</url>
+      <content type="html"><![CDATA[<p>This is the guide for distributions</p>
 <a id="more"></a>
-<h2 id="LTTNG"><a href="#LTTNG" class="headerlink" title="LTTNG"></a><a name="1">LTTNG</a></h2><p>Installtion and building of lttng kernel modules (lttng-modules-dkms) using apt-get does not work on estuary Ubuntu platform. Thus lttng module build from source code and installed into rootfs.<br>The source code of lttng kernel module worked is lttng-modules-2.6.4.tar.bz2 (ubuntu version) downloaded from <a href="https://lttng.org/download/#build-from-source" target="_blank" rel="external">https://lttng.org/download/#build-from-source</a></p>
-<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a><a name="2">Ubuntu</a></h2><ul>
-<li><p>LTTNG user space packages are available to install in Ubuntu distribution.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install -y lttng-tools</div><div class="line">apt-get install -y liblttng-ust-dev</div></pre></td></tr></table></figure>
-</li>
-<li><p>The armor-postinstall.sh script does the lttng user space packages installations on first bootup.</p>
-</li>
-</ul>
-<h2 id="Fedora"><a href="#Fedora" class="headerlink" title="Fedora"></a><a name="3">Fedora</a></h2><ul>
-<li><p>LTTNG user space packages are available to install in Fedora distribution.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dnf install -y lttng-tools.aarch64</div><div class="line">dnf install -y lttng-ust.aarch64</div><div class="line">dnf install -y babeltrace.aarch64</div></pre></td></tr></table></figure>
-</li>
-<li><p>The armor-postinstall.sh script does the lttng user space package installations on first bootup.</p>
-</li>
-</ul>
-<h2 id="OpenSuse"><a href="#OpenSuse" class="headerlink" title="OpenSuse"></a><a name="4">OpenSuse</a></h2><p>LTTNG packages are not available to install in OpenSuse distribution.<br>Thus lttng-tools and lttng-ust to be natively built on target board from source code and</p>
-<p>install using the build script present in the <code>/usr/local/armor/build_scripts/build_lttng_tools_opensuse.sh</code><br>in the rootfs.</p>
+<p>Distribution indicates a specially total rootfs for linux kernel.<br>After you run <code>./estuary/build.sh -d &lt;Platform Name&gt; -p &lt;Distribution Name&gt;</code>, the corresponding distribution tarball will be created into <code>&lt;project root&gt;/build/&lt;platform name&gt;/distro</code>.<br>By default, it is named as <distribution name="">_<arm arch="">.tar.gz, and the default username and password for them are “root,root”.</arm></distribution></p>
+<p>You can do following commands to uncompress the tarball into any special block device’s partition, e.g.: SATA, SAS or USB disk.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo mount /dev/&lt;block device name&gt; tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir</div></pre></td></tr></table></figure></p>
+<p>You can also simply uncompress the tarball into a special directory as follows, and use the directory as the NFS’s rootfs.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir nfsdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C nfsdir</div></pre></td></tr></table></figure></p>
+<p>If you want to produce a rootfs image file for QEMU, you can try as belows<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir </div><div class="line"></div><div class="line"><span class="built_in">pushd</span> tempdir</div><div class="line">dd <span class="keyword">if</span>=/dev/zero of=../rootfs.img bs=1M count=10240</div><div class="line">mkfs.ext4 ../rootfs.img -F</div><div class="line">mkdir -p ../tempdir 2&gt;/dev/null</div><div class="line">sudo mount ../rootfs.img ../tempdir</div><div class="line">sudo cp <span class="_">-a</span> * ../tempdir/</div><div class="line">sudo umount ../tempdir</div><div class="line">rm -rf ../tempdir</div><div class="line"><span class="built_in">popd</span></div></pre></td></tr></table></figure></p>
+<p>Then you will get the rootfs image file as rootfs.img</p>
+<p><strong>You can download above distributions by following commands manually</strong>.</p>
+<p>All validated distributions can be obtained in <a href="http://download.open-estuary.org/" target="_blank" rel="external">HTTP Download</a>/[release|pre-releases]/<code>&lt;version&gt;</code>/linux/<code>&lt;distro name&gt;</code>/.</p>
+<p>e.g.:<br>You can get Ubuntu distribution of estuary v2.2-rc1 pre-releases version as follow:<br><code>wget -c http://download.open-estuary.org/AllDownloads/DownloadsEstuary/pre-releases/2.2/rc1/linux/Ubuntu/Common/Ubuntu_ARM64.tar.gz</code></p>
+<p>For other distributions please refer to the description aboved.</p>
+<p><strong>And all original distributions can be gotten by following commands</strong>:</p>
+<p>Ubuntu:<br><code>wget -c https://cloud-images.ubuntu.com/vivid/current/vivid-server-cloudimg-arm64.tar.gz</code></p>
+<p>OpenSUSE:<br><code>wget -c http://download.opensuse.org/ports/aarch64/distribution/13.2/appliances/openSUSE-13.2-ARM-JeOS.aarch64-rootfs.aarch64-Current.tbz</code></p>
+<p>Fedora:<br><code>wget -c http://dmarlin.fedorapeople.org/fedora-arm/aarch64/F21-20140407-foundation-v8.tar.xz</code></p>
+<p>Redhat: TBD</p>
+<p>Debian:<br><code>wget -c http://people.debian.org/~wookey/bootstrap/rootfs/debian-unstable-arm64.tar.gz</code></p>
+<p>OpenEmbedded:<br><code>wget -c http://releases.linaro.org/14.06/openembedded/aarch64/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140623-668.img.gz</code></p>
+<p>More detail about how to deploy target system into target board, please refer to Deployment_Manual.md.</p>
 ]]></content>
     </entry>
     
@@ -1681,27 +1681,6 @@
 <p><code>iptables -L</code> -&gt; shows the added rule</p>
 <p><strong>ON PC</strong></p>
 <p><code>ping &lt;172.18.45.60&gt;</code> -&gt; work ok as packets are accpeted.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Readme.4HiKey]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4HiKey/</url>
-      <content type="html"><![CDATA[<p>This is the readme file for HiKey platform</p>
-<a id="more"></a>
-<p>Above all, you need install some applications firstly as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y wget automake1.11 make bc libncurses5-dev libtool li</div><div class="line">bc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 bison flex uuid-dev build-esse</div><div class="line">ntial iasl gcc zlib1g-dev libperl-dev libgtk2.0-dev libfdt-dev</div></pre></td></tr></table></figure></p>
-<p>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for HiKey, all targets files will be produced. they are:</p>
-<h3 id="l-loader-bin"><a href="#l-loader-bin" class="headerlink" title="l-loader.bin"></a>l-loader.bin</h3><h3 id="ptable-linux-img"><a href="#ptable-linux-img" class="headerlink" title="ptable-linux.img"></a>ptable-linux.img</h3><h3 id="AndroidFastbootApp-efi"><a href="#AndroidFastbootApp-efi" class="headerlink" title="AndroidFastbootApp.efi"></a>AndroidFastbootApp.efi</h3><h3 id="UEFI-HiKey-fd"><a href="#UEFI-HiKey-fd" class="headerlink" title="UEFI_HiKey.fd"></a>UEFI_HiKey.fd</h3><p><strong>description</strong>: l-loader.bin - used to switch from aarch32 to aarch64 and boot, UEFI_HiKey.fd is the UEFI bios for HiKey, ptable-linux.img - partition tables for Linux images.<br><strong>target</strong>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;project root&gt;/workspace/binary/HiKey/l-loader.bin</div><div class="line"></div><div class="line">&lt;project root&gt;/workspace/binary/HiKey/ptable-linux.img</div><div class="line"></div><div class="line">&lt;project root&gt;/workspace/binary/HiKey/AndroidFastbootApp.efi</div><div class="line"></div><div class="line">&lt;project root&gt;/workspace/binary/HiKey/UEFI_HiKey.fd.</div></pre></td></tr></table></figure></p>
-<p><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently:</p>
-<p><code>./estuary/submodules/build-uefi.sh --platform=HiKey --output=workspace</code></p>
-<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>: grubaa64.efi is used to load kernel image and dtb files from SD card, nandflash into RAM and start the kernel.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code><br><strong>source</strong>: <code>&lt;project root&gt;/grub</code>  </p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently:<br><code>./estuary/submodules/build-grub.sh --output=./workspace</code>, if your host is not arm architecture, please execute<code>build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</code></p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><h3 id="hi6220-hikey-dtb"><a href="#hi6220-hikey-dtb" class="headerlink" title="hi6220-hikey.dtb"></a>hi6220-hikey.dtb</h3><p><strong>descriptions</strong>: Image is the kernel executable program, and hi6220-hikey.dtb is the device tree binary.<br><strong>target</strong>: Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code><br>hi6220-hikey.dtb in <code>&lt;project root&gt;/workspace/binary/HiKey/hi6220-hikey.dtb</code><br><strong>source</strong>: <code>&lt;project root&gt;/kernel</code>  </p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><code>./estuary/submodules/build-kernel.sh --platform=HiKey --output=workspace</code>, if your host is not arm architecture, please execute <code>./estuary/submodules/build-kernel.sh --platform=HiKey --output=workspace --cross=aarch64-linux-gnu-</code>.</p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<p>If you get more information about uefi, please visit <a href="https://github.com/96boards/documentation/wiki/HiKeyUEFI" target="_blank" rel="external">https://github.com/96boards/documentation/wiki/HiKeyUEFI</a><br>More detail information about how to deploy target system into HiKey board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4HiKey.md" target="_blank" rel="external">Deploy_Manual.4HiKey.md</a>.<br>More detail information about how to config this WiFi function into HiKey board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_HiKey_WiFi_Env.4HiKey.md" target="_blank" rel="external">Setup_HiKey_Wifi_Env.md</a>.<br>More detail information about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guider.md</a>.<br>More detail information about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guider.md</a>.<br>More detail information about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.<br>More detail information about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
 ]]></content>
     </entry>
     
@@ -1819,6 +1798,27 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Readme.4HiKey]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4HiKey/</url>
+      <content type="html"><![CDATA[<p>This is the readme file for HiKey platform</p>
+<a id="more"></a>
+<p>Above all, you need install some applications firstly as follows:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y wget automake1.11 make bc libncurses5-dev libtool li</div><div class="line">bc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 bison flex uuid-dev build-esse</div><div class="line">ntial iasl gcc zlib1g-dev libperl-dev libgtk2.0-dev libfdt-dev</div></pre></td></tr></table></figure></p>
+<p>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for HiKey, all targets files will be produced. they are:</p>
+<h3 id="l-loader-bin"><a href="#l-loader-bin" class="headerlink" title="l-loader.bin"></a>l-loader.bin</h3><h3 id="ptable-linux-img"><a href="#ptable-linux-img" class="headerlink" title="ptable-linux.img"></a>ptable-linux.img</h3><h3 id="AndroidFastbootApp-efi"><a href="#AndroidFastbootApp-efi" class="headerlink" title="AndroidFastbootApp.efi"></a>AndroidFastbootApp.efi</h3><h3 id="UEFI-HiKey-fd"><a href="#UEFI-HiKey-fd" class="headerlink" title="UEFI_HiKey.fd"></a>UEFI_HiKey.fd</h3><p><strong>description</strong>: l-loader.bin - used to switch from aarch32 to aarch64 and boot, UEFI_HiKey.fd is the UEFI bios for HiKey, ptable-linux.img - partition tables for Linux images.<br><strong>target</strong>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;project root&gt;/workspace/binary/HiKey/l-loader.bin</div><div class="line"></div><div class="line">&lt;project root&gt;/workspace/binary/HiKey/ptable-linux.img</div><div class="line"></div><div class="line">&lt;project root&gt;/workspace/binary/HiKey/AndroidFastbootApp.efi</div><div class="line"></div><div class="line">&lt;project root&gt;/workspace/binary/HiKey/UEFI_HiKey.fd.</div></pre></td></tr></table></figure></p>
+<p><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently:</p>
+<p><code>./estuary/submodules/build-uefi.sh --platform=HiKey --output=workspace</code></p>
+<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>: grubaa64.efi is used to load kernel image and dtb files from SD card, nandflash into RAM and start the kernel.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code><br><strong>source</strong>: <code>&lt;project root&gt;/grub</code>  </p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently:<br><code>./estuary/submodules/build-grub.sh --output=./workspace</code>, if your host is not arm architecture, please execute<code>build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</code></p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><h3 id="hi6220-hikey-dtb"><a href="#hi6220-hikey-dtb" class="headerlink" title="hi6220-hikey.dtb"></a>hi6220-hikey.dtb</h3><p><strong>descriptions</strong>: Image is the kernel executable program, and hi6220-hikey.dtb is the device tree binary.<br><strong>target</strong>: Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code><br>hi6220-hikey.dtb in <code>&lt;project root&gt;/workspace/binary/HiKey/hi6220-hikey.dtb</code><br><strong>source</strong>: <code>&lt;project root&gt;/kernel</code>  </p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><code>./estuary/submodules/build-kernel.sh --platform=HiKey --output=workspace</code>, if your host is not arm architecture, please execute <code>./estuary/submodules/build-kernel.sh --platform=HiKey --output=workspace --cross=aarch64-linux-gnu-</code>.</p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
+<p>If you get more information about uefi, please visit <a href="https://github.com/96boards/documentation/wiki/HiKeyUEFI" target="_blank" rel="external">https://github.com/96boards/documentation/wiki/HiKeyUEFI</a><br>More detail information about how to deploy target system into HiKey board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4HiKey.md" target="_blank" rel="external">Deploy_Manual.4HiKey.md</a>.<br>More detail information about how to config this WiFi function into HiKey board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_HiKey_WiFi_Env.4HiKey.md" target="_blank" rel="external">Setup_HiKey_Wifi_Env.md</a>.<br>More detail information about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guider.md</a>.<br>More detail information about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guider.md</a>.<br>More detail information about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.<br>More detail information about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Readme.4QEMU]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4QEMU/</url>
       <content type="html"><![CDATA[<p>This is the readme file for QEMU platform</p>
@@ -1828,26 +1828,6 @@
 <p>build commands(supposedly, you are in <code>&lt;project root&gt;</code>currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">build_dir=build</div><div class="line">KERNEL_DIR=kernel</div><div class="line">mkdir -p <span class="variable">$build_dir</span>/QEMU/<span class="variable">$KERNEL_DIR</span> 2&gt;/dev/null</div><div class="line">kernel_dir=<span class="variable">$build_dir</span>/QEMU/<span class="variable">$KERNEL_DIR</span></div><div class="line">KERNEL_BIN=<span class="variable">$kernel_dir</span>/arch/arm64/boot/Image</div><div class="line">CFG_FILE=defconfig</div><div class="line">DTB_BIN=</div><div class="line"><span class="built_in">export</span> ARCH=arm64</div><div class="line"><span class="built_in">export</span> CROSS_COMPILE=aarch64-linux-gnu-</div><div class="line"></div><div class="line"><span class="built_in">pushd</span> <span class="variable">$KERNEL_DIR</span>/</div><div class="line"></div><div class="line">git clean -fdx</div><div class="line">git reset --hard</div><div class="line">sudo rm -rf ../<span class="variable">$kernel_dir</span>/*</div><div class="line">make O=../<span class="variable">$kernel_dir</span> mrproper</div><div class="line"></div><div class="line">./scripts/kconfig/merge_config.sh -O ../<span class="variable">$kernel_dir</span> -m arch/arm64/configs/defconfig \</div><div class="line">arch/arm64/configs/distro.config arch/arm64/configs/estuary_defconfig arch/arm64/configs/qemu_defconfig</div><div class="line">mv <span class="_">-f</span> ../<span class="variable">$kernel_dir</span>/.config ../<span class="variable">$kernel_dir</span>/.merged.config</div><div class="line">make O=../<span class="variable">$kernel_dir</span> KCONFIG_ALLCONFIG=../<span class="variable">$kernel_dir</span>/.merged.config alldefconfig</div><div class="line"></div><div class="line">make O=../<span class="variable">$kernel_dir</span> -j<span class="variable">$&#123;corenum&#125;</span> <span class="variable">$&#123;KERNEL_BIN##*/&#125;</span></div><div class="line"></div><div class="line">dtb_dir=<span class="variable">$&#123;DTB_BIN#*arch/&#125;</span></div><div class="line">dtb_dir=<span class="variable">$&#123;DTB_BIN%/*&#125;</span></div><div class="line">dtb_dir=../<span class="variable">$&#123;kernel_dir&#125;</span>/arch/<span class="variable">$&#123;dtb_dir&#125;</span></div><div class="line"></div><div class="line">mkdir -p <span class="variable">$dtb_dir</span> 2&gt;/dev/null</div><div class="line"></div><div class="line">make O=../<span class="variable">$kernel_dir</span> <span class="variable">$&#123;DTB_BIN#*/boot/dts/&#125;</span></div></pre></td></tr></table></figure></p>
 <h3 id="qemu-system-aarch64"><a href="#qemu-system-aarch64" class="headerlink" title="qemu-system-aarch64"></a>qemu-system-aarch64</h3><p><strong>descriptions</strong>: qemu-system-aarch64 is the QEMU executable program.<br><strong>target</strong>: <code>&lt;project root&gt;/build/qemu/bin/qemu-system-aarch64</code><br><strong>source</strong>: <code>&lt;project root&gt;/qemu</code><br>build commands(supposedly, you are in <project root=""> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y gcc zlib1g-dev libperl-dev libgtk2.0-dev libfdt-dev</div><div class="line"></div><div class="line"><span class="built_in">pushd</span> qemu</div><div class="line">./configure --prefix=<span class="string">"/home/user/qemubuild"</span> --target-list=aarch64-softmmu</div><div class="line">make -j14</div><div class="line">make install</div><div class="line"><span class="built_in">popd</span></div><div class="line"></div><div class="line">/home/user/qemubuild/qemu-system-aarch64 -machine virt -cpu cortex<span class="_">-a</span>57 \</div><div class="line">    -kernel &lt;project root&gt;/build/QEMU/binary/Image_QEMU \</div><div class="line">    -drive <span class="keyword">if</span>=none,file=&lt;distribution image&gt;,id=fs \</div><div class="line">    -device virtio-blk-device,drive=fs \</div><div class="line">    -append <span class="string">"console=ttyAMA0 root=/dev/vda rw"</span> \</div><div class="line">    -nographic</div></pre></td></tr></table></figure></project></p>
 <p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.<br>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.<br>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.<br>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Readme.4D02]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D02/</url>
-      <content type="html"><![CDATA[<p>This is the readme file for D02 platform</p>
-<a id="more"></a>
-<p>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for D02, all targets files will be produced. they are:</p>
-<h3 id="UEFI-D02-fd"><a href="#UEFI-D02-fd" class="headerlink" title="UEFI_D02.fd"></a>UEFI_D02.fd</h3><p><strong>description</strong>: UEFI_D02.fd is the UEFI bios for D02 platform.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/D02/UEFI_D02.fd</code><br><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-uefi.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
-<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>: grubaa64.efi is used to load kernel image and dtb files from SATA, SAS, USB Disk, or NFS into RAM and start the kernel.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code><br><strong>source</strong>: <code>&lt;project root&gt;/grub</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace</div></pre></td></tr></table></figure></p>
-<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><h3 id="hip05-d02-dtb"><a href="#hip05-d02-dtb" class="headerlink" title="hip05-d02.dtb"></a>hip05-d02.dtb</h3><p><strong>descriptions</strong>: Image is the kernel executable program and hip05-d02.dtb is the device tree binary.<br><strong>target</strong>:<br>Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code><br>hip05-d02.dtb in <code>&lt;project root&gt;/workspace/binary/D02/hip05-d02.dtb</code><br><strong>source</strong>: <code>&lt;project root&gt;/kernel</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
-<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.  </p>
-<p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.<br>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.<br>More detail about how to deploy target system into D02 board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D02.md" target="_blank" rel="external">Deployment_Manual.md</a>.<br>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.<br>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.<br>More detail about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
 ]]></content>
     </entry>
     
@@ -3433,6 +3413,77 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Caliper_Manual.4All]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Caliper_Manual.4All/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">What is Caliper?</a></li>
+<li><a href="#2">Caliper Organization</a></li>
+<li><a href="#3">System Requirements</a><ul>
+<li><a href="#3.1">Software Requirements</a><ul>
+<li><a href="#3.1.1">Host Dependency</a></li>
+<li><a href="#3.1.2">Server Dependency</a></li>
+<li><a href="#3.1.3">Target Dependency</a></li>
+</ul>
+</li>
+<li><a href="#3.2">Host OS requirements</a></li>
+<li><a href="#3.3">Toolchain</a></li>
+</ul>
+</li>
+<li><a href="#4">Caliper Setup</a><ul>
+<li><a href="#4.1">Download Caliper</a></li>
+<li><a href="#4.2">Install Caliper(optional)</a></li>
+<li><a href="#4.3">Caliper Configuration</a><ul>
+<li><a href="#4.3.1">Target Configuration</a></li>
+<li><a href="#4.3.2">Mail List Configuration</a></li>
+<li><a href="#4.3.3">Execution Preference Configuration</a></li>
+<li><a href="#4.3.4">Benchmark Selection</a></li>
+<li><a href="#4.3.5">Benchmark Test Case Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#5">Caliper Execution</a></li>
+<li><a href="#6">Caliper Output</a></li>
+<li><a href="#7">Caliper Architecture</a></li>
+<li><a href="#8">Benchmark Addition</a><ul>
+<li><a href="#8.1">Test Case Definition Structure</a></li>
+<li><a href="#8.2">Benchmark Definition</a></li>
+<li><a href="#8.3">Benchmark Building</a></li>
+<li><a href="#8.4">Benchmark Execution Configuration</a></li>
+<li><a href="#8.5">Benchmark Output Parsing</a></li>
+<li><a href="#8.6">Computing The Score</a></li>
+<li><a href="#8.7">Generating Yaml File</a></li>
+</ul>
+</li>
+<li><a href="#9">Caliper Report Generation</a></li>
+<li><a href="#10">List of Benchmarks Supported in Caliper</a></li>
+</ul>
+<a id="more"></a>
+<p>For the details, please refer to <a href="http://open-estuary.org/caliper-benchmarking/" target="_blank" rel="external">http://open-estuary.org/caliper-benchmarking/</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Readme.4D02]]></title>
+      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D02/</url>
+      <content type="html"><![CDATA[<p>This is the readme file for D02 platform</p>
+<a id="more"></a>
+<p>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for D02, all targets files will be produced. they are:</p>
+<h3 id="UEFI-D02-fd"><a href="#UEFI-D02-fd" class="headerlink" title="UEFI_D02.fd"></a>UEFI_D02.fd</h3><p><strong>description</strong>: UEFI_D02.fd is the UEFI bios for D02 platform.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/D02/UEFI_D02.fd</code><br><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-uefi.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
+<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>: grubaa64.efi is used to load kernel image and dtb files from SATA, SAS, USB Disk, or NFS into RAM and start the kernel.<br><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code><br><strong>source</strong>: <code>&lt;project root&gt;/grub</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace</div></pre></td></tr></table></figure></p>
+<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><h3 id="hip05-d02-dtb"><a href="#hip05-d02-dtb" class="headerlink" title="hip05-d02.dtb"></a>hip05-d02.dtb</h3><p><strong>descriptions</strong>: Image is the kernel executable program and hip05-d02.dtb is the device tree binary.<br><strong>target</strong>:<br>Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code><br>hip05-d02.dtb in <code>&lt;project root&gt;/workspace/binary/D02/hip05-d02.dtb</code><br><strong>source</strong>: <code>&lt;project root&gt;/kernel</code></p>
+<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace</div></pre></td></tr></table></figure></p>
+<p>if your host is not arm architecture, please execute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-kernel.sh --platform=D02 --output=workspace --cross=aarch64-linux-gnu-</div></pre></td></tr></table></figure></p>
+<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.  </p>
+<p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.<br>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.<br>More detail about how to deploy target system into D02 board, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D02.md" target="_blank" rel="external">Deployment_Manual.md</a>.<br>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.<br>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.<br>More detail about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Armor_Tools_Basic_Info.4All]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/</url>
       <content type="html"><![CDATA[<ul>
@@ -3615,57 +3666,6 @@
 <li><p>packETHcli - packETHcli is the command line packet generator tool for ethernet.<br>It allows you to create and send any possible packet or sequence of packets on the ethernet link.</p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Caliper_Manual.4All]]></title>
-      <url>http://jarsonfang.github.io/etesting/Estuary/Documents/Caliper_Manual.4All/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">What is Caliper?</a></li>
-<li><a href="#2">Caliper Organization</a></li>
-<li><a href="#3">System Requirements</a><ul>
-<li><a href="#3.1">Software Requirements</a><ul>
-<li><a href="#3.1.1">Host Dependency</a></li>
-<li><a href="#3.1.2">Server Dependency</a></li>
-<li><a href="#3.1.3">Target Dependency</a></li>
-</ul>
-</li>
-<li><a href="#3.2">Host OS requirements</a></li>
-<li><a href="#3.3">Toolchain</a></li>
-</ul>
-</li>
-<li><a href="#4">Caliper Setup</a><ul>
-<li><a href="#4.1">Download Caliper</a></li>
-<li><a href="#4.2">Install Caliper(optional)</a></li>
-<li><a href="#4.3">Caliper Configuration</a><ul>
-<li><a href="#4.3.1">Target Configuration</a></li>
-<li><a href="#4.3.2">Mail List Configuration</a></li>
-<li><a href="#4.3.3">Execution Preference Configuration</a></li>
-<li><a href="#4.3.4">Benchmark Selection</a></li>
-<li><a href="#4.3.5">Benchmark Test Case Configuration</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#5">Caliper Execution</a></li>
-<li><a href="#6">Caliper Output</a></li>
-<li><a href="#7">Caliper Architecture</a></li>
-<li><a href="#8">Benchmark Addition</a><ul>
-<li><a href="#8.1">Test Case Definition Structure</a></li>
-<li><a href="#8.2">Benchmark Definition</a></li>
-<li><a href="#8.3">Benchmark Building</a></li>
-<li><a href="#8.4">Benchmark Execution Configuration</a></li>
-<li><a href="#8.5">Benchmark Output Parsing</a></li>
-<li><a href="#8.6">Computing The Score</a></li>
-<li><a href="#8.7">Generating Yaml File</a></li>
-</ul>
-</li>
-<li><a href="#9">Caliper Report Generation</a></li>
-<li><a href="#10">List of Benchmarks Supported in Caliper</a></li>
-</ul>
-<a id="more"></a>
-<p>For the details, please refer to <a href="http://open-estuary.org/caliper-benchmarking/" target="_blank" rel="external">http://open-estuary.org/caliper-benchmarking/</a></p>
 ]]></content>
     </entry>
     
@@ -5653,6 +5653,7 @@
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/</url>
       <content type="html"><![CDATA[<p>In this article, we will learn how to configure FTP server on CentOs 7 using <code>vsftpd</code>. <code>vsftpd</code> (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.</p>
 <h2 id="Install-vsftpd"><a href="#Install-vsftpd" class="headerlink" title="Install vsftpd"></a>Install vsftpd</h2><p>All commands should be run with <code>root</code> user. Run the following command in terminal to install <code>vsftpd</code> package:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install vsftpd ftp -y</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="Configure-vsftpd"><a href="#Configure-vsftpd" class="headerlink" title="Configure vsftpd"></a>Configure vsftpd</h2><p>We needed to edit the configuration file <code>/etc/vsftpd/vsftpd.conf</code> for securing the FTP server since, by default it will allow anonymous users to login and use the server.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp /etc/vsftpd/vsftpd.conf&#123;,.bak&#125;</div><div class="line">vi /etc/vsftpd/vsftpd.conf</div></pre></td></tr></table></figure></p>
 <p>We have to disallow anonymous, unidentified users to access files via FTP; change the anonymous_enable setting to NO:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">anonymous_enable=NO</div></pre></td></tr></table></figure></p>
 <p>Allow local users to login by changing the local_enable setting to YES:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">local_enable=YES</div></pre></td></tr></table></figure></p>
@@ -5676,6 +5677,7 @@
       <title><![CDATA[Samba on Centos 7]]></title>
       <url>http://jarsonfang.github.io/etesting/Estuary/Documents/samba-on-centos/</url>
       <content type="html"><![CDATA[<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install samba samba-client</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>Now to configure samba, make the backup of original file as <code>/etc/samba/smb.conf.bak</code> before editing the file <code>/etc/samba/smb.conf</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/samba/smb.conf&#123;,.bak&#125;</div></pre></td></tr></table></figure>
 <h3 id="Anonymous-samba-sharing"><a href="#Anonymous-samba-sharing" class="headerlink" title="Anonymous samba sharing"></a>Anonymous samba sharing</h3><p>Further give the entries like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt; EOF &gt;&gt; /etc/samba/smb.conf</div><div class="line">[share]</div><div class="line">    comment = Anonymous share</div><div class="line">    path = /srv/samba/share</div><div class="line">    public = yes</div><div class="line">    browsable =yes</div><div class="line">    writable = yes</div><div class="line">    guest ok = yes</div><div class="line">    <span class="built_in">read</span> only = no</div><div class="line">EOF</div></pre></td></tr></table></figure></p>

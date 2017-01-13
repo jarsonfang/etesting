@@ -85,7 +85,7 @@ Install">
 <meta property="og:site_name" content="Etesting">
 <meta property="og:description" content="In this article, we will learn how to configure FTP server on CentOs 7 using vsftpd. vsftpd (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.
 Install">
-<meta property="og:updated_time" content="2017-01-12T03:45:16.491Z">
+<meta property="og:updated_time" content="2017-01-13T09:03:29.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FTP on Centos 7">
 <meta name="twitter:description" content="In this article, we will learn how to configure FTP server on CentOs 7 using vsftpd. vsftpd (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.
@@ -389,6 +389,7 @@ Install">
       
         <p>In this article, we will learn how to configure FTP server on CentOs 7 using <code>vsftpd</code>. <code>vsftpd</code> (Very Secure File Transport Protocol Daemon) is a secure and very fast FTP server on Linux systems.</p>
 <h2 id="Install-vsftpd"><a href="#Install-vsftpd" class="headerlink" title="Install vsftpd"></a>Install vsftpd</h2><p>All commands should be run with <code>root</code> user. Run the following command in terminal to install <code>vsftpd</code> package:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install vsftpd ftp -y</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="Configure-vsftpd"><a href="#Configure-vsftpd" class="headerlink" title="Configure vsftpd"></a>Configure vsftpd</h2><p>We needed to edit the configuration file <code>/etc/vsftpd/vsftpd.conf</code> for securing the FTP server since, by default it will allow anonymous users to login and use the server.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp /etc/vsftpd/vsftpd.conf&#123;,.bak&#125;</div><div class="line">vi /etc/vsftpd/vsftpd.conf</div></pre></td></tr></table></figure></p>
 <p>We have to disallow anonymous, unidentified users to access files via FTP; change the anonymous_enable setting to NO:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">anonymous_enable=NO</div></pre></td></tr></table></figure></p>
 <p>Allow local users to login by changing the local_enable setting to YES:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">local_enable=YES</div></pre></td></tr></table></figure></p>

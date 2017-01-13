@@ -77,22 +77,16 @@
 
 
 
-<meta name="description" content="Installation1yum install samba samba-client
-ConfigurationNow to configure samba, make the backup of original file as /etc/samba/smb.conf.bak before editing the file /etc/samba/smb.conf.
-1cp /etc/samba">
+<meta name="description" content="Installation1yum install samba samba-client">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Samba on Centos 7">
 <meta property="og:url" content="http://jarsonfang.github.io/Estuary/Documents/samba-on-centos/index.html">
 <meta property="og:site_name" content="Etesting">
-<meta property="og:description" content="Installation1yum install samba samba-client
-ConfigurationNow to configure samba, make the backup of original file as /etc/samba/smb.conf.bak before editing the file /etc/samba/smb.conf.
-1cp /etc/samba">
-<meta property="og:updated_time" content="2017-01-12T03:45:16.491Z">
+<meta property="og:description" content="Installation1yum install samba samba-client">
+<meta property="og:updated_time" content="2017-01-13T09:03:29.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Samba on Centos 7">
-<meta name="twitter:description" content="Installation1yum install samba samba-client
-ConfigurationNow to configure samba, make the backup of original file as /etc/samba/smb.conf.bak before editing the file /etc/samba/smb.conf.
-1cp /etc/samba">
+<meta name="twitter:description" content="Installation1yum install samba samba-client">
 
 
 
@@ -391,6 +385,7 @@ ConfigurationNow to configure samba, make the backup of original file as /etc/sa
 
       
         <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install samba samba-client</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>Now to configure samba, make the backup of original file as <code>/etc/samba/smb.conf.bak</code> before editing the file <code>/etc/samba/smb.conf</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/samba/smb.conf&#123;,.bak&#125;</div></pre></td></tr></table></figure>
 <h3 id="Anonymous-samba-sharing"><a href="#Anonymous-samba-sharing" class="headerlink" title="Anonymous samba sharing"></a>Anonymous samba sharing</h3><p>Further give the entries like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt; EOF &gt;&gt; /etc/samba/smb.conf</div><div class="line">[share]</div><div class="line">    comment = Anonymous share</div><div class="line">    path = /srv/samba/share</div><div class="line">    public = yes</div><div class="line">    browsable =yes</div><div class="line">    writable = yes</div><div class="line">    guest ok = yes</div><div class="line">    <span class="built_in">read</span> only = no</div><div class="line">EOF</div></pre></td></tr></table></figure></p>
