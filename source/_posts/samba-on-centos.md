@@ -15,6 +15,8 @@ categories:
 yum install samba samba-client
 ```
 
+<!--more-->
+
 ## Configuration
 
 Now to configure samba, make the backup of original file as `/etc/samba/smb.conf.bak` before editing the file `/etc/samba/smb.conf`.

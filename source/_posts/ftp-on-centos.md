@@ -18,6 +18,8 @@ All commands should be run with `root` user. Run the following command in termin
 yum install vsftpd ftp -y
 ```
 
+<!--more-->
+
 ## Configure vsftpd
 
 We needed to edit the configuration file `/etc/vsftpd/vsftpd.conf` for securing the FTP server since, by default it will allow anonymous users to login and use the server.
