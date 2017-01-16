@@ -8,27 +8,30 @@ categories:
   - Estuary
   - Documents
 ---
-<first add lxc testing steps for centos>
 
-### centos下下载lxc源码
+### Installation
 
-`git clone git://github.com/lxc/lxc -b master`
+1. centos下下载lxc源码
+   ```bash
+   git clone git://github.com/lxc/lxc -b master
+   ```
+2. 安装依赖的包
+   ```bash
+   yum install bridge-utils libcap-devel libtool  cloud-utils -y
+   ```
+3. 运行README文档中提示的脚本进行编译安装
+   ```bash
+   ./autogen.sh && ./configure && make && sudo make install
+   ```
+4. 安装完成后使用`lxc-checkconfig`查看内核丢失了哪些选项，使用`make menuconfig`打开丢失的项, 编译完成后替换原来的image，然后再用`lxc-checkconfig`验证
 
-### 安装依赖的包
-
-`yum install bridge-utils libcap-devel libtool  cloud-utils -y`
-
-### 运行README文档中提示的脚本进行编译安装
-
-`./autogen.sh && ./configure && make && sudo make install`
-
-### 安装完成后使用`lxc-checkconfig`查看内核丢失了哪些选项，使用`make menuconfig`打开丢失的项, 编译完成后替换原来的image，然后再用`lxc-checkconfig`验证
+<!--more-->
 
 ### 创建网桥
 
-`cd /etc/sysconfig/network-scripts`  
-`vi ifcfg-lxcbr0`  
+1. 配置桥接网络接口
 ```bash
+cat << EOF > /etc/sysconfig/network-scripts/ifcfg-lxcbr0
 DEVICE="lxcbr0"
 BOOTPROTO="static"
 IPADDR="xxx.xxx.xxx.xxx"
@@ -36,26 +39,39 @@ NETMASK="255.255.255.xxx"
 ONBOOT="yes"
 TYPE="Bridge"
 NM_CONTROLLED="no"
+EOF
 ```
-### 更改完之后 重启网络服务
+2. 重启网络服务
+   ```bash
+   systemctl restart network.service
+   ```
 
-`systemctl restart network.service`
+### 创建lxc容器
 
-### 更改`/usr/local/share/lxc/templates/lxc-ubuntu-cloud`, 注释掉这一行:`type ubuntu-cloudimg-query`
+1. 修改`lxc-ubuntu-cloud`模板文件
 
-### 拉镜像
+   更改`/usr/local/share/lxc/templates/lxc-ubuntu-cloud`, 注释掉这一行:`type ubuntu-cloudimg-query`
 
-`lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://cloud-images.ubuntu.com/releases/vivid/release-20160203/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz`
+2. 创建lxc容器
 
-如果你在Lab2上的话可以使用：`lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://192.168.1.107/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz`
+   ```bash
+   lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://cloud-images.ubuntu.com/releases/vivid/release-20160203/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz
+   ```
 
-### 启动lxc
+   如果你在Lab2上的话可以使用：
+   ```bash
+   lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://192.168.1.107/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz
+   ```
 
-`lxc-start -n ubuntu -F`
+### 启动lxc容器
+
+```bash
+lxc-start -n ubuntu -F
+```
 
 ### 参考网站
 
-https://wiki.linaro.org/LEG/Engineering/LXC 化哥提交
+https://wiki.linaro.org/LEG/Engineering/LXC (by Justin)
 
 http://17173ops.com/2013/11/14/linux-lxc-install-guide.shtml#toc37 lxc指令集
 

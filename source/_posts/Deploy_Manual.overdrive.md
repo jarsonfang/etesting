@@ -7,7 +7,6 @@ categories:
   - Estuary
   - Documents
 ---
-<add overdrive doc>
 
 * [Introduction](#1)
 * [Preparation](#2)
@@ -18,6 +17,8 @@ categories:
    * [Boot via PXE(ACPI)](#3.1)
    * [Boot via NFS(ACPI)](#3.2)
    * [Boot via DISK(SAS/SATA)(ACPI)](#3.3)
+
+<!--more-->
 
 <h2 id="1">Introduction</h2>
 
