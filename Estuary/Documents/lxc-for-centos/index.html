@@ -61,7 +61,7 @@
 <link href="/etesting/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="D05," />
+  <meta name="keywords" content="CentOS,lxc," />
 
 
 
@@ -77,16 +77,22 @@
 
 
 
-<meta name="description" content="This is the readme file for D05 platform">
+<meta name="description" content="centos下下载lxc源码git clone git://github.com/lxc/lxc -b master
+安装依赖的包yum install bridge-utils libcap-devel libtool  cloud-utils -y
+运行README文档中提示的脚本进行编译安装./autogen.sh &amp;amp;&amp;amp; ./configure &amp;amp;&amp;amp; ma">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Readme.4D05">
-<meta property="og:url" content="http://jarsonfang.github.io/Estuary/Documents/Readme.4D05/index.html">
+<meta property="og:title" content="lxc for centos">
+<meta property="og:url" content="http://jarsonfang.github.io/Estuary/Documents/lxc-for-centos/index.html">
 <meta property="og:site_name" content="Etesting">
-<meta property="og:description" content="This is the readme file for D05 platform">
-<meta property="og:updated_time" content="2016-12-26T11:19:06.656Z">
+<meta property="og:description" content="centos下下载lxc源码git clone git://github.com/lxc/lxc -b master
+安装依赖的包yum install bridge-utils libcap-devel libtool  cloud-utils -y
+运行README文档中提示的脚本进行编译安装./autogen.sh &amp;amp;&amp;amp; ./configure &amp;amp;&amp;amp; ma">
+<meta property="og:updated_time" content="2017-01-16T06:05:18.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Readme.4D05">
-<meta name="twitter:description" content="This is the readme file for D05 platform">
+<meta name="twitter:title" content="lxc for centos">
+<meta name="twitter:description" content="centos下下载lxc源码git clone git://github.com/lxc/lxc -b master
+安装依赖的包yum install bridge-utils libcap-devel libtool  cloud-utils -y
+运行README文档中提示的脚本进行编译安装./autogen.sh &amp;amp;&amp;amp; ./configure &amp;amp;&amp;amp; ma">
 
 
 
@@ -114,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://jarsonfang.github.io/Estuary/Documents/Readme.4D05/"/>
+  <link rel="canonical" href="http://jarsonfang.github.io/Estuary/Documents/lxc-for-centos/"/>
 
 
 
 
 
-  <title> Readme.4D05 | Etesting </title>
+  <title> lxc for centos | Etesting </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/">
+  <link itemprop="mainEntityOfPage" href="http://jarsonfang.github.io/etesting/Estuary/Documents/lxc-for-centos/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Estuary">
@@ -290,7 +296,7 @@
             
             
               
-                Readme.4D05
+                lxc for centos
               
             
           </h1>
@@ -305,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-24T00:00:00+08:00">
-                2016-12-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T00:00:00+08:00">
+                2017-01-12
               </time>
             
 
@@ -357,8 +363,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/etesting/Estuary/Documents/Readme.4D05/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Documents/Readme.4D05/" itemprop="commentCount"></span>
+                <a href="/etesting/Estuary/Documents/lxc-for-centos/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Documents/lxc-for-centos/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,32 +390,23 @@
       
 
       
-        <p>This is the readme file for D05 platform<br><a id="more"></a><br>After you executed <code>./estuary/build.sh --file=./estuary/estuarycfg.json --builddir=./workspace</code> for D05, all targets files will be produced. they are:</p>
-<h3 id="UEFI-D05-fd"><a href="#UEFI-D05-fd" class="headerlink" title="UEFI_D05.fd"></a>UEFI_D05.fd</h3><p><strong>description</strong>: UEFI_D05.fd is the UEFI bios for D05 platform.</p>
-<p><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/D05/UEFI_D05.fd</code></p>
-<p><strong>source</strong>: <code>&lt;project root&gt;/uefi</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./estuary/submodules/build-uefi.sh --platform=D05 --output=workspace</div></pre></td></tr></table></figure></p>
-<h3 id="grubaa64-efi"><a href="#grubaa64-efi" class="headerlink" title="grubaa64.efi"></a>grubaa64.efi</h3><p><strong>description</strong>:</p>
-<p>grubaa64.efi is used to load kernel image and dtb files from SATA, SAS, USB Disk, or NFS into RAM and start the kernel.</p>
-<p><strong>target</strong>: <code>&lt;project root&gt;/workspace/binary/arm64/grubaa64.efi</code></p>
-<p><strong>source</strong>: <code>&lt;project root&gt;/grub</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):</p>
-<p><code>./estuary/submodules/build-grub.sh --output=./workspace</code>, if your host is not arm architecture, please execute<code>build-grub.sh --output=./workspace --cross=aarch64-linux-gnu-</code></p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><p><strong>descriptions</strong>: Image is the kernel executable program.</p>
-<p><strong>target</strong>:</p>
-<p>Image in <code>&lt;project root&gt;/workspace/binary/arm64/Image</code></p>
-<p><strong>source</strong>: <code>&lt;project root&gt;/kernel</code></p>
-<p>build commands(supposedly, you are in <code>&lt;project root&gt;</code> currently):</p>
-<p><code>./estuary/submodules/build-kernel.sh --platform=D05 --output=workspace</code>, if your host is not arm architecture, please execute <code>./estuary/submodules/build-kernel.sh --platform=D05 --output=workspace --cross=aarch64-linux-gnu-</code>.</p>
-<p>Note: more details about how to install gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md</a>.</p>
-<p>More detail about distributions, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guide.md</a>.</p>
-<p>More detail about toolchains, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Toolchains_Guide.4All.md" target="_blank" rel="external">Toolchains_Guide.md</a>.</p>
-<p>More detail about how to deploy target system into D05 board, please refer to <a href="https://github.com/open-estuary/estuary/blob/estuary-d05-3.0b/doc/Deploy_Manual.4D05.md" target="_blank" rel="external">Deployment_Manual.md</a>.</p>
-<p>More detail about how to debug, analyse, diagnose system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Manual.4All.md" target="_blank" rel="external">Armor_Manual.md</a>.</p>
-<p>More detail about how to benchmark system, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Caliper_Manual.4All.md" target="_blank" rel="external">Caliper_Manual.md</a>.</p>
-<p>More detail about how to access remote boards in OpenLab, please refer to <a href="http://open-estuary.org/accessing-boards-in-open-lab/" target="_blank" rel="external">Boards_in_OpenLab</a>.</p>
+        <first add="" lxc="" testing="" steps="" for="" centos="">
 
+<h3 id="centos下下载lxc源码"><a href="#centos下下载lxc源码" class="headerlink" title="centos下下载lxc源码"></a>centos下下载lxc源码</h3><p><code>git clone git://github.com/lxc/lxc -b master</code></p>
+<h3 id="安装依赖的包"><a href="#安装依赖的包" class="headerlink" title="安装依赖的包"></a>安装依赖的包</h3><p><code>yum install bridge-utils libcap-devel libtool  cloud-utils -y</code></p>
+<h3 id="运行README文档中提示的脚本进行编译安装"><a href="#运行README文档中提示的脚本进行编译安装" class="headerlink" title="运行README文档中提示的脚本进行编译安装"></a>运行README文档中提示的脚本进行编译安装</h3><p><code>./autogen.sh &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install</code></p>
+<h3 id="安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make-menuconfig打开丢失的项-编译完成后替换原来的image，然后再用lxc-checkconfig验证"><a href="#安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make-menuconfig打开丢失的项-编译完成后替换原来的image，然后再用lxc-checkconfig验证" class="headerlink" title="安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make menuconfig打开丢失的项, 编译完成后替换原来的image，然后再用lxc-checkconfig验证"></a>安装完成后使用<code>lxc-checkconfig</code>查看内核丢失了哪些选项，使用<code>make menuconfig</code>打开丢失的项, 编译完成后替换原来的image，然后再用<code>lxc-checkconfig</code>验证</h3><h3 id="创建网桥"><a href="#创建网桥" class="headerlink" title="创建网桥"></a>创建网桥</h3><p><code>cd /etc/sysconfig/network-scripts</code><br><code>vi ifcfg-lxcbr0</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DEVICE=<span class="string">"lxcbr0"</span></div><div class="line">BOOTPROTO=<span class="string">"static"</span></div><div class="line">IPADDR=<span class="string">"xxx.xxx.xxx.xxx"</span></div><div class="line">NETMASK=<span class="string">"255.255.255.xxx"</span></div><div class="line">ONBOOT=<span class="string">"yes"</span></div><div class="line">TYPE=<span class="string">"Bridge"</span></div><div class="line">NM_CONTROLLED=<span class="string">"no"</span></div></pre></td></tr></table></figure></p>
+<h3 id="更改完之后-重启网络服务"><a href="#更改完之后-重启网络服务" class="headerlink" title="更改完之后 重启网络服务"></a>更改完之后 重启网络服务</h3><p><code>systemctl restart network.service</code></p>
+<h3 id="更改-usr-local-share-lxc-templates-lxc-ubuntu-cloud-注释掉这一行-type-ubuntu-cloudimg-query"><a href="#更改-usr-local-share-lxc-templates-lxc-ubuntu-cloud-注释掉这一行-type-ubuntu-cloudimg-query" class="headerlink" title="更改/usr/local/share/lxc/templates/lxc-ubuntu-cloud, 注释掉这一行:type ubuntu-cloudimg-query"></a>更改<code>/usr/local/share/lxc/templates/lxc-ubuntu-cloud</code>, 注释掉这一行:<code>type ubuntu-cloudimg-query</code></h3><h3 id="拉镜像"><a href="#拉镜像" class="headerlink" title="拉镜像"></a>拉镜像</h3><p><code>lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://cloud-images.ubuntu.com/releases/vivid/release-20160203/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz</code></p>
+<p>如果你在Lab2上的话可以使用：<code>lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://192.168.1.107/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz</code></p>
+<h3 id="启动lxc"><a href="#启动lxc" class="headerlink" title="启动lxc"></a>启动lxc</h3><p><code>lxc-start -n ubuntu -F</code></p>
+<h3 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h3><p><a href="https://wiki.linaro.org/LEG/Engineering/LXC" target="_blank" rel="external">https://wiki.linaro.org/LEG/Engineering/LXC</a> 化哥提交</p>
+<p><a href="http://17173ops.com/2013/11/14/linux-lxc-install-guide.shtml#toc37" target="_blank" rel="external">http://17173ops.com/2013/11/14/linux-lxc-install-guide.shtml#toc37</a> lxc指令集</p>
+<p><a href="https://www.stgraber.org/2012/05/04/lxc-in-ubuntu-12-04-lts/" target="_blank" rel="external">https://www.stgraber.org/2012/05/04/lxc-in-ubuntu-12-04-lts/</a>  关于缺失ubuntu-cloudimg-query 命令的解决办法</p>
+<p><a href="http://www.thegeekstuff.com/2016/01/install-lxc-linux-containers/" target="_blank" rel="external">http://www.thegeekstuff.com/2016/01/install-lxc-linux-containers/</a> 利用源代码安装及配置lxc的方法</p>
+<p><a href="https://bbs.archlinux.org/viewtopic.php?id=167253" target="_blank" rel="external">https://bbs.archlinux.org/viewtopic.php?id=167253</a> 不使用debootstrap创建lxc镜像（centos下暂时没有实验利用debootstrap创建镜像的方法）</p>
+<p><a href="http://cloud-images.ubuntu.com/releases/vivid/release/" target="_blank" rel="external">http://cloud-images.ubuntu.com/releases/vivid/release/</a> ubuntu官方云镜像仓库</p>
+</first>
       
     </div>
 
@@ -432,7 +429,9 @@
       
         <div class="post-tags">
           
-            <a href="/etesting/tags/D05/" rel="tag"># D05</a>
+            <a href="/etesting/tags/CentOS/" rel="tag"># CentOS</a>
+          
+            <a href="/etesting/tags/lxc/" rel="tag"># lxc</a>
           
         </div>
       
@@ -441,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/etesting/Estuary/Documents/UEFI_Manual.4D03/" rel="next" title="UEFI_Manual.4D03">
-                <i class="fa fa-chevron-left"></i> UEFI_Manual.4D03
+              <a href="/etesting/Estuary/Documents/Deploy_Manual.overdrive/" rel="next" title="Deploy_Manual.overdrive">
+                <i class="fa fa-chevron-left"></i> Deploy_Manual.overdrive
               </a>
             
           </div>
@@ -451,8 +450,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/etesting/Estuary/Documents/UEFI_Manual.4D05/" rel="prev" title="UEFI_Manual.4D05">
-                UEFI_Manual.4D05 <i class="fa fa-chevron-right"></i>
+              <a href="/etesting/Misc/How-to-mirror-a-CentOS-source-repo/" rel="prev" title="How to mirror a CentOS source repo">
+                How to mirror a CentOS source repo <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -468,10 +467,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="Estuary/Documents/Readme.4D05/"
-     data-title="Readme.4D05"
+        <div class="ds-share flat" data-thread-key="Estuary/Documents/lxc-for-centos/"
+     data-title="lxc for centos"
      data-content=""
-     data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/">
+     data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/lxc-for-centos/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -501,8 +500,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="Estuary/Documents/Readme.4D05/"
-           data-title="Readme.4D05" data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/">
+      <div class="ds-thread" data-thread-key="Estuary/Documents/lxc-for-centos/"
+           data-title="lxc for centos" data-url="http://jarsonfang.github.io/etesting/Estuary/Documents/lxc-for-centos/">
       </div>
     
   </div>
@@ -671,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#UEFI-D05-fd"><span class="nav-number">1.</span> <span class="nav-text">UEFI_D05.fd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grubaa64-efi"><span class="nav-number">2.</span> <span class="nav-text">grubaa64.efi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image"><span class="nav-number">3.</span> <span class="nav-text">Image</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#centos下下载lxc源码"><span class="nav-number">1.</span> <span class="nav-text">centos下下载lxc源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖的包"><span class="nav-number">2.</span> <span class="nav-text">安装依赖的包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行README文档中提示的脚本进行编译安装"><span class="nav-number">3.</span> <span class="nav-text">运行README文档中提示的脚本进行编译安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make-menuconfig打开丢失的项-编译完成后替换原来的image，然后再用lxc-checkconfig验证"><span class="nav-number">4.</span> <span class="nav-text">安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make menuconfig打开丢失的项, 编译完成后替换原来的image，然后再用lxc-checkconfig验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建网桥"><span class="nav-number">5.</span> <span class="nav-text">创建网桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改完之后-重启网络服务"><span class="nav-number">6.</span> <span class="nav-text">更改完之后 重启网络服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改-usr-local-share-lxc-templates-lxc-ubuntu-cloud-注释掉这一行-type-ubuntu-cloudimg-query"><span class="nav-number">7.</span> <span class="nav-text">更改/usr/local/share/lxc/templates/lxc-ubuntu-cloud, 注释掉这一行:type ubuntu-cloudimg-query</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉镜像"><span class="nav-number">8.</span> <span class="nav-text">拉镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动lxc"><span class="nav-number">9.</span> <span class="nav-text">启动lxc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考网站"><span class="nav-number">10.</span> <span class="nav-text">参考网站</span></a></li></ol></div>
             
 
           </div>
