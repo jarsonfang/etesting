@@ -545,25 +545,26 @@
 
       
         
-          
-            <first add="" lxc="" testing="" steps="" for="" centos="">
-
-<h3 id="centos下下载lxc源码"><a href="#centos下下载lxc源码" class="headerlink" title="centos下下载lxc源码"></a>centos下下载lxc源码</h3><p><code>git clone git://github.com/lxc/lxc -b master</code></p>
-<h3 id="安装依赖的包"><a href="#安装依赖的包" class="headerlink" title="安装依赖的包"></a>安装依赖的包</h3><p><code>yum install bridge-utils libcap-devel libtool  cloud-utils -y</code></p>
-<h3 id="运行README文档中提示的脚本进行编译安装"><a href="#运行README文档中提示的脚本进行编译安装" class="headerlink" title="运行README文档中提示的脚本进行编译安装"></a>运行README文档中提示的脚本进行编译安装</h3><p><code>./autogen.sh &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install</code></p>
-<h3 id="安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make-menuconfig打开丢失的项-编译完成后替换原来的image，然后再用lxc-checkconfig验证"><a href="#安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make-menuconfig打开丢失的项-编译完成后替换原来的image，然后再用lxc-checkconfig验证" class="headerlink" title="安装完成后使用lxc-checkconfig查看内核丢失了哪些选项，使用make menuconfig打开丢失的项, 编译完成后替换原来的image，然后再用lxc-checkconfig验证"></a>安装完成后使用<code>lxc-checkconfig</code>查看内核丢失了哪些选项，使用<code>make menuconfig</code>打开丢失的项, 编译完成后替换原来的image，然后再用<code>lxc-checkconfig</code>验证</h3><h3 id="创建网桥"><a href="#创建网桥" class="headerlink" title="创建网桥"></a>创建网桥</h3><p><code>cd /etc/sysconfig/network-scripts</code><br><code>vi ifcfg-lxcbr0</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DEVICE=<span class="string">"lxcbr0"</span></div><div class="line">BOOTPROTO=<span class="string">"static"</span></div><div class="line">IPADDR=<span class="string">"xxx.xxx.xxx.xxx"</span></div><div class="line">NETMASK=<span class="string">"255.255.255.xxx"</span></div><div class="line">ONBOOT=<span class="string">"yes"</span></div><div class="line">TYPE=<span class="string">"Bridge"</span></div><div class="line">NM_CONTROLLED=<span class="string">"no"</span></div></pre></td></tr></table></figure></p>
-<h3 id="更改完之后-重启网络服务"><a href="#更改完之后-重启网络服务" class="headerlink" title="更改完之后 重启网络服务"></a>更改完之后 重启网络服务</h3><p><code>systemctl restart network.service</code></p>
-<h3 id="更改-usr-local-share-lxc-templates-lxc-ubuntu-cloud-注释掉这一行-type-ubuntu-cloudimg-query"><a href="#更改-usr-local-share-lxc-templates-lxc-ubuntu-cloud-注释掉这一行-type-ubuntu-cloudimg-query" class="headerlink" title="更改/usr/local/share/lxc/templates/lxc-ubuntu-cloud, 注释掉这一行:type ubuntu-cloudimg-query"></a>更改<code>/usr/local/share/lxc/templates/lxc-ubuntu-cloud</code>, 注释掉这一行:<code>type ubuntu-cloudimg-query</code></h3><h3 id="拉镜像"><a href="#拉镜像" class="headerlink" title="拉镜像"></a>拉镜像</h3><p><code>lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://cloud-images.ubuntu.com/releases/vivid/release-20160203/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz</code></p>
-<p>如果你在Lab2上的话可以使用：<code>lxc-create -n ubuntu -t ubuntu-cloud -- -r vivid -T http://192.168.1.107/ubuntu-15.04-server-cloudimg-arm64-root.tar.gz</code></p>
-<h3 id="启动lxc"><a href="#启动lxc" class="headerlink" title="启动lxc"></a>启动lxc</h3><p><code>lxc-start -n ubuntu -F</code></p>
-<h3 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h3><p><a href="https://wiki.linaro.org/LEG/Engineering/LXC" target="_blank" rel="external">https://wiki.linaro.org/LEG/Engineering/LXC</a> 化哥提交</p>
-<p><a href="http://17173ops.com/2013/11/14/linux-lxc-install-guide.shtml#toc37" target="_blank" rel="external">http://17173ops.com/2013/11/14/linux-lxc-install-guide.shtml#toc37</a> lxc指令集</p>
-<p><a href="https://www.stgraber.org/2012/05/04/lxc-in-ubuntu-12-04-lts/" target="_blank" rel="external">https://www.stgraber.org/2012/05/04/lxc-in-ubuntu-12-04-lts/</a>  关于缺失ubuntu-cloudimg-query 命令的解决办法</p>
-<p><a href="http://www.thegeekstuff.com/2016/01/install-lxc-linux-containers/" target="_blank" rel="external">http://www.thegeekstuff.com/2016/01/install-lxc-linux-containers/</a> 利用源代码安装及配置lxc的方法</p>
-<p><a href="https://bbs.archlinux.org/viewtopic.php?id=167253" target="_blank" rel="external">https://bbs.archlinux.org/viewtopic.php?id=167253</a> 不使用debootstrap创建lxc镜像（centos下暂时没有实验利用debootstrap创建镜像的方法）</p>
-<p><a href="http://cloud-images.ubuntu.com/releases/vivid/release/" target="_blank" rel="external">http://cloud-images.ubuntu.com/releases/vivid/release/</a> ubuntu官方云镜像仓库</p>
-</first>
-          
+          <h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><ol>
+<li><p>centos下下载lxc源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git://github.com/lxc/lxc -b master</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装依赖的包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install bridge-utils libcap-devel libtool  cloud-utils -y</div></pre></td></tr></table></figure>
+</li>
+<li><p>运行README文档中提示的脚本进行编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./autogen.sh &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装完成后使用<code>lxc-checkconfig</code>查看内核丢失了哪些选项，使用<code>make menuconfig</code>打开丢失的项, 编译完成后替换原来的image，然后再用<code>lxc-checkconfig</code>验证</p>
+</li>
+</ol>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/etesting/Estuary/Documents/lxc-for-centos/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -722,10 +723,7 @@
 
       
         
-          
-            <add overdrive="" doc="">
-
-<ul>
+          <ul>
 <li><a href="#1">Introduction</a></li>
 <li><a href="#2">Preparation</a><ul>
 <li><a href="#2.1">Prerequisite</a></li>
@@ -740,113 +738,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="1">Introduction</h2>
-
-<p>This documentation describes how to get, build, deploy and bring up target system based Estuary Project, it will help you to make your Estuary Environment setup from ZERO.</p>
-<h2 id="2">Preparation</h2>
-
-<h3 id="2.1">Prerequisite</h3>
-
-<p>Local network: To connect hardware boards and host machine, so that they can communicate each other.</p>
-<p>Serial cable: To connect hardware board’s serial port to host machine, so that you can access the target board’s UART in host machine.</p>
-<p>Two methods are provided to <strong>connect the board’s UART port to a host machine</strong>:</p>
-<p><strong>Method 1</strong> : connect the board’s UART in openlab environment</p>
-<p> Use <code>board_connect</code> command.(Details please refer to <code>board_connect --help</code>)</p>
-<p><strong>Method 2</strong> : directly connect the board by UART cable</p>
-<p>   a. Connect the board’s UART port to a host machine with a serial cable.<br><br>   b. Install a serial port application in host machine, e.g.: kermit or minicom.<br><br>   c. Config serial port setting:115200/8/N/1 on host machine.<br></p>
-<h3 id="2.2">Check the hardware board</h3>
-
-<h3 id="2.3">Upgrade UEFI and trust firmware</h3>
-
-<p>Please contact support@open-estuary.org to get uefi files of overdrive.</p>
-<h2 id="3">Bring up System via ACPI mode</h2>
-
-<p>There are several methods to bring up system, you can select following anyone fitting you to boot up.</p>
-<h3 id="3.1">Boot via PXE(ACPI)</h3>
-
-<p>In this boot mode, the UEFI will get grub from PXE server.The grub will get the configuration file from TFTP service configured by PXE server.</p>
-<ol>
-<li><p>Setup PXE environment on host</p>
-<p>Enable both DHCP and TFTP services on one of your host machines according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.</p>
-</li>
-<li><p>Reboot and press “Del” to enter UEFI Boot Menu</p>
-</li>
-<li><p>Move mouse to “Save&amp;Exit” and select “UEFI: Network Port00” boot option.</p>
-</li>
-<li><p>After several seconds, overdrive will boot by PXE automatically.</p>
-</li>
-</ol>
-<p>To config the grub.cfg to support PXE boot, please refer to  <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
-<h3 id="3.2">Boot via NFS(ACPI)</h3>
-
-<p>In this boot mode, the root parameter in grub.cfg menuentry will set to /dev/nfs and nfsroot will be set to the path of rootfs on NFS server. You can use <code>&quot;showmount -e &lt;server ip address&gt;&quot;</code>to list the exported NFS directories on the NFS server.</p>
-<p>overdrive supports booting via NFS, you can try it as following steps:</p>
-<ol>
-<li><p>Enable DHCP, TFTP and NFS service according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>.</p>
-</li>
-<li><p>Get and config grub file to support NFS boot according to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Grub_Manual.4All.md" target="_blank" rel="external">Grub_Manual.md</a>.</p>
-</li>
-<li><p>Reboot and press “Del” to enter UEFI Boot Menu</p>
-</li>
-<li><p>Move mouse to “Save&amp;Exit” and select “UEFI: Network Port00” boot option.</p>
-</li>
-<li><p>After several seconds, overdrive will boot by nfs automatically.</p>
-</li>
-</ol>
-<h3 id="3.3">Boot via DISK(SAS/SATA)(ACPI)</h3>
-
-<p>overdrive board supports booting via SAS, USB and SATA by default. The UEFI will directly get the grub from the EFI system partition on the hard disk. The grub will load the grub configuration file from the EFI system partition. So grubaa64.efi, grub.cfg, Image and different estuary release distributions are stored on disk.</p>
-<ol>
-<li><p>Boot by PXE (please refer to “Boot via PXE”) to part and format hardware disk before booting overdrive board</p>
-<p>Format hardware disk</p>
-<p>e.g.:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkfs.vfat /dev/sda1</div><div class="line">sudo mkfs.ext4 /dev/sda2</div></pre></td></tr></table></figure>
-<p><strong>For the disk capacity is less than 2T</strong>, part hardware disk with <code>sudo fdisk /dev/sda</code> as follow, EFI partition is set to 200M, distribution partition is set to 100G by default.</p>
-</li>
-</ol>
-<p>   add a gpt to this disk :</p>
-<p>   <code>fdisk /dev/sda</code></p>
-<p>   <code>g</code>——-add a gpt partition</p>
-<p>   add some EFI partition :</p>
-<p>   <code>n</code>——-add a partition</p>
-<p>   <code>1</code>——-the number of partition</p>
-<p>   type “Enter” key —— First sector</p>
-<p>   <code>+200M</code>———Last sector, size of partition</p>
-<p>   <code>t</code>——-change the type of partition</p>
-<p>   add the second partition for distribution <code>mkpart</code>  </p>
-<p>   <code>n</code>——-add a partition<br>   <code>2</code>——-the number of partition</p>
-<p>   type “Enter” key —— First sector<br>   <code>+100G</code>———Last sector, size of partition </p>
-<p>   add some another partition  <code>...</code><br><br>   save the change           : <code>w</code><br></p>
-<p>   <strong>For the disk capacity is more than 2T</strong>, part hardware disk with <code>sudo parted /dev/sda</code> as follow , EFI partition is set to 200M, distribution partition is set to 100G by default.<br>   add a gpt to this disk:</p>
-<p>   (parted):——–<code>mklabel</code><br>   New disk label type:——-<code>gpt</code>  </p>
-<p>   add EFI partition:  </p>
-<p>   (parted):————<code>mkpart</code><br>   Partition name?——<code>p1</code><br>   File system type?—-<code>fat32</code><br>   Start?—————-<code>1</code><br>   End?——————<code>201</code>  </p>
-<p>   add the second partition for distribution <code>mkpart</code>  </p>
-<p>   (parted):————<code>mkpart</code><br>   Partition name?——<code>p2</code><br>   File system type?—-<code>ext4</code><br>   Start?—————-<code>202</code><br>   End?——————<code>100000</code>  </p>
-<p>   add some another partition <code>mkpart</code><br>   <code>...</code>  </p>
-<p>   remove the partition by <code>rm &lt;NO&gt;</code><br>   check out how many partitions by <code>p</code><br>   exit the partition by <code>q</code>  </p>
-<p>   check the partitions with details by <code>parted -s /dev/sda print</code></p>
-<p>   <strong>format EFI partition:</strong> <code>sudo mkfs.vfat /dev/sda1</code><br><br>   <strong>format ext4 partition:</strong> <code>sudo mkfs.ext4 /dev/sda2</code><br></p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+---------+------------+--------------+------------------+</div><div class="line">| Name    |   Size     |    Type      |   USB/SAS/SATA   |</div><div class="line">+---------+------------+--------------+------------------+</div><div class="line">| sda1    |   200M     |  EFI system  |   EFI            |</div><div class="line">+---------+------------+--------------+------------------+</div><div class="line">| sda2    |   100G     |    ext4      | linux filesystem |</div><div class="line">+---------+------------+--------------+------------------+</div><div class="line">| sda3    |   100G     |    ext4      | linux filesystem |</div><div class="line">+---------+------------+--------------+------------------+</div><div class="line">| sda4    |   100G     |    ext4      | linux filesystem |</div><div class="line">+---------+------------+--------------+------------------+</div></pre></td></tr></table></figure>
-<p>   Note: EFI partition must be a fat filesystem, so you should format sda1 with <code>“sudo mkfs.vfat /dev/sda1″</code>.</p>
-<ol>
-<li><p>Download files and store them into hardware disk as below.</p>
-<p>(SAS/SATA)Related files are placed as follow:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sda1: -------EFI</div><div class="line">       |       |</div><div class="line">       |       BOOT------bootaa64.efi, grub.cfg  //rename grubaa64.efi to bootaa64.efi</div><div class="line">       |</div><div class="line">       |</div><div class="line">       |-------------mini-rootfs-arm64.cpio.gz</div><div class="line">       |</div><div class="line">       |-------------startup.nsh    //cat startup.nshi, the result is <span class="string">"bootaa64"</span></div><div class="line">       |</div><div class="line">       |-------------Image          //kernel binary Image</div><div class="line"> sda2: Centos distribution or other distribution</div></pre></td></tr></table></figure>
-<p>Note: overdrive only supports booting system with Centos, so Centos distribution should be uncompressed in sda2. The grubaa64.efi file must be put in /EFI/GRUB2 directory of dev/sda1(gpt partition)</p>
-<p>To get and config grub and grub.cfg, please refer to Grub_Manual.md.<br><br>To get Centos distribution, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Distributions_Guide.4All.md" target="_blank" rel="external">Distributions_Guider</a>.<br></p>
-</li>
-<li><p>Boot the board via SAS/SATA</p>
-<p>a. Modify grub config file, please refer to Grub_Manual.4All.md.<br><br>e.g.: <br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Boot automatically after 5 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"><span class="comment"># By default, boot the Estuary with Centos filesystem</span></div><div class="line"><span class="built_in">set</span> default=overdrive_centos_sata</div><div class="line"><span class="comment"># For booting GNU/Linux</span></div><div class="line"></div><div class="line">menuentry <span class="string">"overdrive Centos SATA"</span> --id overdrive_centos_sata &#123;</div><div class="line">search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">linux /Image root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw  rdinit=/init raid=noautodetect plymouth.enable=0 console=ttyAMA0,115200n8</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Note:<br><br><code>&lt;UUID&gt;</code>means the UUID of that partition which your EFI System is located in.<br><br><code>&lt;PARTUUID&gt;</code> means the PARTUUID of that partition which your linux distribution is located in. <br><br> To see the values of UUID and PARTUUID, please use the command: <code>$blkid</code>.<br></p>
-<p>b. Reboot and press “Del” to enter UEFI Boot Menu. Move mouse to “Save&amp;Exit”.</p>
-<p>c. For SAS and sata: select “UEFI: BUILT In EFI shell” to enter grub selection menu.</p>
-<p>d. Press arrow key up or down to select grub boot option to decide which distribution should boot.</p>
-</li>
-</ol>
-</add>
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/etesting/Estuary/Documents/Deploy_Manual.overdrive/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
