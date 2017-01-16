@@ -16,12 +16,12 @@ qemu :[https://zh.wikipedia.org/wiki/QEMU](https://zh.wikipedia.org/wiki/QEMU)
 kvm :[https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine](https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine)
 #Install
 ##Ubuntu
-###ubuntu-package-install
+###Option 1 :ubuntu-package-install
 ```bash
 apt-get -y install qemu qemu-kvm libvirt-bin bridge-utils
 ```
 ---
-###ubuntu-compile-install
+###Option 2:ubuntu-compile-install
 ####Install depended-upon package
 ```bash
 apt-get install -y gcc zlib1g-dev libperl-dev libgtk2.0-dev libfdt-dev bridge-utils
@@ -37,7 +37,7 @@ make install
 ```
 ---
 ##Centos
-###centos-package-install
+###Option 1 :centos-package-install
 CentOS official source of QEMU(aarch64) support is not good, you need to add linaro source
 ```
 [root@CentOS-D05 qemu]# cat /etc/yum.repos.d/Linaro-overlay.repo 
@@ -56,7 +56,7 @@ sed -i "/^gpgcheck/s/1/0/g" /etc/yum.conf
 yum install qemu qemu-kvm libvirt libcanberra-gtk2 qemu-kvm qemu-kvm-tools libvirt-cim libvirt-client libvirt-java.noarch  libvirt-python libiscsi-1.7.0-5.el6  dbus-devel  virt-clone tunctl virt-manager libvirt libvirt-python python-virtinst bridge-utils -y
 ```
 ---
-###centos-compile-install
+###Option 2 :centos-compile-install
 ####Install depended-upon package
 ```
 yum groups mark convert
@@ -74,7 +74,7 @@ make -j5
 make install
 ```
 ---
-#Enable virtro bridge and get the necessary binary
+#Enable virtual bridge and get the necessary binary
 Build the estuary project with qemu option,then you will find a *.img file in open-estuary/workspace/distro/
 copy the *.img file and Image to current directory.
 In order to enable virtual bridge,execute the following command:
@@ -86,7 +86,7 @@ ip link set br0 up
 ip route add 192.168.2.0/24 via 192.168.2.1 dev br0
 ```
 #Verification
-there are two script there are two scripts that will be used when starting QEMU.Put them into current directory.
+there are two scripts that will be used when starting QEMU.Put them into current directory.
 ```
 [root@CentOS ~]# cat qemu-ifup.sh 
 #!/bin/bash
