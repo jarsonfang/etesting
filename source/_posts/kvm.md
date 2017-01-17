@@ -134,10 +134,10 @@ ip addr add 192.168.2.3/24 dev eth0
 ping 192.168.2.1 -c 3
 ```
 Verify the function of the virtual hard disk,Follow these steps:
-1.create a dir in qemu
+1. create a dir in qemu
 ```bash
 mkdir hello-world
 ```
-2.restart the qemu
+2. restart the qemu
 colse qemu: send CTRL+a,c to qemu,then input "quit"
-3.Confirm whether the newly created directory exists
+3. Confirm whether the newly created directory exists
