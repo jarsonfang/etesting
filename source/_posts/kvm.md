@@ -142,5 +142,7 @@ mkdir hello-world
 ```
 
 2. restart the qemu
+
    colse qemu: send CTRL+a,c to qemu,then input "quit"
+   
 3. Confirm whether the newly created directory exists
