@@ -138,12 +138,12 @@ Verify the function of the virtual hard disk,Follow these steps:
 
 1. create a dir in qemu
 
-```bash
-mkdir hello-world
-```
+    >```bash
+    >mkdir hello-world
+    >```
 
 2. restart the qemu
 
-   colse qemu: send CTRL+a,c to qemu,then input "quit"
-   
+    >   colse qemu: send CTRL+a,c to qemu,then input "quit"
+
 3. Confirm whether the newly created directory exists
