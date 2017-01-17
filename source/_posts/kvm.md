@@ -133,6 +133,7 @@ Verify network capabilities,execute the following command in qemu
 ip addr add 192.168.2.3/24 dev eth0
 ping 192.168.2.1 -c 3
 ```
+
 Verify the function of the virtual hard disk,Follow these steps:
 
 1. create a dir in qemu
