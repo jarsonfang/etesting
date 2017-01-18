@@ -149,27 +149,27 @@ There are two scripts that will be used when starting QEMU, put them into curren
   [root@CentOS ~]#
   ```
 
-1. Execute the following command to start qemu:
-   ```bash
-   qemu-system-aarch64 -machine virt,gic_version=3 -cpu host -kernel Image -drive if=none,file=ubuntu.img,id=fs -device virtio-blk-device,drive=fs -append "console=ttyAMA0 root=/dev/vda1 rw rootwait" -device virtio-net-device,netdev=net0 -netdev tap,id=net0,script=qemu-ifup.sh,downscript=qemu-ifdown.sh -nographic -D -d -enable-kvm
-   ```
+- Execute the following command to start qemu:
+  ```bash
+  qemu-system-aarch64 -machine virt,gic_version=3 -cpu host -kernel Image -drive if=none,file=ubuntu.img,id=fs -device virtio-blk-device,drive=fs -append "console=ttyAMA0 root=/dev/vda1 rw rootwait" -device virtio-net-device,netdev=net0 -netdev tap,id=net0,script=qemu-ifup.sh,downscript=qemu-ifdown.sh -nographic -D -d -enable-kvm
+  ```
 
-2. Verify network capabilities, execute the following command in qemu:
-   ```bash
-   ip addr add 192.168.2.3/24 dev eth0
-   ping 192.168.2.1 -c 3
-   ```
+- Verify network capabilities, execute the following command in qemu:
+  ```bash
+  ip addr add 192.168.2.3/24 dev eth0
+  ping 192.168.2.1 -c 3
+  ```
 
-3. Verify the function of the virtual hard disk, follow these steps:
+- Verify the function of the virtual hard disk, follow these steps:
 
-   1. create a dir in qemu
+  1. create a dir in qemu
 
-      ```bash
-      mkdir hello-world
-      ```
+     ```bash
+     mkdir hello-world
+     ```
 
-   2. restart the qemu
+  2. restart the qemu
 
-      colse qemu: send `CTRL+a,c` to qemu, then input "`quit`"
+     colse qemu: send `CTRL+a,c` to qemu, then input "`quit`"
 
-   3. Confirm whether the newly created directory exists
+  3. Confirm whether the newly created directory exists
