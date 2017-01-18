@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Qperf/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Percona/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -23,14 +23,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/CoreMark/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Caliper_Manual.4All/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Caliper_Manual.4All/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/CoreMark/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -45,13 +45,6 @@
   
   <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</loc>
-    
-    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -80,6 +73,13 @@
   
   <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Dhrystone/</loc>
+    
+    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -135,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Netperf/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Netperf/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -170,7 +170,7 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Percona/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Qperf/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -296,13 +296,6 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
-    
-    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
@@ -310,14 +303,21 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/AliSQL/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
+    
+    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</loc>
     
     <lastmod>2017-01-18T07:45:22.640Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/AliSQL/</loc>
     
     <lastmod>2017-01-18T07:45:22.640Z</lastmod>
     
@@ -429,14 +429,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/about/index.html</loc>
+    <loc>https://jarsonfang.github.io/categories/index.html</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/categories/index.html</loc>
+    <loc>https://jarsonfang.github.io/about/index.html</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
