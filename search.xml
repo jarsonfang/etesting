@@ -42,8 +42,6 @@
 <li><p>qemu-ifdown.sh:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[root@CentOS ~]<span class="comment"># cat qemu-ifdown.sh</span></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">switch=br0</div><div class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$1</span>"</span>  ]; <span class="keyword">then</span></div><div class="line">    <span class="comment">#delete the specified interface</span></div><div class="line">    ip tuntap del mode tap <span class="variable">$1</span></div><div class="line">    <span class="comment">#rlease tap interface from bridge</span></div><div class="line">    brctl delif $(switch) <span class="variable">$1</span></div><div class="line">    <span class="comment">#shutdown the tap interface</span></div><div class="line">    ip link <span class="built_in">set</span> <span class="variable">$1</span> down</div><div class="line">    <span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">else</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"error: no interface specified"</span></div><div class="line">    <span class="built_in">exit</span> 1</div><div class="line"><span class="keyword">fi</span></div><div class="line">[root@CentOS ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
 </li>
-</ul>
-<ol>
 <li><p>Execute the following command to start qemu:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qemu-system-aarch64 -machine virt,gic_version=3 -cpu host -kernel Image -drive <span class="keyword">if</span>=none,file=ubuntu.img,id=fs -device virtio-blk-device,drive=fs -append <span class="string">"console=ttyAMA0 root=/dev/vda1 rw rootwait"</span> -device virtio-net-device,netdev=net0 -netdev tap,id=net0,script=qemu-ifup.sh,downscript=qemu-ifdown.sh -nographic -D <span class="_">-d</span> -enable-kvm</div></pre></td></tr></table></figure>
 </li>
@@ -62,7 +60,7 @@
 </li>
 </ol>
 </li>
-</ol>
+</ul>
 ]]></content>
     </entry>
     
