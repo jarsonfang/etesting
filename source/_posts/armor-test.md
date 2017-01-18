@@ -27,7 +27,7 @@ cd /usr/local/armor/test_scripts
 chmod +x auto_test_armor_tool.sh
 ./auto_test_armor_tool.sh > armor_test.log 2>&1
 ```
-`auto_test_armor_tool.sh`脚本执行的`标准输出`与`标准错误`信息将重定向到`armor_test.log`文件。
+`auto_test_armor_tool.sh`脚本执行的 *标准输出* 与 *标准错误* 信息将重定向到`armor_test.log`文件。
 
 ### 测试结果分析
 
@@ -51,19 +51,23 @@ chmod +x auto_test_armor_tool.sh
 
 CentOS
 ```bash
-yum update && upgrade
+yum update
+yum upgrade
 ```
 Fedora
 ```bash
-dnf update && upgrade
+dnf update
+dnf upgrade
 ```
 
 OpenSuse
 ```bash
-zypper update && upgrade
+zypper update
+zypper upgrade
 ```
 
 Debian & Ubuntu
 ```bash
-apt-get update && upgrade
+apt-get update
+apt-get upgrade
 ```
