@@ -44,6 +44,13 @@
   </url>
   
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
+    
+    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
@@ -73,13 +80,6 @@
   
   <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Dhrystone/</loc>
-    
-    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -296,14 +296,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     

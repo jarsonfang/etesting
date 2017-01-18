@@ -162,6 +162,29 @@
 
     
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
+    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    <data>
+        <display>
+        <title>Deploy_Manual.4D02</title>
+        <pubTime>2016-10-13T02:07:01.000Z</pubTime>
+        
+        <tag>D02</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
@@ -264,29 +287,6 @@
         <tag>D05</tag>
          
         <tag>CentOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
-    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
-    <data>
-        <display>
-        <title>Deploy_Manual.4D02</title>
-        <pubTime>2016-10-13T02:07:01.000Z</pubTime>
-        
-        <tag>D02</tag>
          
          
            
@@ -1059,16 +1059,16 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>FTP on Centos 7</title>
-        <pubTime>2016-09-20T06:46:04.000Z</pubTime>
+        <title>Lmbench-latency</title>
+        <pubTime>2016-12-28T08:22:52.000Z</pubTime>
         
-        <tag>CentOS</tag>
+        <tag>D05</tag>
          
-        <tag>FTP</tag>
+        <tag>CentOS</tag>
          
          
            
@@ -1084,16 +1084,16 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/ftp-on-centos/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Lmbench-latency</title>
-        <pubTime>2016-12-28T08:22:52.000Z</pubTime>
+        <title>FTP on Centos 7</title>
+        <pubTime>2016-09-20T06:46:04.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>CentOS</tag>
+         
+        <tag>FTP</tag>
          
          
            
