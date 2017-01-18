@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/armor-test/</loc>
+    <lastmod>2017-01-18T09:10:47.326Z</lastmod>
+    <data>
+        <display>
+        <title>Armor test</title>
+        <pubTime>2017-01-18T02:33:21.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/kvm/</loc>
     <lastmod>2017-01-18T09:01:57.668Z</lastmod>
     <data>
@@ -19,27 +40,6 @@
          
         <tag>Ubuntu</tag>
          
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/armor-test/</loc>
-    <lastmod>2017-01-18T09:01:57.668Z</lastmod>
-    <data>
-        <display>
-        <title>Armor test</title>
-        <pubTime>2017-01-18T02:33:21.000Z</pubTime>
-        
          
            
              
@@ -158,14 +158,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Deploy_Manual.4D02</title>
-        <pubTime>2016-10-13T02:07:01.000Z</pubTime>
+        <title>Deploy_Manual.4D03</title>
+        <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
-        <tag>D02</tag>
+        <tag>D03</tag>
          
          
            
@@ -181,14 +181,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Deploy_Manual.4D03</title>
-        <pubTime>2016-12-23T16:00:00.000Z</pubTime>
+        <title>Deploy_Manual.4D02</title>
+        <pubTime>2016-10-13T02:07:01.000Z</pubTime>
         
-        <tag>D03</tag>
+        <tag>D02</tag>
          
          
            
@@ -447,18 +447,16 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Introduction_for_LAMP_with_Docker</title>
-        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
+        <title>Iperf</title>
+        <pubTime>2016-12-30T05:54:52.000Z</pubTime>
         
         <tag>D05</tag>
          
-        <tag>D02</tag>
-         
-        <tag>D03</tag>
+        <tag>CentOS</tag>
          
          
            
@@ -474,16 +472,18 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Iperf</title>
-        <pubTime>2016-12-30T05:54:52.000Z</pubTime>
+        <title>Introduction_for_LAMP_with_Docker</title>
+        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
         <tag>D05</tag>
          
-        <tag>CentOS</tag>
+        <tag>D02</tag>
+         
+        <tag>D03</tag>
          
          
            
@@ -1182,14 +1182,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     <data>
         <display>
-        <title>Quick_Deployment.4D05</title>
+        <title>Quick_Deployment.4D03</title>
         <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
-        <tag>D05</tag>
+        <tag>D03</tag>
          
          
            
@@ -1344,14 +1344,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     <data>
         <display>
-        <title>Quick_Deployment.4D03</title>
+        <title>Quick_Deployment.4D05</title>
         <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
-        <tag>D03</tag>
+        <tag>D05</tag>
          
          
            

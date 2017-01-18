@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/kvm/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/armor-test/</loc>
     
-    <lastmod>2017-01-18T09:01:57.668Z</lastmod>
+    <lastmod>2017-01-18T09:10:47.326Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/armor-test/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/kvm/</loc>
     
     <lastmod>2017-01-18T09:01:57.668Z</lastmod>
     
@@ -44,14 +44,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -128,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</loc>
     
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     
@@ -331,7 +331,7 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
     
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     
@@ -380,7 +380,7 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
     
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     
@@ -436,14 +436,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/categories/index.html</loc>
+    <loc>https://jarsonfang.github.io/about/index.html</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/about/index.html</loc>
+    <loc>https://jarsonfang.github.io/categories/index.html</loc>
     
     <lastmod>2016-12-14T04:03:36.410Z</lastmod>
     
