@@ -61,7 +61,7 @@
 <link href="/etesting/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="D02,D03,D05," />
+  <meta name="keywords" content="D03,D05,CentOS,Ubuntu," />
 
 
 
@@ -77,19 +77,16 @@
 
 
 
-<meta name="description" content="Introduction
-List of Tools">
+<meta name="description" content="ProfileKVM and QEMU profiles, please refer to:qemu : https://zh.wikipedia.org/wiki/QEMUkvm : https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Armor_Tools_Basic_Info.4All">
-<meta property="og:url" content="https://jarsonfang.github.io/Estuary/Documents/Armor_Tools_Basic_Info.4All/index.html">
+<meta property="og:title" content="KVM">
+<meta property="og:url" content="https://jarsonfang.github.io/Estuary/Documents/kvm/index.html">
 <meta property="og:site_name" content="Etesting">
-<meta property="og:description" content="Introduction
-List of Tools">
+<meta property="og:description" content="ProfileKVM and QEMU profiles, please refer to:qemu : https://zh.wikipedia.org/wiki/QEMUkvm : https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">
 <meta property="og:updated_time" content="2017-01-18T07:45:22.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Armor_Tools_Basic_Info.4All">
-<meta name="twitter:description" content="Introduction
-List of Tools">
+<meta name="twitter:title" content="KVM">
+<meta name="twitter:description" content="ProfileKVM and QEMU profiles, please refer to:qemu : https://zh.wikipedia.org/wiki/QEMUkvm : https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">
 
 
 
@@ -117,13 +114,13 @@ List of Tools">
 
 
 
-  <link rel="canonical" href="https://jarsonfang.github.io/Estuary/Documents/Armor_Tools_Basic_Info.4All/"/>
+  <link rel="canonical" href="https://jarsonfang.github.io/Estuary/Documents/kvm/"/>
 
 
 
 
 
-  <title> Armor_Tools_Basic_Info.4All | Etesting </title>
+  <title> KVM | Etesting </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +266,7 @@ List of Tools">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/">
+  <link itemprop="mainEntityOfPage" href="https://jarsonfang.github.io/etesting/Estuary/Documents/kvm/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Estuary">
@@ -293,7 +290,7 @@ List of Tools">
             
             
               
-                Armor_Tools_Basic_Info.4All
+                KVM
               
             
           </h1>
@@ -308,8 +305,8 @@ List of Tools">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-09T10:07:01+08:00">
-                2016-10-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-16T10:44:19+08:00">
+                2017-01-16
               </time>
             
 
@@ -360,8 +357,8 @@ List of Tools">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Documents/Armor_Tools_Basic_Info.4All/" itemprop="commentCount"></span>
+                <a href="/etesting/Estuary/Documents/kvm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Estuary/Documents/kvm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,184 +384,61 @@ List of Tools">
       
 
       
-        <ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">List of Tools</a><a id="more"></a>
+        <h2 id="Profile"><a href="#Profile" class="headerlink" title="Profile"></a>Profile</h2><p>KVM and QEMU profiles, please refer to:<br>qemu : <a href="https://zh.wikipedia.org/wiki/QEMU" target="_blank" rel="external">https://zh.wikipedia.org/wiki/QEMU</a><br>kvm : <a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine" target="_blank" rel="external">https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine</a></p>
+<a id="more"></a>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><h4 id="Option-1-ubuntu-package-install"><a href="#Option-1-ubuntu-package-install" class="headerlink" title="Option 1: ubuntu-package-install"></a>Option 1: ubuntu-package-install</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get -y install qemu qemu-kvm libvirt-bin bridge-utils</div></pre></td></tr></table></figure>
+<h4 id="Option-2-ubuntu-compile-install"><a href="#Option-2-ubuntu-compile-install" class="headerlink" title="Option 2: ubuntu-compile-install"></a>Option 2: ubuntu-compile-install</h4><ol>
+<li><p>Install depended-upon package</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install -y gcc zlib1g-dev libperl-dev libgtk2.0-dev libfdt-dev bridge-utils</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>This document presents the basic information of the supported Armor tools. </p>
-<h2 id="List-of-Tools"><a href="#List-of-Tools" class="headerlink" title="List of Tools"></a><a name="2">List of Tools</a></h2><ol>
-<li><p>Perf integrated with LLC, MN and DDR</p>
-<ul>
-<li>Integrated LLC statistics registers access via perf, including DDR counter information. </li>
-<li>Support counter overflow interrupt support for LLC counters. </li>
-<li>Register Read/Get interface from Linux Kernel for LLC and Bus Registers for P660.</li>
-<li>LLC statistics registers integration to perf for P660.</li>
-</ul>
-</li>
-<li><p>strace : trace system calls and signals</p>
-<p>strace is a diagnostic, debugging and instructional Linux user space utility. It is used to monitor interactions between processes and the Linux kernel, which include system calls, signal deliveries, and changes of process state. </p>
+<li><p>Compile</p>
+<p>First get the newest qemu code from estuary repository,then enter the QEMU code root directory and execute the following command step by step.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir build</div><div class="line"><span class="built_in">cd</span> build</div><div class="line">../configure --target-list=aarch64-softmmu --enable-fdt --enable-kvm --disable-werror</div><div class="line">make -j5</div><div class="line">make install</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<h3 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h3><h4 id="Option-1-centos-package-install"><a href="#Option-1-centos-package-install" class="headerlink" title="Option 1: centos-package-install"></a>Option 1: centos-package-install</h4><p>CentOS official source of QEMU(aarch64) support is not good, you need to add linaro source<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@CentOS-D05 qemu]<span class="comment"># cat /etc/yum.repos.d/Linaro-overlay.repo</span></div><div class="line">[linaro-overlay]</div><div class="line">name = Linaro Overlay packages <span class="keyword">for</span> CentOS 7</div><div class="line">baseurl = http://repo.linaro.org/rpm/linaro-overlay/centos-7/repo</div><div class="line"><span class="built_in">enable</span> = 1</div></pre></td></tr></table></figure></p>
+<p>During the installation if there is an error because of the network,please repeat.<br>Some of the linaro packages have not been verified by GPG,so close the gpg check.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">"/^gpgcheck/s/1/0/g"</span> /etc/yum.conf</div><div class="line">yum install qemu qemu-kvm libvirt libcanberra-gtk2 qemu-kvm qemu-kvm-tools libvirt-cim libvirt-client libvirt-java.noarch  libvirt-python libiscsi-1.7.0-5.el6  dbus-devel  virt-clone tunctl virt-manager libvirt libvirt-python python-virtinst bridge-utils -y</div></pre></td></tr></table></figure></p>
+<h4 id="Option-2-centos-compile-install"><a href="#Option-2-centos-compile-install" class="headerlink" title="Option 2: centos-compile-install"></a>Option 2: centos-compile-install</h4><ol>
+<li><p>Install depended-upon package</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum groups mark convert</div><div class="line">yum groups mark install <span class="string">"Development Tool"</span></div><div class="line">yum group install <span class="string">"Development tools"</span> -y</div><div class="line">yum install glib2-devel zlibrary zlib-devel pixman pixman-devel libfdt-devel libfdt -y</div></pre></td></tr></table></figure>
+</li>
+<li><p>compile</p>
+<p>First get the newest qemu code from estuary repository,then enter the QEMU code root directory and execute the following command step by step.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir build</div><div class="line"><span class="built_in">cd</span> build</div><div class="line">../configure --target-list=aarch64-softmmu --enable-fdt --enable-kvm --disable-werror</div><div class="line">make -j5</div><div class="line">make install</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Prepare-image-files"><a href="#Prepare-image-files" class="headerlink" title="Prepare image files"></a>Prepare image files</h2><ol>
+<li>Build <code>estuary</code> project with <code>qemu</code> option.</li>
+<li>Copy <code>*.img</code> and <code>Image</code> files generated from <code>open-estuary/workspace/distro/</code> to current directory.</li>
+</ol>
+<h2 id="Enable-virtual-bridge"><a href="#Enable-virtual-bridge" class="headerlink" title="Enable virtual bridge"></a>Enable virtual bridge</h2><p>In order to enable virtual bridge, execute the following command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brctl addbr br0</div><div class="line">ip addr add 192.168.2.1/24 dev br0</div><div class="line"><span class="comment"># add route</span></div><div class="line">ip link <span class="built_in">set</span> br0 up</div><div class="line">ip route add 192.168.2.0/24 via 192.168.2.1 dev br0</div></pre></td></tr></table></figure></p>
+<h2 id="Verification"><a href="#Verification" class="headerlink" title="Verification"></a>Verification</h2><p>There are two scripts that will be used when starting QEMU, put them into current directory.</p>
+<ul>
+<li><p>qemu-ifup.sh:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@CentOS ~]<span class="comment"># cat qemu-ifup.sh</span></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">switch=br0</div><div class="line">    <span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$1</span>"</span>  ]; <span class="keyword">then</span></div><div class="line">    <span class="comment">#create a tap interface</span></div><div class="line">    ip tuntap add <span class="variable">$1</span> mode tap</div><div class="line">    sleep 1</div><div class="line">    <span class="comment">#start up the tap interface</span></div><div class="line">    ip link <span class="built_in">set</span> <span class="variable">$1</span> up</div><div class="line">    sleep 1</div><div class="line">    <span class="comment">#add tap interface to the bridge</span></div><div class="line">    brctl addif <span class="variable">$&#123;switch&#125;</span> <span class="variable">$1</span></div><div class="line">    <span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">else</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"error: no interface specified"</span></div><div class="line">    <span class="built_in">exit</span> 1</div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>qemu-ifdown.sh:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[root@CentOS ~]<span class="comment"># cat qemu-ifdown.sh</span></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">switch=br0</div><div class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$1</span>"</span>  ]; <span class="keyword">then</span></div><div class="line">    <span class="comment">#delete the specified interface</span></div><div class="line">    ip tuntap del mode tap <span class="variable">$1</span></div><div class="line">    <span class="comment">#rlease tap interface from bridge</span></div><div class="line">    brctl delif $(switch) <span class="variable">$1</span></div><div class="line">    <span class="comment">#shutdown the tap interface</span></div><div class="line">    ip link <span class="built_in">set</span> <span class="variable">$1</span> down</div><div class="line">    <span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">else</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"error: no interface specified"</span></div><div class="line">    <span class="built_in">exit</span> 1</div><div class="line"><span class="keyword">fi</span></div><div class="line">[root@CentOS ~]<span class="comment">#</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
 <ol>
-<li><p>ltrace : library call tracer.</p>
-<p>ltrace intercepts and records the dynamic library calls which are called by the executed process and the signals which are received by that process. It can also intercept and print the system calls executed by the program.</p>
+<li><p>Execute the following command to start qemu:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qemu-system-aarch64 -machine virt,gic_version=3 -cpu host -kernel Image -drive <span class="keyword">if</span>=none,file=ubuntu.img,id=fs -device virtio-blk-device,drive=fs -append <span class="string">"console=ttyAMA0 root=/dev/vda1 rw rootwait"</span> -device virtio-net-device,netdev=net0 -netdev tap,id=net0,script=qemu-ifup.sh,downscript=qemu-ifdown.sh -nographic -D <span class="_">-d</span> -enable-kvm</div></pre></td></tr></table></figure>
 </li>
-<li><p>netstat : </p>
-<p>netstat prints network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.</p>
+<li><p>Verify network capabilities, execute the following command in qemu:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ip addr add 192.168.2.3/24 dev eth0</div><div class="line">ping 192.168.2.1 -c 3</div></pre></td></tr></table></figure>
 </li>
-<li><p>sar : Collect, report, or save system activity information.</p>
+<li><p>Verify the function of the virtual hard disk, follow these steps:</p>
+<ol>
+<li><p>create a dir in qemu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir hello-world</div></pre></td></tr></table></figure>
 </li>
-<li><p>top : display Linux tasks. </p>
-<p>top shows how much CPU processing power and memory are being used, as well as other information about the running processes.</p>
+<li><p>restart the qemu</p>
+<p>colse qemu: send <code>CTRL+a,c</code> to qemu, then input “<code>quit</code>“</p>
 </li>
-<li><p>pidstat: Report statistics for Linux tasks.</p>
-<p>pidstat command is used for monitoring individual tasks currently being managed by the Linux kernel. pidstat writes to standard output activities for every task selected with option -p or for every task managed by the Linux kernel if option -p ALL has been used.  </p>
+<li><p>Confirm whether the newly created directory exists</p>
 </li>
-<li><p>vmstat : Report virtual memory statistics.</p>
-<p>vmstat reports information about processes, memory, paging, block IO, traps, and CPU activity.</p>
-</li>
-<li><p>ftrace: is the Linux kernel internal tracer that was included in the Linux kernel in 2.6.27.</p>
-<p>ftrace supports function tracing, latency tracing, event tracing etc.</p>
-</li>
-<li><p>iostat :  Report CPU statistics and input/output statistics for devices, partitions and network filesystems (NFS). </p>
-</li>
-<li><p>tcpdump:dump traffic on a network.</p>
-<p>Tcpdump prints out the headers of packets on a network interface. It can also be run with the -w flag, which causes it to save the packet data to a file for later analysis, and with the -r flag, which causes it to read from a saved packet file rather than to read packets from a network interface. </p>
-</li>
-<li><p>ethtool :  query or control network driver and hardware settings, particularly for wired Ethernet devices. </p>
-</li>
-<li><p>swapon, swapoff : enable/disable devices and files for paging and swapping, </p>
-<p>used to specify devices on which paging and swapping are to take place. </p>
-</li>
-<li><p>kdump/kexec :</p>
-<p>Kdump is a kexec based crash dumping mechanism for Linux.<br>Kexec is a mechanism of the Linux kernel that allows “live” booting of a new kernel “over” the currently running kernel.<br>Note: kdump/kexec is not verified for D02. The user space kexec-tools and kdump-tools components may need to build for arm64.  </p>
-</li>
-<li><p>gdb: gnu debugger</p>
-<p>Gdb supports many features including the following:  </p>
-<ul>
-<li>put break points, watch points</li>
-<li>single stepping</li>
-<li>disassemble</li>
-<li>printing value of variables, registers.</li>
-<li>call traces</li>
-</ul>
-</li>
-<li><p>iptables : administration tool for IPv4 packet filtering and NAT.</p>
-<p>Iptables is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.</p>
-</li>
-<li><p>mkfs : build a Linux file system on a device, usually a hard disk partition.</p>
-</li>
-<li><p>mount : mount a file system. </p>
-</li>
-<li><p>du : estimates the file space usage.</p>
-<p>The du summarize he disk usage of each file, recursively for directories.     </p>
-</li>
-<li><p>df : report file system disk space usage.</p>
-<p>The df displays the amount of disk space available on the file system containing each filename argument. If no file system name is given, the spac available on all currently mounted file systems are shown.</p>
-</li>
-<li><p>dmidecode : DMI table decoder</p>
-<p>dmidecode tool dump DMI(SMBIOS) table contents in a human readable format. This table contains description of the system’s hardware components, other information such as serial numbers and BIOs version.   </p>
-</li>
-<li><p>fsck : is used to check and optionally repair a Linux file system.</p>
-</li>
-<li><p>lscpu : display information about the CPU architecture. </p>
-</li>
-<li><p>lspci : List all PCI devices. </p>
-<p>This utility display information about the PCI buses in the system and devices connected to them. </p>
-</li>
-<li><p>setpci : utility for querying and configuring PCI devices.  </p>
-</li>
-<li><p>tail : this utility outputs the last part of the files. </p>
-</li>
-<li><p>grep : tool searches the named input files for lines contains a match to the given pattern.   </p>
-</li>
-<li><p>awk : pattern scanning and processing language.</p>
-</li>
-<li><p>sed : is a stream editor, used to perform basic text transformations.</p>
-</li>
-<li><p>dstat: versatile tool for generating system resource statistics. Replacement for vmstat, iostat and ifstat.</p>
-<p>dstat allows you to view all of your system resources instantly, for example you can compare disk usage in combination with interrupts from your IDE controller, or compare the network bandwidth numbers directly with the disk throughput (in the same interval). </p>
-</li>
-<li><p>procps: procps is the package that has a bunch of small useful utilities that give information about processes using the /proc filesystem.</p>
-<p>The procps package includes the programs ps, top, vmstat, w, kill, free, slabtop, and skill.</p>
-</li>
-<li><p>tiptop: display hardware performance counters for Linux tasks.</p>
-<p>Some of the features of tiptop are  </p>
-<ul>
-<li>No root privilege needed</li>
-<li>No patch to OS</li>
-<li>Any event supported by the hardware such as </li>
-<li>some predefined: instructions, cycles, LLC misses (easy)</li>
-<li>any hardware supported event (slightly harder)</li>
-<li>two running modes - Live mode and batch mode.</li>
-</ul>
-</li>
-<li><p>iotop: simple top-like I/O monitor.</p>
-<p>iotop watches I/O usage information output by the Linux kernel and displays a table of current I/O usage by processes or threads on the system.</p>
-</li>
-<li><p>blktrace:  generate traces of the i/o traffic on block devices.</p>
-<p>The blktrace utility extracts event traces from the kernel.  </p>
-<ul>
-<li>blktrace receives data from the kernel in buffers passed up through the debug file system (relay).<br> Each device being traced has a file created in the mounted directory for the debugfs, which defaults to /sys/kernel/debug </li>
-<li>blktrace defaults to collecting all events that can be traced. To limit the events being captured,<br> you can specify one or more filter masks via the -a option.</li>
-</ul>
-</li>
-<li><p>nicstat: Show Network Interface Card Statistics.</p>
-<p>nicstat prints out network statistics for all network interface cards (NICs), including packets, kilobytes per second, average packet sizes and more. </p>
-</li>
-<li><p>lldptool: manage the LLDP settings and status of lldpad (Link Layer Discovery Protocol).</p>
-</li>
-<li><p>oprofile: a system-wide profiler, capable of profiling all running code at low overhead.</p>
-<p>Supported features are</p>
-<ul>
-<li>Unobtrusive, no special recompilations, wrapper libraries or the like are necessary.  </li>
-<li>System-wide profiling</li>
-<li>Single process profiling</li>
-<li>Event counting</li>
-<li>Performance counter support</li>
-<li>Call-graph support</li>
-<li>Low overhead</li>
-<li>Post-profile analysis</li>
-<li>System support </li>
-</ul>
-</li>
-<li><p>latencytop: a tool for developers to visualize system latencies.</p>
-</li>
-<li><p>kgdb: Kernel gnu debugger.</p>
-<p>kgdb is one of the debugger front ends of the kernel which interface to the debug core.<br>Kgdb is intended to be used as a source level debugger for the Linux kernel. It is used along with gdb to debug a Linux kernel.<br>The expectation is that gdb can be used to “break in” to the kernel to inspect memory, variables and look through call stack information<br>similar to the way an application developer would use gdb to debug an application. It is possible to place breakpoints in kernel code and<br>perform some limited execution stepping.</p>
-</li>
-<li><p>kdb: kernel debugger.</p>
-<p>kdb is one of the debugger front ends of the kernel which interface to the debug core.<br>Kdb is shell-style interface which you can use on a system console with a keyboard or serial console.<br>kdb can be used to inspect memory, registers, process lists, dmesg, and even set breakpoints to stop in a certain location.<br>Kdb is not a source level debugger, although you can set breakpoints and execute some basic kernel run control.<br>Kdb is mainly aimed at doing some analysis to aid in development or diagnosing kernel problems.</p>
-</li>
-<li><p>systemtap: SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system. </p>
-<p>SystemTap (stap) is a scripting language and tool for dynamically instrumenting running production Linux kernel-based operating systems.<br>System administrators can use SystemTap to extract, filter and summarize data in order to enable diagnosis of complex performance or functional problems.</p>
-</li>
-<li><p>kprobes: Kprobes enables you to dynamically break into any kernel routine and collect debugging and performance information non-disruptively.</p>
-<p>Kernel Dynamic Probes (Kprobes) provides a lightweight interface for kernel modules to implant probes and register corresponding probe handlers.<br>A probe is an automated breakpoint that is implanted dynamically in executing (kernel-space) modules without the need to modify their underlying source.</p>
-</li>
-<li><p>crash : Analyze Linux crash dump data or a live system.</p>
-<p>Crash is a tool for interactively analyzing the state of the Linux system while it is running, or after a kernel crash has occurred<br>and a core dump has been created by the netdump, diskdump, LKCD, kdump, xendump or kvmdump facilities.</p>
-</li>
-<li><p>memwatch: A memory leak detection tool. memwatch source files to be integrated and build as part of the code to be tested.</p>
-</li>
-<li><p>LTTNG: Linux Trace Toolkit Next Generation. LTTng consists of kernel modules (for Linux kernel tracing) and dynamically loaded libraries (for user application and library tracing). </p>
-<p>It is controlled by a session daemon, which receives commands from a command line interface.</p>
-</li>
-<li><p>powertop: program help to analyse the power consumption.</p>
-</li>
-<li><p>slabtop: display kernel slab cache information.</p>
-</li>
-<li><p>ktap: script based dynamic tracing tool for Linux.</p>
-</li>
-<li><p>gprof: performance analysis tool.</p>
-</li>
-<li><p>valgrind: instrumentation framework for buiding dynamic analysis tools, which can detect memory management and threading bugs,does profiling etc.</p>
-</li>
-<li><p>pktgen - Linux packet generator is a tool to generate packets at very high speed in the kernel.Monitoring and controlling is done via /proc.</p>
-<p>Sample scripts are available online.</p>
-</li>
-<li><p>packETHcli - packETHcli is the command line packet generator tool for ethernet.<br>It allows you to create and send any possible packet or sequence of packets on the ethernet link.</p>
+</ol>
 </li>
 </ol>
 
@@ -590,11 +464,13 @@ List of Tools">
       
         <div class="post-tags">
           
-            <a href="/etesting/tags/D02/" rel="tag"># D02</a>
-          
             <a href="/etesting/tags/D03/" rel="tag"># D03</a>
           
             <a href="/etesting/tags/D05/" rel="tag"># D05</a>
+          
+            <a href="/etesting/tags/CentOS/" rel="tag"># CentOS</a>
+          
+            <a href="/etesting/tags/Ubuntu/" rel="tag"># Ubuntu</a>
           
         </div>
       
@@ -603,8 +479,8 @@ List of Tools">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/etesting/Estuary/Documents/Armor_Tools_Supported.4All/" rel="next" title="Armor_Tools_Supported.4All">
-                <i class="fa fa-chevron-left"></i> Armor_Tools_Supported.4All
+              <a href="/etesting/Misc/How-to-mirror-a-CentOS-source-repo/" rel="next" title="How to mirror a CentOS source repo">
+                <i class="fa fa-chevron-left"></i> How to mirror a CentOS source repo
               </a>
             
           </div>
@@ -612,10 +488,6 @@ List of Tools">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/etesting/Estuary/Documents/Quick_Deployment.4D02/" rel="prev" title="Quick_Deployment.4D02">
-                Quick_Deployment.4D02 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -630,10 +502,10 @@ List of Tools">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="Estuary/Documents/Armor_Tools_Basic_Info.4All/"
-     data-title="Armor_Tools_Basic_Info.4All"
+        <div class="ds-share flat" data-thread-key="Estuary/Documents/kvm/"
+     data-title="KVM"
      data-content=""
-     data-url="https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/">
+     data-url="https://jarsonfang.github.io/etesting/Estuary/Documents/kvm/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -663,8 +535,8 @@ List of Tools">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="Estuary/Documents/Armor_Tools_Basic_Info.4All/"
-           data-title="Armor_Tools_Basic_Info.4All" data-url="https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/">
+      <div class="ds-thread" data-thread-key="Estuary/Documents/kvm/"
+           data-title="KVM" data-url="https://jarsonfang.github.io/etesting/Estuary/Documents/kvm/">
       </div>
     
   </div>
@@ -833,7 +705,7 @@ List of Tools">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-of-Tools"><span class="nav-number">2.</span> <span class="nav-text">List of Tools</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Profile"><span class="nav-number">1.</span> <span class="nav-text">Profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">2.</span> <span class="nav-text">Installation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu"><span class="nav-number">2.1.</span> <span class="nav-text">Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Option-1-ubuntu-package-install"><span class="nav-number">2.1.1.</span> <span class="nav-text">Option 1: ubuntu-package-install</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Option-2-ubuntu-compile-install"><span class="nav-number">2.1.2.</span> <span class="nav-text">Option 2: ubuntu-compile-install</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Centos"><span class="nav-number">2.2.</span> <span class="nav-text">Centos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Option-1-centos-package-install"><span class="nav-number">2.2.1.</span> <span class="nav-text">Option 1: centos-package-install</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Option-2-centos-compile-install"><span class="nav-number">2.2.2.</span> <span class="nav-text">Option 2: centos-compile-install</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prepare-image-files"><span class="nav-number">3.</span> <span class="nav-text">Prepare image files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enable-virtual-bridge"><span class="nav-number">4.</span> <span class="nav-text">Enable virtual bridge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verification"><span class="nav-number">5.</span> <span class="nav-text">Verification</span></a></li></ol></div>
             
 
           </div>
