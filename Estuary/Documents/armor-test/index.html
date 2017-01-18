@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="Etesting">
 <meta property="og:description" content="Author: Ma Hongxin
 测试命令登录目标系统，进入/usr/local/armor/test_scripts目录并执行auto_test_armot_tool.sh脚本:123cd /usr/local/armor/test_scriptschmod +x auto_test_armor_tool.sh./auto_test_armor_tool.sh &amp;gt; armor_test">
-<meta property="og:updated_time" content="2017-01-18T09:10:47.326Z">
+<meta property="og:updated_time" content="2017-01-18T09:18:16.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Armor test">
 <meta name="twitter:description" content="Author: Ma Hongxin
@@ -389,7 +389,7 @@
       
         <p><strong>Author:</strong> Ma Hongxin</p>
 <h3 id="测试命令"><a href="#测试命令" class="headerlink" title="测试命令"></a>测试命令</h3><p>登录目标系统，进入<code>/usr/local/armor/test_scripts</code>目录并执行<code>auto_test_armot_tool.sh</code>脚本:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/armor/test_scripts</div><div class="line">chmod +x auto_test_armor_tool.sh</div><div class="line">./auto_test_armor_tool.sh &gt; armor_test.log 2&gt;&amp;1</div></pre></td></tr></table></figure></p>
-<p><code>auto_test_armor_tool.sh</code>脚本执行的<code>标准输出</code>与<code>标准错误</code>信息将重定向到<code>armor_test.log</code>文件。</p>
+<p><code>auto_test_armor_tool.sh</code>脚本执行的 <em>标准输出</em> 与 <em>标准错误</em> 信息将重定向到<code>armor_test.log</code>文件。</p>
 <h3 id="测试结果分析"><a href="#测试结果分析" class="headerlink" title="测试结果分析"></a>测试结果分析</h3><ol>
 <li><p>查询未安装的armor工具</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep <span class="string">"not found"</span> armor_test.log</div></pre></td></tr></table></figure>

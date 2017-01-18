@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/armor-test/</loc>
-    <lastmod>2017-01-18T09:10:47.326Z</lastmod>
+    <lastmod>2017-01-18T09:18:16.326Z</lastmod>
     <data>
         <display>
         <title>Armor test</title>
@@ -273,31 +273,6 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Dhrystone/</loc>
-    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
-    <data>
-        <display>
-        <title>Dhrystone</title>
-        <pubTime>2016-12-29T06:40:01.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-        <tag>CentOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Distributions_Guide.4All/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
@@ -447,31 +422,6 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
-    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
-    <data>
-        <display>
-        <title>Iperf</title>
-        <pubTime>2016-12-30T05:54:52.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-        <tag>CentOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_LAMP_with_Docker/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
@@ -499,12 +449,62 @@
 
     
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Iperf/</loc>
+    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    <data>
+        <display>
+        <title>Iperf</title>
+        <pubTime>2016-12-30T05:54:52.000Z</pubTime>
+        
+        <tag>D05</tag>
+         
+        <tag>CentOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Netperf/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
         <title>Netperf</title>
         <pubTime>2016-12-30T06:25:32.000Z</pubTime>
+        
+        <tag>D05</tag>
+         
+        <tag>CentOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Dhrystone/</loc>
+    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    <data>
+        <display>
+        <title>Dhrystone</title>
+        <pubTime>2016-12-29T06:40:01.000Z</pubTime>
         
         <tag>D05</tag>
          
@@ -574,18 +574,16 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-bandwith/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Armor_Tools_Basic_Info.4All</title>
-        <pubTime>2016-10-09T02:07:01.000Z</pubTime>
+        <title>lmbench_bandwith</title>
+        <pubTime>2016-12-28T07:48:17.000Z</pubTime>
         
         <tag>D05</tag>
          
-        <tag>D02</tag>
-         
-        <tag>D03</tag>
+        <tag>CentOS</tag>
          
          
            
@@ -780,16 +778,18 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-bandwith/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>lmbench_bandwith</title>
-        <pubTime>2016-12-28T07:48:17.000Z</pubTime>
+        <title>Armor_Tools_Basic_Info.4All</title>
+        <pubTime>2016-10-09T02:07:01.000Z</pubTime>
         
         <tag>D05</tag>
          
-        <tag>CentOS</tag>
+        <tag>D02</tag>
+         
+        <tag>D03</tag>
          
          
            
@@ -1182,14 +1182,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     <data>
         <display>
-        <title>Quick_Deployment.4D03</title>
+        <title>Quick_Deployment.4D05</title>
         <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
-        <tag>D03</tag>
+        <tag>D05</tag>
          
          
            
@@ -1344,14 +1344,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D05/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
     <lastmod>2016-12-26T11:19:06.656Z</lastmod>
     <data>
         <display>
-        <title>Quick_Deployment.4D05</title>
+        <title>Quick_Deployment.4D03</title>
         <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
-        <tag>D05</tag>
+        <tag>D03</tag>
          
          
            
