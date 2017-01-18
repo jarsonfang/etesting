@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/kvm/</loc>
-    <lastmod>2017-01-18T08:05:06.717Z</lastmod>
+    <lastmod>2017-01-18T09:01:57.668Z</lastmod>
     <data>
         <display>
         <title>KVM</title>
@@ -33,17 +33,13 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Percona/</loc>
-    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/armor-test/</loc>
+    <lastmod>2017-01-18T09:01:57.668Z</lastmod>
     <data>
         <display>
-        <title>Percona</title>
-        <pubTime>2016-12-30T03:33:46.000Z</pubTime>
+        <title>Armor test</title>
+        <pubTime>2017-01-18T02:33:21.000Z</pubTime>
         
-        <tag>D05</tag>
-         
-        <tag>CentOS</tag>
-         
          
            
              
@@ -231,14 +227,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.overdrive/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4HiKey/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Deploy_Manual.overdrive</title>
-        <pubTime>2017-01-10T16:00:00.000Z</pubTime>
+        <title>Deploy_Manual.4HiKey</title>
+        <pubTime>2016-10-10T02:08:01.000Z</pubTime>
         
-        <tag>overdrive</tag>
+        <tag>HiKey</tag>
          
          
            
@@ -254,14 +250,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4HiKey/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.overdrive/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
         <display>
-        <title>Deploy_Manual.4HiKey</title>
-        <pubTime>2016-10-10T02:08:01.000Z</pubTime>
+        <title>Deploy_Manual.overdrive</title>
+        <pubTime>2017-01-10T16:00:00.000Z</pubTime>
         
-        <tag>HiKey</tag>
+        <tag>overdrive</tag>
          
          
            
@@ -1059,6 +1055,31 @@
 
     
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Percona/</loc>
+    <lastmod>2017-01-18T07:45:22.644Z</lastmod>
+    <data>
+        <display>
+        <title>Percona</title>
+        <pubTime>2016-12-30T03:33:46.000Z</pubTime>
+        
+        <tag>D05</tag>
+         
+        <tag>CentOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/lmbench-latency/</loc>
     <lastmod>2017-01-18T07:45:22.644Z</lastmod>
     <data>
@@ -1146,29 +1167,6 @@
         <tag>D05</tag>
          
         <tag>CentOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
-    <lastmod>2016-12-26T11:19:06.656Z</lastmod>
-    <data>
-        <display>
-        <title>Quick_Deployment.4D03</title>
-        <pubTime>2016-12-23T16:00:00.000Z</pubTime>
-        
-        <tag>D03</tag>
          
          
            
@@ -1329,6 +1327,29 @@
         <display>
         <title>Readme.4D03</title>
         <pubTime>2016-10-09T02:05:01.000Z</pubTime>
+        
+        <tag>D03</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Quick_Deployment.4D03/</loc>
+    <lastmod>2016-12-26T11:19:06.656Z</lastmod>
+    <data>
+        <display>
+        <title>Quick_Deployment.4D03</title>
+        <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
         <tag>D03</tag>
          
