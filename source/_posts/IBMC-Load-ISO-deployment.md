@@ -11,6 +11,7 @@ categories:
 **Author:** Tian Jiaoling
 
 ## Preparation work
+
 The doc is applied for deploying the target board with Estuary OS or upgrading any release version of Estuary OS.
 
 1. The iso file the doc mentioned can be accessed by the **Downloading website**.
@@ -33,7 +34,7 @@ Accessing from outside-China: http://download.open-estuary.org/
    ```
 4. For EOL2(Open Lab 2), we only provide to visit the board’s BMC IP remotely.
 
-   BMC IP is set to:  
+   BMC IP is set to:
    ```bash
    https://114.119.4.74:<port><boardno>
    ```
@@ -41,13 +42,15 @@ Accessing from outside-China: http://download.open-estuary.org/
 
 5. For the boards sent out, the BMC IP website is https://192.168.2.100 by default.
 
+<!--more-->
+
 ## Details steps to deploy/upgrade Estuary OS
 
 ### Open the browser and input the target board's BMC IP
-The username&password for logging the BMC website is`root`&`Huawei12#$`  
-{% asset_img login.png %}
 
-<!--more-->
+The username&password for logging the BMC website is`root`&`Huawei12#$`
+
+{% asset_img login.png %}
 
 If the BIOS version is too low or damaged, please upgrade BIOS through BMC website. Click System->Firmware Upgrade->Select Target Version: (e.g.: bios-crypt-image-0928.hpm)->click "Start Update".
 
@@ -92,8 +95,7 @@ sudo apt-get install ipmitool
 ```
 If your pc is windows system, please get ipmitool package from http://down.liangchan.net/ipmitool.zip. Then depress the package to your pc disk.
 
-Open two terminals, one is to input the following commands to make the board power on or off  
-
+Open two terminals, one is to input the following commands to make the board power on or off
 ```bash
 ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12#$ power on
 ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12#$ power off
@@ -126,11 +128,12 @@ Please let the system deploy automatically without any manual operations.  After
 {% asset_img centos.png %}
 
 ## FAQ
-QES1: If you have done all the above operations, but enter the system which started with `estuary@`
+
+QES1: If you have done all the above operations, but enter the system which started with `estuary@`  
 ANS: Please check the following items.
+
 1. The iso file and BIOS file you used **SHOULD** keep complementary. That is to say, both two files came from the same Estuary release version.
 2. Make sure you have connect sufficient disks to the target board if you have installed more distributions.
 
-QES2: I have entered the distribution successfully, but the system cannot support my needed functions
-
+QES2: I have entered the distribution successfully, but the system cannot support my needed functions  
 ANS: Please upgrade the OS to the newest Estuary release version according Downloading website which mentioned at "preparation work" chapter. If the issues still not reslove, you can send email to support@open-estuary.org.
