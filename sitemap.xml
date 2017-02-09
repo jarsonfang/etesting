@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Misc/Branches-of-test-definitions-repository/</loc>
+    
+    <lastmod>2017-02-09T09:51:19.062Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/</loc>
     
     <lastmod>2017-02-09T02:17:06.656Z</lastmod>
@@ -16,6 +23,13 @@
   </url>
   
   <url>
+    <loc>https://jarsonfang.github.io/tags/index.html</loc>
+    
+    <lastmod>2017-02-08T03:35:33.440Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/sed-manual/</loc>
     
     <lastmod>2017-02-08T03:35:33.440Z</lastmod>
@@ -24,13 +38,6 @@
   
   <url>
     <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/sed-functions/</loc>
-    
-    <lastmod>2017-02-08T03:35:33.440Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jarsonfang.github.io/tags/index.html</loc>
     
     <lastmod>2017-02-08T03:35:33.440Z</lastmod>
     
@@ -114,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/awk/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hexo-commands/</loc>
     
     <lastmod>2017-02-08T03:35:33.416Z</lastmod>
     
@@ -128,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/awk/</loc>
     
     <lastmod>2017-02-08T03:35:33.416Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hexo-commands/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
     
     <lastmod>2017-02-08T03:35:33.416Z</lastmod>
     
@@ -226,13 +233,6 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D03/</loc>
-    
-    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.kgdb.kdb/</loc>
     
     <lastmod>2017-02-08T03:35:33.404Z</lastmod>
@@ -254,14 +254,7 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D02/</loc>
-    
-    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/SPECint/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D03/</loc>
     
     <lastmod>2017-02-08T03:35:33.404Z</lastmod>
     
@@ -269,6 +262,13 @@
   
   <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/</loc>
+    
+    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D02/</loc>
     
     <lastmod>2017-02-08T03:35:33.404Z</lastmod>
     
@@ -297,6 +297,13 @@
   
   <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/SPECfp/</loc>
+    
+    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/SPECint/</loc>
     
     <lastmod>2017-02-08T03:35:33.404Z</lastmod>
     
@@ -485,14 +492,7 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</loc>
-    
-    <lastmod>2017-02-08T03:35:33.332Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Supported.4All/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/AliSQL/</loc>
     
     <lastmod>2017-02-08T03:35:33.332Z</lastmod>
     
@@ -506,14 +506,21 @@
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Supported.4All/</loc>
     
     <lastmod>2017-02-08T03:35:33.332Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/AliSQL/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</loc>
+    
+    <lastmod>2017-02-08T03:35:33.332Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Basic_Info.4All/</loc>
     
     <lastmod>2017-02-08T03:35:33.332Z</lastmod>
     

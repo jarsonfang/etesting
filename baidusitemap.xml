@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Misc/Branches-of-test-definitions-repository/</loc>
+    <lastmod>2017-02-09T09:51:19.062Z</lastmod>
+    <data>
+        <display>
+        <title>Branches of test-definitions repository</title>
+        <pubTime>2017-02-09T06:30:27.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Misc" url="https://jarsonfang.github.io/etesting/categories/Misc/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/</loc>
     <lastmod>2017-02-09T02:17:06.656Z</lastmod>
     <data>
@@ -34,9 +54,9 @@
         <title>Deploy manual for RP release</title>
         <pubTime>2016-12-20T07:18:37.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
         <tag>RP</tag>
          
@@ -52,6 +72,7 @@
     </data>
     </url>
 
+    
     
   <url>
     <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/sed-manual/</loc>
@@ -98,7 +119,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/sed-awk-overview/</loc>
@@ -210,11 +230,11 @@
         <title>KVM</title>
         <pubTime>2017-01-16T02:44:19.000Z</pubTime>
         
+        <tag>D03</tag>
+         
         <tag>D05</tag>
          
         <tag>CentOS</tag>
-         
-        <tag>D03</tag>
          
         <tag>Ubuntu</tag>
          
@@ -326,14 +346,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/awk/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hexo-commands/</loc>
     <lastmod>2017-02-08T03:35:33.416Z</lastmod>
     <data>
         <display>
-        <title>awk 手册</title>
-        <pubTime>2016-09-23T07:08:36.000Z</pubTime>
+        <title>Hexo 命令</title>
+        <pubTime>2016-10-01T01:52:54.000Z</pubTime>
         
-        <tag>awk</tag>
+        <tag>Hexo</tag>
          
          
            
@@ -341,7 +361,7 @@
               <breadCrumb title="Tools" url="https://jarsonfang.github.io/etesting/categories/Tools/"/>
           
              
-              <breadCrumb title="sed &amp; awk" url="https://jarsonfang.github.io/etesting/categories/Tools/sed-awk/"/>
+              <breadCrumb title="Hexo" url="https://jarsonfang.github.io/etesting/categories/Tools/Hexo/"/>
           
         </display>
     </data>
@@ -372,14 +392,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Tools/sed-awk/awk/</loc>
     <lastmod>2017-02-08T03:35:33.416Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2016-09-20T02:05:01.000Z</pubTime>
+        <title>awk 手册</title>
+        <pubTime>2016-09-23T07:08:36.000Z</pubTime>
         
-        <tag>Hexo</tag>
+        <tag>awk</tag>
          
          
            
@@ -387,7 +407,7 @@
               <breadCrumb title="Tools" url="https://jarsonfang.github.io/etesting/categories/Tools/"/>
           
              
-              <breadCrumb title="Hexo" url="https://jarsonfang.github.io/etesting/categories/Tools/Hexo/"/>
+              <breadCrumb title="sed &amp; awk" url="https://jarsonfang.github.io/etesting/categories/Tools/sed-awk/"/>
           
         </display>
     </data>
@@ -395,12 +415,12 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hexo-commands/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Tools/Hexo/hello-world/</loc>
     <lastmod>2017-02-08T03:35:33.416Z</lastmod>
     <data>
         <display>
-        <title>Hexo 命令</title>
-        <pubTime>2016-10-01T01:52:54.000Z</pubTime>
+        <title>Hello World</title>
+        <pubTime>2016-09-20T02:05:01.000Z</pubTime>
         
         <tag>Hexo</tag>
          
@@ -609,11 +629,11 @@
         <title>Toolchains_Guide.4All</title>
         <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -661,11 +681,11 @@
         <title>Setup_PXE_Env_on_Host.4All</title>
         <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -688,11 +708,92 @@
         <title>Setup_HiKey_WiFi_Env.4HiKey</title>
         <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.kgdb.kdb/</loc>
+    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
+    <data>
+        <display>
+        <title>README.armor.kgdb.kdb</title>
+        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
+        
+        <tag>D02</tag>
+         
+        <tag>D03</tag>
+         
+        <tag>D05</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.lttng/</loc>
+    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
+    <data>
+        <display>
+        <title>README.armor.lttng</title>
+        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
+        
+        <tag>D02</tag>
+         
+        <tag>D03</tag>
+         
+        <tag>D05</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.perf/</loc>
+    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
+    <data>
+        <display>
+        <title>README.armor.perf</title>
+        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
+        
+        <tag>D02</tag>
+         
+        <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -731,72 +832,14 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.kgdb.kdb/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/</loc>
     <lastmod>2017-02-08T03:35:33.404Z</lastmod>
     <data>
         <display>
-        <title>README.armor.kgdb.kdb</title>
-        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
+        <title>Readme.4D05</title>
+        <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
         <tag>D05</tag>
-         
-        <tag>D02</tag>
-         
-        <tag>D03</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.lttng/</loc>
-    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
-    <data>
-        <display>
-        <title>README.armor.lttng</title>
-        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-        <tag>D02</tag>
-         
-        <tag>D03</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.perf/</loc>
-    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
-    <data>
-        <display>
-        <title>README.armor.perf</title>
-        <pubTime>2016-10-10T02:10:01.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-        <tag>D02</tag>
-         
-        <tag>D03</tag>
          
          
            
@@ -820,54 +863,6 @@
         <pubTime>2016-10-09T02:07:01.000Z</pubTime>
         
         <tag>D02</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/SPECint/</loc>
-    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
-    <data>
-        <display>
-        <title>SPECint</title>
-        <pubTime>2016-12-29T02:38:05.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-        <tag>CentOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Readme.4D05/</loc>
-    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
-    <data>
-        <display>
-        <title>Readme.4D05</title>
-        <pubTime>2016-12-23T16:00:00.000Z</pubTime>
-        
-        <tag>D05</tag>
          
          
            
@@ -979,6 +974,31 @@
 
     
   <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/SPECint/</loc>
+    <lastmod>2017-02-08T03:35:33.404Z</lastmod>
+    <data>
+        <display>
+        <title>SPECint</title>
+        <pubTime>2016-12-29T02:38:05.000Z</pubTime>
+        
+        <tag>D05</tag>
+         
+        <tag>CentOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.iptables/</loc>
     <lastmod>2017-02-08T03:35:33.400Z</lastmod>
     <data>
@@ -986,11 +1006,11 @@
         <title>README.armor.iptables</title>
         <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -1209,11 +1229,11 @@
         <title>Introduction_for_LAMP_with_Docker</title>
         <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -1236,11 +1256,11 @@
         <title>Introduction_for_Docker</title>
         <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -1286,9 +1306,9 @@
         <title>How to synchronize estuary codes</title>
         <pubTime>2016-12-26T05:47:58.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -1381,9 +1401,9 @@
         <title>Grub_Manual.4ALL</title>
         <pubTime>2016-12-23T16:00:00.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -1403,11 +1423,11 @@
         <title>Distributions_Guild.4All</title>
         <pubTime>2016-10-10T02:10:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -1613,45 +1633,16 @@
 
     
   <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</loc>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/AliSQL/</loc>
     <lastmod>2017-02-08T03:35:33.332Z</lastmod>
     <data>
         <display>
-        <title>Armor_Manual.4ALL</title>
-        <pubTime>2016-10-13T02:07:01.000Z</pubTime>
+        <title>AliSQL</title>
+        <pubTime>2016-12-30T02:10:56.000Z</pubTime>
         
         <tag>D05</tag>
          
-        <tag>D02</tag>
-         
-        <tag>D03</tag>
-         
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Supported.4All/</loc>
-    <lastmod>2017-02-08T03:35:33.332Z</lastmod>
-    <data>
-        <display>
-        <title>Armor_Tools_Supported.4All</title>
-        <pubTime>2016-10-09T02:07:01.000Z</pubTime>
-        
-        <tag>D05</tag>
-         
-        <tag>D02</tag>
-         
-        <tag>D03</tag>
+        <tag>CentOS</tag>
          
          
            
@@ -1674,11 +1665,65 @@
         <title>Caliper_Manual.4All</title>
         <pubTime>2016-10-09T02:07:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
+         
+        <tag>D05</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Tools_Supported.4All/</loc>
+    <lastmod>2017-02-08T03:35:33.332Z</lastmod>
+    <data>
+        <display>
+        <title>Armor_Tools_Supported.4All</title>
+        <pubTime>2016-10-09T02:07:01.000Z</pubTime>
+        
+        <tag>D02</tag>
+         
+        <tag>D03</tag>
+         
+        <tag>D05</tag>
+         
+         
+           
+             
+              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
+          
+             
+              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</loc>
+    <lastmod>2017-02-08T03:35:33.332Z</lastmod>
+    <data>
+        <display>
+        <title>Armor_Manual.4ALL</title>
+        <pubTime>2016-10-13T02:07:01.000Z</pubTime>
+        
+        <tag>D02</tag>
+         
+        <tag>D03</tag>
+         
+        <tag>D05</tag>
          
          
            
@@ -1701,36 +1746,11 @@
         <title>Armor_Tools_Basic_Info.4All</title>
         <pubTime>2016-10-09T02:07:01.000Z</pubTime>
         
-        <tag>D05</tag>
-         
         <tag>D02</tag>
          
         <tag>D03</tag>
          
-         
-           
-             
-              <breadCrumb title="Estuary" url="https://jarsonfang.github.io/etesting/categories/Estuary/"/>
-          
-             
-              <breadCrumb title="Documents" url="https://jarsonfang.github.io/etesting/categories/Estuary/Documents/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://jarsonfang.github.io/etesting/Estuary/Documents/AliSQL/</loc>
-    <lastmod>2017-02-08T03:35:33.332Z</lastmod>
-    <data>
-        <display>
-        <title>AliSQL</title>
-        <pubTime>2016-12-30T02:10:56.000Z</pubTime>
-        
         <tag>D05</tag>
-         
-        <tag>CentOS</tag>
          
          
            
