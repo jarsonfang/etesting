@@ -10,6 +10,11 @@ categories:
   - Documents
 ---
 
+<div style="color:red;" >
+Updated:
+2017-02-08: 补充download_files.sh脚本文件内容。
+</div>
+
 参考：  
 <https://github.com/Linaro/documentation/blob/master/Reference-Platform/EECommon/Install-CentOS-7.md>  
 <https://github.com/Linaro/documentation/blob/master/Reference-Platform/EECommon/Install-Debian-Jessie.md>
@@ -103,6 +108,52 @@ md5sum: WARNING: 1 computed checksum did NOT match
 jarson@BoardServer2:~/tftp/erp/centos-installer/snapshots/latest$
 ```
 (网络安装部署不需要iso文件，因此文件下载时跳过以节省下载时间)
+
+{% asset_link download_files.sh %} 脚本内容如下：
+```bash
+#!/bin/bash
+
+usage() {
+	echo "Usage: $0 <url>"
+	exit 0
+}
+
+if [ $# -lt 1 ]; then
+	usage
+fi
+
+URL=${1%/}
+ROOT_DIR=${URL##*/}
+MD5SUMS_FILE="MD5SUMS.txt"
+
+mkdir -p $ROOT_DIR && cd $ROOT_DIR
+wget -c $URL/$MD5SUMS_FILE
+
+if [ ! -e $MD5SUMS_FILE ]; then
+	echo -e "\e[31mDownload $MD5SUMS_FILE failed!\e[0m"
+	exit 1
+fi
+
+declare -A file_list
+file_list=$(cat $MD5SUMS_FILE | awk '{print $2}')
+
+for file in $file_list; do
+	ret=$(echo $file | grep -E "*.iso")
+	if [ -n "$ret" ]; then
+		echo "Skip file: $file"
+		continue
+	fi
+	file_dir=$(dirname $file)
+	mkdir -p $file_dir
+	wget -c $URL/$file -O $file
+done
+
+echo -e "\e[32mDownloaded files:\e[0m\n$file_list"
+tree $PWD
+
+echo -e "\e[32mMD5SUM check:\e[0m"
+md5sum -c $MD5SUMS_FILE
+```
 
 ### 更新`grubaa64.efi`文件 (Centos)
 ```bash
