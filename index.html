@@ -293,7 +293,7 @@
               
                 
                 <a class="post-title-link" href="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/" itemprop="url">
-                  IBMC Load ISO 部署
+                  Deploy/Upgrade Estuary OS with iso file by BMC-website
                 </a>
               
             
@@ -389,8 +389,27 @@
 
       
         
-          <p><strong>Author:</strong> Fang Yuanzheng</p>
-<p>打开浏览器，输入目标单板的ip地址，进入ibmc登录界面，默认账号：<code>root</code>，密码：<code>Huawei12#$</code><br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/login.png" alt="login.png" title=""></p>
+          <p><strong>Author:</strong> Tian Jiaoling</p>
+<h2 id="Preparation-work"><a href="#Preparation-work" class="headerlink" title="Preparation work"></a>Preparation work</h2><p>The doc is applied for deploying the target board with Estuary OS or upgrading any release version of Estuary OS.</p>
+<ol>
+<li><p>The iso file the doc mentioned can be accessed by the <strong>Downloading website</strong>.<br>Accessing from China: ftp://117.78.41.188<br>Accessing from outside-China: <a href="http://download.open-estuary.org/">http://download.open-estuary.org/</a></p>
+</li>
+<li><p>Please make sure you have connected two or more disk to target board if you want to install two or more distributions.</p>
+</li>
+<li><p>For EOL1(Open Lab 1), we provide to visit the board’s BMC IP both locally and remotely.</p>
+<p>If you are in the same network segment with boards deployed in EOL1, you can visit the board’s BMC IP:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://192.168.1.&lt;boardno&gt;</div></pre></td></tr></table></figure>
+<p>If you want to visit board’s BMC IP remotely, please input the following command in browser: <code>https://htsat.vicp.cc: &lt;port&gt;&lt;boardno&gt;</code>, the <code>&lt;port&gt;</code> is set to “40” by default.<br>e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://htsat.vicp.cc:40135.</div></pre></td></tr></table></figure>
+</li>
+<li><p>For EOL2(Open Lab 2), we only provide to visit the board’s BMC IP remotely.</p>
+<p>BMC IP is set to:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://114.119.4.74:&lt;port&gt;&lt;boardno&gt;</div></pre></td></tr></table></figure>
+<p>The <code>&lt;port&gt;</code> is set to “8” by default. For example, if you want to visit board 135’s BMC IP which located in EOL2, please input <code>https:114.119.4.74:8135</code> in your browser.</p>
+</li>
+<li><p>For the boards sent out, the BMC IP website is <a href="https://192.168.2.100">https://192.168.2.100</a> by default.</p>
+</li>
+</ol>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/#more" rel="contents">

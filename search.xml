@@ -4,17 +4,64 @@
   
     
     <entry>
-      <title><![CDATA[IBMC Load ISO 部署]]></title>
+      <title><![CDATA[Deploy/Upgrade Estuary OS with iso file by BMC-website]]></title>
       <url>https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/</url>
-      <content type="html"><![CDATA[<p><strong>Author:</strong> Fang Yuanzheng</p>
-<p>打开浏览器，输入目标单板的ip地址，进入ibmc登录界面，默认账号：<code>root</code>，密码：<code>Huawei12#$</code><br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/login.png" alt="login.png" title=""></p>
+      <content type="html"><![CDATA[<p><strong>Author:</strong> Tian Jiaoling</p>
+<h2 id="Preparation-work"><a href="#Preparation-work" class="headerlink" title="Preparation work"></a>Preparation work</h2><p>The doc is applied for deploying the target board with Estuary OS or upgrading any release version of Estuary OS.</p>
+<ol>
+<li><p>The iso file the doc mentioned can be accessed by the <strong>Downloading website</strong>.<br>Accessing from China: ftp://117.78.41.188<br>Accessing from outside-China: <a href="http://download.open-estuary.org/" target="_blank" rel="external">http://download.open-estuary.org/</a></p>
+</li>
+<li><p>Please make sure you have connected two or more disk to target board if you want to install two or more distributions.</p>
+</li>
+<li><p>For EOL1(Open Lab 1), we provide to visit the board’s BMC IP both locally and remotely.</p>
+<p>If you are in the same network segment with boards deployed in EOL1, you can visit the board’s BMC IP:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://192.168.1.&lt;boardno&gt;</div></pre></td></tr></table></figure>
+<p>If you want to visit board’s BMC IP remotely, please input the following command in browser: <code>https://htsat.vicp.cc: &lt;port&gt;&lt;boardno&gt;</code>, the <code>&lt;port&gt;</code> is set to “40” by default.<br>e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://htsat.vicp.cc:40135.</div></pre></td></tr></table></figure>
+</li>
+<li><p>For EOL2(Open Lab 2), we only provide to visit the board’s BMC IP remotely.</p>
+<p>BMC IP is set to:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://114.119.4.74:&lt;port&gt;&lt;boardno&gt;</div></pre></td></tr></table></figure>
+<p>The <code>&lt;port&gt;</code> is set to “8” by default. For example, if you want to visit board 135’s BMC IP which located in EOL2, please input <code>https:114.119.4.74:8135</code> in your browser.</p>
+</li>
+<li><p>For the boards sent out, the BMC IP website is <a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a> by default.</p>
+</li>
+</ol>
 <a id="more"></a>
-<p>登录之后，点击<code>Remote</code>项，选择<code>Remote Virtual Console (Share Mode)</code><br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/remote.png" alt="remote.png" title=""></p>
-<p>正常情况下应该可以看到下面界面，如果没有看到，是由于没有安装java虚拟机，请安装java虚拟机。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/console-1.png" alt="console-1.png" title=""></p>
-<p>选择虚拟控制台 光驱-&gt;镜像文件-&gt;浏览按钮找到 ISO 镜像文件后选择 连接。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/console-2.png" alt="console-2.png" title=""></p>
-<p>在返回到 BMC 的网页，选择配置-&gt;系统启动项中的光驱启动，最后点击保存。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/boot-option.png" alt="boot-option.png" title=""></p>
-<p>系统启动项中的修改只有本次重启有效，下次开机如果还想从光驱启动，必须重新在 BMC 中重新修改系统启动项。<br>通过虚拟控制台中的强制重启，选择<code>Power</code>，点击<code>Forced System Reset</code>，让目标单板重启。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/power.png" alt="power.png" title=""></p>
-<p>正常情况下，系统 起来后就会将 ISO 文件中的内容写到硬盘中。</p>
+<h2 id="Details-steps-to-deploy-upgrade-Estuary-OS"><a href="#Details-steps-to-deploy-upgrade-Estuary-OS" class="headerlink" title="Details steps to deploy/upgrade Estuary OS"></a>Details steps to deploy/upgrade Estuary OS</h2><h3 id="Open-the-browser-and-input-the-target-board’s-BMC-IP"><a href="#Open-the-browser-and-input-the-target-board’s-BMC-IP" class="headerlink" title="Open the browser and input the target board’s BMC IP"></a>Open the browser and input the target board’s BMC IP</h3><p>The username&amp;password for logging the BMC website is<code>root</code>&amp;<code>Huawei12#$</code></p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/login.png" alt="login.png" title="">
+<p>If the BIOS version is too low or damaged, please upgrade BIOS through BMC website. Click System-&gt;Firmware Upgrade-&gt;Select Target Version: (e.g.: bios-crypt-image-0928.hpm)-&gt;click “Start Update”.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/uefi.png" alt="uefi.png" title="">
+<p>Please reboot the board to make sure the new BIOS invalid.</p>
+<h3 id="Click-“Remote”-at-the-top-of-BMC-website"><a href="#Click-“Remote”-at-the-top-of-BMC-website" class="headerlink" title="Click “Remote” at the top of BMC website"></a>Click “Remote” at the top of BMC website</h3><p>You will see the following picture. If you don’t see it, please install java virtual machine.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/java.png" alt="java.png" title="">
+<h3 id="Select-“Remote-Virtual-Console-Shared-Mode-”"><a href="#Select-“Remote-Virtual-Console-Shared-Mode-”" class="headerlink" title="Select “Remote Virtual Console (Shared Mode)”"></a>Select “Remote Virtual Console (Shared Mode)”</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/share.png" alt="share.png" title="">
+<h3 id="Click-“Image-File”-and-choose-the-iso-image-then-click-“Connect”-button"><a href="#Click-“Image-File”-and-choose-the-iso-image-then-click-“Connect”-button" class="headerlink" title="Click “Image File” and choose the iso image, then click “Connect” button."></a>Click “Image File” and choose the iso image, then click “Connect” button.</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/imagefile.png" alt="imagefile.png" title="">
+<h3 id="Click-“Config”-on-the-top-of-BMC-website-then-click-“Boot-Option”-to-select-“DVD-ROM-drive”-continue-to-click-“Save”-button"><a href="#Click-“Config”-on-the-top-of-BMC-website-then-click-“Boot-Option”-to-select-“DVD-ROM-drive”-continue-to-click-“Save”-button" class="headerlink" title="Click “Config” on the top of BMC website, then click “Boot Option” to select “DVD-ROM drive”, continue to click “Save” button."></a>Click “Config” on the top of BMC website, then click “Boot Option” to select “DVD-ROM drive”, continue to click “Save” button.</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/dvdrom.png" alt="dvdrom.png" title="">
+<p><strong>Warning: the modification is only valid this time, if you want to boot from the CD-ROM drive next time, you need login BMC to modify the system booting option</strong></p>
+<h3 id="Force-to-restart-D05-through-virtual-console-Click-“power”-gt-click-“Forced-System-Reset”"><a href="#Force-to-restart-D05-through-virtual-console-Click-“power”-gt-click-“Forced-System-Reset”" class="headerlink" title="Force to restart D05 through virtual console. Click “power”-&gt;click “Forced System Reset”"></a>Force to restart D05 through virtual console. Click “power”-&gt;click “Forced System Reset”</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/power.png" alt="power.png" title="">
+<p>You can enter UEFI menu and see the booting log via BMC website directly or use <code>ipmitool</code> in your local pc to see the booting process.</p>
+<p><strong>Warning: if you want to see the booting log via kvm on BMC website directly, please skip the following step “How to use ipmitool to see booting log”.</strong></p>
+<h3 id="How-to-use-ipmitool-to-see-booting-log-optional-step"><a href="#How-to-use-ipmitool-to-see-booting-log-optional-step" class="headerlink" title="How to use ipmitool to see booting log(optional step)"></a>How to use ipmitool to see booting log(optional step)</h3><p>First please install ipmitool with the following commands(Apply for ubuntu pc)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ipmitool</div></pre></td></tr></table></figure>
+<p>If your pc is windows system, please get ipmitool package from <a href="http://down.liangchan.net/ipmitool.zip" target="_blank" rel="external">http://down.liangchan.net/ipmitool.zip</a>. Then depress the package to your pc disk.</p>
+<p>Open two terminals, one is to input the following commands to make the board power on or off<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12<span class="comment">#$ power on</span></div><div class="line">ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12<span class="comment">#$ power off</span></div></pre></td></tr></table></figure></p>
+<p>Open the other terminal and input the following command to enable the board with command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12<span class="comment">#$ sol activate</span></div></pre></td></tr></table></figure>
+<h3 id="Enter-UEFI-menu"><a href="#Enter-UEFI-menu" class="headerlink" title="Enter UEFI menu"></a>Enter UEFI menu</h3><p>Press any key except “enter” key to enter UEFI menu when the screen echo <code>Press any other key in 10 seconds to stop automatically booting</code><br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/10.png" alt="10.png" title=""></p>
+<p>Choose “EFI USB DEVICE” and type “enter” key<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/usbdevice.png" alt="usbdevice.png" title=""></p>
+<p>The system will enter grub menu as follow and show “Install D05 estuary (Console)”, press “enter” key to start install.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/grub.png" alt="grub.png" title="">
+<p><strong>Warning: if you select “Install D05 estuary (Console)”, you can see the booting log from “ipmitool”. If you select “Install D05 estuary(VGA)”, you should connect a VGA and a mouse to the target board or via kvm on BMC website directly.</strong></p>
+<h3 id="Please-input-“2”-when-the-system-echos-the-following-picture"><a href="#Please-input-“2”-when-the-system-echos-the-following-picture" class="headerlink" title="Please input “2” when the system echos the following picture."></a>Please input “2” when the system echos the following picture.</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/select2.png" alt="select2.png" title="">
+<p>Please let the system deploy automatically without any manual operations.  After all the deployments have done, the system will boot automatically. It has entered distribution successfully if you see e.g: <code>root@CentOS</code>. Username/password for all distribuitons are root/root by default.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/centos.png" alt="centos.png" title="">
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p>QES1: If you have done all the above operations, but enter the system which started with <code>estuary@</code><br>ANS: Please check the following items.</p>
+<ol>
+<li>The iso file and BIOS file you used <strong>SHOULD</strong> keep complementary. That is to say, both two files came from the same Estuary release version.</li>
+<li>Make sure you have connect sufficient disks to the target board if you have installed more distributions.</li>
+</ol>
+<p>QES2: I have entered the distribution successfully, but the system cannot support my needed functions<br>ANS: Please upgrade the OS to the newest Estuary release version according Downloading website which mentioned at “preparation work” chapter. If the issues still not reslove, you can send email to support@open-estuary.org.</p>
 ]]></content>
     </entry>
     
@@ -679,6 +726,116 @@
     </entry>
     
     <entry>
+      <title><![CDATA[UEFI_Manual.4D05]]></title>
+      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/UEFI_Manual.4D05/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Upgrade UEFI</a></li>
+<li><a href="#3">Recover the UEFI when it broke</a><a id="more"></a>
+</li>
+</ul>
+<h2 id="1">Introduction</h2>
+
+<p>UEFI is a kind of BIOS to boot system and provide runtime service to OS which can do some basic IO operation with the runtime service, e.g.: reboot, power off and etc.<br>Normally, there are some trust firmware will be produce from UEFI building, they are responsible for trust reprogram, they include:</p>
+<p>  UEFI_D05.fd         //UEFI executable binary file.</p>
+<p>Where to get them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D05.md" target="_blank" rel="external">Readme.md</a>.</p>
+<h2 id="2">Upgrade UEFI</h2>
+
+<p>Note: This is not necessary unless you want to upgrade UEFI really.</p>
+<ol>
+<li>Prepare UEFI_D05.fd on computer which installed FTP service<br>FTP service is used to download files from the FTP server to hardware boards. Please prepare a computer installed FTP service with local network firstly, so that boards can get needed files frome FTP server with FTP protocol. Then put the UEFI files mentioned above into the root directory of FTP service.  </li>
+<li><p>Connect the board’s UART port to a host machine<br>Please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D05.md" target="_blank" rel="external">Deploy_Manual.4D05.md</a> “Prerequisite” chapter.</p>
+<p>If you choose Method 1 Deploy_Manual.4D05.md, use another console window, use <code>board_reboot</code> command to reset the board.<br>If you choose Method 2 Deploy_Manual.4D05.md, press the reset key on the board to reset the board.</p>
+<p>when system showing “Press Any key in 10 seconds to stop automatical booting…”, press any key except “enter” key to enter UEFI main menu.</p>
+</li>
+</ol>
+<h3 id="UEFI-menu-introduction"><a href="#UEFI-menu-introduction" class="headerlink" title="UEFI menu introduction"></a>UEFI menu introduction</h3><p>  UEFI main menu option is showed as follow:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">continue</span></div><div class="line">select Language            &lt;standard English&gt;</div><div class="line">&gt;Boot Manager</div><div class="line">&gt;Device Manager</div><div class="line">&gt;Boot Maintenance Manager</div></pre></td></tr></table></figure></p>
+<p>  Choose “Boot Manager” and enter into Boot option menu:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">EFI Misc Device</div><div class="line">EFI Network</div><div class="line">EFI Network 1</div><div class="line">EFI Network 2</div><div class="line">EFI Network 3</div><div class="line">EFI Internal Shell</div><div class="line">ESL Start OS</div><div class="line">Embedded Boot Loader(EBL)</div></pre></td></tr></table></figure></p>
+<p>  Please select “EFI Network 2” when booting boards via PXE with openlab environment.<br>  D05 board support 4 on-board network ports at maximun. To enable any one of them by connecting to network cable or optical fiber. From left to right, followed by the two 2GE ports, two 10GE ports which corresponding to UEFI startup interface are EFI Network 2, EFI Network 3, EFI Network 0, EFI Network 1.</p>
+<p>  EFI Internal Shell mode is a standard command shell in UEFI.</p>
+<p>  Embedded Boot Loader(EBL) mode is an embedded command shell based on boot loader specially for developers.</p>
+<p>  You can switch between two modes by typing “exit” from one mode to UEFI main menu and then choose the another mode.</p>
+<h3 id="Update-UEFI-files"><a href="#Update-UEFI-files" class="headerlink" title="Update UEFI files"></a>Update UEFI files</h3><ul>
+<li><p>IP address config at “EFI Internal Shell” mode(Optional, you can ignore this step if DHCP works well)</p>
+<p>Press any key except “enter” key to enter UEFI main menu. Select “Boot Manager”-&gt;”EFI Internal Shell”.</p>
+<p><code>ifconfig -s eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</code></p>
+<p>e.g.:</p>
+<p><code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
+</li>
+<li><p>Burn BIOS file at “Embedded Boot Loader(EBL)” mode</p>
+<p>Enter “exit” from “EFI Internal Shell” mode to the UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;UEFI binary&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">spiwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
+<p>e.g.:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> UEFI_D05.fd <span class="_">-a</span> 0x100000</div></pre></td></tr></table></figure>
+<p>D05 board supports 4 network ports which including 2 GE ports and 2 10GE ports. Please select “Interface 3” when downloading bios file with openlab environment.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spiwfmem 0x100000 0x0000000 0x300000</div></pre></td></tr></table></figure>
+</li>
+<li><p>Power off and reboot board again.</p>
+</li>
+</ul>
+<h2 id="3">Recover the UEFI when it broke</h2>
+
+<ol>
+<li><p>Connect board’s BMC port to the network port of your ubuntu host.</p>
+</li>
+<li><p>Configure board’s BMC IP and your ubuntu host’s IP at the same network segment.</p>
+</li>
+<li><p>Login the BMC website, The username/passwd are root/Huawei12#$. Click “system”, click “Firmware upgrade”, click “Browse” to choose the hpm formate uefi file(Please contact support@open-estuary.org to get the hpm formate uefi file).</p>
+<p>Note: Usually BMC website can be visited by (<a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a>) by default. If BMC IP have modified by somebody, please take the following steps to find modified BMC IP</p>
+<ul>
+<li><p>Pull out the power cable. Find the pin named “COM_SW” at J44. Then connect it.</p>
+</li>
+<li><p>Power on the board, connect the board’s serial port to your ubuntu serial port. When the screen display message “You are trying to access a restricted zone. Only Authorized Users allowed.”, type “Enter” key, input username/passwd, the username/passwd are root/Huawei12#$.</p>
+</li>
+<li><p>After you login the BMC interface which start with “iBMC:/-&gt;”, use command “ifconfig” to see the modified BMC IP.</p>
+</li>
+<li><p>When you get the board’s BMC IP, please visit the BMC website by https:&lt;board’s BMC IP&gt;</p>
+</li>
+</ul>
+</li>
+<li><p>Click “Start update”(Do not power off during this period).</p>
+</li>
+<li><p>After updated UFEI file, reboot the board to enter UEFI menu.<br></p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Grub_Manual.4ALL]]></title>
+      <url>https://jarsonfang.github.io/etesting/Estuary/Grub_Manual.4All/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Grub config file</a></li>
+<li><a href="#3">files structure bootable partition</a></li>
+<li><a href="#4">FAQ</a><a id="more"></a>
+</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Grub is a kind of boot loader to load kernel into RAM and run it.</p>
+<p>After rebooting board every time, the UEFI will firstly try to download the grub binary and run it firstly.</p>
+<p>Then grub binary will load the kernel and start it with cmdline and dtb file according to the configurations in <code>grub.cfg</code>.</p>
+<p>They include:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grubaa64.efi    <span class="comment"># The grub binary executable program for ARM64 architecture</span></div><div class="line">grubarm32.efi   <span class="comment"># The grub binary executable program for ARM32 architecture</span></div><div class="line">grub.cfg        <span class="comment"># The grub config file which will be used by grub binary</span></div></pre></td></tr></table></figure></p>
+<p>Where to get them, please refer to Readme.txt.</p>
+<h2 id="Grub-config-file"><a href="#Grub-config-file" class="headerlink" title="Grub config file"></a><a name="2">Grub config file</a></h2><p>You can edit a <code>grub.cfg</code> file to support various boot mode or multi boot partitions, follow is an example.</p>
+<p>You should change them acoording to your real local environment.</p>
+<p><strong><em>Note: D05 only supports booting system via ACPI mode with Centos, Debian, Ubuntu.</em></strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment"># Boot automatically after 0 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"></div><div class="line"><span class="comment"># By default, boot the Euler/Linux</span></div><div class="line"><span class="built_in">set</span> default=d05_centos_nfs_acpi</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D05 minilinux PXE(ACPI)"</span> --id d05_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rootwait rdinit=/init crashkernel=256M@32M </div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D05 Centos NFS(ACPI)"</span> --id d05_centos_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M  root=/dev/nfs rw nfsroot=192.168.1.107:/home/&lt;user&gt;/tftp/rootfs_ubuntu64 ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D05 Centos SATA(ACPI)"</span> --id d05_centos_sata_acpi&#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D03 minilinux PXE(ACPI)"</span> --id d03_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off rootwait crashkernel=256M@32M rdinit=/init console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8  acpi=force</div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu NFS(ACPI)"</span> --id d03_ubuntu_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 acpi=force ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu SATA(ACPI)"</span> --id d03_ubuntu_sata_acpi &#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with mini rootfs</span></div><div class="line">menuentry <span class="string">"HiKey minilinux eMMC"</span> --id HiKey_minilinux_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    initrd /mini-rootfs.cpio.gz</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu eMMC"</span> --id HiKey_Ubuntu_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk0p9 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from SD card with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu SD card"</span> --id HiKey_Ubuntu_SD &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk1p1 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line">menuentry <span class="string">'HiKey Fastboot mode'</span> &#123;</div><div class="line">    chainloader (hd0,gpt6)/fastboot.efi</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Note: You should only select the parts from above sample which are suitable for your real situation.</p>
+<h2 id="files-structure-bootable-partition"><a href="#files-structure-bootable-partition" class="headerlink" title="files structure bootable partition"></a><a name="3">files structure bootable partition</a></h2><p>Normally they are placed into bootable partition as following structure.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sdx-------EFI</div><div class="line">|       |</div><div class="line">|       GRUB2------grubaa64.efi   <span class="comment"># grub binary file only for ARM64 architecture</span></div><div class="line">|</div><div class="line">|-------------grub.cfg            <span class="comment"># grub config file</span></div><div class="line">|</div><div class="line">|-------------Image               <span class="comment"># kernel Image file only for D02 platform</span></div></pre></td></tr></table></figure></p>
+<p>Note: In case of booting by PXE mode:  </p>
+<ol>
+<li>The grub binary and <code>grub.cfg</code> files must be placed in the TFTP root directory.  </li>
+<li>The names and positions of kernel image and dtb must be consistent with the corresponding grub config file.  </li>
+<li>The grub binary name (<code>grubxxx.efi</code>) must be consistent with the “filename” in <code>/etc/dhcp/dhcpd.conf</code>, for more detail, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>  </li>
+<li>If you use D02 board, you should not input DTB in the <code>grub.cfg</code> but you must flash the DTB file into spiflash to avoid a known Mac address duplicate issue.</li>
+</ol>
+<p>You can get more information from the <code>Deploy_Manual.md</code> guide.</p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a><a name="4">FAQ</a></h2><p>If you want to modify <code>grub.cfg</code> command line temporarily. Type “E” key into grub modification menu. You will face problem that the “backspace” key not woking properly. You can fix backspace issue by changing terminal emulator’s configuration.</p>
+<p><strong>For gnome-terminal</strong>: Open “Edit” menu, select “Profile preferences”.<br>In “Compatibility” page, select “Control-H” in “Backspace key generates” listbox.<br><strong>For Xterm</strong>: press Ctrl key and left botton of mouse, and toggle on “Backarrow key (BS/DEL)” in mainMenu.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Deploy_Manual.4D03]]></title>
       <url>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D03/</url>
       <content type="html"><![CDATA[<ul>
@@ -766,40 +923,6 @@
 </ul>
 </li>
 </ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Grub_Manual.4ALL]]></title>
-      <url>https://jarsonfang.github.io/etesting/Estuary/Grub_Manual.4All/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Grub config file</a></li>
-<li><a href="#3">files structure bootable partition</a></li>
-<li><a href="#4">FAQ</a><a id="more"></a>
-</li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Grub is a kind of boot loader to load kernel into RAM and run it.</p>
-<p>After rebooting board every time, the UEFI will firstly try to download the grub binary and run it firstly.</p>
-<p>Then grub binary will load the kernel and start it with cmdline and dtb file according to the configurations in <code>grub.cfg</code>.</p>
-<p>They include:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grubaa64.efi    <span class="comment"># The grub binary executable program for ARM64 architecture</span></div><div class="line">grubarm32.efi   <span class="comment"># The grub binary executable program for ARM32 architecture</span></div><div class="line">grub.cfg        <span class="comment"># The grub config file which will be used by grub binary</span></div></pre></td></tr></table></figure></p>
-<p>Where to get them, please refer to Readme.txt.</p>
-<h2 id="Grub-config-file"><a href="#Grub-config-file" class="headerlink" title="Grub config file"></a><a name="2">Grub config file</a></h2><p>You can edit a <code>grub.cfg</code> file to support various boot mode or multi boot partitions, follow is an example.</p>
-<p>You should change them acoording to your real local environment.</p>
-<p><strong><em>Note: D05 only supports booting system via ACPI mode with Centos, Debian, Ubuntu.</em></strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Sample GRUB configuration file</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment"># Boot automatically after 0 secs.</span></div><div class="line"><span class="built_in">set</span> timeout=5</div><div class="line"></div><div class="line"><span class="comment"># By default, boot the Euler/Linux</span></div><div class="line"><span class="built_in">set</span> default=d05_centos_nfs_acpi</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D05 minilinux PXE(ACPI)"</span> --id d05_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rootwait rdinit=/init crashkernel=256M@32M </div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D05 Centos NFS(ACPI)"</span> --id d05_centos_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M  root=/dev/nfs rw nfsroot=192.168.1.107:/home/&lt;user&gt;/tftp/rootfs_ubuntu64 ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D05 Centos SATA(ACPI)"</span> --id d05_centos_sata_acpi&#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait crashkernel=256M@32M root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from PXE with mini rootfs</span></div><div class="line">menuentry <span class="string">"D03 minilinux PXE(ACPI)"</span> --id d03_minilinux_pxe_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off rootwait crashkernel=256M@32M rdinit=/init console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8  acpi=force</div><div class="line">    initrd /mini-rootfs-arm64.cpio.gz</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos NFS</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu NFS(ACPI)"</span> --id d03_ubuntu_nfs_acpi &#123;</div><div class="line">    <span class="built_in">set</span> root=(tftp,192.168.1.107)</div><div class="line">    linux /Image rdinit=/init pcie_aspm=off console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8 root=/dev/nfs rw nfsroot=192.168.1.107:/home/ftp/user/rootfs_ubuntu64 acpi=force ip=dhcp</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from Centos SATA</span></div><div class="line">menuentry <span class="string">"D03 Ubuntu SATA(ACPI)"</span> --id d03_ubuntu_sata_acpi &#123;</div><div class="line">    search --no-floppy --fs-uuid --set=root &lt;UUID&gt;</div><div class="line">    linux /Image acpi=force pcie_aspm=off rdinit=/init rootwait root=PARTUUID=&lt;PARTUUID&gt; rootfstype=ext4 rw console=ttyS0,115200 earlycon=hisilpcuart,mmio,0xa01b0000,0,0x2f8</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with mini rootfs</span></div><div class="line">menuentry <span class="string">"HiKey minilinux eMMC"</span> --id HiKey_minilinux_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    initrd /mini-rootfs.cpio.gz</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from eMMC with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu eMMC"</span> --id HiKey_Ubuntu_eMMC &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk0p9 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># Booting from SD card with Ubuntu</span></div><div class="line">menuentry <span class="string">"HiKey Ubuntu SD card"</span> --id HiKey_Ubuntu_SD &#123;</div><div class="line">    linux /Image_HiKey rdinit=/init console=tty0 console=ttyAMA3,115200 root=/dev/mmcblk1p1 rootwait rw loglevel=8 efi=noruntime</div><div class="line">    devicetree /hi6220-hikey.dtb</div><div class="line">&#125;</div><div class="line"></div><div class="line">menuentry <span class="string">'HiKey Fastboot mode'</span> &#123;</div><div class="line">    chainloader (hd0,gpt6)/fastboot.efi</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Note: You should only select the parts from above sample which are suitable for your real situation.</p>
-<h2 id="files-structure-bootable-partition"><a href="#files-structure-bootable-partition" class="headerlink" title="files structure bootable partition"></a><a name="3">files structure bootable partition</a></h2><p>Normally they are placed into bootable partition as following structure.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sdx-------EFI</div><div class="line">|       |</div><div class="line">|       GRUB2------grubaa64.efi   <span class="comment"># grub binary file only for ARM64 architecture</span></div><div class="line">|</div><div class="line">|-------------grub.cfg            <span class="comment"># grub config file</span></div><div class="line">|</div><div class="line">|-------------Image               <span class="comment"># kernel Image file only for D02 platform</span></div></pre></td></tr></table></figure></p>
-<p>Note: In case of booting by PXE mode:  </p>
-<ol>
-<li>The grub binary and <code>grub.cfg</code> files must be placed in the TFTP root directory.  </li>
-<li>The names and positions of kernel image and dtb must be consistent with the corresponding grub config file.  </li>
-<li>The grub binary name (<code>grubxxx.efi</code>) must be consistent with the “filename” in <code>/etc/dhcp/dhcpd.conf</code>, for more detail, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Setup_PXE_Env_on_Host.4All.md" target="_blank" rel="external">Setup_PXE_Env_on_Host.md</a>  </li>
-<li>If you use D02 board, you should not input DTB in the <code>grub.cfg</code> but you must flash the DTB file into spiflash to avoid a known Mac address duplicate issue.</li>
-</ol>
-<p>You can get more information from the <code>Deploy_Manual.md</code> guide.</p>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a><a name="4">FAQ</a></h2><p>If you want to modify <code>grub.cfg</code> command line temporarily. Type “E” key into grub modification menu. You will face problem that the “backspace” key not woking properly. You can fix backspace issue by changing terminal emulator’s configuration.</p>
-<p><strong>For gnome-terminal</strong>: Open “Edit” menu, select “Profile preferences”.<br>In “Compatibility” page, select “Control-H” in “Backspace key generates” listbox.<br><strong>For Xterm</strong>: press Ctrl key and left botton of mouse, and toggle on “Backarrow key (BS/DEL)” in mainMenu.</p>
 ]]></content>
     </entry>
     
@@ -964,82 +1087,6 @@
 <ul>
 <li>When you load iso from BMC website, you can the the process of booting via BMC website directly</li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[UEFI_Manual.4D05]]></title>
-      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/UEFI_Manual.4D05/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Upgrade UEFI</a></li>
-<li><a href="#3">Recover the UEFI when it broke</a><a id="more"></a>
-</li>
-</ul>
-<h2 id="1">Introduction</h2>
-
-<p>UEFI is a kind of BIOS to boot system and provide runtime service to OS which can do some basic IO operation with the runtime service, e.g.: reboot, power off and etc.<br>Normally, there are some trust firmware will be produce from UEFI building, they are responsible for trust reprogram, they include:</p>
-<p>  UEFI_D05.fd         //UEFI executable binary file.</p>
-<p>Where to get them, please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Readme.4D05.md" target="_blank" rel="external">Readme.md</a>.</p>
-<h2 id="2">Upgrade UEFI</h2>
-
-<p>Note: This is not necessary unless you want to upgrade UEFI really.</p>
-<ol>
-<li>Prepare UEFI_D05.fd on computer which installed FTP service<br>FTP service is used to download files from the FTP server to hardware boards. Please prepare a computer installed FTP service with local network firstly, so that boards can get needed files frome FTP server with FTP protocol. Then put the UEFI files mentioned above into the root directory of FTP service.  </li>
-<li><p>Connect the board’s UART port to a host machine<br>Please refer to <a href="https://github.com/open-estuary/estuary/blob/master/doc/Deploy_Manual.4D05.md" target="_blank" rel="external">Deploy_Manual.4D05.md</a> “Prerequisite” chapter.</p>
-<p>If you choose Method 1 Deploy_Manual.4D05.md, use another console window, use <code>board_reboot</code> command to reset the board.<br>If you choose Method 2 Deploy_Manual.4D05.md, press the reset key on the board to reset the board.</p>
-<p>when system showing “Press Any key in 10 seconds to stop automatical booting…”, press any key except “enter” key to enter UEFI main menu.</p>
-</li>
-</ol>
-<h3 id="UEFI-menu-introduction"><a href="#UEFI-menu-introduction" class="headerlink" title="UEFI menu introduction"></a>UEFI menu introduction</h3><p>  UEFI main menu option is showed as follow:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">continue</span></div><div class="line">select Language            &lt;standard English&gt;</div><div class="line">&gt;Boot Manager</div><div class="line">&gt;Device Manager</div><div class="line">&gt;Boot Maintenance Manager</div></pre></td></tr></table></figure></p>
-<p>  Choose “Boot Manager” and enter into Boot option menu:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">EFI Misc Device</div><div class="line">EFI Network</div><div class="line">EFI Network 1</div><div class="line">EFI Network 2</div><div class="line">EFI Network 3</div><div class="line">EFI Internal Shell</div><div class="line">ESL Start OS</div><div class="line">Embedded Boot Loader(EBL)</div></pre></td></tr></table></figure></p>
-<p>  Please select “EFI Network 2” when booting boards via PXE with openlab environment.<br>  D05 board support 4 on-board network ports at maximun. To enable any one of them by connecting to network cable or optical fiber. From left to right, followed by the two 2GE ports, two 10GE ports which corresponding to UEFI startup interface are EFI Network 2, EFI Network 3, EFI Network 0, EFI Network 1.</p>
-<p>  EFI Internal Shell mode is a standard command shell in UEFI.</p>
-<p>  Embedded Boot Loader(EBL) mode is an embedded command shell based on boot loader specially for developers.</p>
-<p>  You can switch between two modes by typing “exit” from one mode to UEFI main menu and then choose the another mode.</p>
-<h3 id="Update-UEFI-files"><a href="#Update-UEFI-files" class="headerlink" title="Update UEFI files"></a>Update UEFI files</h3><ul>
-<li><p>IP address config at “EFI Internal Shell” mode(Optional, you can ignore this step if DHCP works well)</p>
-<p>Press any key except “enter” key to enter UEFI main menu. Select “Boot Manager”-&gt;”EFI Internal Shell”.</p>
-<p><code>ifconfig -s eth0 static &lt;IP address&gt; &lt;mask&gt; &lt;gateway&gt;</code></p>
-<p>e.g.:</p>
-<p><code>ifconfig -s eth0 static 192.168.1.4 255.255.255.0 192.168.1.1</code></p>
-</li>
-<li><p>Burn BIOS file at “Embedded Boot Loader(EBL)” mode</p>
-<p>Enter “exit” from “EFI Internal Shell” mode to the UEFI main menu and choose “Boot Manager”-&gt; “Embedded Boot Loader(EBL)”after setting the IP address done.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Download file from FTP server to board's RAM</span></div><div class="line">provision &lt;server IP&gt; -u &lt;ftp user name&gt; -p &lt;ftp password&gt; <span class="_">-f</span> &lt;UEFI binary&gt; <span class="_">-a</span> &lt;download target address&gt;</div><div class="line"><span class="comment"># Write the data into NORFLASH</span></div><div class="line">spiwfmem &lt;<span class="built_in">source</span> address&gt; &lt;target address&gt; &lt;data length&gt;</div></pre></td></tr></table></figure>
-<p>e.g.:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">provision 192.168.1.107 -u sch -p aaa <span class="_">-f</span> UEFI_D05.fd <span class="_">-a</span> 0x100000</div></pre></td></tr></table></figure>
-<p>D05 board supports 4 network ports which including 2 GE ports and 2 10GE ports. Please select “Interface 3” when downloading bios file with openlab environment.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spiwfmem 0x100000 0x0000000 0x300000</div></pre></td></tr></table></figure>
-</li>
-<li><p>Power off and reboot board again.</p>
-</li>
-</ul>
-<h2 id="3">Recover the UEFI when it broke</h2>
-
-<ol>
-<li><p>Connect board’s BMC port to the network port of your ubuntu host.</p>
-</li>
-<li><p>Configure board’s BMC IP and your ubuntu host’s IP at the same network segment.</p>
-</li>
-<li><p>Login the BMC website, The username/passwd are root/Huawei12#$. Click “system”, click “Firmware upgrade”, click “Browse” to choose the hpm formate uefi file(Please contact support@open-estuary.org to get the hpm formate uefi file).</p>
-<p>Note: Usually BMC website can be visited by (<a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a>) by default. If BMC IP have modified by somebody, please take the following steps to find modified BMC IP</p>
-<ul>
-<li><p>Pull out the power cable. Find the pin named “COM_SW” at J44. Then connect it.</p>
-</li>
-<li><p>Power on the board, connect the board’s serial port to your ubuntu serial port. When the screen display message “You are trying to access a restricted zone. Only Authorized Users allowed.”, type “Enter” key, input username/passwd, the username/passwd are root/Huawei12#$.</p>
-</li>
-<li><p>After you login the BMC interface which start with “iBMC:/-&gt;”, use command “ifconfig” to see the modified BMC IP.</p>
-</li>
-<li><p>When you get the board’s BMC IP, please visit the BMC website by https:&lt;board’s BMC IP&gt;</p>
-</li>
-</ul>
-</li>
-<li><p>Click “Start update”(Do not power off during this period).</p>
-</li>
-<li><p>After updated UFEI file, reboot the board to enter UEFI menu.<br></p>
-</li>
-</ol>
 ]]></content>
     </entry>
     
@@ -1365,6 +1412,47 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Armor_Manual.4ALL]]></title>
+      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</url>
+      <content type="html"><![CDATA[<ul>
+<li><a href="#1">Introduction</a></li>
+<li><a href="#2">Information of Supported Armor Tools </a></li>
+<li><a href="#3">Distributions</a></li>
+<li><a href="#4">Installation</a></li>
+<li><a href="#5">How to run Tool’s test scripts</a><a id="more"></a>
+</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Armor tools supports a list of the platform tools for debug, diagnostics and monitoring and those are available in Open-Estuary Solution.</p>
+<p>Current Release Version- <code>armor-v1.1</code></p>
+<h2 id="Information-of-Supported-Armor-Tools"><a href="#Information-of-Supported-Armor-Tools" class="headerlink" title="Information of Supported Armor Tools"></a><a name="2">Information of Supported Armor Tools</a></h2><p>For the supported tools in Armor on different distributions, please refer  <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Supported.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Supported.4All.md</a></p>
+<p>For the basic information of all the supported Armor tools please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Basic_Info.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Basic_Info.4All.md</a></p>
+<p>Documentation for L3 cache event counting support in perf <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.perf.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.perf.md</a></p>
+<p>Documentation for using KGDB and KDB please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.kgdb.kdb.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.kgdb.kdb.md</a></p>
+<p>Documentation for LTTng user space tracing and kernel tracing, please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.lttng.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.lttng.md</a></p>
+<p>Documentation for how to verify iptables tool, please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.iptables.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.iptables.md</a></p>
+<h2 id="Distributions"><a href="#Distributions" class="headerlink" title="Distributions"></a><a name="3">Distributions</a></h2><p>Presently Armor tools are supported on the following distributions.</p>
+<ul>
+<li>Ubuntu 15.04 ARM64  </li>
+<li>Fedora 22 ARM64  </li>
+<li>OpenSuse 20150813 Tumbleweed ARM64  </li>
+<li>Debian Jessie 8.2 ARM64  </li>
+<li>CentOS Linux release 7.2.1511 (AltArch)  </li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a><a name="4">Installation</a></h2><ol>
+<li>Default Armor tools are installed onto the rootfs during open-estuary build process.  </li>
+<li><p>On first time bootup, user must run update commands before try install or run any Armor tool.</p>
+<p>Ubuntu: run <code>apt-get -y update</code> command.<br>Fedora: run <code>dnf -y update</code> command.<br>OpenSuse: run <code>zypper -y update</code> command.<br>Debian: run <code>apt-get -y update</code>and <code>apt-get install -f -y</code> commands.<br>CentOS: run <code>yum -y update</code> command.  </p>
+</li>
+<li>On target board, Run <code>armor_utility</code>, which will provide information of the supported Armor tools, installation status and how to install on the distribution if it is not already present.</li>
+</ol>
+<h2 id="How-to-run-Tool’s-test-scripts"><a href="#How-to-run-Tool’s-test-scripts" class="headerlink" title="How to run Tool’s test scripts"></a><a name="5">How to run Tool’s test scripts</a></h2><ol>
+<li>Go to the <code>/usr/local/armor/test_scripts</code> on the target terminal.  </li>
+<li>To test individual tools please run folowing command on the shell terminal, <code>sh test_&lt;tool&#39;s name&gt;.sh</code> -&gt; to run test script of an armor tool.<br> For example, ‘sh test_strace.sh’ to run tests for strace. The test results can be seen on the console.</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Deploy_Manual.4D02]]></title>
       <url>https://jarsonfang.github.io/etesting/Estuary/Documents/Deploy_Manual.4D02/</url>
       <content type="html"><![CDATA[<ul>
@@ -1527,47 +1615,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Armor_Manual.4ALL]]></title>
-      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/Armor_Manual.4All/</url>
-      <content type="html"><![CDATA[<ul>
-<li><a href="#1">Introduction</a></li>
-<li><a href="#2">Information of Supported Armor Tools </a></li>
-<li><a href="#3">Distributions</a></li>
-<li><a href="#4">Installation</a></li>
-<li><a href="#5">How to run Tool’s test scripts</a><a id="more"></a>
-</li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a name="1">Introduction</a></h2><p>Armor tools supports a list of the platform tools for debug, diagnostics and monitoring and those are available in Open-Estuary Solution.</p>
-<p>Current Release Version- <code>armor-v1.1</code></p>
-<h2 id="Information-of-Supported-Armor-Tools"><a href="#Information-of-Supported-Armor-Tools" class="headerlink" title="Information of Supported Armor Tools"></a><a name="2">Information of Supported Armor Tools</a></h2><p>For the supported tools in Armor on different distributions, please refer  <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Supported.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Supported.4All.md</a></p>
-<p>For the basic information of all the supported Armor tools please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Basic_Info.4All.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/Armor_Tools_Basic_Info.4All.md</a></p>
-<p>Documentation for L3 cache event counting support in perf <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.perf.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.perf.md</a></p>
-<p>Documentation for using KGDB and KDB please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.kgdb.kdb.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.kgdb.kdb.md</a></p>
-<p>Documentation for LTTng user space tracing and kernel tracing, please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.lttng.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.lttng.md</a></p>
-<p>Documentation for how to verify iptables tool, please refer <a href="https://github.com/open-estuary/estuary/blob/master/doc/README.armor.iptables.md" target="_blank" rel="external">https://github.com/open-estuary/estuary/blob/master/doc/README.armor.iptables.md</a></p>
-<h2 id="Distributions"><a href="#Distributions" class="headerlink" title="Distributions"></a><a name="3">Distributions</a></h2><p>Presently Armor tools are supported on the following distributions.</p>
-<ul>
-<li>Ubuntu 15.04 ARM64  </li>
-<li>Fedora 22 ARM64  </li>
-<li>OpenSuse 20150813 Tumbleweed ARM64  </li>
-<li>Debian Jessie 8.2 ARM64  </li>
-<li>CentOS Linux release 7.2.1511 (AltArch)  </li>
-</ul>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a><a name="4">Installation</a></h2><ol>
-<li>Default Armor tools are installed onto the rootfs during open-estuary build process.  </li>
-<li><p>On first time bootup, user must run update commands before try install or run any Armor tool.</p>
-<p>Ubuntu: run <code>apt-get -y update</code> command.<br>Fedora: run <code>dnf -y update</code> command.<br>OpenSuse: run <code>zypper -y update</code> command.<br>Debian: run <code>apt-get -y update</code>and <code>apt-get install -f -y</code> commands.<br>CentOS: run <code>yum -y update</code> command.  </p>
-</li>
-<li>On target board, Run <code>armor_utility</code>, which will provide information of the supported Armor tools, installation status and how to install on the distribution if it is not already present.</li>
-</ol>
-<h2 id="How-to-run-Tool’s-test-scripts"><a href="#How-to-run-Tool’s-test-scripts" class="headerlink" title="How to run Tool’s test scripts"></a><a name="5">How to run Tool’s test scripts</a></h2><ol>
-<li>Go to the <code>/usr/local/armor/test_scripts</code> on the target terminal.  </li>
-<li>To test individual tools please run folowing command on the shell terminal, <code>sh test_&lt;tool&#39;s name&gt;.sh</code> -&gt; to run test script of an armor tool.<br> For example, ‘sh test_strace.sh’ to run tests for strace. The test results can be seen on the console.</li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Introduction_for_Docker]]></title>
       <url>https://jarsonfang.github.io/etesting/Estuary/Documents/Introduction_for_Docker/</url>
       <content type="html"><![CDATA[<p>What is Docker?</p>
@@ -1595,27 +1642,25 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Distributions_Guild.4All]]></title>
-      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/Distributions_Guide.4All/</url>
-      <content type="html"><![CDATA[<p>This is the guide for distributions</p>
-<a id="more"></a>
-<p>Distribution indicates a specially total rootfs for linux kernel.<br>After you run <code>./estuary/build.sh -d &lt;Platform Name&gt; -p &lt;Distribution Name&gt;</code>, the corresponding distribution tarball will be created into <code>&lt;project root&gt;/build/&lt;platform name&gt;/distro</code>.<br>By default, it is named as <distribution name="">_<arm arch="">.tar.gz, and the default username and password for them are “root,root”.</arm></distribution></p>
-<p>You can do following commands to uncompress the tarball into any special block device’s partition, e.g.: SATA, SAS or USB disk.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo mount /dev/&lt;block device name&gt; tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir</div></pre></td></tr></table></figure></p>
-<p>You can also simply uncompress the tarball into a special directory as follows, and use the directory as the NFS’s rootfs.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir nfsdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C nfsdir</div></pre></td></tr></table></figure></p>
-<p>If you want to produce a rootfs image file for QEMU, you can try as belows<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir </div><div class="line"></div><div class="line"><span class="built_in">pushd</span> tempdir</div><div class="line">dd <span class="keyword">if</span>=/dev/zero of=../rootfs.img bs=1M count=10240</div><div class="line">mkfs.ext4 ../rootfs.img -F</div><div class="line">mkdir -p ../tempdir 2&gt;/dev/null</div><div class="line">sudo mount ../rootfs.img ../tempdir</div><div class="line">sudo cp <span class="_">-a</span> * ../tempdir/</div><div class="line">sudo umount ../tempdir</div><div class="line">rm -rf ../tempdir</div><div class="line"><span class="built_in">popd</span></div></pre></td></tr></table></figure></p>
-<p>Then you will get the rootfs image file as rootfs.img</p>
-<p><strong>You can download above distributions by following commands manually</strong>.</p>
-<p>All validated distributions can be obtained in <a href="http://download.open-estuary.org/" target="_blank" rel="external">HTTP Download</a>/[release|pre-releases]/<code>&lt;version&gt;</code>/linux/<code>&lt;distro name&gt;</code>/.</p>
-<p>e.g.:<br>You can get Ubuntu distribution of estuary v2.2-rc1 pre-releases version as follow:<br><code>wget -c http://download.open-estuary.org/AllDownloads/DownloadsEstuary/pre-releases/2.2/rc1/linux/Ubuntu/Common/Ubuntu_ARM64.tar.gz</code></p>
-<p>For other distributions please refer to the description aboved.</p>
-<p><strong>And all original distributions can be gotten by following commands</strong>:</p>
-<p>Ubuntu:<br><code>wget -c https://cloud-images.ubuntu.com/vivid/current/vivid-server-cloudimg-arm64.tar.gz</code></p>
-<p>OpenSUSE:<br><code>wget -c http://download.opensuse.org/ports/aarch64/distribution/13.2/appliances/openSUSE-13.2-ARM-JeOS.aarch64-rootfs.aarch64-Current.tbz</code></p>
-<p>Fedora:<br><code>wget -c http://dmarlin.fedorapeople.org/fedora-arm/aarch64/F21-20140407-foundation-v8.tar.xz</code></p>
-<p>Redhat: TBD</p>
-<p>Debian:<br><code>wget -c http://people.debian.org/~wookey/bootstrap/rootfs/debian-unstable-arm64.tar.gz</code></p>
-<p>OpenEmbedded:<br><code>wget -c http://releases.linaro.org/14.06/openembedded/aarch64/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140623-668.img.gz</code></p>
-<p>More detail about how to deploy target system into target board, please refer to Deployment_Manual.md.</p>
+      <title><![CDATA[README.armor.perf]]></title>
+      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.perf/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p><strong>Readme for Ubuntu ARM64</strong></p>
+<p>Install the latest perf binary*<br><code>$# sudo apt-get install linux-tools-3.19.0-23</code><br>The latest version availabe can be installed.<br>Now use the perf tool installed in <code>/usr/lib/linux-tools-3.19.0-23/perf</code><br><code>$# /usr/lib/linux-tools-3.19.0-23/perf stat -e L1-dcache-stores ls -l</code></p>
+<p>The LLC, MN and DDR are added as RAW events.<br>The RAW event encoding format is as below<br><code>&lt;die ID(4 bit)&gt;&lt;Module ID(4 bit)&gt;&lt;Bank(4 bit)&gt;&lt;event code(12 bit)&gt;</code></p>
+<p>Example: For LLC_READ_ALLOCATE event for TotemC will be 0x24f300, where 0x2 is DieID for TotemC, 0x4 is the ModuleID of LLC, 0xf is for all LLC banks, 0x300is the event code for LLC_READ_ALLOCATE<br>The Module ID’s are as below<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">LLC	= 0x4</div><div class="line">MN	= 0xb</div><div class="line">DDRC0	= 0x8</div><div class="line">DDRC1	= 0xd</div></pre></td></tr></table></figure></p>
+<p>The DieID for the CPU Die are as below<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SOC0_TOTEMA = 0x1 /* TOTEM A <span class="keyword">in</span> Socket 0 */</div><div class="line">SOC0_TOTEMC = 0x2</div><div class="line">SOC0_TOTEMB = 0x3</div><div class="line">SOC1_TOTEMA = 0x4</div><div class="line">SOC1_TOTEMC = 0x5</div><div class="line">SOC1_TOTEMB = 0x6</div></pre></td></tr></table></figure></p>
+<p>The 22 LLC events are added as RAW events starting from 0x300 to 0x315<br>The 9 MN event codes and also the DDRC read, write and latecy counters, event codes are listed below<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">LLC_READ_ALLOCATE 		= 0x300</div><div class="line">LLC_WRITE_ALLOCATE 		= 0x301</div><div class="line">LLC_READ_NOALLOCATE		= 0x302</div><div class="line">LLC_WRITE_NOALLOCATE		= 0x303</div><div class="line">LLC_READ_HIT			= 0x304</div><div class="line">LLC_WRITE_HIT			= 0x305</div><div class="line">LLC_CMO_REQUEST			= 0x306</div><div class="line">LLC_COPYBACK_REQ		= 0x307</div><div class="line">LLC_HCCS_SNOOP_REQ		= 0x308</div><div class="line">LLC_SMMU_REQ			= 0x309</div><div class="line">LLC_EXCL_SUCCESS		= 0x30A</div><div class="line">LLC_EXCL_FAIL			= 0x30B</div><div class="line">LLC_CACHELINE_OFLOW		= 0x30C</div><div class="line">LLC_RECV_ERR			= 0x30D</div><div class="line">LLC_RECV_PREFETCH		= 0x30E</div><div class="line">LLC_RETRY_REQ			= 0x30F</div><div class="line">LLC_DGRAM_2B_ECC		= 0x310</div><div class="line">LLC_TGRAM_2B_ECC		= 0x311</div><div class="line">LLC_SPECULATE_SNOOP		= 0x312</div><div class="line">LLC_SPECULATE_SNOOP_SUCCESS	= 0x313</div><div class="line">LLC_TGRAM_1B_ECC		= 0x314</div><div class="line">LLC_DGRAM_1B_ECC		= 0x315</div><div class="line"></div><div class="line">MN_EO_BARR_REQ			= 0x316</div><div class="line">MN_EC_BARR_REQ			= 0x317</div><div class="line">MN_DVM_OP_REQ			= 0x318</div><div class="line">MN_DVM_SYNC_REQ			= 0x319</div><div class="line">MN_READ_REQ			= 0x31A</div><div class="line">MN_WRITE_REQ			= 0x31B</div><div class="line">MN_COPYBK_REQ			= 0x31C</div><div class="line">MN_OTHER_REQ			= 0x31D</div><div class="line">MN_RETRY_REQ			= 0x31E</div><div class="line"></div><div class="line">DDRC0_FLUX_READ_BW		= 0x31F</div><div class="line">DDRC0_FLUX_WRITE_BW		= 0x320</div><div class="line">DDRC0_FLUX_READ_LAT		= 0x321</div><div class="line">DDRC0_FLUX_WRITE_LAT		= 0x322</div><div class="line">DDRC1_FLUX_READ_BW		= 0x323</div><div class="line">DDRC1_FLUX_WRITE_BW		= 0x324</div><div class="line">DDRC1_FLUX_READ_LAT		= 0x325</div><div class="line">DDRC1_FLUX_WRITE_LAT		= 0x326</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># To count LLC_WRITE_NOALLOCATE and LLC_READ_ALLOCATE for TotemC</span></div><div class="line"><span class="variable">$#</span> /usr/lib/linux-tols-3.19.0-23/perf <span class="built_in">stat</span> <span class="_">-e</span> r24f303 <span class="_">-e</span> r24f300 ls <span class="_">-l</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># To count MN_EO_BARR_REQ and LLC_READ_ALLOCATE for TotemA</span></div><div class="line"><span class="variable">$#</span> /usr/lib/linux-tols-3.19.0-23/perf <span class="built_in">stat</span> <span class="_">-e</span> r1bf316 <span class="_">-e</span> r14f300 ls <span class="_">-l</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># To count LLC_READ_HIT and LLC_WRITE_HIT for a process with pid</span></div><div class="line"><span class="variable">$#</span> /usr/lib/linux-tools-3.19.0-23/perf <span class="built_in">stat</span> <span class="_">-e</span> r24f304,r24f305 -p &lt;pid&gt;</div></pre></td></tr></table></figure>
+<p>Known Issues:</p>
+<ol>
+<li><p>As Hisilicon hardware counters are not CPU core specific, the counter values maynot be accurate. To get more accurate count. please append the option “-C 0 -A” in perf stat command.<br><code>$# perf stat -C 0 -A -e r24f303 -e r24f300 ls -l</code></p>
+</li>
+<li><p>As the counter registers in Hisiilicon are config and accessed via Djtag interface, it can affect the event counter readings as the access is not atomic.</p>
+</li>
+</ol>
 ]]></content>
     </entry>
     
@@ -1937,25 +1982,27 @@
     </entry>
     
     <entry>
-      <title><![CDATA[README.armor.perf]]></title>
-      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/README.armor.perf/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
-<p><strong>Readme for Ubuntu ARM64</strong></p>
-<p>Install the latest perf binary*<br><code>$# sudo apt-get install linux-tools-3.19.0-23</code><br>The latest version availabe can be installed.<br>Now use the perf tool installed in <code>/usr/lib/linux-tools-3.19.0-23/perf</code><br><code>$# /usr/lib/linux-tools-3.19.0-23/perf stat -e L1-dcache-stores ls -l</code></p>
-<p>The LLC, MN and DDR are added as RAW events.<br>The RAW event encoding format is as below<br><code>&lt;die ID(4 bit)&gt;&lt;Module ID(4 bit)&gt;&lt;Bank(4 bit)&gt;&lt;event code(12 bit)&gt;</code></p>
-<p>Example: For LLC_READ_ALLOCATE event for TotemC will be 0x24f300, where 0x2 is DieID for TotemC, 0x4 is the ModuleID of LLC, 0xf is for all LLC banks, 0x300is the event code for LLC_READ_ALLOCATE<br>The Module ID’s are as below<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">LLC	= 0x4</div><div class="line">MN	= 0xb</div><div class="line">DDRC0	= 0x8</div><div class="line">DDRC1	= 0xd</div></pre></td></tr></table></figure></p>
-<p>The DieID for the CPU Die are as below<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SOC0_TOTEMA = 0x1 /* TOTEM A <span class="keyword">in</span> Socket 0 */</div><div class="line">SOC0_TOTEMC = 0x2</div><div class="line">SOC0_TOTEMB = 0x3</div><div class="line">SOC1_TOTEMA = 0x4</div><div class="line">SOC1_TOTEMC = 0x5</div><div class="line">SOC1_TOTEMB = 0x6</div></pre></td></tr></table></figure></p>
-<p>The 22 LLC events are added as RAW events starting from 0x300 to 0x315<br>The 9 MN event codes and also the DDRC read, write and latecy counters, event codes are listed below<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">LLC_READ_ALLOCATE 		= 0x300</div><div class="line">LLC_WRITE_ALLOCATE 		= 0x301</div><div class="line">LLC_READ_NOALLOCATE		= 0x302</div><div class="line">LLC_WRITE_NOALLOCATE		= 0x303</div><div class="line">LLC_READ_HIT			= 0x304</div><div class="line">LLC_WRITE_HIT			= 0x305</div><div class="line">LLC_CMO_REQUEST			= 0x306</div><div class="line">LLC_COPYBACK_REQ		= 0x307</div><div class="line">LLC_HCCS_SNOOP_REQ		= 0x308</div><div class="line">LLC_SMMU_REQ			= 0x309</div><div class="line">LLC_EXCL_SUCCESS		= 0x30A</div><div class="line">LLC_EXCL_FAIL			= 0x30B</div><div class="line">LLC_CACHELINE_OFLOW		= 0x30C</div><div class="line">LLC_RECV_ERR			= 0x30D</div><div class="line">LLC_RECV_PREFETCH		= 0x30E</div><div class="line">LLC_RETRY_REQ			= 0x30F</div><div class="line">LLC_DGRAM_2B_ECC		= 0x310</div><div class="line">LLC_TGRAM_2B_ECC		= 0x311</div><div class="line">LLC_SPECULATE_SNOOP		= 0x312</div><div class="line">LLC_SPECULATE_SNOOP_SUCCESS	= 0x313</div><div class="line">LLC_TGRAM_1B_ECC		= 0x314</div><div class="line">LLC_DGRAM_1B_ECC		= 0x315</div><div class="line"></div><div class="line">MN_EO_BARR_REQ			= 0x316</div><div class="line">MN_EC_BARR_REQ			= 0x317</div><div class="line">MN_DVM_OP_REQ			= 0x318</div><div class="line">MN_DVM_SYNC_REQ			= 0x319</div><div class="line">MN_READ_REQ			= 0x31A</div><div class="line">MN_WRITE_REQ			= 0x31B</div><div class="line">MN_COPYBK_REQ			= 0x31C</div><div class="line">MN_OTHER_REQ			= 0x31D</div><div class="line">MN_RETRY_REQ			= 0x31E</div><div class="line"></div><div class="line">DDRC0_FLUX_READ_BW		= 0x31F</div><div class="line">DDRC0_FLUX_WRITE_BW		= 0x320</div><div class="line">DDRC0_FLUX_READ_LAT		= 0x321</div><div class="line">DDRC0_FLUX_WRITE_LAT		= 0x322</div><div class="line">DDRC1_FLUX_READ_BW		= 0x323</div><div class="line">DDRC1_FLUX_WRITE_BW		= 0x324</div><div class="line">DDRC1_FLUX_READ_LAT		= 0x325</div><div class="line">DDRC1_FLUX_WRITE_LAT		= 0x326</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># To count LLC_WRITE_NOALLOCATE and LLC_READ_ALLOCATE for TotemC</span></div><div class="line"><span class="variable">$#</span> /usr/lib/linux-tols-3.19.0-23/perf <span class="built_in">stat</span> <span class="_">-e</span> r24f303 <span class="_">-e</span> r24f300 ls <span class="_">-l</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># To count MN_EO_BARR_REQ and LLC_READ_ALLOCATE for TotemA</span></div><div class="line"><span class="variable">$#</span> /usr/lib/linux-tols-3.19.0-23/perf <span class="built_in">stat</span> <span class="_">-e</span> r1bf316 <span class="_">-e</span> r14f300 ls <span class="_">-l</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># To count LLC_READ_HIT and LLC_WRITE_HIT for a process with pid</span></div><div class="line"><span class="variable">$#</span> /usr/lib/linux-tools-3.19.0-23/perf <span class="built_in">stat</span> <span class="_">-e</span> r24f304,r24f305 -p &lt;pid&gt;</div></pre></td></tr></table></figure>
-<p>Known Issues:</p>
-<ol>
-<li><p>As Hisilicon hardware counters are not CPU core specific, the counter values maynot be accurate. To get more accurate count. please append the option “-C 0 -A” in perf stat command.<br><code>$# perf stat -C 0 -A -e r24f303 -e r24f300 ls -l</code></p>
-</li>
-<li><p>As the counter registers in Hisiilicon are config and accessed via Djtag interface, it can affect the event counter readings as the access is not atomic.</p>
-</li>
-</ol>
+      <title><![CDATA[Distributions_Guild.4All]]></title>
+      <url>https://jarsonfang.github.io/etesting/Estuary/Documents/Distributions_Guide.4All/</url>
+      <content type="html"><![CDATA[<p>This is the guide for distributions</p>
+<a id="more"></a>
+<p>Distribution indicates a specially total rootfs for linux kernel.<br>After you run <code>./estuary/build.sh -d &lt;Platform Name&gt; -p &lt;Distribution Name&gt;</code>, the corresponding distribution tarball will be created into <code>&lt;project root&gt;/build/&lt;platform name&gt;/distro</code>.<br>By default, it is named as <distribution name="">_<arm arch="">.tar.gz, and the default username and password for them are “root,root”.</arm></distribution></p>
+<p>You can do following commands to uncompress the tarball into any special block device’s partition, e.g.: SATA, SAS or USB disk.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo mount /dev/&lt;block device name&gt; tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir</div></pre></td></tr></table></figure></p>
+<p>You can also simply uncompress the tarball into a special directory as follows, and use the directory as the NFS’s rootfs.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir nfsdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C nfsdir</div></pre></td></tr></table></figure></p>
+<p>If you want to produce a rootfs image file for QEMU, you can try as belows<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mkdir tempdir</div><div class="line">sudo tar -xzf &lt;Distribution Name&gt;_&lt;Arm arch&gt;.tar.gz -C tempdir </div><div class="line"></div><div class="line"><span class="built_in">pushd</span> tempdir</div><div class="line">dd <span class="keyword">if</span>=/dev/zero of=../rootfs.img bs=1M count=10240</div><div class="line">mkfs.ext4 ../rootfs.img -F</div><div class="line">mkdir -p ../tempdir 2&gt;/dev/null</div><div class="line">sudo mount ../rootfs.img ../tempdir</div><div class="line">sudo cp <span class="_">-a</span> * ../tempdir/</div><div class="line">sudo umount ../tempdir</div><div class="line">rm -rf ../tempdir</div><div class="line"><span class="built_in">popd</span></div></pre></td></tr></table></figure></p>
+<p>Then you will get the rootfs image file as rootfs.img</p>
+<p><strong>You can download above distributions by following commands manually</strong>.</p>
+<p>All validated distributions can be obtained in <a href="http://download.open-estuary.org/" target="_blank" rel="external">HTTP Download</a>/[release|pre-releases]/<code>&lt;version&gt;</code>/linux/<code>&lt;distro name&gt;</code>/.</p>
+<p>e.g.:<br>You can get Ubuntu distribution of estuary v2.2-rc1 pre-releases version as follow:<br><code>wget -c http://download.open-estuary.org/AllDownloads/DownloadsEstuary/pre-releases/2.2/rc1/linux/Ubuntu/Common/Ubuntu_ARM64.tar.gz</code></p>
+<p>For other distributions please refer to the description aboved.</p>
+<p><strong>And all original distributions can be gotten by following commands</strong>:</p>
+<p>Ubuntu:<br><code>wget -c https://cloud-images.ubuntu.com/vivid/current/vivid-server-cloudimg-arm64.tar.gz</code></p>
+<p>OpenSUSE:<br><code>wget -c http://download.opensuse.org/ports/aarch64/distribution/13.2/appliances/openSUSE-13.2-ARM-JeOS.aarch64-rootfs.aarch64-Current.tbz</code></p>
+<p>Fedora:<br><code>wget -c http://dmarlin.fedorapeople.org/fedora-arm/aarch64/F21-20140407-foundation-v8.tar.xz</code></p>
+<p>Redhat: TBD</p>
+<p>Debian:<br><code>wget -c http://people.debian.org/~wookey/bootstrap/rootfs/debian-unstable-arm64.tar.gz</code></p>
+<p>OpenEmbedded:<br><code>wget -c http://releases.linaro.org/14.06/openembedded/aarch64/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140623-668.img.gz</code></p>
+<p>More detail about how to deploy target system into target board, please refer to Deployment_Manual.md.</p>
 ]]></content>
     </entry>
     

@@ -61,7 +61,7 @@
 <link href="/etesting/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="D03,D05," />
+  <meta name="keywords" content="D05," />
 
 
 
@@ -77,25 +77,37 @@
 
 
 
-<meta name="description" content="Author: Fang Yuanzheng
-打开浏览器，输入目标单板的ip地址，进入ibmc登录界面，默认账号：root，密码：Huawei12#$">
+<meta name="description" content="Author: Tian Jiaoling
+Preparation workThe doc is applied for deploying the target board with Estuary OS or upgrading any release version of Estuary OS.
+
+The iso file the doc mentioned can be accessed">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IBMC Load ISO 部署">
+<meta property="og:title" content="Deploy/Upgrade Estuary OS with iso file by BMC-website">
 <meta property="og:url" content="https://jarsonfang.github.io/Estuary/Documents/IBMC-Load-ISO-deployment/index.html">
 <meta property="og:site_name" content="Etesting">
-<meta property="og:description" content="Author: Fang Yuanzheng
-打开浏览器，输入目标单板的ip地址，进入ibmc登录界面，默认账号：root，密码：Huawei12#$">
+<meta property="og:description" content="Author: Tian Jiaoling
+Preparation workThe doc is applied for deploying the target board with Estuary OS or upgrading any release version of Estuary OS.
+
+The iso file the doc mentioned can be accessed">
 <meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/login.png">
-<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/remote.png">
-<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/console-1.png">
-<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/console-2.png">
-<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/boot-option.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/uefi.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/java.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/share.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/imagefile.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/dvdrom.png">
 <meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/power.png">
-<meta property="og:updated_time" content="2017-01-18T09:57:47.650Z">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/10.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/usbdevice.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/grub.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/select2.png">
+<meta property="og:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/centos.png">
+<meta property="og:updated_time" content="2017-02-09T02:17:06.656Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IBMC Load ISO 部署">
-<meta name="twitter:description" content="Author: Fang Yuanzheng
-打开浏览器，输入目标单板的ip地址，进入ibmc登录界面，默认账号：root，密码：Huawei12#$">
+<meta name="twitter:title" content="Deploy/Upgrade Estuary OS with iso file by BMC-website">
+<meta name="twitter:description" content="Author: Tian Jiaoling
+Preparation workThe doc is applied for deploying the target board with Estuary OS or upgrading any release version of Estuary OS.
+
+The iso file the doc mentioned can be accessed">
 <meta name="twitter:image" content="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/login.png">
 
 
@@ -130,7 +142,7 @@
 
 
 
-  <title> IBMC Load ISO 部署 | Etesting </title>
+  <title> Deploy/Upgrade Estuary OS with iso file by BMC-website | Etesting </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -300,7 +312,7 @@
             
             
               
-                IBMC Load ISO 部署
+                Deploy/Upgrade Estuary OS with iso file by BMC-website
               
             
           </h1>
@@ -394,15 +406,62 @@
       
 
       
-        <p><strong>Author:</strong> Fang Yuanzheng</p>
-<p>打开浏览器，输入目标单板的ip地址，进入ibmc登录界面，默认账号：<code>root</code>，密码：<code>Huawei12#$</code><br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/login.png" alt="login.png" title=""></p>
+        <p><strong>Author:</strong> Tian Jiaoling</p>
+<h2 id="Preparation-work"><a href="#Preparation-work" class="headerlink" title="Preparation work"></a>Preparation work</h2><p>The doc is applied for deploying the target board with Estuary OS or upgrading any release version of Estuary OS.</p>
+<ol>
+<li><p>The iso file the doc mentioned can be accessed by the <strong>Downloading website</strong>.<br>Accessing from China: ftp://117.78.41.188<br>Accessing from outside-China: <a href="http://download.open-estuary.org/" target="_blank" rel="external">http://download.open-estuary.org/</a></p>
+</li>
+<li><p>Please make sure you have connected two or more disk to target board if you want to install two or more distributions.</p>
+</li>
+<li><p>For EOL1(Open Lab 1), we provide to visit the board’s BMC IP both locally and remotely.</p>
+<p>If you are in the same network segment with boards deployed in EOL1, you can visit the board’s BMC IP:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://192.168.1.&lt;boardno&gt;</div></pre></td></tr></table></figure>
+<p>If you want to visit board’s BMC IP remotely, please input the following command in browser: <code>https://htsat.vicp.cc: &lt;port&gt;&lt;boardno&gt;</code>, the <code>&lt;port&gt;</code> is set to “40” by default.<br>e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://htsat.vicp.cc:40135.</div></pre></td></tr></table></figure>
+</li>
+<li><p>For EOL2(Open Lab 2), we only provide to visit the board’s BMC IP remotely.</p>
+<p>BMC IP is set to:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://114.119.4.74:&lt;port&gt;&lt;boardno&gt;</div></pre></td></tr></table></figure>
+<p>The <code>&lt;port&gt;</code> is set to “8” by default. For example, if you want to visit board 135’s BMC IP which located in EOL2, please input <code>https:114.119.4.74:8135</code> in your browser.</p>
+</li>
+<li><p>For the boards sent out, the BMC IP website is <a href="https://192.168.2.100" target="_blank" rel="external">https://192.168.2.100</a> by default.</p>
+</li>
+</ol>
 <a id="more"></a>
-<p>登录之后，点击<code>Remote</code>项，选择<code>Remote Virtual Console (Share Mode)</code><br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/remote.png" alt="remote.png" title=""></p>
-<p>正常情况下应该可以看到下面界面，如果没有看到，是由于没有安装java虚拟机，请安装java虚拟机。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/console-1.png" alt="console-1.png" title=""></p>
-<p>选择虚拟控制台 光驱-&gt;镜像文件-&gt;浏览按钮找到 ISO 镜像文件后选择 连接。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/console-2.png" alt="console-2.png" title=""></p>
-<p>在返回到 BMC 的网页，选择配置-&gt;系统启动项中的光驱启动，最后点击保存。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/boot-option.png" alt="boot-option.png" title=""></p>
-<p>系统启动项中的修改只有本次重启有效，下次开机如果还想从光驱启动，必须重新在 BMC 中重新修改系统启动项。<br>通过虚拟控制台中的强制重启，选择<code>Power</code>，点击<code>Forced System Reset</code>，让目标单板重启。<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/power.png" alt="power.png" title=""></p>
-<p>正常情况下，系统 起来后就会将 ISO 文件中的内容写到硬盘中。</p>
+<h2 id="Details-steps-to-deploy-upgrade-Estuary-OS"><a href="#Details-steps-to-deploy-upgrade-Estuary-OS" class="headerlink" title="Details steps to deploy/upgrade Estuary OS"></a>Details steps to deploy/upgrade Estuary OS</h2><h3 id="Open-the-browser-and-input-the-target-board’s-BMC-IP"><a href="#Open-the-browser-and-input-the-target-board’s-BMC-IP" class="headerlink" title="Open the browser and input the target board’s BMC IP"></a>Open the browser and input the target board’s BMC IP</h3><p>The username&amp;password for logging the BMC website is<code>root</code>&amp;<code>Huawei12#$</code></p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/login.png" alt="login.png" title="">
+<p>If the BIOS version is too low or damaged, please upgrade BIOS through BMC website. Click System-&gt;Firmware Upgrade-&gt;Select Target Version: (e.g.: bios-crypt-image-0928.hpm)-&gt;click “Start Update”.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/uefi.png" alt="uefi.png" title="">
+<p>Please reboot the board to make sure the new BIOS invalid.</p>
+<h3 id="Click-“Remote”-at-the-top-of-BMC-website"><a href="#Click-“Remote”-at-the-top-of-BMC-website" class="headerlink" title="Click “Remote” at the top of BMC website"></a>Click “Remote” at the top of BMC website</h3><p>You will see the following picture. If you don’t see it, please install java virtual machine.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/java.png" alt="java.png" title="">
+<h3 id="Select-“Remote-Virtual-Console-Shared-Mode-”"><a href="#Select-“Remote-Virtual-Console-Shared-Mode-”" class="headerlink" title="Select “Remote Virtual Console (Shared Mode)”"></a>Select “Remote Virtual Console (Shared Mode)”</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/share.png" alt="share.png" title="">
+<h3 id="Click-“Image-File”-and-choose-the-iso-image-then-click-“Connect”-button"><a href="#Click-“Image-File”-and-choose-the-iso-image-then-click-“Connect”-button" class="headerlink" title="Click “Image File” and choose the iso image, then click “Connect” button."></a>Click “Image File” and choose the iso image, then click “Connect” button.</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/imagefile.png" alt="imagefile.png" title="">
+<h3 id="Click-“Config”-on-the-top-of-BMC-website-then-click-“Boot-Option”-to-select-“DVD-ROM-drive”-continue-to-click-“Save”-button"><a href="#Click-“Config”-on-the-top-of-BMC-website-then-click-“Boot-Option”-to-select-“DVD-ROM-drive”-continue-to-click-“Save”-button" class="headerlink" title="Click “Config” on the top of BMC website, then click “Boot Option” to select “DVD-ROM drive”, continue to click “Save” button."></a>Click “Config” on the top of BMC website, then click “Boot Option” to select “DVD-ROM drive”, continue to click “Save” button.</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/dvdrom.png" alt="dvdrom.png" title="">
+<p><strong>Warning: the modification is only valid this time, if you want to boot from the CD-ROM drive next time, you need login BMC to modify the system booting option</strong></p>
+<h3 id="Force-to-restart-D05-through-virtual-console-Click-“power”-gt-click-“Forced-System-Reset”"><a href="#Force-to-restart-D05-through-virtual-console-Click-“power”-gt-click-“Forced-System-Reset”" class="headerlink" title="Force to restart D05 through virtual console. Click “power”-&gt;click “Forced System Reset”"></a>Force to restart D05 through virtual console. Click “power”-&gt;click “Forced System Reset”</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/power.png" alt="power.png" title="">
+<p>You can enter UEFI menu and see the booting log via BMC website directly or use <code>ipmitool</code> in your local pc to see the booting process.</p>
+<p><strong>Warning: if you want to see the booting log via kvm on BMC website directly, please skip the following step “How to use ipmitool to see booting log”.</strong></p>
+<h3 id="How-to-use-ipmitool-to-see-booting-log-optional-step"><a href="#How-to-use-ipmitool-to-see-booting-log-optional-step" class="headerlink" title="How to use ipmitool to see booting log(optional step)"></a>How to use ipmitool to see booting log(optional step)</h3><p>First please install ipmitool with the following commands(Apply for ubuntu pc)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ipmitool</div></pre></td></tr></table></figure>
+<p>If your pc is windows system, please get ipmitool package from <a href="http://down.liangchan.net/ipmitool.zip" target="_blank" rel="external">http://down.liangchan.net/ipmitool.zip</a>. Then depress the package to your pc disk.</p>
+<p>Open two terminals, one is to input the following commands to make the board power on or off<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12<span class="comment">#$ power on</span></div><div class="line">ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12<span class="comment">#$ power off</span></div></pre></td></tr></table></figure></p>
+<p>Open the other terminal and input the following command to enable the board with command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ipmitool -H 192.168.2.100 -I lanplus -U root -P Huawei12<span class="comment">#$ sol activate</span></div></pre></td></tr></table></figure>
+<h3 id="Enter-UEFI-menu"><a href="#Enter-UEFI-menu" class="headerlink" title="Enter UEFI menu"></a>Enter UEFI menu</h3><p>Press any key except “enter” key to enter UEFI menu when the screen echo <code>Press any other key in 10 seconds to stop automatically booting</code><br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/10.png" alt="10.png" title=""></p>
+<p>Choose “EFI USB DEVICE” and type “enter” key<br><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/usbdevice.png" alt="usbdevice.png" title=""></p>
+<p>The system will enter grub menu as follow and show “Install D05 estuary (Console)”, press “enter” key to start install.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/grub.png" alt="grub.png" title="">
+<p><strong>Warning: if you select “Install D05 estuary (Console)”, you can see the booting log from “ipmitool”. If you select “Install D05 estuary(VGA)”, you should connect a VGA and a mouse to the target board or via kvm on BMC website directly.</strong></p>
+<h3 id="Please-input-“2”-when-the-system-echos-the-following-picture"><a href="#Please-input-“2”-when-the-system-echos-the-following-picture" class="headerlink" title="Please input “2” when the system echos the following picture."></a>Please input “2” when the system echos the following picture.</h3><img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/select2.png" alt="select2.png" title="">
+<p>Please let the system deploy automatically without any manual operations.  After all the deployments have done, the system will boot automatically. It has entered distribution successfully if you see e.g: <code>root@CentOS</code>. Username/password for all distribuitons are root/root by default.</p>
+<img src="/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/centos.png" alt="centos.png" title="">
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p>QES1: If you have done all the above operations, but enter the system which started with <code>estuary@</code><br>ANS: Please check the following items.</p>
+<ol>
+<li>The iso file and BIOS file you used <strong>SHOULD</strong> keep complementary. That is to say, both two files came from the same Estuary release version.</li>
+<li>Make sure you have connect sufficient disks to the target board if you have installed more distributions.</li>
+</ol>
+<p>QES2: I have entered the distribution successfully, but the system cannot support my needed functions<br>ANS: Please upgrade the OS to the newest Estuary release version according Downloading website which mentioned at “preparation work” chapter. If the issues still not reslove, you can send email to support@open-estuary.org.</p>
 
       
     </div>
@@ -425,8 +484,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/etesting/tags/D03/" rel="tag"># D03</a>
           
             <a href="/etesting/tags/D05/" rel="tag"># D05</a>
           
@@ -461,7 +518,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="Estuary/Documents/IBMC-Load-ISO-deployment/"
-     data-title="IBMC Load ISO 部署"
+     data-title="Deploy/Upgrade Estuary OS with iso file by BMC-website"
      data-content=""
      data-url="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/">
   <div class="ds-share-inline">
@@ -494,7 +551,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="Estuary/Documents/IBMC-Load-ISO-deployment/"
-           data-title="IBMC Load ISO 部署" data-url="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/">
+           data-title="Deploy/Upgrade Estuary OS with iso file by BMC-website" data-url="https://jarsonfang.github.io/etesting/Estuary/Documents/IBMC-Load-ISO-deployment/">
       </div>
     
   </div>
@@ -518,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/etesting/images/avatar.png"
@@ -644,6 +710,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation-work"><span class="nav-number">1.</span> <span class="nav-text">Preparation work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Details-steps-to-deploy-upgrade-Estuary-OS"><span class="nav-number">2.</span> <span class="nav-text">Details steps to deploy/upgrade Estuary OS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Open-the-browser-and-input-the-target-board’s-BMC-IP"><span class="nav-number">2.1.</span> <span class="nav-text">Open the browser and input the target board’s BMC IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Click-“Remote”-at-the-top-of-BMC-website"><span class="nav-number">2.2.</span> <span class="nav-text">Click “Remote” at the top of BMC website</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Select-“Remote-Virtual-Console-Shared-Mode-”"><span class="nav-number">2.3.</span> <span class="nav-text">Select “Remote Virtual Console (Shared Mode)”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Click-“Image-File”-and-choose-the-iso-image-then-click-“Connect”-button"><span class="nav-number">2.4.</span> <span class="nav-text">Click “Image File” and choose the iso image, then click “Connect” button.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Click-“Config”-on-the-top-of-BMC-website-then-click-“Boot-Option”-to-select-“DVD-ROM-drive”-continue-to-click-“Save”-button"><span class="nav-number">2.5.</span> <span class="nav-text">Click “Config” on the top of BMC website, then click “Boot Option” to select “DVD-ROM drive”, continue to click “Save” button.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Force-to-restart-D05-through-virtual-console-Click-“power”-gt-click-“Forced-System-Reset”"><span class="nav-number">2.6.</span> <span class="nav-text">Force to restart D05 through virtual console. Click “power”->click “Forced System Reset”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-use-ipmitool-to-see-booting-log-optional-step"><span class="nav-number">2.7.</span> <span class="nav-text">How to use ipmitool to see booting log(optional step)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enter-UEFI-menu"><span class="nav-number">2.8.</span> <span class="nav-text">Enter UEFI menu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Please-input-“2”-when-the-system-echos-the-following-picture"><span class="nav-number">2.9.</span> <span class="nav-text">Please input “2” when the system echos the following picture.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">3.</span> <span class="nav-text">FAQ</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
