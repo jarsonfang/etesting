@@ -27,13 +27,15 @@ We will introduce two methods to make USB install disk, one is to make during bu
 
 1. Please download Estuary source code on your local pc firstly, and connect a USB disk to your local pc.
 
-2. `cd open-estuary/estuary` to modify estuary/estuarycfg.json. Make sure the platform(D05), distros(CentOS or other distributions) are filled with "yes".
+2. Modify `estuarycfg.json` located in `open-estuary/estuary`. Make sure the platform(D05), distros(CentOS or other distributions) are filled with "yes".
 
    {% asset_img centos.png %}
-3. Change the value of "install" to "yes" in object "setup" for usb and the value "device" to your USB install disk.
+
+3. Change the value of "install" to "yes" in object "setup" for usb and the value "device" to your USB install disk.  
 <span style="color:red">Note: if the specified usb device does not exist, the first detected usb device will be selected by default.</span>
 
    {% asset_img selectusb.png %}
+
 4. Use build.sh to create the usb install disk.
    e.g.:
    ```bash
@@ -43,7 +45,7 @@ We will introduce two methods to make USB install disk, one is to make during bu
 
 ## Make USB installation disk(option 2)
 
-“Curl” is suggested to install on your pc (Ubuntu system is suggested to use ). To see whether “curl” has be installed by command “which curl”. If curl is not installed, type `sudo apt-get install curl` command to install.
+“Curl” is suggested to install on your pc (Ubuntu system is suggested to use ). To see whether “curl” has been installed by command “which curl”. If curl is not installed, type `sudo apt-get install curl` command to install.
 
 1. Download mkdeploydisk.sh
 
@@ -53,9 +55,13 @@ We will introduce two methods to make USB install disk, one is to make during bu
    ```
 2. Execute the following command with sudo permission to make usb installation disk.
 
-   Please specify your disk with `--target=/dev/sdx` when more than one USB disk connected to your computer. If not specified, the first detected usb device will be used. 
+   Please specify your disk with `--target=/dev/sdx` when more than one USB disk connected to your computer. If not specified, the first detected usb device will be used.  
    ```bash
-   `sudo ./mkdeploydisk.sh` or `sudo ./mkdeploydisk.sh --target=/dev/sdb`
+   sudo ./mkdeploydisk.sh
+   ```
+   or
+   ```bash
+   sudo ./mkdeploydisk.sh --target=/dev/sdb
    ```
    We offered multiple Estuary versions for you to choose. Please select the version in your need.
 
